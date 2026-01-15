@@ -5,7 +5,7 @@ class ProjectCard extends StatelessWidget {
   final String description;
   final IconData icon;
 
-  const ProjectCard({
+  const ProjectCard({super.key, 
     required this.title,
     required this.description,
     required this.icon,
@@ -21,7 +21,7 @@ class ProjectCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withValues(alpha: .2),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),

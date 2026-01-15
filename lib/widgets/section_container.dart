@@ -5,6 +5,7 @@ class SectionContainer extends StatelessWidget {
   final Widget child;
   final Color color;
   final double height;
+  @override
   final Key? key;
 
   const SectionContainer({
