@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/responsive_layout.dart';
 
 class SectionContainer extends StatelessWidget {
   final String title;
@@ -19,7 +20,9 @@ class SectionContainer extends StatelessWidget {
       width: double.infinity,
       constraints: BoxConstraints(minHeight: height),
       color: color,
-      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 40),
+      padding: ResponsiveLayout.isMobile(context)
+          ? const EdgeInsets.symmetric(vertical: 40, horizontal: 20)
+          : const EdgeInsets.symmetric(vertical: 60, horizontal: 40),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

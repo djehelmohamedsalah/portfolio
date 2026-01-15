@@ -16,7 +16,7 @@ class ProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
+      constraints: const BoxConstraints(maxWidth: 350),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,

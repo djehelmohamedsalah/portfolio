@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
 import '../constants/app_strings.dart';
+import '../utils/responsive_layout.dart';
 
 class HomeSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -23,10 +24,10 @@ class HomeSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             AppStrings.homeTitle,
             style: TextStyle(
-              fontSize: 100,
+              fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
               fontWeight: FontWeight.bold,
               color: Colors.white,
               height: 1.1,
@@ -36,7 +37,7 @@ class HomeSection extends StatelessWidget {
           Text(
             AppStrings.role,
             style: TextStyle(
-              fontSize: 32,
+              fontSize: ResponsiveLayout.isMobile(context) ? 24 : 32,
               color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.w300,
             ),
