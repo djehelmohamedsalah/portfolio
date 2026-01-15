@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants/app_colors.dart';
 
 class SkillChip extends StatelessWidget {
   final String label;
@@ -12,7 +13,7 @@ class SkillChip extends StatelessWidget {
       backgroundColor: Theme.of(
         context,
       ).colorScheme.primary.withValues(alpha: .1),
-      labelStyle: const TextStyle(color: Colors.white),
+      labelStyle: const TextStyle(color: AppColors.white),
       side: BorderSide(color: Theme.of(context).colorScheme.primary),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
     );

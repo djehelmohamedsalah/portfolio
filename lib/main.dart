@@ -4,6 +4,8 @@ import 'sections/projects_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/contact_section.dart';
+import 'constants/app_colors.dart';
+import 'constants/app_strings.dart';
 
 void main() {
   runApp(const MyPortfolioApp());
@@ -15,15 +17,15 @@ class MyPortfolioApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'together\n name',
+      title: AppStrings.appTitle,
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        primaryColor: const Color(0xFF0F172A), // Slate 900
-        scaffoldBackgroundColor: const Color(0xFF0F172A),
+        primaryColor: AppColors.primary, // Slate 900
+        scaffoldBackgroundColor: AppColors.primary,
         colorScheme: const ColorScheme.dark(
-          primary: Color(0xFF38BDF8), // Sky 400
-          secondary: Color(0xFF2DD4BF), // Teal 400
-          surface: Color(0xFF1E293B), // Slate 800
+          primary: AppColors.sky400, // Sky 400
+          secondary: AppColors.teal400, // Teal 400
+          surface: AppColors.slate800, // Slate 800
         ),
         textTheme: const TextTheme(
           displayLarge: TextStyle(
@@ -82,25 +84,31 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "My Portfolio",
+          AppStrings.portfolioTitle,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: false,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 4,
         actions: [
-          _NavBarItem(title: "Home", onTap: () => _scrollToSection(_homeKey)),
           _NavBarItem(
-            title: "Projects",
+            title: AppStrings.navHome,
+            onTap: () => _scrollToSection(_homeKey),
+          ),
+          _NavBarItem(
+            title: AppStrings.navProjects,
             onTap: () => _scrollToSection(_projectsKey),
           ),
-          _NavBarItem(title: "About", onTap: () => _scrollToSection(_aboutKey)),
           _NavBarItem(
-            title: "Skills",
+            title: AppStrings.navAbout,
+            onTap: () => _scrollToSection(_aboutKey),
+          ),
+          _NavBarItem(
+            title: AppStrings.navSkills,
             onTap: () => _scrollToSection(_skillsKey),
           ),
           _NavBarItem(
-            title: "Contact",
+            title: AppStrings.navContact,
             onTap: () => _scrollToSection(_contactKey),
           ),
           const SizedBox(width: 20),

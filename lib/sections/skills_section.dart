@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
 import '../widgets/skill_chip.dart';
+import '../constants/app_strings.dart';
 
 class SkillsSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -11,25 +12,28 @@ class SkillsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       key: sectionKey,
-      title: "Skills",
+      title: AppStrings.skillsTitle,
       color: Theme.of(context).colorScheme.surface,
       height: 500,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Tech Stack", style: Theme.of(context).textTheme.headlineSmall),
+          Text(
+            AppStrings.techStack,
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
           const SizedBox(height: 20),
           Wrap(
             spacing: 15,
             runSpacing: 15,
             children: [
-              SkillChip(label: "Flutter"),
-              SkillChip(label: "Dart"),
-              SkillChip(label: "Firebase"),
-              SkillChip(label: "Rest API"),
-              SkillChip(label: "UI/UX Design"),
-              SkillChip(label: "Git & GitHub"),
-              SkillChip(label: "State Management"),
+              SkillChip(label: AppStrings.skillFlutter),
+              SkillChip(label: AppStrings.skillDart),
+              SkillChip(label: AppStrings.skillFirebase),
+              SkillChip(label: AppStrings.skillRestApi),
+              SkillChip(label: AppStrings.skillUiUx),
+              SkillChip(label: AppStrings.skillGit),
+              SkillChip(label: AppStrings.skillStateManagement),
             ],
           ),
         ],

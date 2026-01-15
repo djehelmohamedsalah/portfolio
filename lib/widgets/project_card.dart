@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import '../constants/app_colors.dart';
 
 class ProjectCard extends StatelessWidget {
   final String title;
   final String description;
   final IconData icon;
 
-  const ProjectCard({super.key, 
+  const ProjectCard({
+    super.key,
     required this.title,
     required this.description,
     required this.icon,
@@ -21,7 +23,7 @@ class ProjectCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: .2),
+            color: AppColors.black.withValues(alpha: .2),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -39,7 +41,7 @@ class ProjectCard extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             description,
-            style: const TextStyle(fontSize: 16, color: Colors.white70),
+            style: const TextStyle(fontSize: 16, color: AppColors.white70),
           ),
         ],
       ),

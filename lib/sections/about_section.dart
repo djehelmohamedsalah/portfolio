@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
+import '../constants/app_strings.dart';
 
 class AboutSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -10,16 +11,14 @@ class AboutSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       key: sectionKey,
-      title: "About Me",
+      title: AppStrings.aboutTitle,
       color: Colors.transparent,
       height: 600,
       child: Row(
         children: [
           Expanded(
             child: Text(
-              "I am a passionate Flutter developer with a knack for creating beautiful and functional web and mobile applications.\n\n"
-              "I specialize in building responsive, user-friendly interfaces without relying on heavy external libraries. "
-              "My goal is to deliver clean code and exceptional user experiences.",
+              AppStrings.aboutDescription,
               style: Theme.of(
                 context,
               ).textTheme.bodyLarge?.copyWith(height: 1.8),

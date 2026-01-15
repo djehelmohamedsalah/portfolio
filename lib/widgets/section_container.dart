@@ -5,16 +5,13 @@ class SectionContainer extends StatelessWidget {
   final Widget child;
   final Color color;
   final double height;
-  @override
-  final Key? key;
-
   const SectionContainer({
-    this.key,
+    super.key,
     required this.title,
     required this.child,
     required this.color,
     required this.height,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

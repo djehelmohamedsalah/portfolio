@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
+import '../constants/app_strings.dart';
 
 class HomeSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -15,7 +16,7 @@ class HomeSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       key: sectionKey,
-      title: "Home",
+      title: AppStrings.homeSectionTitle,
       color: Colors.transparent,
       height: 700,
       child: Column(
@@ -23,7 +24,7 @@ class HomeSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            "together\n name",
+            AppStrings.homeTitle,
             style: TextStyle(
               fontSize: 100,
               fontWeight: FontWeight.bold,
@@ -33,7 +34,7 @@ class HomeSection extends StatelessWidget {
             ),
           ),
           Text(
-            "Flutter Developer & Designer",
+            AppStrings.role,
             style: TextStyle(
               fontSize: 32,
               color: Theme.of(context).colorScheme.secondary,
@@ -52,7 +53,7 @@ class HomeSection extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            child: const Text("View My Work"),
+            child: const Text(AppStrings.viewMyWork),
           ),
         ],
       ),

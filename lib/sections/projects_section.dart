@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
 import '../widgets/project_card.dart';
+import '../constants/app_strings.dart';
 
 class ProjectsSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -11,7 +12,7 @@ class ProjectsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       key: sectionKey,
-      title: "Projects",
+      title: AppStrings.projectsTitle,
       color: Theme.of(context).colorScheme.surface,
       height: 800,
       child: Wrap(
@@ -20,27 +21,23 @@ class ProjectsSection extends StatelessWidget {
         alignment: WrapAlignment.center,
         children: [
           ProjectCard(
-            title: "E-Commerce App",
-            description:
-                "A full-featured mobile shopping experience with cart and payment integration.",
+            title: AppStrings.projectEcommerceTitle,
+            description: AppStrings.projectEcommerceDesc,
             icon: Icons.shopping_bag,
           ),
           ProjectCard(
-            title: "Portfolio Website",
-            description:
-                "This very website! Built with Flutter Web and custom scroll navigation.",
+            title: AppStrings.projectPortfolioTitle,
+            description: AppStrings.projectPortfolioDesc,
             icon: Icons.web,
           ),
           ProjectCard(
-            title: "Task Manager",
-            description:
-                "Productivity tool for tracking daily tasks and team collaboration.",
+            title: AppStrings.projectTaskAppTitle,
+            description: AppStrings.projectTaskAppDesc,
             icon: Icons.check_circle_outline,
           ),
           ProjectCard(
-            title: "Weather Dashboard",
-            description:
-                "Real-time weather tracking using REST APIs and geolocation.",
+            title: AppStrings.projectWeatherTitle,
+            description: AppStrings.projectWeatherDesc,
             icon: Icons.cloud,
           ),
         ],

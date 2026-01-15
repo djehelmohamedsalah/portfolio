@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
+import '../constants/app_strings.dart';
 
 class ContactSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -10,7 +11,7 @@ class ContactSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       key: sectionKey,
-      title: "Contact",
+      title: AppStrings.contactTitle,
       color: Colors.transparent,
       height: 400,
       child: Center(
@@ -18,7 +19,7 @@ class ContactSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "Interested in working together?",
+              AppStrings.interestedInWorking,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w300,
@@ -32,7 +33,7 @@ class ContactSection extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.email),
-                  label: const Text("Email Me"),
+                  label: const Text(AppStrings.emailMe),
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 24,
@@ -46,7 +47,7 @@ class ContactSection extends StatelessWidget {
                 OutlinedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.code), // Simulating GitHub
-                  label: const Text("GitHub"),
+                  label: const Text(AppStrings.gitHub),
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 24,
