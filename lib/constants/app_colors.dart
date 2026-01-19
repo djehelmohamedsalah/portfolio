@@ -29,6 +29,9 @@ class AppColors {
   // Error
   static const Color error = Color(0xFFEF4444); // Red 500
 
+  // Accent (User added Amber)
+  static const Color accent = Color(0xFFF59E0B); // Amber 500
+
   // Legacy/Direct Colors (Keeping wrappers for compatibility or standard use)
   static const Color white = Colors.white;
   static const Color white70 = Colors.white70;

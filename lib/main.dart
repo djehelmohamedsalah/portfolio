@@ -4,8 +4,9 @@ import 'sections/projects_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/contact_section.dart';
-import 'constants/app_colors.dart';
+
 import 'constants/app_strings.dart';
+import 'theme/app_theme.dart';
 
 void main() {
   runApp(const MyPortfolioApp());

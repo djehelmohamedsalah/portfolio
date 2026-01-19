@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
 import '../constants/app_strings.dart';
+import '../constants/app_colors.dart';
 import '../utils/responsive_layout.dart';
 
 class HomeSection extends StatelessWidget {
@@ -49,7 +50,7 @@ class HomeSection extends StatelessWidget {
                     style: TextStyle(
                       fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
                       fontWeight: FontWeight.bold,
-                      color: Colors.amber,
+                      color: AppColors.accent,
                       height: 1.1,
                       letterSpacing: -2,
                     ),
@@ -61,7 +62,7 @@ class HomeSection extends StatelessWidget {
                 style: TextStyle(
                   fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
                   fontWeight: FontWeight.bold,
-                  color: Colors.amber,
+                  color: AppColors.accent,
                   height: 1.1,
                   letterSpacing: -2,
                 ),
