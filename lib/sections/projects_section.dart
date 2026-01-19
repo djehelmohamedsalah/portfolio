@@ -21,14 +21,14 @@ class ProjectsSection extends StatelessWidget {
         alignment: WrapAlignment.center,
         children: [
           ProjectCard(
-            title: AppStrings.projectEcommerceTitle,
-            description: AppStrings.projectEcommerceDesc,
-            icon: Icons.shopping_bag,
-          ),
-          ProjectCard(
             title: AppStrings.projectPortfolioTitle,
             description: AppStrings.projectPortfolioDesc,
             icon: Icons.web,
+          ),
+          ProjectCard(
+            title: AppStrings.projectEcommerceTitle,
+            description: AppStrings.projectEcommerceDesc,
+            icon: Icons.shopping_bag,
           ),
           ProjectCard(
             title: AppStrings.projectTaskAppTitle,
