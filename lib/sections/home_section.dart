@@ -7,11 +7,13 @@ import '../utils/responsive_layout.dart';
 class HomeSection extends StatelessWidget {
   final GlobalKey sectionKey;
   final VoidCallback onViewWork;
+  final VoidCallback onHireMe;
 
   const HomeSection({
     super.key,
     required this.sectionKey,
     required this.onViewWork,
+    required this.onHireMe,
   });
 
   @override
@@ -58,7 +60,7 @@ class HomeSection extends StatelessWidget {
                 ],
               ),
               Text(
-                "${AppStrings.homeTitleThirdPart} ${AppStrings.homeTitleFourthPart}",
+                AppStrings.homeTitleThirdPart,
                 style: TextStyle(
                   fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
                   fontWeight: FontWeight.bold,
@@ -78,18 +80,42 @@ class HomeSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: onViewWork,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              foregroundColor: Theme.of(context).colorScheme.onPrimary,
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-              textStyle: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+          Row(
+            children: [
+              ElevatedButton(
+                onPressed: onViewWork,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40,
+                    vertical: 20,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                child: const Text(AppStrings.viewMyWork),
               ),
-            ),
-            child: const Text(AppStrings.viewMyWork),
+              const SizedBox(width: 30),
+              ElevatedButton(
+                onPressed: onHireMe,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40,
+                    vertical: 20,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                child: const Text(AppStrings.hireMe),
+              ),
+            ],
           ),
         ],
       ),

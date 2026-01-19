@@ -15,10 +15,10 @@ class AppStrings {
   static const String homeSectionTitle = 'Home';
   static const String homeTitleFirstPart = 'I am';
   static const String homeTitleSecondPart = 'Mohamed';
-  static const String homeTitleThirdPart = 'Salah';
-  static const String homeTitleFourthPart = 'Djehel';
-  static const String role = 'Flutter Developer';
+  static const String homeTitleThirdPart = 'Salah Djehel';
+  static const String role = 'Mobile Application Developer';
   static const String viewMyWork = 'View My Work';
+  static const String hireMe = 'Hire Me';
 
   // Skills Section
   static const String skillsTitle = 'Skills';
