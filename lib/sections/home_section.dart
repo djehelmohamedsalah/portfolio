@@ -24,15 +24,49 @@ class HomeSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            AppStrings.homeTitle,
-            style: TextStyle(
-              fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).textTheme.displayLarge?.color,
-              height: 1.1,
-              letterSpacing: -2,
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    AppStrings.homeTitleFirstPart,
+                    style: TextStyle(
+                      fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).textTheme.displayLarge?.color,
+                      height: 1.1,
+                      letterSpacing: -2,
+                    ),
+                  ),
+                  Text(
+                    " ${AppStrings.homeTitleSecondPart}",
+                    style: TextStyle(
+                      fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.amber,
+                      height: 1.1,
+                      letterSpacing: -2,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                "${AppStrings.homeTitleThirdPart} ${AppStrings.homeTitleFourthPart}",
+                style: TextStyle(
+                  fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber,
+                  height: 1.1,
+                  letterSpacing: -2,
+                ),
+              ),
+            ],
           ),
           Text(
             AppStrings.role,

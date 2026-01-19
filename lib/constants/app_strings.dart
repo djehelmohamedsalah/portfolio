@@ -1,7 +1,7 @@
 class AppStrings {
   AppStrings._();
 
-  static const String appTitle = 'together\n name';
+  static const String appTitle = 'Portfolio';
   static const String portfolioTitle = 'My Portfolio';
 
   // Navigation
@@ -13,8 +13,11 @@ class AppStrings {
 
   // Home Section
   static const String homeSectionTitle = 'Home';
-  static const String homeTitle = 'together\n name';
-  static const String role = 'Flutter Developer & Designer';
+  static const String homeTitleFirstPart = 'I am';
+  static const String homeTitleSecondPart = 'Mohamed';
+  static const String homeTitleThirdPart = 'Salah';
+  static const String homeTitleFourthPart = 'Djehel';
+  static const String role = 'Flutter Developer';
   static const String viewMyWork = 'View My Work';
 
   // Skills Section
