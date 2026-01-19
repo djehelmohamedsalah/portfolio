@@ -18,12 +18,12 @@ class ContactSection extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               AppStrings.interestedInWorking,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w300,
-                color: Colors.white70,
+                color: Theme.of(context).textTheme.bodyLarge?.color,
               ),
             ),
             const SizedBox(height: 40),
@@ -40,7 +40,7 @@ class ContactSection extends StatelessWidget {
                       vertical: 16,
                     ),
                     backgroundColor: Theme.of(context).colorScheme.primary,
-                    foregroundColor: Colors.black,
+                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
                 const SizedBox(width: 20),

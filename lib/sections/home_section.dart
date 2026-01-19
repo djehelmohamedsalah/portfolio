@@ -29,7 +29,7 @@ class HomeSection extends StatelessWidget {
             style: TextStyle(
               fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Theme.of(context).textTheme.displayLarge?.color,
               height: 1.1,
               letterSpacing: -2,
             ),
@@ -47,7 +47,7 @@ class HomeSection extends StatelessWidget {
             onPressed: onViewWork,
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.primary,
-              foregroundColor: Colors.black,
+              foregroundColor: Theme.of(context).colorScheme.onPrimary,
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               textStyle: const TextStyle(
                 fontSize: 18,

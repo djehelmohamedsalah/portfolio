@@ -41,7 +41,9 @@ class ProjectCard extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             description,
-            style: const TextStyle(fontSize: 16, color: AppColors.white70),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(fontSize: 16),
           ),
         ],
       ),

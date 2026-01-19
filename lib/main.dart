@@ -19,26 +19,79 @@ class MyPortfolioApp extends StatelessWidget {
     return MaterialApp(
       title: AppStrings.appTitle,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        primaryColor: AppColors.primary, // Slate 900
-        scaffoldBackgroundColor: AppColors.primary,
-        colorScheme: const ColorScheme.dark(
-          primary: AppColors.sky400, // Sky 400
-          secondary: AppColors.teal400, // Teal 400
-          surface: AppColors.slate800, // Slate 800
+      themeMode: ThemeMode.system,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        fontFamily: 'Roboto', // Or standard
+        primaryColor: AppColors.primaryLight,
+        scaffoldBackgroundColor: AppColors.backgroundLight,
+        cardColor: AppColors.surfaceLight,
+        colorScheme: const ColorScheme.light(
+          primary: AppColors.primaryLight,
+          secondary: AppColors.secondaryLight,
+          surface: AppColors.surfaceLight,
+          error: AppColors.error,
+          onPrimary: Colors.white,
+          onSecondary: Colors.white,
+          onSurface: AppColors.textPrimaryLight,
+          onError: Colors.white,
         ),
         textTheme: const TextTheme(
           displayLarge: TextStyle(
             fontSize: 48,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: AppColors.textPrimaryLight,
           ),
           displayMedium: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: AppColors.textPrimaryLight,
           ),
-          bodyLarge: TextStyle(fontSize: 18, color: Colors.white70),
+          bodyLarge: TextStyle(
+            fontSize: 18,
+            color: AppColors.textSecondaryLight,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 16,
+            color: AppColors.textSecondaryLight,
+          ),
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        fontFamily: 'Roboto',
+        primaryColor: AppColors.primaryDark,
+        scaffoldBackgroundColor: AppColors.backgroundDark,
+        cardColor: AppColors.surfaceDark,
+        colorScheme: const ColorScheme.dark(
+          primary: AppColors.primaryDark,
+          secondary: AppColors.secondaryDark,
+          surface: AppColors.surfaceDark,
+          error: AppColors.error,
+          onPrimary: AppColors.backgroundDark,
+          onSecondary: AppColors.backgroundDark,
+          onSurface: AppColors.textPrimaryDark,
+          onError: Colors.white,
+        ),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            fontSize: 48,
+            fontWeight: FontWeight.bold,
+            color: AppColors.textPrimaryDark,
+          ),
+          displayMedium: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: AppColors.textPrimaryDark,
+          ),
+          bodyLarge: TextStyle(
+            fontSize: 18,
+            color: AppColors.textSecondaryDark,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 16,
+            color: AppColors.textSecondaryDark,
+          ),
         ),
       ),
       home: const PortfolioMainPage(),
@@ -88,8 +141,9 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: false,
-        backgroundColor: Theme.of(context).primaryColor,
-        elevation: 4,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 0,
+        foregroundColor: Theme.of(context).textTheme.bodyLarge?.color,
         actions: [
           _NavBarItem(
             title: AppStrings.navHome,
@@ -148,8 +202,8 @@ class _NavBarItem extends StatelessWidget {
         onPressed: onTap,
         child: Text(
           title,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyLarge?.color,
             fontWeight: FontWeight.w600,
           ),
         ),
