@@ -97,9 +97,20 @@ class AppStrings {
       'State Management: GetX for reactive and organized state handling.\n'
       'Backend: Supabase for database management, authentication, and real-time updates.\n'
       'Architecture: Clean separation between UI, business logic, and data layers.\n';
-  static const String projectRaqibChallenges = '';
-  static const String projectRaqibRole = '';
-  static const String projectRaqibProjectStatus = '';
+  static const String projectRaqibChallenges =
+      'Real-time updates: Ensuring that both users and admins see report status changes instantly.\n'
+      'Solution: Leveraged Supabase’s real-time features combined with GetX reactive state management.\n';
+  static const String projectRaqibRole =
+      'Designed and implemented the full project architecture.\n'
+      'Developed UI and UX flow.\n'
+      'Integrated Supabase for authentication, database, and real-time features.\n'
+      'Planned the stages of reporting and tracking logic.\n'
+      'Oversaw testing, bug fixing, and performance optimization.\n'
+      'The project was developed entirely independently, with all architectural, design, and technical decisions made by me.';
+  static const String projectRaqibProjectStatus =
+      'Fully functional and stable.\n'
+      //TODO: add doinload link
+      'APK download link included in the portfolio for direct access.';
 
   // QuranLife app
   static const String projectQuranLifeTitle = '';
