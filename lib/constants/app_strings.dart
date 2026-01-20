@@ -76,10 +76,27 @@ class AppStrings {
       'A direct APK download link is provided in the portfolio.';
 
   // Raqib app
-  static const String projectRaqibTitle = '';
-  static const String projectRaqibOverview = '';
-  static const String projectRaqibCoreFeatures = '';
-  static const String projectRaqibTechStack = '';
+  static const String projectRaqibTitle = 'Raqib App';
+  static const String projectRaqibOverview =
+      'Raqib is a mobile application designed to empower users to report trade violations directly to the Ministry of Trade.\n'
+      'The application streamlines the reporting process, allowing users to submit detailed reports, track the progress of each report, and stay informed about official updates.\n'
+      'The main goal is to provide a transparent, efficient, and user-friendly reporting system, making it easier for citizens to participate in regulatory compliance.\n';
+  static const String projectRaqibCoreFeatures =
+      'User Authentication: Secure sign-in options including email/password, Google, and anonymous access.\n'
+      'Report Submission:\n'
+      'Users can report violations by selecting the type of violation.\n'
+      'Reports are stored in Supabase and synchronized in real-time.\n'
+      'Report Tracking:\n'
+      'Users can follow the progress of each report across multiple stages.\n'
+      'Admins can update the stage of a report, which is immediately reflected to the user.\n'
+      'Offline Support: Users can fill reports offline and submit when connection is available.\n'
+      'Multi-language Support: Arabic, English, French.\n'
+      'Light/Dark Mode for better usability.\n';
+  static const String projectRaqibTechStack =
+      'Flutter for cross-platform development.\n'
+      'State Management: GetX for reactive and organized state handling.\n'
+      'Backend: Supabase for database management, authentication, and real-time updates.\n'
+      'Architecture: Clean separation between UI, business logic, and data layers.\n';
   static const String projectRaqibChallenges = '';
   static const String projectRaqibRole = '';
   static const String projectRaqibProjectStatus = '';
