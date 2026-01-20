@@ -113,9 +113,34 @@ class AppStrings {
       'APK download link included in the portfolio for direct access.';
 
   // QuranLife app
-  static const String projectQuranLifeTitle = '';
-  static const String projectQuranLifeOverview = '';
-  static const String projectQuranLifeCoreFeatures = '';
+  static const String projectQuranLifeTitle = 'QuranLife App';
+  static const String projectQuranLifeOverview =
+      'QuranLife is a comprehensive mobile application designed to support Muslims in practicing their religious duties easily and consistently, anywhere and at any time.\n'
+      'The application combines multiple essential Islamic features into a single, well-structured platform, eliminating the need to rely on several separate apps.\n'
+      'The focus of the project is practicality, performance, and usability in both online and offline scenarios.';
+  static const String projectQuranLifeCoreFeatures =
+      'Holy Quran: Reading and listening with offline support.\n'
+      'Adhkar & Duas: Organized by categories and usage contexts.\n'
+      'Prayer Times:\n'
+      'Prayer times fetched from an external API.\n'
+      'Accurate calculation of the current prayer, next prayer, and remaining time.\n'
+      'Time-based logic that adapts dynamically throughout the day.\n'
+      'Adhan & Prayer Notifications.\n'
+      'Qibla Direction.\n'
+      'Digital Tasbih.\n'
+      'Mosque Locator:\n'
+      'Google Maps integration.\n'
+      'Custom filtering to display places of worship only.\n'
+      'Multi-language Support: Arabic, English, and French.\n'
+      'Light & Dark Mode.\n'
+      'Key Differentiators\n'
+      'In addition to standard Islamic utilities, Quran Live includes advanced interactive features that are uncommon in similar applications:\n'
+      'User Authentication: Secure sign-up and login system.\n'
+      'Real-time Chat: Users can communicate with each other inside the application using live messaging.\n'
+      'AI-powered Islamic History Assistant:\n'
+      'Integration with an AI API dedicated to answering questions related to Islamic history.\n'
+      'Designed to act as a focused historical assistant rather than a general chatbot.\n'
+      'These features transform the application from a static tool into a community-oriented platform.';
   static const String projectQuranLifeTechStack = '';
   static const String projectQuranLifeChallenges = '';
   static const String projectQuranLifeRole = '';
