@@ -43,16 +43,39 @@ class AppStrings {
   // Projects Section
   static const String projectsTitle = 'Projects';
 
-// quranlife app
-  static const String projectQuraanLifeTitle = '';
-  static const String projectQuraanLifeOverview = '';
-  static const String projectQuraanLifeCoreFeatures = '';
-  static const String projectQuraanLifeTechStack = '';
-  static const String projectQuraanLifeChallenges = '';
-  static const String projectQuraanLifeRole = '';
-  static const String projectQuraanLifeProjectStatus = '';
+  // Newsily app
+  static const String projectNewsilyTitle = 'Newsily App';
+  static const String projectNewsilyOverview =
+      'Newsily is a mobile application that aggregates news from multiple international newspapers and media sources through a news API, allowing users to stay informed without the need to visit several websites individually. The app is designed to provide a quick daily overview of important news while saving time and reducing information overload.\n\n'
+      'Newsily is intended for users who regularly follow news but want a centralized, organized, and efficient way to access articles from different sources in one place.';
+  static const String projectNewsilyCoreFeatures =
+      'News aggregation from multiple global sources via API\n'
+      'Category-based browsing for focused reading\n'
+      'Daily automatic updates\n'
+      'Article search functionality\n'
+      'Save articles for later reading\n'
+      'Offline access through local caching\n'
+      'Light and dark mode for comfortable reading\n';
+  static const String projectNewsilyTechStack =
+      'Flutter for cross-platform mobile development\n'
+      'News API for fetching news data\n'
+      'Bloc (Cubit) for state management\n'
+      'SQLite (sqflite) for local data storage and caching\n';
+  static const String projectNewsilyChallenges =
+      'To optimize performance and reduce unnecessary API requests, news data is fetched only when updates are required. The application checks whether new data is available and avoids re-fetching unchanged content. A time-based validation mechanism ensures that data is refreshed only after a defined interval (e.g. every 12 hours), significantly reducing API usage and improving efficiency.\n'
+      'The project follows Clean Architecture principles to keep the codebase modular, readable, and easy to maintain or extend in future updates.';
+  static const String projectNewsilyRole =
+      'Project concept and feature definition.\n'
+      'UI/UX planning and design decisions.\n'
+      'Full application development from scratch.\n'
+      'Architectural and technical decision-making.\n'
+      'Performance optimization and functional testing.';
+  static const String projectNewsilyProjectStatus =
+      'The application is complete, stable, and fully functional.\n'
+      //TODO: Add a direct APK download link
+      'A direct APK download link is provided in the portfolio.';
 
-// Raqib app
+  // Raqib app
   static const String projectRaqibTitle = '';
   static const String projectRaqibOverview = '';
   static const String projectRaqibCoreFeatures = '';
@@ -61,18 +84,16 @@ class AppStrings {
   static const String projectRaqibRole = '';
   static const String projectRaqibProjectStatus = '';
 
+  // QuranLife app
+  static const String projectQuranLifeTitle = '';
+  static const String projectQuranLifeOverview = '';
+  static const String projectQuranLifeCoreFeatures = '';
+  static const String projectQuranLifeTechStack = '';
+  static const String projectQuranLifeChallenges = '';
+  static const String projectQuranLifeRole = '';
+  static const String projectQuranLifeProjectStatus = '';
 
-// Newsily app
-  static const String projectNewsilyTitle = '';
-  static const String projectNewsilyOverview = '';
-  static const String projectNewsilyCoreFeatures = '';
-  static const String projectNewsilyTechStack = '';
-  static const String projectNewsilyChallenges = '';
-  static const String projectNewsilyRole = '';
-  static const String projectNewsilyProjectStatus = '';
-
-
-// portfolio site
+  // portfolio site
   static const String projectPortfolioSiteTitle = '';
   static const String projectPortfolioSiteOverview = '';
   static const String projectPortfolioSiteCoreFeatures = '';
