@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
 import '../widgets/project_card.dart';
 import '../constants/app_strings.dart';
+import '../models/project.dart';
+import 'project_details_page.dart';
 
 class ProjectsSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -19,28 +21,21 @@ class ProjectsSection extends StatelessWidget {
         spacing: 30,
         runSpacing: 30,
         alignment: WrapAlignment.center,
-        children: [
-          ProjectCard(
-            title: AppStrings.projectPortfolioTitle,
-            description: AppStrings.projectPortfolioDesc,
-            icon: Icons.web,
-          ),
-          ProjectCard(
-            title: AppStrings.projectEcommerceTitle,
-            description: AppStrings.projectEcommerceDesc,
-            icon: Icons.shopping_bag,
-          ),
-          ProjectCard(
-            title: AppStrings.projectTaskAppTitle,
-            description: AppStrings.projectTaskAppDesc,
-            icon: Icons.check_circle_outline,
-          ),
-          ProjectCard(
-            title: AppStrings.projectWeatherTitle,
-            description: AppStrings.projectWeatherDesc,
-            icon: Icons.cloud,
-          ),
-        ],
+        children: Project.allProjects.map((project) {
+          return ProjectCard(
+            title: project.title,
+            description: project.overview,
+            icon: project.icon,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProjectDetailsPage(project: project),
+                ),
+              );
+            },
+          );
+        }).toList(),
       ),
     );
   }
