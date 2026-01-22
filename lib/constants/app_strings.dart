@@ -163,7 +163,10 @@ class AppStrings {
       'Performance optimization and functional testing.\n'
       'The application was developed independently.\n'
       'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
-  static const String projectQuranLifeProjectStatus = '';
+  static const String projectQuranLifeProjectStatus =
+  //TODO: add doinload link
+      'The application is complete, stable, and fully functional.'
+      'A direct APK download link is provided in the portfolio.';
 
   // portfolio site
   static const String projectPortfolioSiteTitle = 'Portfolio Site';
