@@ -147,8 +147,22 @@ class AppStrings {
       'Backend: Firebase for database management, authentication, and Real-time chat using Cloud Firestore.\n'
       'APIs: Prayer Times API, Google Maps API with customized filtering logic, AI API for Islamic History.\n'
       'Local Storage: SharedPreferences, SQLite, Offline-first Architecture for core functionalities.';
-  static const String projectQuranLifeChallenges = '';
-  static const String projectQuranLifeRole = '';
+  static const String projectQuranLifeChallenges =
+      'One of the most complex aspects of the project was prayer time handling and time-based logic, which required:\n'
+      'Processing daily prayer data received from an external API.\n'
+      'Determining the current and upcoming prayers accurately.\n'
+      'Calculating remaining time dynamically.\n'
+      'Triggering UI updates based on time changes.\n'
+      'Ensuring correct behavior across different locations and time zones.\n'
+      'To manage complexity, the application architecture was divided into independent controllers, each responsible for a specific feature. This approach improved code clarity, scalability, and long-term maintainability.';
+  static const String projectQuranLifeRole =
+      'Project concept and feature definition.\n'
+      'UI/UX planning and design decisions.\n'
+      'Full application development from scratch.\n'
+      'Architectural and technical decision-making.\n'
+      'Performance optimization and functional testing.\n'
+      'The application was developed independently.\n'
+      'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
   static const String projectQuranLifeProjectStatus = '';
 
   // portfolio site
