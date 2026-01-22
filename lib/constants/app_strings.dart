@@ -141,14 +141,20 @@ class AppStrings {
       'Integration with an AI API dedicated to answering questions related to Islamic history.\n'
       'Designed to act as a focused historical assistant rather than a general chatbot.\n'
       'These features transform the application from a static tool into a community-oriented platform.';
-  static const String projectQuranLifeTechStack = '';
+  static const String projectQuranLifeTechStack =
+      'Flutter for cross-platform development.\n'
+      'State Management: GetX.\n'
+      'Backend: Firebase for database management, authentication, and Real-time chat using Cloud Firestore.\n'
+      'APIs: Prayer Times API, Google Maps API with customized filtering logic, AI API for Islamic History.\n'
+      'Local Storage: SharedPreferences, SQLite, Offline-first Architecture for core functionalities.';
   static const String projectQuranLifeChallenges = '';
   static const String projectQuranLifeRole = '';
   static const String projectQuranLifeProjectStatus = '';
 
   // portfolio site
   static const String projectPortfolioSiteTitle = 'Portfolio Site';
-  static const String projectPortfolioSiteOverview = 'A modern portfolio website built with Flutter, showcasing my skills and projects.';
+  static const String projectPortfolioSiteOverview =
+      'A modern portfolio website built with Flutter, showcasing my skills and projects.';
   static const String projectPortfolioSiteCoreFeatures = '';
   static const String projectPortfolioSiteTechStack = '';
   static const String projectPortfolioSiteChallenges = '';
