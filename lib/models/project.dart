@@ -53,15 +53,5 @@ class Project {
       status: AppStrings.projectQuranLifeProjectStatus,
       icon: Icons.check_circle_outline,
     ),
-    Project(
-      title: AppStrings.projectPortfolioSiteTitle,
-      overview: AppStrings.projectPortfolioSiteOverview,
-      coreFeatures: AppStrings.projectPortfolioSiteCoreFeatures,
-      techStack: AppStrings.projectPortfolioSiteTechStack,
-      challenges: AppStrings.projectPortfolioSiteChallenges,
-      role: AppStrings.projectPortfolioSiteRole,
-      status: AppStrings.projectPortfolioSiteProjectStatus,
-      icon: Icons.cloud,
-    ),
   ];
 }

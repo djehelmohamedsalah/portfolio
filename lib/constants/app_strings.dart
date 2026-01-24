@@ -167,17 +167,6 @@ class AppStrings {
   //TODO: add doinload link
       'The application is complete, stable, and fully functional.'
       'A direct APK download link is provided in the portfolio.';
-
-  // portfolio site
-  static const String projectPortfolioSiteTitle = 'Portfolio Site';
-  static const String projectPortfolioSiteOverview =
-      'A modern portfolio website built with Flutter, showcasing my skills and projects.';
-  static const String projectPortfolioSiteCoreFeatures = '';
-  static const String projectPortfolioSiteTechStack = '';
-  static const String projectPortfolioSiteChallenges = '';
-  static const String projectPortfolioSiteRole = '';
-  static const String projectPortfolioSiteProjectStatus = '';
-
   // Contact Section
   static const String contactTitle = 'Contact';
   static const String interestedInWorking = 'Interested in working together?';
