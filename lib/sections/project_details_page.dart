@@ -29,6 +29,7 @@ class ProjectDetailsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Header Section
+                // Header Section
                 _buildHeader(context),
                 const SizedBox(height: 40),
 
@@ -175,6 +176,63 @@ class ProjectDetailsPage extends StatelessWidget {
   }
 
   Widget _buildScreenshotsSection(BuildContext context) {
+    if (project.screenshots.isEmpty) {
+      // Fallback for projects without screenshots
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildSectionTitle(context, 'Screenshots'),
+          const SizedBox(height: 20),
+          SizedBox(
+            height: 300,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 11,
+              itemBuilder: (context, index) {
+                final isLandscape = index == 0;
+                return Container(
+                  width: isLandscape ? 500 : 200,
+                  margin: const EdgeInsets.only(right: 20),
+                  decoration: BoxDecoration(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      color: Theme.of(
+                        context,
+                      ).dividerColor.withValues(alpha: 0.5),
+                    ),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.image,
+                          size: 50,
+                          color: Theme.of(context).disabledColor,
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          isLandscape
+                              ? 'Landscape Screenshot'
+                              : 'Screenshot ${index}',
+                          style: TextStyle(
+                            color: Theme.of(context).disabledColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      );
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -184,13 +242,13 @@ class ProjectDetailsPage extends StatelessWidget {
           height: 300,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 4, // Placeholder count
+            itemCount: project.screenshots.length,
             itemBuilder: (context, index) {
+              final isLandscape = index == 0;
               return Container(
-                width: 200,
+                width: isLandscape ? 500 : 200,
                 margin: const EdgeInsets.only(right: 20),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(
                     color: Theme.of(
@@ -198,24 +256,19 @@ class ProjectDetailsPage extends StatelessWidget {
                     ).dividerColor.withValues(alpha: 0.5),
                   ),
                 ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.image,
+                clipBehavior: Clip.antiAlias,
+                child: Image.asset(
+                  project.screenshots[index],
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Center(
+                      child: Icon(
+                        Icons.broken_image,
                         size: 50,
                         color: Theme.of(context).disabledColor,
                       ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Screenshot ${index + 1}',
-                        style: TextStyle(
-                          color: Theme.of(context).disabledColor,
-                        ),
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               );
             },
