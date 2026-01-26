@@ -80,7 +80,7 @@ class ProjectDetailsPage extends StatelessWidget {
           children: [
             Column(
               children: [
-                Image.asset(project.logo!, height: 80, fit: BoxFit.contain),
+                Image.asset(project.logo, height: 80, fit: BoxFit.contain),
                 const SizedBox(height: 20),
                 Text(
                   project.title,
@@ -94,13 +94,7 @@ class ProjectDetailsPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-            Text(
-              project.role,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-              textAlign: TextAlign.center,
-            ),
+            _buildRoleText(context, project.role, TextAlign.center),
           ],
         ),
         desktop: Row(
@@ -125,14 +119,7 @@ class ProjectDetailsPage extends StatelessWidget {
             ),
             const SizedBox(width: 40),
             Expanded(
-              child: Text(
-                project.role,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-
-                textAlign: TextAlign.start,
-              ),
+              child: _buildRoleText(context, project.role, TextAlign.start),
             ),
           ],
         ),
@@ -254,7 +241,7 @@ class ProjectDetailsPage extends StatelessWidget {
                         Text(
                           isLandscape
                               ? 'Landscape Screenshot'
-                              : 'Screenshot ${index}',
+                              : 'Screenshot $index',
                           style: TextStyle(
                             color: Theme.of(context).disabledColor,
                           ),
@@ -338,6 +325,36 @@ class ProjectDetailsPage extends StatelessWidget {
         const SizedBox(height: 5),
         Text(value, style: Theme.of(context).textTheme.bodyLarge),
       ],
+    );
+  }
+
+  Widget _buildRoleText(
+    BuildContext context,
+    String roleText,
+    TextAlign align,
+  ) {
+    List<String> lines = roleText
+        .split('\n')
+        .where((line) => line.trim().isNotEmpty)
+        .toList();
+
+    return Column(
+      crossAxisAlignment: align == TextAlign.center
+          ? CrossAxisAlignment.center
+          : CrossAxisAlignment.start,
+      children: lines.map((line) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Text(
+            line.trim(),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              color: Theme.of(context).colorScheme.secondary,
+              height: 1.5,
+            ),
+            textAlign: align,
+          ),
+        );
+      }).toList(),
     );
   }
 }
