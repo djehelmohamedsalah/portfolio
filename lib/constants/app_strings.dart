@@ -156,15 +156,15 @@ class AppStrings {
       'Ensuring correct behavior across different locations and time zones.\n'
       'To manage complexity, the application architecture was divided into independent controllers, each responsible for a specific feature. This approach improved code clarity, scalability, and long-term maintainability.';
   static const String projectQuranLifeRole =
-      'Project concept and feature definition.\n'
-      'UI/UX planning and design decisions.\n'
-      'Full application development from scratch.\n'
-      'Architectural and technical decision-making.\n'
-      'Performance optimization and functional testing.\n'
-      'The application was developed independently.\n'
+      'Project concept and feature definition.\n\n'
+      'UI/UX planning and design decisions.\n\n'
+      'Full application development from scratch.\n\n'
+      'Architectural and technical decision-making.\n\n'
+      'Performance optimization and functional testing.\n\n'
+      'The application was developed independently.\n\n'
       'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
   static const String projectQuranLifeProjectStatus =
-  //TODO: add doinload link
+      //TODO: add doinload link
       'The application is complete, stable, and fully functional.'
       'A direct APK download link is provided in the portfolio.';
   // Contact Section

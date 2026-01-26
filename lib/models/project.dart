@@ -8,7 +8,7 @@ class Project {
   final String challenges;
   final String role;
   final String status;
-  final String logo; 
+  final String logo;
   final List<String> screenshots;
 
   Project({
@@ -20,7 +20,7 @@ class Project {
     required this.role,
     required this.status,
 
-    required this.logo, 
+    required this.logo,
     this.screenshots = const [],
   });
 
@@ -33,7 +33,7 @@ class Project {
       challenges: AppStrings.projectNewsilyChallenges,
       role: AppStrings.projectNewsilyRole,
       status: AppStrings.projectNewsilyProjectStatus,
-      logo: 'lib/assets/photos/quranLife/newlogo.png', 
+      logo: 'lib/assets/photos/quranLife/newlogo.png',
       screenshots: [
         'lib/assets/photos/quranLife/0.png',
         'lib/assets/photos/quranLife/1.png',
@@ -55,7 +55,7 @@ class Project {
       challenges: AppStrings.projectRaqibChallenges,
       role: AppStrings.projectRaqibRole,
       status: AppStrings.projectRaqibProjectStatus,
-      logo: 'lib/assets/photos/quranLife/newlogo.png', 
+      logo: 'lib/assets/photos/quranLife/newlogo.png',
       screenshots: [
         'lib/assets/photos/quranLife/0.png',
         'lib/assets/photos/quranLife/1.png',
@@ -77,7 +77,7 @@ class Project {
       challenges: AppStrings.projectQuranLifeChallenges,
       role: AppStrings.projectQuranLifeRole,
       status: AppStrings.projectQuranLifeProjectStatus,
-      logo: 'lib/assets/photos/quranLife/newlogo.png', 
+      logo: 'lib/assets/photos/quranLife/newlogo.png',
       screenshots: [
         'lib/assets/photos/quranLife/0.png',
         'lib/assets/photos/quranLife/1.png',

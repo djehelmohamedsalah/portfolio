@@ -109,7 +109,7 @@ class ProjectDetailsPage extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Image.asset(project.logo!, height: 80, fit: BoxFit.contain),
+                  Image.asset(project.logo!, height: 200, fit: BoxFit.contain),
                   const SizedBox(height: 20),
                   Text(
                     project.title,
@@ -130,7 +130,8 @@ class ProjectDetailsPage extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: Theme.of(context).colorScheme.secondary,
                 ),
-                textAlign: TextAlign.center,
+
+                textAlign: TextAlign.start,
               ),
             ),
           ],

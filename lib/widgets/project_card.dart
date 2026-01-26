@@ -53,11 +53,7 @@ class _ProjectCardState extends State<ProjectCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                widget.logo,
-                width: 40,
-                height: 40,
-              ),
+              Image.asset(widget.logo, width: 120, height: 120),
               const SizedBox(height: 20),
               Text(
                 widget.title,
