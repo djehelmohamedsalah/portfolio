@@ -109,7 +109,7 @@ class ProjectDetailsPage extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Image.asset(project.logo!, height: 200, fit: BoxFit.contain),
+                  Image.asset(project.logo, height: 200, fit: BoxFit.contain),
                   const SizedBox(height: 20),
                   Text(
                     project.title,
