@@ -181,6 +181,18 @@ class ProjectDetailsPage extends StatelessWidget {
             ).colorScheme.onSurface.withValues(alpha: 0.8),
           ),
         ),
+        const SizedBox(height: 30),
+        _buildSectionTitle(context, 'Tech Stack'),
+        const SizedBox(height: 15),
+        Text(
+          project.techStack,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            height: 1.6,
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.8),
+          ),
+        ),
       ],
     );
   }
@@ -208,15 +220,6 @@ class ProjectDetailsPage extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             project.coreFeatures,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(height: 1.5),
-          ),
-          const Divider(height: 30),
-          _buildSectionTitle(context, 'Tech Stack'),
-          const SizedBox(height: 10),
-          Text(
-            project.techStack,
             style: Theme.of(
               context,
             ).textTheme.bodyMedium?.copyWith(height: 1.5),
