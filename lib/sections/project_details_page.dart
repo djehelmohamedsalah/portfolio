@@ -94,6 +94,16 @@ class ProjectDetailsPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
+            Text(
+              'Role',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onSurface,
+                overflow: TextOverflow.ellipsis,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 10),
             _buildRoleText(context, project.role, TextAlign.center),
           ],
         ),
@@ -119,7 +129,24 @@ class ProjectDetailsPage extends StatelessWidget {
             ),
             const SizedBox(width: 40),
             Expanded(
-              child: _buildRoleText(context, project.role, TextAlign.start),
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Role',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onSurface,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  _buildRoleText(context, project.role, TextAlign.start),
+                ],
+              ),
             ),
           ],
         ),
