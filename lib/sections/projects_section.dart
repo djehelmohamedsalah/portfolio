@@ -25,7 +25,7 @@ class ProjectsSection extends StatelessWidget {
           return ProjectCard(
             title: project.title,
             description: project.overview,
-            icon: project.icon,
+            logo: project.logo,
             onTap: () {
               Navigator.push(
                 context,

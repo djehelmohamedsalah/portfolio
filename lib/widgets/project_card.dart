@@ -4,14 +4,14 @@ import '../constants/app_colors.dart';
 class ProjectCard extends StatefulWidget {
   final String title;
   final String description;
-  final IconData icon;
+  final String logo;
   final VoidCallback? onTap;
 
   const ProjectCard({
     super.key,
     required this.title,
     required this.description,
-    required this.icon,
+    required this.logo,
     this.onTap,
   });
 
@@ -53,10 +53,10 @@ class _ProjectCardState extends State<ProjectCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(
-                widget.icon,
-                size: 40,
-                color: Theme.of(context).colorScheme.secondary,
+              Image.asset(
+                widget.logo,
+                width: 40,
+                height: 40,
               ),
               const SizedBox(height: 20),
               Text(

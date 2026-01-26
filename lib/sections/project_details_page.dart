@@ -80,11 +80,7 @@ class ProjectDetailsPage extends StatelessWidget {
           children: [
             Column(
               children: [
-                Icon(
-                  project.icon,
-                  size: 80,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+                Image.asset(project.logo!, height: 80, fit: BoxFit.contain),
                 const SizedBox(height: 20),
                 Text(
                   project.title,
@@ -113,11 +109,7 @@ class ProjectDetailsPage extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Icon(
-                    project.icon,
-                    size: 80,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                  Image.asset(project.logo!, height: 80, fit: BoxFit.contain),
                   const SizedBox(height: 20),
                   Text(
                     project.title,
