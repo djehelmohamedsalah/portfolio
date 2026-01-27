@@ -72,7 +72,6 @@ class AppStrings {
       'Performance optimization and functional testing.';
   static const String projectNewsilyProjectStatus =
       'The application is complete, stable, and fully functional.\n'
-      //TODO: Add a direct APK download link
       'A direct APK download link is provided in the portfolio.';
 
   // Raqib app
@@ -109,7 +108,6 @@ class AppStrings {
       'The project was developed entirely independently, with all architectural, design, and technical decisions made by me.';
   static const String projectRaqibProjectStatus =
       'Fully functional and stable.\n'
-      //TODO: add doinload link
       'APK download link included in the portfolio for direct access.';
 
   // QuranLife app
@@ -164,7 +162,6 @@ class AppStrings {
       'The application was developed independently.\n\n'
       'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
   static const String projectQuranLifeProjectStatus =
-      //TODO: add doinload link
       'The application is complete, stable, and fully functional.'
       'A direct APK download link is provided in the portfolio.';
   // Contact Section
