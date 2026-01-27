@@ -254,7 +254,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                 context,
                 icon: Icons.download,
                 label: 'Download APK',
-                onPressed: () => _launchUrl(widget.project.apkDownloadUrl!),
+                onPressed: () => _downloadApk(widget.project.apkDownloadUrl!),
                 color: Theme.of(context).colorScheme.primary,
               ),
 
@@ -267,7 +267,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                 context,
                 icon: Icons.code,
                 label: 'View on GitHub',
-                onPressed: () => _launchUrl(widget.project.githubUrl!),
+                onPressed: () => _openInBrowser(widget.project.githubUrl!),
                 color: Colors.grey.shade800,
               ),
 
@@ -279,7 +279,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                 context,
                 icon: Icons.store,
                 label: 'Get on Aptoide',
-                onPressed: () => _launchUrl(widget.project.aptoideUrl!),
+                onPressed: () => _openInBrowser(widget.project.aptoideUrl!),
                 color: Colors.orange,
               ),
           ],
@@ -491,18 +491,34 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
     );
   }
 
-  void _launchUrl(String url) async {
+  // Download APK directly
+  void _downloadApk(String url) async {
     final Uri uri = Uri.parse(url);
     try {
-      // Use platformDefault for direct downloads (APK files)
-      // This will download directly without opening a browser page
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.platformDefault);
       } else {
-        throw 'Could not launch $url';
+        throw 'Could not start download';
       }
     } catch (e) {
-      // Show error message
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Could not open $url')));
+      }
+    }
+  }
+
+  // Open link in external browser
+  void _openInBrowser(String url) async {
+    final Uri uri = Uri.parse(url);
+    try {
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      } else {
+        throw 'Could not open page';
+      }
+    } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(
           context,
