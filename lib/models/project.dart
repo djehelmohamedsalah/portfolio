@@ -52,8 +52,8 @@ class Project {
         'lib/assets/photos/quranLife/8.png',
         'lib/assets/photos/quranLife/9.png',
       ],
-      //TODO: add apk download url
 
+      //TODO: add apk download url
       apkDownloadUrl:
           'https://github.com/yourusername/yourapp/releases/download/v1.0.0/app-release.apk',
       githubUrl: 'https://github.com/MosalahDJ/Newsili',
@@ -80,8 +80,8 @@ class Project {
         'lib/assets/photos/quranLife/8.png',
         'lib/assets/photos/quranLife/9.png',
       ],
-      apkDownloadUrl:
       //TODO: add apk download url
+      apkDownloadUrl:
           'https://github.com/yourusername/yourapp/releases/download/v1.0.0/app-release.apk',
       githubUrl: 'https://github.com/MosalahDJ/raqib',
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
@@ -107,8 +107,8 @@ class Project {
         'lib/assets/photos/quranLife/8.png',
         'lib/assets/photos/quranLife/9.png',
       ],
-      //TODO: add apk download url
 
+      //TODO: add apk download url
       apkDownloadUrl:
           'https://github.com/yourusername/yourapp/releases/download/v1.0.0/app-release.apk',
       githubUrl: 'https://github.com/MosalahDJ/QuranLife',
