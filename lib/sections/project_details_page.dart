@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../models/project.dart';
 import '../constants/app_colors.dart';
 import '../utils/responsive_layout.dart';
 
-class ProjectDetailsPage extends StatelessWidget {
+class ProjectDetailsPage extends StatefulWidget {
   final Project project;
 
   const ProjectDetailsPage({super.key, required this.project});
 
+  @override
+  State<ProjectDetailsPage> createState() => _ProjectDetailsPageState();
+}
+
+class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
   @override
   Widget build(BuildContext context) {
     // Determine if we are on a small screen
@@ -16,7 +22,7 @@ class ProjectDetailsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Text(project.title),
+        title: Text(widget.project.title),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -80,10 +86,14 @@ class ProjectDetailsPage extends StatelessWidget {
           children: [
             Column(
               children: [
-                Image.asset(project.logo, height: 80, fit: BoxFit.contain),
+                Image.asset(
+                  widget.project.logo,
+                  height: 80,
+                  fit: BoxFit.contain,
+                ),
                 const SizedBox(height: 20),
                 Text(
-                  project.title,
+                  widget.project.title,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.onSurface,
@@ -104,7 +114,7 @@ class ProjectDetailsPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
-            _buildRoleText(context, project.role, TextAlign.center),
+            _buildRoleText(context, widget.project.role, TextAlign.center),
           ],
         ),
         desktop: Row(
@@ -113,10 +123,14 @@ class ProjectDetailsPage extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Image.asset(project.logo, height: 200, fit: BoxFit.contain),
+                  Image.asset(
+                    widget.project.logo,
+                    height: 200,
+                    fit: BoxFit.contain,
+                  ),
                   const SizedBox(height: 20),
                   Text(
-                    project.title,
+                    widget.project.title,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.onSurface,
@@ -144,7 +158,7 @@ class ProjectDetailsPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  _buildRoleText(context, project.role, TextAlign.start),
+                  _buildRoleText(context, widget.project.role, TextAlign.start),
                 ],
               ),
             ),
@@ -161,7 +175,7 @@ class ProjectDetailsPage extends StatelessWidget {
         _buildSectionTitle(context, 'Overview'),
         const SizedBox(height: 15),
         Text(
-          project.overview,
+          widget.project.overview,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.6,
             color: Theme.of(
@@ -173,7 +187,7 @@ class ProjectDetailsPage extends StatelessWidget {
         _buildSectionTitle(context, 'Challenges & Solutions'),
         const SizedBox(height: 15),
         Text(
-          project.challenges,
+          widget.project.challenges,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.6,
             color: Theme.of(
@@ -185,7 +199,7 @@ class ProjectDetailsPage extends StatelessWidget {
         _buildSectionTitle(context, 'Tech Stack'),
         const SizedBox(height: 15),
         Text(
-          project.techStack,
+          widget.project.techStack,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.6,
             color: Theme.of(
@@ -214,12 +228,12 @@ class ProjectDetailsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildDetailItem(context, 'Status', project.status),
+          _buildDetailItem(context, 'Status', widget.project.status),
           const Divider(height: 30),
           _buildSectionTitle(context, 'Core Features'),
           const SizedBox(height: 10),
           Text(
-            project.coreFeatures,
+            widget.project.coreFeatures,
             style: Theme.of(
               context,
             ).textTheme.bodyMedium?.copyWith(height: 1.5),
@@ -230,7 +244,7 @@ class ProjectDetailsPage extends StatelessWidget {
   }
 
   Widget _buildScreenshotsSection(BuildContext context) {
-    if (project.screenshots.isEmpty) {
+    if (widget.project.screenshots.isEmpty) {
       // Fallback for projects without screenshots
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -296,7 +310,7 @@ class ProjectDetailsPage extends StatelessWidget {
           height: 300,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: project.screenshots.length,
+            itemCount: widget.project.screenshots.length,
             itemBuilder: (context, index) {
               final isLandscape = index == 0;
               return Container(
@@ -311,18 +325,24 @@ class ProjectDetailsPage extends StatelessWidget {
                   ),
                 ),
                 clipBehavior: Clip.antiAlias,
-                child: Image.asset(
-                  project.screenshots[index],
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Center(
-                      child: Icon(
-                        Icons.broken_image,
-                        size: 50,
-                        color: Theme.of(context).disabledColor,
-                      ),
-                    );
-                  },
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () => _showImageViewer(context, index),
+                    child: Image.asset(
+                      widget.project.screenshots[index],
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Center(
+                          child: Icon(
+                            Icons.broken_image,
+                            size: 50,
+                            color: Theme.of(context).disabledColor,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ),
               );
             },
@@ -385,6 +405,204 @@ class ProjectDetailsPage extends StatelessWidget {
           ),
         );
       }).toList(),
+    );
+  }
+
+  void _showImageViewer(BuildContext context, int initialIndex) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return _ImageViewerDialog(
+          screenshots: widget.project.screenshots,
+          initialIndex: initialIndex,
+        );
+      },
+    );
+  }
+}
+
+class _ImageViewerDialog extends StatefulWidget {
+  final List<String> screenshots;
+  final int initialIndex;
+
+  const _ImageViewerDialog({
+    required this.screenshots,
+    required this.initialIndex,
+  });
+
+  @override
+  State<_ImageViewerDialog> createState() => _ImageViewerDialogState();
+}
+
+class _ImageViewerDialogState extends State<_ImageViewerDialog> {
+  late int currentIndex;
+  final FocusNode _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = widget.initialIndex;
+    // Request focus after the first frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _previousImage() {
+    if (currentIndex > 0) {
+      setState(() {
+        currentIndex--;
+      });
+    }
+  }
+
+  void _nextImage() {
+    if (currentIndex < widget.screenshots.length - 1) {
+      setState(() {
+        currentIndex++;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Focus(
+      focusNode: _focusNode,
+      autofocus: true,
+      onKeyEvent: (node, event) {
+        if (event is KeyDownEvent) {
+          if (event.logicalKey.keyLabel == 'Arrow Left') {
+            _previousImage();
+            return KeyEventResult.handled;
+          } else if (event.logicalKey.keyLabel == 'Arrow Right') {
+            _nextImage();
+            return KeyEventResult.handled;
+          } else if (event.logicalKey.keyLabel == 'Escape') {
+            Navigator.of(context).pop();
+            return KeyEventResult.handled;
+          }
+        }
+        return KeyEventResult.ignored;
+      },
+      child: Dialog(
+        backgroundColor: Colors.black.withValues(alpha: 0.9),
+        insetPadding: EdgeInsets.zero,
+        child: Stack(
+          children: [
+            // Main Image
+            Center(
+              child: InteractiveViewer(
+                panEnabled: true,
+                minScale: 0.5,
+                maxScale: 4.0,
+                child: Image.asset(
+                  widget.screenshots[currentIndex],
+                  fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Center(
+                      child: Icon(
+                        Icons.broken_image,
+                        size: 100,
+                        color: Colors.white54,
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+
+            // Close Button
+            Positioned(
+              top: 20,
+              right: 20,
+              child: IconButton(
+                icon: const Icon(Icons.close, color: Colors.white, size: 30),
+                onPressed: () => Navigator.of(context).pop(),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.black.withValues(alpha: 0.5),
+                ),
+              ),
+            ),
+
+            // Previous Button
+            if (currentIndex > 0)
+              Positioned(
+                left: 20,
+                top: 0,
+                bottom: 0,
+                child: Center(
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    onPressed: _previousImage,
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.black.withValues(alpha: 0.5),
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  ),
+                ),
+              ),
+
+            // Next Button
+            if (currentIndex < widget.screenshots.length - 1)
+              Positioned(
+                right: 20,
+                top: 0,
+                bottom: 0,
+                child: Center(
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    onPressed: _nextImage,
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.black.withValues(alpha: 0.5),
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  ),
+                ),
+              ),
+
+            // Image Counter
+            Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.7),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    '${currentIndex + 1} / ${widget.screenshots.length}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
