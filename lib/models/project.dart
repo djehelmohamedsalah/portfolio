@@ -39,7 +39,7 @@ class Project {
       challenges: AppStrings.projectNewsilyChallenges,
       role: AppStrings.projectNewsilyRole,
       status: AppStrings.projectNewsilyProjectStatus,
-      logo: 'lib/assets/photos/quranLife/newlogo.png',
+      logo: 'lib/assets/photos/newsily/newsily_logo_png.png',
       screenshots: [
         'lib/assets/photos/quranLife/0.png',
         'lib/assets/photos/quranLife/1.png',
@@ -67,7 +67,7 @@ class Project {
       challenges: AppStrings.projectRaqibChallenges,
       role: AppStrings.projectRaqibRole,
       status: AppStrings.projectRaqibProjectStatus,
-      logo: 'lib/assets/photos/quranLife/newlogo.png',
+      logo: 'lib/assets/photos/raqib/newlogo.jpg',
       screenshots: [
         'lib/assets/photos/quranLife/0.png',
         'lib/assets/photos/quranLife/1.png',
