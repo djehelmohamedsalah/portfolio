@@ -55,7 +55,7 @@ class Project {
       // Add your actual URLs here
       apkDownloadUrl:
           'https://github.com/yourusername/yourapp/releases/download/v1.0.0/app-release.apk',
-      githubUrl: 'https://github.com/yourusername/yourapp',
+      githubUrl: 'https://github.com/MosalahDJ/Newsili',
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
     Project(

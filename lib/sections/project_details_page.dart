@@ -494,8 +494,10 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
   void _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
     try {
+      // Use platformDefault for direct downloads (APK files)
+      // This will download directly without opening a browser page
       if (await canLaunchUrl(uri)) {
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
+        await launchUrl(uri, mode: LaunchMode.platformDefault);
       } else {
         throw 'Could not launch $url';
       }
