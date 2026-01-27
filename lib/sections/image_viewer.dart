@@ -5,7 +5,7 @@ class ImageViewerDialog extends StatefulWidget {
   final List<String> screenshots;
   final int initialIndex;
 
-  const ImageViewerDialog({
+  const ImageViewerDialog({super.key, 
     required this.screenshots,
     required this.initialIndex,
   });
