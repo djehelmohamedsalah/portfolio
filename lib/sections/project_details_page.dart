@@ -496,7 +496,8 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
     final Uri uri = Uri.parse(url);
     try {
       if (await canLaunchUrl(uri)) {
-        await launchUrl(uri, mode: LaunchMode.platformDefault);
+        // externalApplication tells the OS to handle the download
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
       } else {
         throw 'Could not start download';
       }
