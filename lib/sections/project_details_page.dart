@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/sections/image_viewer.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/project.dart';
 import '../constants/app_colors.dart';
 import '../utils/responsive_layout.dart';
@@ -238,6 +239,50 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
               context,
             ).textTheme.bodyMedium?.copyWith(height: 1.5),
           ),
+
+          // Action Buttons Section
+          if (widget.project.apkDownloadUrl != null ||
+              widget.project.githubUrl != null ||
+              widget.project.aptoideUrl != null) ...[
+            const Divider(height: 30),
+            _buildSectionTitle(context, 'Download & Links'),
+            const SizedBox(height: 15),
+
+            // Download APK Button
+            if (widget.project.apkDownloadUrl != null)
+              _buildActionButton(
+                context,
+                icon: Icons.download,
+                label: 'Download APK',
+                onPressed: () => _launchUrl(widget.project.apkDownloadUrl!),
+                color: Theme.of(context).colorScheme.primary,
+              ),
+
+            if (widget.project.apkDownloadUrl != null)
+              const SizedBox(height: 10),
+
+            // GitHub Button
+            if (widget.project.githubUrl != null)
+              _buildActionButton(
+                context,
+                icon: Icons.code,
+                label: 'View on GitHub',
+                onPressed: () => _launchUrl(widget.project.githubUrl!),
+                color: Colors.grey.shade800,
+              ),
+
+            if (widget.project.githubUrl != null) const SizedBox(height: 10),
+
+            // Aptoide Button
+            if (widget.project.aptoideUrl != null)
+              _buildActionButton(
+                context,
+                icon: Icons.store,
+                label: 'Get on Aptoide',
+                onPressed: () => _launchUrl(widget.project.aptoideUrl!),
+                color: Colors.orange,
+              ),
+          ],
         ],
       ),
     );
@@ -418,5 +463,49 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
         );
       },
     );
+  }
+
+  Widget _buildActionButton(
+    BuildContext context, {
+    required IconData icon,
+    required String label,
+    required VoidCallback onPressed,
+    required Color color,
+  }) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton.icon(
+        onPressed: onPressed,
+        icon: Icon(icon, size: 20),
+        label: Text(label),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          elevation: 2,
+        ),
+      ),
+    );
+  }
+
+  void _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    try {
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      } else {
+        throw 'Could not launch $url';
+      }
+    } catch (e) {
+      // Show error message
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Could not open $url')));
+      }
+    }
   }
 }

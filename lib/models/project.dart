@@ -10,6 +10,9 @@ class Project {
   final String status;
   final String logo;
   final List<String> screenshots;
+  final String? apkDownloadUrl;
+  final String? githubUrl;
+  final String? aptoideUrl;
 
   Project({
     required this.title,
@@ -22,6 +25,9 @@ class Project {
 
     required this.logo,
     this.screenshots = const [],
+    this.apkDownloadUrl,
+    this.githubUrl,
+    this.aptoideUrl,
   });
 
   static List<Project> get allProjects => [
@@ -46,6 +52,11 @@ class Project {
         'lib/assets/photos/quranLife/8.png',
         'lib/assets/photos/quranLife/9.png',
       ],
+      // Add your actual URLs here
+      apkDownloadUrl:
+          'https://github.com/yourusername/yourapp/releases/download/v1.0.0/app-release.apk',
+      githubUrl: 'https://github.com/yourusername/yourapp',
+      aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
     Project(
       title: AppStrings.projectRaqibTitle,
