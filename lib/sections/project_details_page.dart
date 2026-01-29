@@ -27,6 +27,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
         title: Text(widget.project.title),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: SizedBox(),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

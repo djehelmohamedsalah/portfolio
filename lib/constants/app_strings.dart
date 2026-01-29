@@ -49,13 +49,13 @@ class AppStrings {
       'Newsily is a mobile application that aggregates news from multiple international newspapers and media sources through a news API, allowing users to stay informed without the need to visit several websites individually. The app is designed to provide a quick daily overview of important news while saving time and reducing information overload.\n\n'
       'Newsily is intended for users who regularly follow news but want a centralized, organized, and efficient way to access articles from different sources in one place.';
   static const String projectNewsilyCoreFeatures =
-      'News aggregation from multiple global sources via API\n'
-      'Category-based browsing for focused reading\n'
-      'Daily automatic updates\n'
-      'Article search functionality\n'
-      'Save articles for later reading\n'
-      'Offline access through local caching\n'
-      'Light and dark mode for comfortable reading\n';
+      '- News aggregation from multiple global sources via API\n'
+      '- Category-based browsing for focused reading\n'
+      '- Daily automatic updates\n'
+      '- Article search functionality\n'
+      '- Save articles for later reading\n'
+      '- Offline access through local caching\n'
+      '- Light and dark mode for comfortable reading\n';
   static const String projectNewsilyTechStack =
       'Flutter for cross-platform mobile development\n'
       'News API for fetching news data\n'
@@ -81,16 +81,16 @@ class AppStrings {
       'The application streamlines the reporting process, allowing users to submit detailed reports, track the progress of each report, and stay informed about official updates.\n'
       'The main goal is to provide a transparent, efficient, and user-friendly reporting system, making it easier for citizens to participate in regulatory compliance.\n';
   static const String projectRaqibCoreFeatures =
-      'User Authentication: Secure sign-in options including email/password, Google, and anonymous access.\n'
-      'Report Submission:\n'
-      'Users can report violations by selecting the type of violation.\n'
-      'Reports are stored in Supabase and synchronized in real-time.\n'
-      'Report Tracking:\n'
-      'Users can follow the progress of each report across multiple stages.\n'
-      'Admins can update the stage of a report, which is immediately reflected to the user.\n'
-      'Offline Support: Users can fill reports offline and submit when connection is available.\n'
-      'Multi-language Support: Arabic, English, French.\n'
-      'Light/Dark Mode for better usability.\n';
+      '- User Authentication: Secure sign-in options including email/password, Google, and anonymous access.\n'
+      '- Report Submission:\n'
+      '- Users can report violations by selecting the type of violation.\n'
+      '- Reports are stored in Supabase and synchronized in real-time.\n'
+      '- Report Tracking:\n'
+      '- Users can follow the progress of each report across multiple stages.\n'
+      '- Admins can update the stage of a report, which is immediately reflected to the user.\n'
+      '- Offline Support: Users can fill reports offline and submit when connection is available.\n'
+      '- Multi-language Support: Arabic, English, French.\n'
+      '- Light/Dark Mode for better usability.\n';
   static const String projectRaqibTechStack =
       'Flutter for cross-platform development.\n'
       'State Management: GetX for reactive and organized state handling.\n'
@@ -117,28 +117,28 @@ class AppStrings {
       'The application combines multiple essential Islamic features into a single, well-structured platform, eliminating the need to rely on several separate apps.\n'
       'The focus of the project is practicality, performance, and usability in both online and offline scenarios.';
   static const String projectQuranLifeCoreFeatures =
-      'Holy Quran: Reading and listening with offline support.\n'
-      'Adhkar & Duas: Organized by categories and usage contexts.\n'
-      'Prayer Times:\n'
-      'Prayer times fetched from an external API.\n'
-      'Accurate calculation of the current prayer, next prayer, and remaining time.\n'
-      'Time-based logic that adapts dynamically throughout the day.\n'
-      'Adhan & Prayer Notifications.\n'
-      'Qibla Direction.\n'
-      'Digital Tasbih.\n'
-      'Mosque Locator:\n'
-      'Google Maps integration.\n'
-      'Custom filtering to display places of worship only.\n'
-      'Multi-language Support: Arabic, English, and French.\n'
-      'Light & Dark Mode.\n'
-      'Key Differentiators\n'
-      'In addition to standard Islamic utilities, Quran Live includes advanced interactive features that are uncommon in similar applications:\n'
-      'User Authentication: Secure sign-up and login system.\n'
-      'Real-time Chat: Users can communicate with each other inside the application using live messaging.\n'
-      'AI-powered Islamic History Assistant:\n'
-      'Integration with an AI API dedicated to answering questions related to Islamic history.\n'
-      'Designed to act as a focused historical assistant rather than a general chatbot.\n'
-      'These features transform the application from a static tool into a community-oriented platform.';
+      '- Holy Quran: Reading and listening with offline support.\n'
+      '- Adhkar & Duas: Organized by categories and usage contexts.\n'
+      '- Prayer Times:\n'
+      '- Prayer times fetched from an external API.\n'
+      '- Accurate calculation of the current prayer, next prayer, and remaining time.\n'
+      '- Time-based logic that adapts dynamically throughout the day.\n'
+      '- Adhan & Prayer Notifications.\n'
+      '- Qibla Direction.\n'
+      '- Digital Tasbih.\n'
+      '- Mosque Locator:\n'
+      '- Google Maps integration.\n'
+      '- Custom filtering to display places of worship only.\n'
+      '- Multi-language Support: Arabic, English, and French.\n'
+      '- Light & Dark Mode.\n'
+      '- Key Differentiators:\n'
+      '- In addition to standard Islamic utilities, Quran Live includes advanced interactive features that are uncommon in similar applications:\n'
+      '- User Authentication: Secure sign-up and login system.\n'
+      '- Real-time Chat: Users can communicate with each other inside the application using live messaging.\n'
+      '- AI-powered Islamic History Assistant:\n'
+      '- Integration with an AI API dedicated to answering questions related to Islamic history.\n'
+      '- Designed to act as a focused historical assistant rather than a general chatbot.\n'
+      '- These features transform the application from a static tool into a community-oriented platform.';
   static const String projectQuranLifeTechStack =
       'Flutter for cross-platform development.\n'
       'State Management: GetX.\n'
@@ -159,8 +159,8 @@ class AppStrings {
       'Full application development from scratch.\n\n'
       'Architectural and technical decision-making.\n\n'
       'Performance optimization and functional testing.\n\n'
-      'The application was developed independently.\n\n'
-      'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
+      'The application was developed independently.';
+  // 'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
   static const String projectQuranLifeProjectStatus =
       'The application is complete, stable, and fully functional.'
       'A direct APK download link is provided in the portfolio.';
