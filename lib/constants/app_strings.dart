@@ -69,7 +69,9 @@ class AppStrings {
       'UI/UX planning and design decisions.\n'
       'Full application development from scratch.\n'
       'Architectural and technical decision-making.\n'
-      'Performance optimization and functional testing.';
+      'Performance optimization and functional testing.\n'
+      'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
+
   static const String projectNewsilyProjectStatus =
       'The application is complete, stable, and fully functional.\n'
       'A direct APK download link is provided in the portfolio.';
@@ -105,7 +107,7 @@ class AppStrings {
       'Integrated Supabase for authentication, database, and real-time features.\n'
       'Planned the stages of reporting and tracking logic.\n'
       'Oversaw testing, bug fixing, and performance optimization.\n'
-      'The project was developed entirely independently, with all architectural, design, and technical decisions made by me.';
+      'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
   static const String projectRaqibProjectStatus =
       'Fully functional and stable.\n'
       'APK download link included in the portfolio for direct access.';
@@ -159,8 +161,8 @@ class AppStrings {
       'Full application development from scratch.\n\n'
       'Architectural and technical decision-making.\n\n'
       'Performance optimization and functional testing.\n\n'
-      'The application was developed independently.';
-  // 'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
+      'The application was developed independently.\n\n'
+      'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
   static const String projectQuranLifeProjectStatus =
       'The application is complete, stable, and fully functional.'
       'A direct APK download link is provided in the portfolio.';
