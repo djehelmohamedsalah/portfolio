@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/app_strings.dart';
 import 'package:portfolio/sections/image_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/project.dart';
@@ -357,7 +358,9 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
             scrollDirection: Axis.horizontal,
             itemCount: widget.project.screenshots.length,
             itemBuilder: (context, index) {
-              final isLandscape = index == 0;
+              final isLandscape =
+                  index == 0 &&
+                  widget.project.title == AppStrings.projectQuranLifeTitle;
               return Container(
                 width: isLandscape ? 500 : 200,
                 margin: const EdgeInsets.only(right: 20),
