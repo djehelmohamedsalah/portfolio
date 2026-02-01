@@ -35,7 +35,7 @@ class _ProjectCardState extends State<ProjectCard> {
           constraints: const BoxConstraints(maxWidth: 350),
           padding: const EdgeInsets.all(20),
           transform: _isHovered
-              ? (Matrix4.identity()..translateByDouble(0.0, -5.0, 0.0, 0.0))
+              ? Matrix4.translationValues(0.0, -5.0, 0.0)
               : Matrix4.identity(),
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
