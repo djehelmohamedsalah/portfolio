@@ -52,7 +52,7 @@ class Project {
 
       //TODO: add apk download url
       apkDownloadUrl:
-          'https://github.com/yourusername/yourapp/releases/download/v1.0.0/app-release.apk',
+          'https://github.com/MosalahDJ/Newsily/releases/download/v1.4.2/app-release.apk',
       githubUrl: 'https://github.com/MosalahDJ/Newsili',
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
@@ -79,7 +79,7 @@ class Project {
       ],
       //TODO: add apk download url
       apkDownloadUrl:
-          'https://github.com/yourusername/yourapp/releases/download/v1.0.0/app-release.apk',
+          'https://github.com/MosalahDJ/Raqib/releases/download/1.0.1/app-release.apk',
       githubUrl: 'https://github.com/MosalahDJ/raqib',
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
@@ -109,7 +109,7 @@ class Project {
 
       //TODO: add apk download url
       apkDownloadUrl:
-          'https://github.com/yourusername/yourapp/releases/download/v1.0.0/app-release.apk',
+          'https://github.com/MosalahDJ/QuranLife/releases/download/1.0.5/app-release.apk',
       githubUrl: 'https://github.com/MosalahDJ/QuranLife',
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
