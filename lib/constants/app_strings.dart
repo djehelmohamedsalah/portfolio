@@ -134,7 +134,7 @@ class AppStrings {
       '- Multi-language Support: Arabic, English, and French.\n'
       '- Light & Dark Mode.\n'
       '- Key Differentiators:\n'
-      '- In addition to standard Islamic utilities, Quran Live includes advanced interactive features that are uncommon in similar applications:\n'
+      '- In addition to standard Islamic utilities, QuranLife includes advanced interactive features that are uncommon in similar applications:\n'
       '- User Authentication: Secure sign-up and login system.\n'
       '- Real-time Chat: Users can communicate with each other inside the application using live messaging.\n'
       '- AI-powered Islamic History Assistant:\n'
