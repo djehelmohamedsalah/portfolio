@@ -50,7 +50,6 @@ class Project {
         'lib/assets/photos/newsily/7.jpg',
       ],
 
-      //TODO: add apk download url
       apkDownloadUrl:
           'https://github.com/MosalahDJ/Newsily/releases/download/v1.4.2/app-release.apk',
       githubUrl: 'https://github.com/MosalahDJ/Newsili',
@@ -77,7 +76,6 @@ class Project {
         'lib/assets/photos/raqib/9.jpg',
         'lib/assets/photos/raqib/10.jpg',
       ],
-      //TODO: add apk download url
       apkDownloadUrl:
           'https://github.com/MosalahDJ/Raqib/releases/download/1.0.1/app-release.apk',
       githubUrl: 'https://github.com/MosalahDJ/raqib',
@@ -106,8 +104,6 @@ class Project {
         'lib/assets/photos/quranLife/10.png',
         'lib/assets/photos/quranLife/11.png',
       ],
-
-      //TODO: add apk download url
       apkDownloadUrl:
           'https://github.com/MosalahDJ/QuranLife/releases/download/1.0.5/app-release.apk',
       githubUrl: 'https://github.com/MosalahDJ/QuranLife',
