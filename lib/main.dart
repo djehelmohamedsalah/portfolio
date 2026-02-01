@@ -12,24 +12,50 @@ void main() {
   runApp(const MyPortfolioApp());
 }
 
-class MyPortfolioApp extends StatelessWidget {
+class MyPortfolioApp extends StatefulWidget {
   const MyPortfolioApp({super.key});
+
+  @override
+  State<MyPortfolioApp> createState() => _MyPortfolioAppState();
+}
+
+class _MyPortfolioAppState extends State<MyPortfolioApp> {
+  ThemeMode _themeMode = ThemeMode.system;
+
+  void _toggleTheme() {
+    setState(() {
+      if (_themeMode == ThemeMode.light) {
+        _themeMode = ThemeMode.dark;
+      } else if (_themeMode == ThemeMode.dark) {
+        _themeMode = ThemeMode.light;
+      } else {
+        // If system, check current brightness and toggle to opposite
+        final brightness = View.of(
+          context,
+        ).platformDispatcher.platformBrightness;
+        _themeMode = brightness == Brightness.dark
+            ? ThemeMode.light
+            : ThemeMode.dark;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: AppStrings.appTitle,
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
+      themeMode: _themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: const PortfolioMainPage(),
+      home: PortfolioMainPage(onThemeToggle: _toggleTheme),
     );
   }
 }
 
 class PortfolioMainPage extends StatefulWidget {
-  const PortfolioMainPage({super.key});
+  final VoidCallback onThemeToggle;
+  const PortfolioMainPage({super.key, required this.onThemeToggle});
 
   @override
   State<PortfolioMainPage> createState() => _PortfolioMainPageState();
@@ -65,6 +91,15 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Theme.of(context).brightness == Brightness.dark
+                ? Icons.light_mode
+                : Icons.dark_mode,
+          ),
+          onPressed: widget.onThemeToggle,
+          tooltip: 'Toggle Theme',
+        ),
         title: const Text(
           AppStrings.portfolioTitle,
           style: TextStyle(fontWeight: FontWeight.bold),
