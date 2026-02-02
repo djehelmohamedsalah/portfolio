@@ -97,6 +97,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
                 ? Icons.light_mode
                 : Icons.dark_mode,
           ),
+          
           onPressed: widget.onThemeToggle,
           tooltip: 'Toggle Theme',
         ),
