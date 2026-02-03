@@ -74,7 +74,7 @@ class AppStrings {
 
   static const String projectNewsilyProjectStatus =
       'The application is complete, stable, and fully functional.\n'
-      'A direct APK download link is provided below in Download & Link section.';
+      'A direct APK download link is provided below in "Download & Link" section.';
 
   // Raqib app
   static const String projectRaqibTitle = 'Raqib App';
@@ -110,7 +110,7 @@ class AppStrings {
       'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
   static const String projectRaqibProjectStatus =
       'Fully functional and stable.\n'
-      'APK download link included below in Download & Link section.';
+      'APK download link included below in "Download & Link" section.';
 
   // QuranLife app
   static const String projectQuranLifeTitle = 'QuranLife App';
@@ -165,7 +165,7 @@ class AppStrings {
       'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
   static const String projectQuranLifeProjectStatus =
       'The application is complete, stable, and fully functional.'
-      'A direct APK download link is provided in the below in Download & Link section.';
+      'A direct APK download link is provided in the below in "Download & Link" section.';
   // Contact Section
   static const String contactTitle = 'Contact';
   static const String interestedInWorking = 'Interested in working together?';
