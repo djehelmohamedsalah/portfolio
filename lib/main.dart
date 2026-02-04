@@ -7,6 +7,7 @@ import 'sections/contact_section.dart';
 
 import 'constants/app_strings.dart';
 import 'theme/app_theme.dart';
+import 'widgets/floating_top_app_bar.dart';
 
 void main() {
   runApp(const MyPortfolioApp());
@@ -90,48 +91,12 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Theme.of(context).brightness == Brightness.dark
-                ? Icons.light_mode
-                : Icons.dark_mode,
-          ),
-          
-          onPressed: widget.onThemeToggle,
-          tooltip: 'Toggle Theme',
-        ),
-        title: const Text(
-          AppStrings.portfolioTitle,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: false,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 0,
-        foregroundColor: Theme.of(context).textTheme.bodyLarge?.color,
-        actions: [
-          _NavBarItem(
-            title: AppStrings.navHome,
-            onTap: () => _scrollToSection(_homeKey),
-          ),
-          _NavBarItem(
-            title: AppStrings.navProjects,
-            onTap: () => _scrollToSection(_projectsKey),
-          ),
-          _NavBarItem(
-            title: AppStrings.navAbout,
-            onTap: () => _scrollToSection(_aboutKey),
-          ),
-          _NavBarItem(
-            title: AppStrings.navSkills,
-            onTap: () => _scrollToSection(_skillsKey),
-          ),
-          _NavBarItem(
-            title: AppStrings.navContact,
-            onTap: () => _scrollToSection(_contactKey),
-          ),
-          const SizedBox(width: 20),
-        ],
+      appBar: FloatingTopAppBar(
+        onHome: () => _scrollToSection(_homeKey),
+        onProjects: () => _scrollToSection(_projectsKey),
+        onAbout: () => _scrollToSection(_aboutKey),
+        onSkills: () => _scrollToSection(_skillsKey),
+        onContact: () => _scrollToSection(_contactKey),
       ),
       body: SingleChildScrollView(
         controller: _scrollController,
@@ -148,30 +113,6 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
             ContactSection(sectionKey: _contactKey),
             const SizedBox(height: 50), // Footer padding
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _NavBarItem extends StatelessWidget {
-  final String title;
-  final VoidCallback onTap;
-
-  const _NavBarItem({required this.title, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: TextButton(
-        onPressed: onTap,
-        child: Text(
-          title,
-          style: TextStyle(
-            color: Theme.of(context).textTheme.bodyLarge?.color,
-            fontWeight: FontWeight.w600,
-          ),
         ),
       ),
     );
