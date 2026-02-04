@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
 import '../constants/app_strings.dart';
-import '../constants/app_colors.dart';
 import '../utils/responsive_layout.dart';
 
 class HomeSection extends StatelessWidget {
