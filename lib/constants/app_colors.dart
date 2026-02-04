@@ -1,49 +1,49 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  AppColors._(); // Private constructor to prevent instantiation
+  AppColors._();
 
-  // Base Palette - Professional Modern
-  // Primary - Indigo/Violet range for a trustworthy tech feel
-  static const Color primaryLight = Color(0xFF4F46E5); // Indigo 600
-  static const Color primaryDark = Color(0xFF818CF8); // Indigo 400
+  // --- LIGHT MODE PALETTE (Earth & Harvest) ---
+  static const Color primaryLight = Color(0xFF254F22); // Deep Forest Green
+  static const Color secondaryLight = Color(0xFFA03A13); // Burnt Sienna
+  static const Color accentLight = Color(0xFFF5824A); // Soft Orange
 
-  // Secondary - Teal/Emerald for freshness and accent
-  static const Color secondaryLight = Color(0xFF0D9488); // Teal 600
-  static const Color secondaryDark = Color(0xFF2DD4BF); // Teal 400
+  // Backgrounds & Surfaces (Derived from #EDE4C2)
+  static const Color backgroundLight = Color(0xFFF9F6E5); // Lighter Cream
+  static const Color surfaceLight = Color(0xFFEDE4C2); // Your Palette Beige
 
-  // Backgrounds
-  static const Color backgroundLight = Color(0xFFF8FAFC); // Slate 50
-  static const Color backgroundDark = Color(0xFF0F172A); // Slate 900
+  // Text for Light Mode
+  static const Color textPrimaryLight = Color(
+    0xFF1B2E18,
+  ); // Darker shade of your green
+  static const Color textSecondaryLight = Color(
+    0xFF7D6E5D,
+  ); // Muted earthy brown
 
-  // Surface/Cards
-  static const Color surfaceLight = Color(0xFFFFFFFF); // White
-  static const Color surfaceDark = Color(0xFF1E293B); // Slate 800
+  // --- DARK MODE PALETTE (Midnight Rust) ---
+  static const Color primaryDark = Color(0xFF2D4263); // Deep Navy
+  static const Color secondaryDark = Color(0xFFC84B31); // Rust Red
+  static const Color accentDark = Color(0xFFECDBBA); // Champagne Accent
 
-  // Text
-  static const Color textPrimaryLight = Color(0xFF1E293B); // Slate 800
-  static const Color textPrimaryDark = Color(0xFFF8FAFC); // Slate 50
-  static const Color textSecondaryLight = Color(0xFF64748B); // Slate 500
-  static const Color textSecondaryDark = Color(0xFF94A3B8); // Slate 400
+  // Backgrounds & Surfaces (Derived from #191919)
+  static const Color backgroundDark = Color(0xFF191919); // Your Palette Black
+  static const Color surfaceDark = Color(
+    0xFF242424,
+  ); // Slightly lifted charcoal
 
-  // Error
-  static const Color error = Color(0xFFEF4444); // Red 500
+  // Text for Dark Mode
+  static const Color textPrimaryDark = Color(
+    0xFFECDBBA,
+  ); // Using your Beige for text
+  static const Color textSecondaryDark = Color(0xFF94A3B8); // Muted blue-grey
 
-  // Accent (User added Amber)
-  static const Color accent = Color(0xFFF59E0B); // Amber 500
-
-  // Legacy/Direct Colors (Keeping wrappers for compatibility or standard use)
+  // --- SHARED & UTILITY ---
+  static const Color error = Color(0xFFB91C1C);
   static const Color white = Colors.white;
-  static const Color white70 = Colors.white70;
   static const Color black = Colors.black;
   static const Color transparent = Colors.transparent;
 
-  // Aliases for simple access if needed (prefer Theme.of(context))
-  static const Color primary =
-      primaryDark; // Default to dark for backward compat if accessed directly
-  static const Color slate800 = surfaceDark;
-  static const Color sky400 =
-      primaryDark; // Mapping old specific names to new primary
-  static const Color teal400 =
-      secondaryDark; // Mapping old specific names to new secondary
+  // Aliases for backward compatibility
+  static const Color primary = primaryLight;
+  static const Color slate800 = Color(0xFF1E293B);
 }

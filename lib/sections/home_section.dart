@@ -52,7 +52,7 @@ class HomeSection extends StatelessWidget {
                     style: TextStyle(
                       fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.accent,
+                      color: Theme.of(context).textTheme.displayLarge?.color,
                       height: 1.1,
                       letterSpacing: -2,
                     ),
@@ -64,7 +64,7 @@ class HomeSection extends StatelessWidget {
                 style: TextStyle(
                   fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.accent,
+                  color: Theme.of(context).textTheme.displayLarge?.color,
                   height: 1.1,
                   letterSpacing: -2,
                 ),
