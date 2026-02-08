@@ -52,20 +52,26 @@ class _AboutImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final borderRadius = BorderRadius.circular(20);
+
     return Container(
       width: 300,
       height: 300,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: borderRadius,
         border: Border.all(
           color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
         ),
       ),
-      child: Icon(
-        Icons.person,
-        size: 100,
-        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
+      child: ClipRRect(
+        borderRadius: borderRadius,
+        child: Image.asset(
+          'lib/assets/photos/developper/3D_Avatar.jpg',
+          fit: BoxFit.cover,
+          width: 300,
+          height: 300,
+        ),
       ),
     );
   }
