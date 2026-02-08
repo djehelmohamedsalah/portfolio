@@ -31,6 +31,7 @@ class HomeSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
+              // Text(
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,32 +42,69 @@ class HomeSection extends StatelessWidget {
                     style: TextStyle(
                       fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
                       fontWeight: FontWeight.bold,
-                      color: Theme.of(context).textTheme.displayLarge?.color,
+                      color: Theme.of(
+                        context,
+                      ).textTheme.displayLarge?.color!.withValues(blue: 20),
                       height: 1.1,
                       letterSpacing: -2,
                     ),
                   ),
                   Text(
-                    " ${AppStrings.homeTitleSecondPart}",
+                    AppStrings.homeTitleSecondPart,
                     style: TextStyle(
                       fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
                       fontWeight: FontWeight.bold,
-                      color: Theme.of(context).textTheme.displayLarge?.color,
+                      color: Theme.of(
+                        context,
+                      ).textTheme.displayLarge?.color!.withValues(blue: 40),
+                      height: 1.1,
+                      letterSpacing: -2,
+                    ),
+                  ),
+                  Text(
+                    AppStrings.homeTitleThirdPart,
+                    style: TextStyle(
+                      fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(
+                        context,
+                      ).textTheme.displayLarge?.color!.withValues(blue: 60),
                       height: 1.1,
                       letterSpacing: -2,
                     ),
                   ),
                 ],
               ),
-              Text(
-                AppStrings.homeTitleThirdPart,
-                style: TextStyle(
-                  fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).textTheme.displayLarge?.color,
-                  height: 1.1,
-                  letterSpacing: -2,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    AppStrings.homeTitleFourthPart,
+                    style: TextStyle(
+                      fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(
+                        context,
+                      ).textTheme.displayLarge?.color!.withValues(blue: 80),
+                      height: 1.1,
+                      letterSpacing: -2,
+                    ),
+                  ),
+                  Text(
+                    AppStrings.homeTitlefifthPart,
+                    style: TextStyle(
+                      fontSize: ResponsiveLayout.isMobile(context) ? 50 : 100,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(
+                        context,
+                      ).textTheme.displayLarge?.color!.withValues(blue: 100),
+                      height: 1.1,
+                      letterSpacing: -2,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

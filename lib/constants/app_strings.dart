@@ -13,9 +13,11 @@ class AppStrings {
 
   // Home Section
   static const String homeSectionTitle = 'Home';
-  static const String homeTitleFirstPart = 'Hi, I\'m';
-  static const String homeTitleSecondPart = 'Mohamed';
-  static const String homeTitleThirdPart = 'Salah Djehel';
+  static const String homeTitleFirstPart = 'Hi, ';
+  static const String homeTitleSecondPart = 'I\'m ';
+  static const String homeTitleThirdPart = 'Mohamed ';
+  static const String homeTitleFourthPart = 'Salah ';
+  static const String homeTitlefifthPart = 'Djehel';
   static const String role = 'Mobile Application Developer';
   static const String viewMyWork = 'View My Work';
   static const String hireMe = 'Hire Me';
