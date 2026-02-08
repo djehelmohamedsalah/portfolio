@@ -13,7 +13,7 @@ class AppStrings {
 
   // Home Section
   static const String homeSectionTitle = 'Home';
-  static const String homeTitleFirstPart = 'I am';
+  static const String homeTitleFirstPart = 'Hi, I\'m';
   static const String homeTitleSecondPart = 'Mohamed';
   static const String homeTitleThirdPart = 'Salah Djehel';
   static const String role = 'Mobile Application Developer';
