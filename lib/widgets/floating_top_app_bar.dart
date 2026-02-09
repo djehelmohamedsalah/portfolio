@@ -161,12 +161,9 @@ class _LogoTitle extends StatelessWidget {
             color: theme.colorScheme.primary.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Text(
-            'M',
-            style: theme.textTheme.labelLarge?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: theme.colorScheme.primary,
-            ),
+          child: Image.asset(
+            "lib/assets/photos/developper/M_logo.png",
+            fit: BoxFit.fill,
           ),
         ),
         const SizedBox(width: 10),
