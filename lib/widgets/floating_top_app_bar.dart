@@ -163,7 +163,7 @@ class _LogoTitle extends StatelessWidget {
           ),
           child: Image.asset(
             "lib/assets/photos/developper/M_logo.png",
-            fit: BoxFit.fill,
+            fit: BoxFit.contain,
           ),
         ),
         const SizedBox(width: 10),
