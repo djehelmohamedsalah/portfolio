@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:MoSalahDev/constants/app_strings.dart';
-import 'package:MoSalahDev/sections/image_viewer.dart';
+import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:mo_salah_dev/sections/image_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/project.dart';
 import '../constants/app_colors.dart';
