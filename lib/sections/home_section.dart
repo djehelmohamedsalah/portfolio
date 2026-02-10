@@ -52,110 +52,72 @@ class HomeSection extends StatelessWidget {
 
   Widget _buildIntro(BuildContext context) {
     final bool isMobile = ResponsiveLayout.isMobile(context);
+    final theme = Theme.of(context);
+    final double titleSize = isMobile ? 44 : 68;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  AppStrings.homeTitleFirstPart,
-                  style: TextStyle(
-                    fontSize: isMobile ? 50 : 70,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(
-                      context,
-                    ).textTheme.displayLarge?.color!.withValues(blue: 20),
-                    height: 1.1,
-                    letterSpacing: -2,
-                  ),
-                ),
-                Text(
-                  AppStrings.homeTitleSecondPart,
-                  style: TextStyle(
-                    fontSize: isMobile ? 50 : 70,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(
-                      context,
-                    ).textTheme.displayLarge?.color!.withValues(blue: 40),
-                    height: 1.1,
-                    letterSpacing: -2,
-                  ),
-                ),
-                Text(
-                  AppStrings.homeTitleThirdPart,
-                  style: TextStyle(
-                    fontSize: isMobile ? 50 : 70,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(
-                      context,
-                    ).textTheme.displayLarge?.color!.withValues(blue: 60),
-                    height: 1.1,
-                    letterSpacing: -2,
-                  ),
-                ),
-              ],
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(999),
+            border: Border.all(
+              color: theme.colorScheme.primary.withValues(alpha: 0.28),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  AppStrings.homeTitleFourthPart,
-                  style: TextStyle(
-                    fontSize: isMobile ? 50 : 70,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(
-                      context,
-                    ).textTheme.displayLarge?.color!.withValues(blue: 80),
-                    height: 1.1,
-                    letterSpacing: -2,
-                  ),
-                ),
-                Text(
-                  AppStrings.homeTitlefifthPart,
-                  style: TextStyle(
-                    fontSize: isMobile ? 50 : 70,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(
-                      context,
-                    ).textTheme.displayLarge?.color!.withValues(blue: 100),
-                    height: 1.1,
-                    letterSpacing: -2,
-                  ),
-                ),
-              ],
+          ),
+          child: Text(
+            AppStrings.homeSectionTitle.toUpperCase(),
+            style: theme.textTheme.labelLarge?.copyWith(
+              color: theme.colorScheme.primary,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 1.2,
             ),
-          ],
+          ),
         ),
+        const SizedBox(height: 18),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 620),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildGradientTitle(
+                context,
+                '${AppStrings.homeTitleFirstPart}${AppStrings.homeTitleSecondPart}${AppStrings.homeTitleThirdPart}',
+                titleSize,
+              ),
+              _buildGradientTitle(
+                context,
+                '${AppStrings.homeTitleFourthPart}${AppStrings.homeTitlefifthPart}',
+                titleSize,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 12),
         Text(
           AppStrings.role,
           style: TextStyle(
-            fontSize: isMobile ? 24 : 32,
-            color: Theme.of(context).colorScheme.secondary,
-            fontWeight: FontWeight.w300,
+            fontSize: isMobile ? 20 : 28,
+            color: theme.colorScheme.secondary,
+            fontWeight: FontWeight.w400,
+            height: 1.2,
           ),
         ),
-        const SizedBox(height: 30),
-        Row(
+        const SizedBox(height: 26),
+        Wrap(
+          spacing: 20,
+          runSpacing: 12,
           children: [
             ElevatedButton(
               onPressed: onViewWork,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: theme.colorScheme.onPrimary,
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 20,
+                  horizontal: 36,
+                  vertical: 18,
                 ),
                 textStyle: const TextStyle(
                   fontSize: 18,
@@ -164,15 +126,14 @@ class HomeSection extends StatelessWidget {
               ),
               child: const Text(AppStrings.viewMyWork),
             ),
-            const SizedBox(width: 30),
             ElevatedButton(
               onPressed: onHireMe,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: theme.colorScheme.onPrimary,
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 20,
+                  horizontal: 36,
+                  vertical: 18,
                 ),
                 textStyle: const TextStyle(
                   fontSize: 18,
@@ -184,6 +145,35 @@ class HomeSection extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildGradientTitle(
+    BuildContext context,
+    String text,
+    double fontSize,
+  ) {
+    final theme = Theme.of(context);
+    final gradient = LinearGradient(
+      colors: [theme.colorScheme.primary, theme.colorScheme.secondary],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
+
+    return ShaderMask(
+      shaderCallback: (bounds) => gradient.createShader(
+        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: fontSize,
+          fontWeight: FontWeight.w800,
+          color: Colors.white,
+          height: 1.05,
+          letterSpacing: -1.5,
+        ),
+      ),
     );
   }
 
