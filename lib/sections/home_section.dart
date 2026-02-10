@@ -61,19 +61,26 @@ class HomeSection extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
-            color: theme.colorScheme.primary.withValues(alpha: 0.12),
+            color: theme.colorScheme.primary.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(999),
             border: Border.all(
-              color: theme.colorScheme.primary.withValues(alpha: 0.28),
+              color: theme.colorScheme.primary.withValues(alpha: 0.22),
             ),
           ),
-          child: Text(
-            AppStrings.homeSectionTitle.toUpperCase(),
-            style: theme.textTheme.labelLarge?.copyWith(
-              color: theme.colorScheme.primary,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1.2,
-            ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _OnlineIndicator(color: theme.colorScheme.primary),
+              const SizedBox(width: 10),
+              Text(
+                'Open to development opportunities and professional growth',
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: theme.colorScheme.primary,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.6,
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 18),
@@ -276,6 +283,31 @@ class HomeSection extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _OnlineIndicator extends StatelessWidget {
+  final Color color;
+
+  const _OnlineIndicator({required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 10,
+      height: 10,
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: color.withValues(alpha: 120),
+            blurRadius: 8,
+            spreadRadius: 1,
           ),
         ],
       ),
