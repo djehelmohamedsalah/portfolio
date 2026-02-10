@@ -6,6 +6,9 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onAbout;
   final VoidCallback onSkills;
   final VoidCallback onContact;
+  final VoidCallback onThemeToggle;
+  final ValueChanged<String>? onLanguageSelected;
+  final String currentLanguage;
 
   const FloatingTopAppBar({
     super.key,
@@ -14,6 +17,9 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onAbout,
     required this.onSkills,
     required this.onContact,
+    required this.onThemeToggle,
+    this.onLanguageSelected,
+    this.currentLanguage = 'EN',
   });
 
   @override
@@ -122,24 +128,123 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
                   const SizedBox(width: 8),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      _SocialButton(label: 'Facebook', icon: Icons.facebook),
-                      _SocialButton(
-                        label: 'Instagram',
-                        icon: Icons.camera_alt_outlined,
-                      ),
-                      _SocialButton(label: 'LinkedIn', icon: Icons.link),
-                      _SocialButton(label: 'GitHub', icon: Icons.code),
-                    ],
+                  _HeaderActions(
+                    onThemeToggle: onThemeToggle,
+                    onLanguageSelected: onLanguageSelected,
+                    currentLanguage: currentLanguage,
                   ),
+                  if (!isCompact) ...[
+                    const SizedBox(width: 10),
+                    Container(
+                      width: 1,
+                      height: 24,
+                      color: colorScheme.outlineVariant.withValues(alpha: 0.6),
+                    ),
+                    const SizedBox(width: 10),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        _SocialButton(label: 'Facebook', icon: Icons.facebook),
+                        _SocialButton(
+                          label: 'Instagram',
+                          icon: Icons.camera_alt_outlined,
+                        ),
+                        _SocialButton(label: 'LinkedIn', icon: Icons.link),
+                        _SocialButton(label: 'GitHub', icon: Icons.code),
+                      ],
+                    ),
+                  ],
                 ],
               );
             },
           ),
         ),
       ),
+    );
+  }
+}
+
+class _HeaderActions extends StatelessWidget {
+  final VoidCallback onThemeToggle;
+  final ValueChanged<String>? onLanguageSelected;
+  final String currentLanguage;
+
+  const _HeaderActions({
+    required this.onThemeToggle,
+    this.onLanguageSelected,
+    required this.currentLanguage,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _ActionIconButton(
+          tooltip: isDark ? 'Switch to light theme' : 'Switch to dark theme',
+          icon: isDark ? Icons.light_mode : Icons.dark_mode,
+          onTap: onThemeToggle,
+        ),
+        const SizedBox(width: 10),
+        _ActionIconButton.menu(
+          tooltip: 'Language',
+          icon: Icons.language,
+          menu: PopupMenuButton<String>(
+            tooltip: 'Language',
+            initialValue: currentLanguage,
+            onSelected: (value) => onLanguageSelected?.call(value),
+            itemBuilder: (context) => const [
+              PopupMenuItem(value: 'EN', child: Text('English')),
+              PopupMenuItem(value: 'AR', child: Text('Arabic')),
+              PopupMenuItem(value: 'FR', child: Text('French')),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _ActionIconButton extends StatelessWidget {
+  final String tooltip;
+  final IconData icon;
+  final VoidCallback? onTap;
+  final PopupMenuButton<String>? menu;
+
+  const _ActionIconButton({
+    required this.tooltip,
+    required this.icon,
+    required this.onTap,
+  }) : menu = null;
+
+  const _ActionIconButton.menu({
+    required this.tooltip,
+    required this.icon,
+    required this.menu,
+  }) : onTap = null;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
+    if (menu != null) {
+      return PopupMenuButton<String>(
+        tooltip: tooltip,
+        initialValue: menu!.initialValue,
+        onSelected: menu!.onSelected,
+        itemBuilder: menu!.itemBuilder,
+        icon: Icon(icon, color: colorScheme.onSurface),
+      );
+    }
+
+    return IconButton(
+      onPressed: onTap,
+      tooltip: tooltip,
+      icon: Icon(icon, color: colorScheme.onSurface),
+      splashRadius: 20,
     );
   }
 }

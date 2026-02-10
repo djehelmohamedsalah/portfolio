@@ -97,6 +97,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
         onAbout: () => _scrollToSection(_aboutKey),
         onSkills: () => _scrollToSection(_skillsKey),
         onContact: () => _scrollToSection(_contactKey),
+        onThemeToggle: widget.onThemeToggle,
       ),
       body: SingleChildScrollView(
         controller: _scrollController,
