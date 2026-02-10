@@ -69,7 +69,7 @@ class HomeSection extends StatelessWidget {
                 Text(
                   AppStrings.homeTitleFirstPart,
                   style: TextStyle(
-                    fontSize: isMobile ? 50 : 100,
+                    fontSize: isMobile ? 50 : 70,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(
                       context,
@@ -81,7 +81,7 @@ class HomeSection extends StatelessWidget {
                 Text(
                   AppStrings.homeTitleSecondPart,
                   style: TextStyle(
-                    fontSize: isMobile ? 50 : 100,
+                    fontSize: isMobile ? 50 : 70,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(
                       context,
@@ -93,7 +93,7 @@ class HomeSection extends StatelessWidget {
                 Text(
                   AppStrings.homeTitleThirdPart,
                   style: TextStyle(
-                    fontSize: isMobile ? 50 : 100,
+                    fontSize: isMobile ? 50 : 70,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(
                       context,
@@ -112,7 +112,7 @@ class HomeSection extends StatelessWidget {
                 Text(
                   AppStrings.homeTitleFourthPart,
                   style: TextStyle(
-                    fontSize: isMobile ? 50 : 100,
+                    fontSize: isMobile ? 50 : 70,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(
                       context,
@@ -124,7 +124,7 @@ class HomeSection extends StatelessWidget {
                 Text(
                   AppStrings.homeTitlefifthPart,
                   style: TextStyle(
-                    fontSize: isMobile ? 50 : 100,
+                    fontSize: isMobile ? 50 : 70,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(
                       context,
