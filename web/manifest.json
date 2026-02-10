@@ -1,6 +1,6 @@
 {
-    "name": "portfolio",
-    "short_name": "portfolio",
+    "name": "MoSalahDev",
+    "short_name": "MoSalahDev",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#hexcode",
