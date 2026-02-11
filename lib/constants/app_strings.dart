@@ -12,7 +12,7 @@ class AppStrings {
   static const String navContact = 'Contact';
 
   // Home Section
-  static const String homeSectionTitle = 'Welcome ';
+  static const String heroSectionTitle = 'Mobile App Developer';
   static const String schortname = 'MoSalah';
   static const String schortname2 = 'Dev';
   static const String homeTitleFirstPart = 'Hi, ';

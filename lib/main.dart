@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'sections/home_section.dart';
+import 'sections/hero_section.dart';
 import 'sections/projects_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
@@ -103,7 +103,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
         controller: _scrollController,
         child: Column(
           children: [
-            HomeSection(
+            HeroSection(
               onHireMe: () => _scrollToSection(_contactKey),
               sectionKey: _homeKey,
               onViewWork: () => _scrollToSection(_projectsKey),

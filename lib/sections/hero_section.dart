@@ -3,12 +3,12 @@ import '../widgets/section_container.dart';
 import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 
-class HomeSection extends StatelessWidget {
+class HeroSection extends StatelessWidget {
   final GlobalKey sectionKey;
   final VoidCallback onViewWork;
   final VoidCallback onHireMe;
 
-  const HomeSection({
+  const HeroSection({
     super.key,
     required this.sectionKey,
     required this.onViewWork,
@@ -20,9 +20,9 @@ class HomeSection extends StatelessWidget {
     final bool isMobile = ResponsiveLayout.isMobile(context);
     return SectionContainer(
       key: sectionKey,
-      title: AppStrings.homeSectionTitle,
+      // title: AppStrings.heroSectionTitle,
       color: Colors.transparent,
-      height: 700,
+      height: 620,
       child: isMobile
           ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -132,9 +132,11 @@ class HomeSection extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 620),
           child: Text(
             AppStrings.hookText,
-            style: theme.textTheme.bodyLarge?.copyWith(
+            style: theme.textTheme.titleMedium?.copyWith(
               fontSize: hookTextSize,
               height: 1.6,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.1,
               color: theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.85),
             ),
           ),
