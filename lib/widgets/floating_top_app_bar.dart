@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants/app_strings.dart';
 
 class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onHome;
@@ -272,12 +273,27 @@ class _LogoTitle extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        Text(
-          'MoSalahDev',
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.3,
-          ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              AppStrings.schortname,
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.3,
+              ),
+            ),
+            Text(
+              AppStrings.schortname2,
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.3,
+                color: theme.colorScheme.secondary,
+              ),
+            ),
+          ],
         ),
       ],
     );

@@ -13,6 +13,8 @@ class AppStrings {
 
   // Home Section
   static const String homeSectionTitle = 'Welcome ';
+  static const String schortname = 'MoSalah';
+  static const String schortname2 = 'Dev';
   static const String homeTitleFirstPart = 'Hi, ';
   static const String homeTitleSecondPart = 'I\'m ';
   static const String homeTitleThirdPart = 'Mohamed ';
@@ -21,7 +23,8 @@ class AppStrings {
   static const String role = 'Mobile Application Developer';
   static const String viewMyWork = 'View My Work';
   static const String hireMe = 'Hire Me';
-
+  static const String hookText =
+      'I build real-world applications with clean architecture, strong logic, and a focus on performance.';
   // Skills Section
   static const String skillsTitle = 'Skills';
   static const String techStack = 'Tech Stack';

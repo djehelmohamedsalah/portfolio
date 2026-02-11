@@ -103,7 +103,6 @@ class HomeSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        Text(''),
         TypewriterText(
           phrases: const [
             'Mobile Application Developer',
@@ -122,6 +121,18 @@ class HomeSection extends StatelessWidget {
           erasingSpeed: const Duration(milliseconds: 90),
           pauseAfterTyping: const Duration(milliseconds: 900),
           pauseAfterErasing: const Duration(milliseconds: 400),
+        ),
+        const SizedBox(height: 16),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 620),
+          child: Text(
+            AppStrings.hookText,
+            style: theme.textTheme.bodyLarge?.copyWith(
+              fontSize: isMobile ? 15 : 17,
+              height: 1.6,
+              color: theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.85),
+            ),
+          ),
         ),
         const SizedBox(height: 26),
         Wrap(
