@@ -53,7 +53,11 @@ class HomeSection extends StatelessWidget {
   Widget _buildIntro(BuildContext context) {
     final bool isMobile = ResponsiveLayout.isMobile(context);
     final theme = Theme.of(context);
-    final double titleSize = isMobile ? 44 : 68;
+    final double titleSize = isMobile ? 42 : 64;
+    final double badgeTextSize = isMobile ? 12 : 14;
+    final double roleTextSize = isMobile ? 22 : 30;
+    final double hookTextSize = isMobile ? 15 : 17;
+    final double buttonTextSize = isMobile ? 15 : 16;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +81,8 @@ class HomeSection extends StatelessWidget {
                 style: theme.textTheme.labelLarge?.copyWith(
                   color: theme.colorScheme.primary,
                   fontWeight: FontWeight.w600,
-                  letterSpacing: 0.6,
+                  letterSpacing: 0.4,
+                  fontSize: badgeTextSize,
                 ),
               ),
             ],
@@ -111,9 +116,9 @@ class HomeSection extends StatelessWidget {
             'Cross-Platform Developer',
           ],
           style: TextStyle(
-            fontSize: isMobile ? 20 : 28,
+            fontSize: roleTextSize,
             color: theme.colorScheme.secondary,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
             height: 1.2,
           ),
           cursorColor: theme.colorScheme.secondary,
@@ -128,7 +133,7 @@ class HomeSection extends StatelessWidget {
           child: Text(
             AppStrings.hookText,
             style: theme.textTheme.bodyLarge?.copyWith(
-              fontSize: isMobile ? 15 : 17,
+              fontSize: hookTextSize,
               height: 1.6,
               color: theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.85),
             ),
@@ -148,8 +153,8 @@ class HomeSection extends StatelessWidget {
                   horizontal: 36,
                   vertical: 18,
                 ),
-                textStyle: const TextStyle(
-                  fontSize: 18,
+                textStyle: TextStyle(
+                  fontSize: buttonTextSize,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -164,8 +169,8 @@ class HomeSection extends StatelessWidget {
                   horizontal: 36,
                   vertical: 18,
                 ),
-                textStyle: const TextStyle(
-                  fontSize: 18,
+                textStyle: TextStyle(
+                  fontSize: buttonTextSize,
                   fontWeight: FontWeight.bold,
                 ),
               ),
