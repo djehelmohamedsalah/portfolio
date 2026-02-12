@@ -288,7 +288,7 @@ class _LogoTitle extends StatelessWidget {
             Text(
               AppStrings.schortname2,
               style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w800,
                 letterSpacing: 0.3,
                 color: theme.colorScheme.secondary,
               ),

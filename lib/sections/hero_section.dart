@@ -20,7 +20,6 @@ class HeroSection extends StatelessWidget {
     final bool isMobile = ResponsiveLayout.isMobile(context);
     return SectionContainer(
       key: sectionKey,
-      // title: AppStrings.heroSectionTitle,
       color: Colors.transparent,
       height: 620,
       child: isMobile
