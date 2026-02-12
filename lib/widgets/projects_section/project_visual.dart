@@ -21,36 +21,15 @@ class _MockupStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenshots = project.screenshots;
-    final tabletImage = screenshots.isNotEmpty ? screenshots[0] : project.logo;
     final phoneImage = screenshots.length > 1 ? screenshots[1] : project.logo;
     final isMobile = ResponsiveLayout.isMobile(context);
-    final tabletWidth = isMobile ? 300.0 : 460.0;
-    final phoneWidth = isMobile ? 120.0 : 150.0;
+    final phoneWidth = isMobile ? 180.0 : 220.0;
 
-    return SizedBox(
-      width: tabletWidth + phoneWidth * 0.6,
-      height: tabletWidth * 0.75,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: _MockupImage(
-              imagePath: tabletImage,
-              width: tabletWidth,
-              aspectRatio: 4 / 3,
-            ),
-          ),
-          Positioned(
-            right: tabletWidth * 0.68,
-            top: tabletWidth * 0.12,
-            child: _MockupImage(
-              imagePath: phoneImage,
-              width: phoneWidth,
-              aspectRatio: 9 / 19,
-            ),
-          ),
-        ],
+    return Center(
+      child: _MockupImage(
+        imagePath: phoneImage,
+        width: phoneWidth,
+        aspectRatio: 9 / 19,
       ),
     );
   }
