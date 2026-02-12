@@ -13,10 +13,19 @@ class ProjectBackground extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Image.asset(
-          imagePath,
-          fit: BoxFit.contain,
-          alignment: Alignment.center,
+        Center(
+          child: Opacity(
+            opacity: 0.28,
+            child: FractionallySizedBox(
+              widthFactor: 0.42,
+              heightFactor: 0.42,
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+              ),
+            ),
+          ),
         ),
         Container(
           decoration: const BoxDecoration(
