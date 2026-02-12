@@ -95,12 +95,12 @@ class HeroSection extends StatelessWidget {
             children: [
               _buildGradientTitle(
                 context,
-                '${AppStrings.homeTitleFirstPart}${AppStrings.homeTitleSecondPart}${AppStrings.homeTitleThirdPart}',
+                AppStrings.homeTitleFirstPart,
                 titleSize,
               ),
               _buildGradientTitle(
                 context,
-                '${AppStrings.homeTitleFourthPart}${AppStrings.homeTitlefifthPart}',
+                AppStrings.homeTitleSecondPart,
                 titleSize,
               ),
             ],

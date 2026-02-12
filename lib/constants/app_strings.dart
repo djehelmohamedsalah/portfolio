@@ -15,11 +15,8 @@ class AppStrings {
   static const String heroSectionTitle = 'Mobile App Developer';
   static const String schortname = 'MoSalah';
   static const String schortname2 = 'Dev';
-  static const String homeTitleFirstPart = 'Hi, ';
-  static const String homeTitleSecondPart = 'I\'m ';
-  static const String homeTitleThirdPart = 'Mohamed ';
-  static const String homeTitleFourthPart = 'Salah ';
-  static const String homeTitlefifthPart = 'Djehel';
+  static const String homeTitleFirstPart = 'Hi, I\'m Mohamed';
+  static const String homeTitleSecondPart = 'Salah Djehel';
   static const String role = 'Mobile Application Developer';
   static const String viewMyWork = 'View My Work';
   static const String hireMe = 'Hire Me';
