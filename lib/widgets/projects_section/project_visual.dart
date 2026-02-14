@@ -20,8 +20,7 @@ class _MockupStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenshots = project.screenshots;
-    final phoneImage = screenshots.length > 1 ? screenshots[1] : project.logo;
+    final phoneImage = project.imageOverview;
     final isMobile = ResponsiveLayout.isMobile(context);
     final phoneWidth = isMobile ? 180.0 : 220.0;
 
