@@ -171,52 +171,6 @@ class HeroSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 26),
-        Text(
-          'I work with modern mobile tools and technologies',
-          style: theme.textTheme.titleSmall?.copyWith(
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.3,
-            color: theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.82),
-          ),
-        ),
-        const SizedBox(height: 14),
-        Wrap(
-          spacing: 12,
-          runSpacing: 10,
-          children: [
-            _ToolLogo(
-              icon: Icons.flutter_dash,
-              label: 'Flutter',
-              color: const Color(0xFF54C5F8),
-            ),
-            _ToolLogo(
-              icon: Icons.data_object_rounded,
-              label: 'Dart',
-              color: const Color(0xFF0175C2),
-            ),
-            _ToolLogo(
-              icon: Icons.local_fire_department_rounded,
-              label: 'Firebase',
-              color: const Color(0xFFFFA000),
-            ),
-            _ToolLogo(
-              icon: Icons.android_rounded,
-              label: 'Android',
-              color: const Color(0xFF3DDC84),
-            ),
-            _ToolLogo(
-              icon: Icons.source_rounded,
-              label: 'Git',
-              color: const Color(0xFFF05032),
-            ),
-            _ToolLogo(
-              icon: Icons.design_services_rounded,
-              label: 'Figma',
-              color: const Color(0xFF2D334A),
-            ),
-          ],
-        ),
       ],
     );
   }
@@ -376,40 +330,6 @@ class _OnlineIndicator extends StatelessWidget {
             spreadRadius: 1,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _ToolLogo extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final Color color;
-
-  const _ToolLogo({
-    required this.icon,
-    required this.label,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Tooltip(
-      message: label,
-      child: Container(
-        width: 48,
-        height: 48,
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surfaceContainerHighest.withValues(
-            alpha: 0.55,
-          ),
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: theme.colorScheme.outline.withValues(alpha: 0.18),
-          ),
-        ),
-        child: Icon(icon, size: 24, color: color),
       ),
     );
   }
