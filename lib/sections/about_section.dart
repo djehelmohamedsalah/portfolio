@@ -30,6 +30,8 @@ class AboutSection extends StatelessWidget {
         ),
         desktop: Row(
           children: [
+            const _AboutImage(),
+            const SizedBox(width: 40),
             Expanded(
               child: Text(
                 AppStrings.aboutDescription,
@@ -38,8 +40,6 @@ class AboutSection extends StatelessWidget {
                 ).textTheme.bodyLarge?.copyWith(height: 1.8),
               ),
             ),
-            const SizedBox(width: 40),
-            const _AboutImage(),
           ],
         ),
       ),
