@@ -108,8 +108,8 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
               sectionKey: _homeKey,
               onViewWork: () => _scrollToSection(_projectsKey),
             ),
-            ProjectsSection(sectionKey: _projectsKey),
             AboutSection(sectionKey: _aboutKey),
+            ProjectsSection(sectionKey: _projectsKey),
             SkillsSection(sectionKey: _skillsKey),
             ContactSection(sectionKey: _contactKey),
             const SizedBox(height: 50), // Footer padding
