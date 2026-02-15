@@ -57,6 +57,20 @@ class HeroSection extends StatelessWidget {
     final double roleTextSize = isMobile ? 22 : 30;
     final double hookTextSize = isMobile ? 15 : 17;
     final double buttonTextSize = isMobile ? 15 : 16;
+    final ButtonStyle ctaButtonStyle = ElevatedButton.styleFrom(
+      backgroundColor: theme.colorScheme.primary,
+      foregroundColor: theme.colorScheme.onPrimary,
+      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
+      minimumSize: const Size(180, 56),
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      textStyle: TextStyle(
+        fontSize: buttonTextSize,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0.2,
+      ),
+    ).copyWith(elevation: const WidgetStatePropertyAll(2));
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,34 +161,12 @@ class HeroSection extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: onViewWork,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.primary,
-                foregroundColor: theme.colorScheme.onPrimary,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 36,
-                  vertical: 18,
-                ),
-                textStyle: TextStyle(
-                  fontSize: buttonTextSize,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              style: ctaButtonStyle,
               child: const Text(AppStrings.viewMyWork),
             ),
             ElevatedButton(
               onPressed: onHireMe,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.primary,
-                foregroundColor: theme.colorScheme.onPrimary,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 36,
-                  vertical: 18,
-                ),
-                textStyle: TextStyle(
-                  fontSize: buttonTextSize,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              style: ctaButtonStyle,
               child: const Text(AppStrings.hireMe),
             ),
           ],
