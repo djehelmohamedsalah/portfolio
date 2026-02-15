@@ -63,8 +63,8 @@ class _DesktopCaseStudyLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final leftWidth = maxWidth * 0.60;
-    final rightWidth = maxWidth * 0.40;
+    final leftWidth = maxWidth * 0.70;
+    final rightWidth = maxWidth * 0.30;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,

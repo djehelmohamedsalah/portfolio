@@ -10,10 +10,11 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SectionContainer(
       key: sectionKey,
       title: AppStrings.aboutTitle,
-      color: Colors.transparent,
+      color: theme.colorScheme.surface.withValues(alpha: 0.35),
       height: 600,
       child: ResponsiveLayout(
         mobile: Column(
@@ -55,8 +56,8 @@ class _AboutImage extends StatelessWidget {
     final borderRadius = BorderRadius.circular(20);
 
     return Container(
-      width: 300,
-      height: 300,
+      width: 400,
+      height: 400,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: borderRadius,
@@ -69,8 +70,8 @@ class _AboutImage extends StatelessWidget {
         child: Image.asset(
           'lib/assets/photos/developper/3D_Avatar.jpg',
           fit: BoxFit.cover,
-          width: 300,
-          height: 300,
+          width: 400,
+          height: 400,
         ),
       ),
     );
