@@ -63,8 +63,8 @@ class _DesktopCaseStudyLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final leftWidth = maxWidth * 0.46;
-    final rightWidth = maxWidth * 0.54;
+    final leftWidth = maxWidth * 0.60;
+    final rightWidth = maxWidth * 0.40;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,12 +73,16 @@ class _DesktopCaseStudyLayout extends StatelessWidget {
           width: leftWidth,
           child: ProjectText(config: config),
         ),
-        SizedBox(
-          width: rightWidth,
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: ProjectVisual(project: config.project),
-          ),
+        Row(
+          children: [
+            SizedBox(
+              width: rightWidth,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: ProjectVisual(project: config.project),
+              ),
+            ),
+          ],
         ),
       ],
     );
