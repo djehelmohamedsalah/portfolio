@@ -4,7 +4,6 @@ import 'sections/projects_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/contact_section.dart';
-import 'sections/tech_stack_section.dart';
 
 import 'constants/app_strings.dart';
 import 'theme/app_theme.dart';
@@ -109,7 +108,6 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
               sectionKey: _homeKey,
               onViewWork: () => _scrollToSection(_projectsKey),
             ),
-            const TechStackSection(),
             ProjectsSection(sectionKey: _projectsKey),
             AboutSection(sectionKey: _aboutKey),
             SkillsSection(sectionKey: _skillsKey),
