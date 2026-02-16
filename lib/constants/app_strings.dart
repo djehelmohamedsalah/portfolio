@@ -36,12 +36,10 @@ class AppStrings {
   // About Section
   static const String aboutTitle = 'About Me';
   static const String aboutDescription =
-      "I am a highly disciplined and committed individual who has been developing my skills in software development consistently for over two years. I work on a structured daily routine, balancing learning, programming, personal development, and problem-solving.\n\n"
-      "My motivation comes from a genuine passion for software development and building projects from scratch. Even without formal degrees in computer science, I continuously push myself to improve by working on real projects, learning new technologies, and solving complex problems.\n\n"
-      "I thrive under challenges and pressures. Financial limitations, personal difficulties, or technical obstacles never stop me; instead, they strengthen my determination. I approach every problem step by step, planning carefully before coding, and always seeking efficient and clean solutions.\n\n"
-      "Consistency is my main strength. I have maintained a disciplined learning schedule, structured workflows, and long-term projects, proving that I am serious and reliable.\n\n"
-      "I see the Ausbildung system as the ideal environment to combine discipline, structured learning, and real responsibility.\n\n"
-      "I am confident that my persistence, self-discipline, and practical experience make me well-suited for an Ausbildung. I am ready to learn, follow structured training, and contribute effectively in a professional environment.\n\n";
+      "I am a passionate and committed Flutter developer with over two years of experience building practical projects through a structured daily routine that balances learning, programming, and problem-solving.\n\n"
+      "I excel at planning and executing step by step, delivering clean and efficient solutions while embracing new technologies and taking projects from design to deployment.\n\n"
+      "Consistency, discipline, and a proactive mindset are my core strengths. I enjoy working in dynamic teams, contributing innovative ideas, and achieving project goals efficiently while applying best coding practices.\n\n"
+      "I am eager to learn from experienced mentors, take on new responsibilities, and adapt flexibly to challenges, ensuring continuous growth and meaningful contributions in both Ausbildung programs and professional tech environments.\n\n";
   // Projects Section
   static const String projectsTitle = 'Projects';
 
