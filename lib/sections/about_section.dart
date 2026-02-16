@@ -30,15 +30,19 @@ class AboutSection extends StatelessWidget {
           ],
         ),
         desktop: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const _AboutImage(),
+            const Align(alignment: Alignment.center, child: _AboutImage()),
             const SizedBox(width: 40),
             Expanded(
-              child: Text(
-                AppStrings.aboutDescription,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyLarge?.copyWith(height: 1.8),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  AppStrings.aboutDescription,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(height: 1.8),
+                ),
               ),
             ),
           ],
