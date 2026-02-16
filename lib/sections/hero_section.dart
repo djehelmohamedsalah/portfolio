@@ -123,6 +123,7 @@ class HeroSection extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         TypewriterText(
+          cursor: "_",
           phrases: const [
             'Mobile Application Developer.',
             'Flutter Developer.',
