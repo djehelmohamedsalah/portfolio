@@ -18,9 +18,10 @@ class AboutSection extends StatelessWidget {
       height: 600,
       child: ResponsiveLayout(
         mobile: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              AppStrings.aboutDescription,
+              AppStrings.aboutDescription.trim(),
               style: Theme.of(
                 context,
               ).textTheme.bodyLarge?.copyWith(height: 1.8),
@@ -30,19 +31,16 @@ class AboutSection extends StatelessWidget {
           ],
         ),
         desktop: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Align(alignment: Alignment.center, child: _AboutImage()),
+            const _AboutImage(),
             const SizedBox(width: 40),
             Expanded(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  AppStrings.aboutDescription,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyLarge?.copyWith(height: 1.8),
-                ),
+              child: Text(
+                AppStrings.aboutDescription.trim(),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(height: 1.8),
               ),
             ),
           ],

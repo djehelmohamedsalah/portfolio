@@ -36,10 +36,10 @@ class AppStrings {
   // About Section
   static const String aboutTitle = 'About Me';
   static const String aboutDescription =
-      "I am a passionate and committed Flutter developer with over two years of experience building practical projects through a structured daily routine that balances learning, programming, and problem-solving.\n\n"
-      "I excel at planning and executing step by step, delivering clean and efficient solutions while embracing new technologies and taking projects from design to deployment.\n\n"
-      "Consistency, discipline, and a proactive mindset are my core strengths. I enjoy working in dynamic teams, contributing innovative ideas, and achieving project goals efficiently while applying best coding practices.\n\n"
-      "I am eager to learn from experienced mentors, take on new responsibilities, and adapt flexibly to challenges, ensuring continuous growth and meaningful contributions in both Ausbildung programs and professional tech environments.\n\n";
+      "I am a Flutter developer\n\n"
+      "focused on building clean, reliable, and scalable mobile applications. With over two years of hands-on experience, I work on real-world projects through a disciplined approach that combines learning, problem-solving, and practical execution.\n\n"
+      "I turn ideas into well-structured applications from UI design to deployment, with a strong focus on clean code, efficient workflows, and continuous improvement.\n\n"
+      "I thrive in collaborative and structured environments, value accountability and initiative, and am motivated to grow through mentorship and real responsibility—making me a strong fit for both Ausbildung programs and professional tech teams.\n";
   // Projects Section
   static const String projectsTitle = 'Projects';
 
