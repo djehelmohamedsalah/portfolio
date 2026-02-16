@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/section_container.dart';
+import '../widgets/typewriter_text.dart';
 import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 
@@ -20,6 +21,8 @@ class AboutSection extends StatelessWidget {
         mobile: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            _buildAboutAnimatedTitle(context),
+            const SizedBox(height: 18),
             Text(
               AppStrings.aboutDescription.trim(),
               style: Theme.of(
@@ -41,6 +44,8 @@ class AboutSection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  _buildAboutAnimatedTitle(context),
+                  const SizedBox(height: 18),
                   Text(
                     AppStrings.aboutDescription.trim(),
                     style: Theme.of(
@@ -55,6 +60,26 @@ class AboutSection extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildAboutAnimatedTitle(BuildContext context) {
+    final isMobile = ResponsiveLayout.isMobile(context);
+    final theme = Theme.of(context);
+
+    return TypewriterText(
+      phrases: AppStrings.aboutTypewriterPhrases,
+      style: TextStyle(
+        fontSize: isMobile ? 24 : 30,
+        color: theme.colorScheme.secondary,
+        fontWeight: FontWeight.w600,
+        height: 1.2,
+      ),
+      cursorColor: theme.colorScheme.secondary,
+      typingSpeed: const Duration(milliseconds: 70),
+      erasingSpeed: const Duration(milliseconds: 90),
+      pauseAfterTyping: const Duration(milliseconds: 900),
+      pauseAfterErasing: const Duration(milliseconds: 400),
     );
   }
 
