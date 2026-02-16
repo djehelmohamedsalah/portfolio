@@ -41,7 +41,9 @@ class AppStrings {
       "I turn ideas into well-structured applications from UI design to deployment, with a strong focus on clean code, efficient workflows, and continuous improvement.\n\n"
       "I thrive in collaborative and structured environments, value accountability and initiative, and am motivated to grow through mentorship and real responsibility—making me a strong fit for both Ausbildung programs and professional tech teams.\n";
   // Projects Section
-  static const String projectsTitle = 'Projects';
+  static const String projectsTitle = 'Selected Projects';
+  static const String projectsSubtitle =
+      'A collection of real-world Flutter applications focused on clean architecture, performance, and user experience.';
 
   // Newsily app
   static const String projectNewsilyTitle = 'Newsily App';
