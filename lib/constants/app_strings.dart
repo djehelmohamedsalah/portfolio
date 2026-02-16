@@ -35,11 +35,20 @@ class AppStrings {
 
   // About Section
   static const String aboutTitle = 'About Me';
+  static const List<String> aboutTypewriterPhrases = [
+    'I am a Flutter developer',
+    'I build clean mobile apps',
+    'I focus on scalable architecture',
+    'I care about performance and UX',
+  ];
   static const String aboutDescription =
-      "I am a Flutter developer\n\n"
       "focused on building clean, reliable, and scalable mobile applications. With over two years of hands-on experience, I work on real-world projects through a disciplined approach that combines learning, problem-solving, and practical execution.\n\n"
       "I turn ideas into well-structured applications from UI design to deployment, with a strong focus on clean code, efficient workflows, and continuous improvement.\n\n"
       "I thrive in collaborative and structured environments, value accountability and initiative, and am motivated to grow through mentorship and real responsibility—making me a strong fit for both Ausbildung programs and professional tech teams.\n";
+  static const String resumeButton = 'Resume';
+  static const String linkedInButton = 'LinkedIn';
+  static const String resumeUrl = 'https://example.com/resume.pdf';
+  static const String linkedInUrl = 'https://www.linkedin.com/in/your-profile/';
   // Projects Section
   static const String projectsTitle = 'Selected Projects';
   static const String projectsSubtitle =

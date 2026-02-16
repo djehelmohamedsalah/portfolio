@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../widgets/section_container.dart';
 import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
@@ -13,7 +14,6 @@ class AboutSection extends StatelessWidget {
     final theme = Theme.of(context);
     return SectionContainer(
       key: sectionKey,
-      title: AppStrings.aboutTitle,
       color: theme.colorScheme.surface.withValues(alpha: 0.35),
       height: 600,
       child: ResponsiveLayout(
@@ -26,8 +26,10 @@ class AboutSection extends StatelessWidget {
                 context,
               ).textTheme.bodyLarge?.copyWith(height: 1.8),
             ),
+            const SizedBox(height: 26),
+            _buildAboutActions(context),
             const SizedBox(height: 40),
-            Center(child: _AboutImage()),
+            const Center(child: _AboutImage()),
           ],
         ),
         desktop: Row(
@@ -36,17 +38,81 @@ class AboutSection extends StatelessWidget {
             const _AboutImage(),
             const SizedBox(width: 40),
             Expanded(
-              child: Text(
-                AppStrings.aboutDescription.trim(),
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyLarge?.copyWith(height: 1.8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    AppStrings.aboutDescription.trim(),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge?.copyWith(height: 1.8),
+                  ),
+                  const SizedBox(height: 26),
+                  _buildAboutActions(context),
+                ],
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  Widget _buildAboutActions(BuildContext context) {
+    final bool isMobile = ResponsiveLayout.isMobile(context);
+    final theme = Theme.of(context);
+    final double buttonTextSize = isMobile ? 15 : 16;
+    final ButtonStyle ctaButtonStyle = ElevatedButton.styleFrom(
+      backgroundColor: theme.colorScheme.primary,
+      foregroundColor: theme.colorScheme.onPrimary,
+      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
+      minimumSize: const Size(180, 56),
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      textStyle: TextStyle(
+        fontSize: buttonTextSize,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0.2,
+      ),
+    ).copyWith(elevation: const WidgetStatePropertyAll(2));
+
+    return Wrap(
+      spacing: 20,
+      runSpacing: 12,
+      children: [
+        SizedBox(
+          width: 180,
+          height: 56,
+          child: ElevatedButton(
+            onPressed: () => _openExternalLink(context, AppStrings.resumeUrl),
+            style: ctaButtonStyle,
+            child: const Text(AppStrings.resumeButton),
+          ),
+        ),
+        SizedBox(
+          width: 180,
+          height: 56,
+          child: ElevatedButton(
+            onPressed: () => _openExternalLink(context, AppStrings.linkedInUrl),
+            style: ctaButtonStyle,
+            child: const Text(AppStrings.linkedInButton),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _openExternalLink(BuildContext context, String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+      return;
+    }
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Unable to open link.')));
   }
 }
 

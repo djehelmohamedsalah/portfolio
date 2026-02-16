@@ -6,12 +6,14 @@ class SectionContainer extends StatelessWidget {
   final Widget child;
   final Color color;
   final double height;
+  final bool titleCentered;
   const SectionContainer({
     super.key,
     this.title,
     required this.child,
     required this.color,
     required this.height,
+    this.titleCentered = false,
   });
 
   @override
@@ -24,12 +26,15 @@ class SectionContainer extends StatelessWidget {
           ? const EdgeInsets.symmetric(vertical: 40, horizontal: 20)
           : const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: titleCentered
+            ? CrossAxisAlignment.center
+            : CrossAxisAlignment.start,
         children: [
           title == null
-              ? SizedBox()
+              ? const SizedBox()
               : Text(
                   title!,
+                  textAlign: titleCentered ? TextAlign.center : TextAlign.start,
                   style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                   ),
