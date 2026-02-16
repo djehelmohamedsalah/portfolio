@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class TypewriterText extends StatefulWidget {
   final List<String> phrases;
+  final String prefixText;
   final TextStyle style;
   final Color cursorColor;
   final Duration typingSpeed;
@@ -12,6 +13,7 @@ class TypewriterText extends StatefulWidget {
   const TypewriterText({
     super.key,
     required this.phrases,
+    this.prefixText = '',
     required this.style,
     required this.cursorColor,
     this.typingSpeed = const Duration(milliseconds: 70),
@@ -82,6 +84,8 @@ class _TypewriterTextState extends State<TypewriterText> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
+        if (widget.prefixText.isNotEmpty)
+          Text(widget.prefixText, style: widget.style),
         Flexible(
           child: Text(
             text,

@@ -35,11 +35,12 @@ class AppStrings {
 
   // About Section
   static const String aboutTitle = 'About Me';
+  static const String aboutTitlePrefix = 'Mohamed Salah is ';
   static const List<String> aboutTypewriterPhrases = [
-    'I am a Flutter developer',
-    'I build clean mobile apps',
-    'I focus on scalable architecture',
-    'I care about performance and UX',
+    'a Flutter developer',
+    'a mobile app engineer',
+    'focused on clean architecture',
+    'driven by performance and UX',
   ];
   static const String aboutDescription =
       "focused on building clean, reliable, and scalable mobile applications. With over two years of hands-on experience, I work on real-world projects through a disciplined approach that combines learning, problem-solving, and practical execution.\n\n"

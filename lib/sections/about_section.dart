@@ -17,48 +17,50 @@ class AboutSection extends StatelessWidget {
       key: sectionKey,
       color: theme.colorScheme.surface.withValues(alpha: 0.35),
       height: 600,
-      child: ResponsiveLayout(
-        mobile: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildAboutAnimatedTitle(context),
-            const SizedBox(height: 18),
-            Text(
-              AppStrings.aboutDescription.trim(),
-              style: Theme.of(
-                context,
-              ).textTheme.bodyLarge?.copyWith(height: 1.8),
+      child: Column(
+        children: [
+          _buildAboutAnimatedTitle(context),
+          const SizedBox(height: 28),
+          ResponsiveLayout(
+            mobile: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppStrings.aboutDescription.trim(),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(height: 1.8),
+                ),
+                const SizedBox(height: 26),
+                _buildAboutActions(context),
+                const SizedBox(height: 40),
+                const Center(child: _AboutImage()),
+              ],
             ),
-            const SizedBox(height: 26),
-            _buildAboutActions(context),
-            const SizedBox(height: 40),
-            const Center(child: _AboutImage()),
-          ],
-        ),
-        desktop: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const _AboutImage(),
-            const SizedBox(width: 40),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildAboutAnimatedTitle(context),
-                  const SizedBox(height: 18),
-                  Text(
-                    AppStrings.aboutDescription.trim(),
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyLarge?.copyWith(height: 1.8),
+            desktop: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const _AboutImage(),
+                const SizedBox(width: 40),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppStrings.aboutDescription.trim(),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyLarge?.copyWith(height: 1.8),
+                      ),
+                      const SizedBox(height: 26),
+                      _buildAboutActions(context),
+                    ],
                   ),
-                  const SizedBox(height: 26),
-                  _buildAboutActions(context),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -67,19 +69,25 @@ class AboutSection extends StatelessWidget {
     final isMobile = ResponsiveLayout.isMobile(context);
     final theme = Theme.of(context);
 
-    return TypewriterText(
-      phrases: AppStrings.aboutTypewriterPhrases,
-      style: TextStyle(
-        fontSize: isMobile ? 24 : 30,
-        color: theme.colorScheme.secondary,
-        fontWeight: FontWeight.w600,
-        height: 1.2,
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 860),
+        child: TypewriterText(
+          prefixText: AppStrings.aboutTitlePrefix,
+          phrases: AppStrings.aboutTypewriterPhrases,
+          style: TextStyle(
+            fontSize: isMobile ? 24 : 30,
+            color: theme.colorScheme.secondary,
+            fontWeight: FontWeight.w600,
+            height: 1.2,
+          ),
+          cursorColor: theme.colorScheme.secondary,
+          typingSpeed: const Duration(milliseconds: 70),
+          erasingSpeed: const Duration(milliseconds: 90),
+          pauseAfterTyping: const Duration(milliseconds: 900),
+          pauseAfterErasing: const Duration(milliseconds: 400),
+        ),
       ),
-      cursorColor: theme.colorScheme.secondary,
-      typingSpeed: const Duration(milliseconds: 70),
-      erasingSpeed: const Duration(milliseconds: 90),
-      pauseAfterTyping: const Duration(milliseconds: 900),
-      pauseAfterErasing: const Duration(milliseconds: 400),
     );
   }
 
