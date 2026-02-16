@@ -68,6 +68,19 @@ class AboutSection extends StatelessWidget {
   Widget _buildAboutAnimatedTitle(BuildContext context) {
     final isMobile = ResponsiveLayout.isMobile(context);
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final prefixStyle = TextStyle(
+      fontSize: isMobile ? 24 : 30,
+      color: theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.9),
+      fontWeight: FontWeight.w600,
+      height: 1.2,
+    );
+    final animatedStyle = TextStyle(
+      fontSize: isMobile ? 24 : 30,
+      color: isDark ? Colors.white : Colors.black,
+      fontWeight: FontWeight.w800,
+      height: 1.2,
+    );
 
     return Center(
       child: ConstrainedBox(
@@ -75,13 +88,11 @@ class AboutSection extends StatelessWidget {
         child: TypewriterText(
           prefixText: AppStrings.aboutTitlePrefix,
           phrases: AppStrings.aboutTypewriterPhrases,
-          style: TextStyle(
-            fontSize: isMobile ? 24 : 30,
-            color: theme.colorScheme.secondary,
-            fontWeight: FontWeight.w600,
-            height: 1.2,
-          ),
-          cursorColor: theme.colorScheme.secondary,
+          style: animatedStyle,
+          prefixStyle: prefixStyle,
+          animatedStyle: animatedStyle,
+          fixedAnimatedWidth: isMobile ? 230 : 320,
+          cursorColor: isDark ? Colors.white : Colors.black,
           typingSpeed: const Duration(milliseconds: 70),
           erasingSpeed: const Duration(milliseconds: 90),
           pauseAfterTyping: const Duration(milliseconds: 900),

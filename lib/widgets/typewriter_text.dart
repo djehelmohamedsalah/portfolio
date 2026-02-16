@@ -4,7 +4,10 @@ class TypewriterText extends StatefulWidget {
   final List<String> phrases;
   final String prefixText;
   final TextStyle style;
+  final TextStyle? prefixStyle;
+  final TextStyle? animatedStyle;
   final Color cursorColor;
+  final double? fixedAnimatedWidth;
   final Duration typingSpeed;
   final Duration erasingSpeed;
   final Duration pauseAfterTyping;
@@ -15,7 +18,10 @@ class TypewriterText extends StatefulWidget {
     required this.phrases,
     this.prefixText = '',
     required this.style,
+    this.prefixStyle,
+    this.animatedStyle,
     required this.cursorColor,
+    this.fixedAnimatedWidth,
     this.typingSpeed = const Duration(milliseconds: 70),
     this.erasingSpeed = const Duration(milliseconds: 90),
     this.pauseAfterTyping = const Duration(milliseconds: 900),
@@ -81,20 +87,40 @@ class _TypewriterTextState extends State<TypewriterText> {
   Widget build(BuildContext context) {
     final current = widget.phrases[_phraseIndex];
     final text = current.substring(0, _charIndex);
-    return Row(
+    final prefixStyle = widget.prefixStyle ?? widget.style;
+    final animatedStyle = widget.animatedStyle ?? widget.style;
+    final animatedContent = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (widget.prefixText.isNotEmpty)
-          Text(widget.prefixText, style: widget.style),
         Flexible(
           child: Text(
             text,
-            style: widget.style,
+            style: animatedStyle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        Text('_', style: widget.style.copyWith(color: widget.cursorColor)),
+        Text('_', style: animatedStyle.copyWith(color: widget.cursorColor)),
+      ],
+    );
+
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        if (widget.prefixText.isNotEmpty)
+          Text(widget.prefixText, style: prefixStyle),
+        if (widget.fixedAnimatedWidth != null)
+          Flexible(
+            child: SizedBox(
+              width: widget.fixedAnimatedWidth,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: animatedContent,
+              ),
+            ),
+          )
+        else
+          Flexible(child: animatedContent),
       ],
     );
   }
