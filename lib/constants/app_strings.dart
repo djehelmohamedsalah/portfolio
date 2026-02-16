@@ -14,7 +14,7 @@ class AppStrings {
   // Home Section
   static const String heroSectionTitle = 'Mobile App Developer';
   static const String schortname = 'MoSalah';
-  static const String schortname2 = 'Dev';
+  static const String schortname2 = 'Dev.';
   static const String homeTitleFirstPart = 'Hi, I\'m Mohamed';
   static const String homeTitleSecondPart = 'Salah Djehel';
   static const String role = 'Mobile Application Developer';
@@ -71,8 +71,7 @@ class AppStrings {
       'UI/UX planning and design decisions.\n'
       'Full application development from scratch.\n'
       'Architectural and technical decision-making.\n'
-      'Performance optimization and functional testing.\n'
-      'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
+      'Performance optimization and functional testing.\n';
 
   static const String projectNewsilyProjectStatus =
       'The application is complete, stable, and fully functional.\n'
@@ -108,8 +107,7 @@ class AppStrings {
       'Developed UI and UX flow.\n'
       'Integrated Supabase for authentication, database, and real-time features.\n'
       'Planned the stages of reporting and tracking logic.\n'
-      'Oversaw testing, bug fixing, and performance optimization.\n'
-      'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
+      'Oversaw testing, bug fixing, and performance optimization.\n';
   static const String projectRaqibProjectStatus =
       'Fully functional and stable.\n'
       'APK download link included below in "Download & Link" section.';
@@ -163,8 +161,7 @@ class AppStrings {
       'Full application development from scratch.\n\n'
       'Architectural and technical decision-making.\n\n'
       'Performance optimization and functional testing.\n\n'
-      'The application was developed independently.\n\n'
-      'AI tools were used selectively to accelerate development in specific areas, while all architectural, design, and implementation decisions were made by me.';
+      'The application was developed independently.\n\n';
   static const String projectQuranLifeProjectStatus =
       'The application is complete, stable, and fully functional.'
       'A direct APK download link is provided in the below in "Download & Link" section.';
