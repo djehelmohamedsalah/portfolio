@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/section_container.dart';
-import '../widgets/typewriter_text.dart';
 import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 
@@ -19,7 +18,7 @@ class AboutSection extends StatelessWidget {
       height: 600,
       child: Column(
         children: [
-          _buildAboutAnimatedTitle(context),
+          _buildAboutTitle(context),
           const SizedBox(height: 28),
           ResponsiveLayout(
             mobile: Column(
@@ -65,45 +64,21 @@ class AboutSection extends StatelessWidget {
     );
   }
 
-  Widget _buildAboutAnimatedTitle(BuildContext context) {
+  Widget _buildAboutTitle(BuildContext context) {
     final isMobile = ResponsiveLayout.isMobile(context);
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    final prefixStyle = TextStyle(
-      fontSize: isMobile ? 21 : 26,
-      color: theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.9),
-      fontWeight: FontWeight.w600,
-      height: 1.2,
-    );
-    final animatedStyle = TextStyle(
-      fontSize: isMobile ? 21 : 26,
-      color: isDark ? Colors.white : Colors.black,
-      fontWeight: FontWeight.w800,
-      height: 1.2,
-    );
-
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 860),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: TypewriterText(
-            cursor: "|",
-            prefixText: AppStrings.aboutTitlePrefix,
-            phrases: AppStrings.aboutTypewriterPhrases,
-            style: animatedStyle,
-            prefixStyle: prefixStyle,
-            animatedStyle: animatedStyle,
-            expandToMaxWidth: false,
-            fixedAnimatedWidth: isMobile ? 210 : 300,
-            cursorColor: isDark ? Colors.white : Colors.black,
-            typingSpeed: const Duration(milliseconds: 70),
-            erasingSpeed: const Duration(milliseconds: 90),
-            pauseAfterTyping: const Duration(milliseconds: 900),
-            pauseAfterErasing: const Duration(milliseconds: 400),
+    return Text(
+      AppStrings.aboutTitle,
+      style: theme.textTheme.headlineSmall?.copyWith(
+            fontSize: isMobile ? 28 : 34,
+            color: theme.textTheme.bodyLarge?.color,
+            fontWeight: FontWeight.w800,
+          ) ??
+          TextStyle(
+            fontSize: isMobile ? 28 : 34,
+            color: theme.textTheme.bodyLarge?.color,
+            fontWeight: FontWeight.w800,
           ),
-        ),
-      ),
     );
   }
 

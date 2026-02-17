@@ -3,13 +3,8 @@ import 'package:flutter/material.dart';
 class TypewriterText extends StatefulWidget {
   final List<String> phrases;
   final String cursor;
-  final String prefixText;
   final TextStyle style;
-  final TextStyle? prefixStyle;
-  final TextStyle? animatedStyle;
-  final bool expandToMaxWidth;
   final Color cursorColor;
-  final double? fixedAnimatedWidth;
   final Duration typingSpeed;
   final Duration erasingSpeed;
   final Duration pauseAfterTyping;
@@ -18,13 +13,8 @@ class TypewriterText extends StatefulWidget {
   const TypewriterText({
     super.key,
     required this.phrases,
-    this.prefixText = '',
     required this.style,
-    this.prefixStyle,
-    this.animatedStyle,
-    this.expandToMaxWidth = true,
     required this.cursorColor,
-    this.fixedAnimatedWidth,
     this.typingSpeed = const Duration(milliseconds: 70),
     this.erasingSpeed = const Duration(milliseconds: 90),
     this.pauseAfterTyping = const Duration(milliseconds: 900),
@@ -91,51 +81,21 @@ class _TypewriterTextState extends State<TypewriterText> {
   Widget build(BuildContext context) {
     final current = widget.phrases[_phraseIndex];
     final text = current.substring(0, _charIndex);
-    final prefixStyle = widget.prefixStyle ?? widget.style;
-    final animatedStyle = widget.animatedStyle ?? widget.style;
-    final String cursor = widget.cursor;
-    final animatedContent = Row(
-      mainAxisSize: MainAxisSize.min,
+    return Row(
+      mainAxisSize: MainAxisSize.max,
       children: [
         Flexible(
           child: Text(
             text,
-            style: animatedStyle,
+            style: widget.style,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        Text(cursor, style: animatedStyle.copyWith(color: widget.cursorColor)),
-      ],
-    );
-
-    final animatedChild = widget.fixedAnimatedWidth != null
-        ? SizedBox(
-            width: widget.fixedAnimatedWidth,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: animatedContent,
-            ),
-          )
-        : animatedContent;
-
-    if (!widget.expandToMaxWidth) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (widget.prefixText.isNotEmpty)
-            Text(widget.prefixText, style: prefixStyle),
-          animatedChild,
-        ],
-      );
-    }
-
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        if (widget.prefixText.isNotEmpty)
-          Text(widget.prefixText, style: prefixStyle),
-        Flexible(child: animatedChild),
+        Text(
+          widget.cursor,
+          style: widget.style.copyWith(color: widget.cursorColor),
+        ),
       ],
     );
   }
