@@ -69,7 +69,8 @@ class AboutSection extends StatelessWidget {
     final theme = Theme.of(context);
     return Text(
       AppStrings.aboutTitle,
-      style: theme.textTheme.headlineSmall?.copyWith(
+      style:
+          theme.textTheme.headlineSmall?.copyWith(
             fontSize: isMobile ? 28 : 34,
             color: theme.textTheme.bodyLarge?.color,
             fontWeight: FontWeight.w800,

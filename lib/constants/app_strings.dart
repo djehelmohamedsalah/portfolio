@@ -35,8 +35,11 @@ class AppStrings {
 
   // About Section
   static const String aboutTitle = 'About Me';
+  static const String aboutSubTitle = 'A brief overview of my background, mindset, and approach to building structured, high-quality Flutter applications.';  
+
   static const String aboutDescription =
-      "focused on building clean, reliable, and scalable mobile applications. With over two years of hands-on experience, I work on real-world projects through a disciplined approach that combines learning, problem-solving, and practical execution.\n\n"
+      "Mohamed Salah is a Software Developper\n\n"
+      "focused on building clean, reliable, and scalable mobile applications. With over three years of hands-on experience, I work on real-world projects through a disciplined approach that combines learning, problem-solving, and practical execution.\n\n"
       "I turn ideas into well-structured applications from UI design to deployment, with a strong focus on clean code, efficient workflows, and continuous improvement.\n\n"
       "I thrive in collaborative and structured environments, value accountability and initiative, and am motivated to grow through mentorship and real responsibility—making me a strong fit for both Ausbildung programs and professional tech teams.\n";
   static const String resumeButton = 'Resume';
