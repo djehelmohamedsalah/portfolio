@@ -105,10 +105,7 @@ class _TypewriterTextState extends State<TypewriterText> {
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        Text(
-          cursor,
-          style: animatedStyle.copyWith(color: widget.cursorColor),
-        ),
+        Text(cursor, style: animatedStyle.copyWith(color: widget.cursorColor)),
       ],
     );
 
