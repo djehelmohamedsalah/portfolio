@@ -35,7 +35,8 @@ class AppStrings {
 
   // About Section
   static const String aboutTitle = 'About Me';
-  static const String aboutSubTitle = 'A brief overview of my background, mindset, and approach to building structured, high-quality Flutter applications.';  
+  static const String aboutSubTitle =
+      'A brief overview of my background, mindset, and approach to building structured, high-quality mobile applications.';
 
   static const String aboutDescription =
       "Mohamed Salah is a Software Developper\n\n"

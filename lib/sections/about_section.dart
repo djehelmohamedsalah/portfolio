@@ -16,10 +16,11 @@ class AboutSection extends StatelessWidget {
       key: sectionKey,
       color: theme.colorScheme.surface.withValues(alpha: 0.35),
       height: 600,
+      titleCentered: true,
       child: Column(
         children: [
           _buildAboutTitle(context),
-          const SizedBox(height: 28),
+          const SizedBox(height: 48),
           ResponsiveLayout(
             mobile: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,21 +66,29 @@ class AboutSection extends StatelessWidget {
   }
 
   Widget _buildAboutTitle(BuildContext context) {
-    final isMobile = ResponsiveLayout.isMobile(context);
     final theme = Theme.of(context);
-    return Text(
-      AppStrings.aboutTitle,
-      style:
-          theme.textTheme.headlineSmall?.copyWith(
-            fontSize: isMobile ? 28 : 34,
-            color: theme.textTheme.bodyLarge?.color,
-            fontWeight: FontWeight.w800,
-          ) ??
-          TextStyle(
-            fontSize: isMobile ? 28 : 34,
-            color: theme.textTheme.bodyLarge?.color,
-            fontWeight: FontWeight.w800,
+    return Column(
+      children: [
+        Text(
+          AppStrings.aboutTitle,
+          textAlign: TextAlign.center,
+          style: theme.textTheme.displayMedium?.copyWith(
+            color: theme.colorScheme.primary,
           ),
+        ),
+        const SizedBox(height: 16),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 860),
+          child: Text(
+            AppStrings.aboutSubTitle,
+            textAlign: TextAlign.center,
+            style: theme.textTheme.titleMedium?.copyWith(
+              height: 1.6,
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.85),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
