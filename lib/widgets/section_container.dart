@@ -8,7 +8,9 @@ class SectionContainer extends StatelessWidget {
   final double height;
   final bool titleCentered;
   final bool ishero;
+  final VoidCallback? toAbout;
   const SectionContainer({
+    this.toAbout,
     super.key,
     this.title,
     required this.child,
@@ -44,7 +46,16 @@ class SectionContainer extends StatelessWidget {
           const SizedBox(height: 40),
           child,
           ishero
-              ? Center(child: const _MouseScrollIndicator())
+              ? Center(
+                  child: InkWell(
+                    hoverColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: toAbout,
+                    child: const _MouseScrollIndicator(),
+                  ),
+                )
               : const SizedBox(),
         ],
       ),

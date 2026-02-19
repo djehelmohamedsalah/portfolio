@@ -8,18 +8,21 @@ class HeroSection extends StatelessWidget {
   final GlobalKey sectionKey;
   final VoidCallback onViewWork;
   final VoidCallback onHireMe;
+  final VoidCallback? toAbout;
 
   const HeroSection({
     super.key,
     required this.sectionKey,
     required this.onViewWork,
     required this.onHireMe,
+    this.toAbout,
   });
 
   @override
   Widget build(BuildContext context) {
     final bool isMobile = ResponsiveLayout.isMobile(context);
     return SectionContainer(
+      toAbout: toAbout,
       ishero: true,
       key: sectionKey,
       color: Colors.transparent,

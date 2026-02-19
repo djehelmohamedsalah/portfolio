@@ -104,6 +104,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
         child: Column(
           children: [
             HeroSection(
+              toAbout: () => _scrollToSection(_aboutKey),
               onHireMe: () => _scrollToSection(_contactKey),
               sectionKey: _homeKey,
               onViewWork: () => _scrollToSection(_projectsKey),

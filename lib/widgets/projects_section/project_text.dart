@@ -18,7 +18,7 @@ class ProjectText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'CASE STUDY',
+          'Overview',
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
             color: Colors.white.withValues(alpha: 0.7),
             fontSize: 12,
@@ -53,7 +53,7 @@ class ProjectText extends StatelessWidget {
         ),
         const SizedBox(height: 32),
         HoverOutlineButton(
-          label: 'View Case Study',
+          label: 'more details',
           onTap: () {
             Navigator.push(
               context,
