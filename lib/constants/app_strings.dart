@@ -1,8 +1,8 @@
 class AppStrings {
   AppStrings._();
 
-  static const String appTitle = 'Portfolio';
-  static const String portfolioTitle = 'My Portfolio';
+  static const String appTitle = 'MoSalahDev';
+  static const String portfolioTitle = 'MoSalahDev';
 
   // Navigation
   static const String navHome = 'Home';
@@ -53,7 +53,7 @@ class AppStrings {
       'A collection of real-world Flutter applications focused on clean architecture, performance, and user experience.';
 
   // Newsily app
-  static const String projectNewsilyTitle = 'Newsily App';
+  static const String projectNewsilyTitle = 'Newsily';
   static const String projectNewsilyOverview =
       'Newsily is a mobile application that aggregates news from multiple international newspapers and media sources through a news API, allowing users to stay informed without the need to visit several websites individually. The app is designed to provide a quick daily overview of important news while saving time and reducing information overload.\n\n'
       'Newsily is intended for users who regularly follow news but want a centralized, organized, and efficient way to access articles from different sources in one place.';
@@ -85,7 +85,7 @@ class AppStrings {
       'A direct APK download link is provided below in "Download & Link" section.';
 
   // Raqib app
-  static const String projectRaqibTitle = 'Raqib App';
+  static const String projectRaqibTitle = 'Raqib';
   static const String projectRaqibOverview =
       'Raqib is a mobile application designed to empower users to report trade violations directly to the Ministry of Trade.\n'
       'The application streamlines the reporting process, allowing users to submit detailed reports, track the progress of each report, and stay informed about official updates.\n'
@@ -120,7 +120,7 @@ class AppStrings {
       'APK download link included below in "Download & Link" section.';
 
   // QuranLife app
-  static const String projectQuranLifeTitle = 'QuranLife App';
+  static const String projectQuranLifeTitle = 'QuranLife';
   static const String projectQuranLifeOverview =
       'QuranLife is a comprehensive mobile application designed to support Muslims in practicing their religious duties easily and consistently, anywhere and at any time.\n'
       'The application combines multiple essential Islamic features into a single, well-structured platform, eliminating the need to rely on several separate apps.\n'

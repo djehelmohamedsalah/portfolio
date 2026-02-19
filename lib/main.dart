@@ -4,6 +4,7 @@ import 'sections/projects_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/contact_section.dart';
+import 'sections/development_line_section.dart';
 
 import 'constants/app_strings.dart';
 import 'theme/app_theme.dart';
@@ -111,6 +112,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
             ),
             AboutSection(sectionKey: _aboutKey),
             ProjectsSection(sectionKey: _projectsKey),
+            const DevelopmentLineSection(),
             SkillsSection(sectionKey: _skillsKey),
             ContactSection(sectionKey: _contactKey),
             const SizedBox(height: 50), // Footer padding
