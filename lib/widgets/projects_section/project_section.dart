@@ -15,7 +15,7 @@ class ProjectSection extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isMobile = ResponsiveLayout.isMobile(context);
     final minHeight = isMobile ? size.height * 0.75 : size.height * 0.92;
-    final verticalPadding = isMobile ? 56.0 : 96.0;
+    final verticalPadding = isMobile ? 26.0 : 56.0;
     final horizontalPadding = _horizontalPadding(size.width);
 
     return Container(
@@ -97,11 +97,11 @@ class _MobileCaseStudyLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         ProjectText(config: config),
         const SizedBox(height: 48),
-        Center(child: ProjectVisual(project: config.project)),
+        // Center(child: ProjectVisual(project: config.project)),
       ],
     );
   }

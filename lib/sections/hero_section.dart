@@ -20,33 +20,38 @@ class HeroSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isMobile = ResponsiveLayout.isMobile(context);
     return SectionContainer(
+      ishero: true,
       key: sectionKey,
       color: Colors.transparent,
       height: 620,
-      child: isMobile
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildIntro(context),
-                const SizedBox(height: 30),
-                _buildPhotoStack(context, isMobile: isMobile),
-              ],
-            )
-          : Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(flex: 3, child: _buildIntro(context)),
-                const SizedBox(width: 40),
-                Expanded(
-                  flex: 2,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: _buildPhotoStack(context, isMobile: isMobile),
-                  ),
+      child: Stack(
+        children: [
+          isMobile
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildIntro(context),
+                    const SizedBox(height: 30),
+                    _buildPhotoStack(context, isMobile: isMobile),
+                  ],
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(flex: 3, child: _buildIntro(context)),
+                    const SizedBox(width: 40),
+                    Expanded(
+                      flex: 2,
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: _buildPhotoStack(context, isMobile: isMobile),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+        ],
+      ),
     );
   }
 
