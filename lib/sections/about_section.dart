@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/section_container.dart';
+import '../widgets/section_header.dart';
 import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 
@@ -19,7 +20,10 @@ class AboutSection extends StatelessWidget {
       titleCentered: true,
       child: Column(
         children: [
-          _buildAboutTitle(context),
+          SectionHeader(
+            title: AppStrings.aboutTitle,
+            subtitle: AppStrings.aboutSubTitle,
+          ),
           const SizedBox(height: 48),
           ResponsiveLayout(
             mobile: Column(
@@ -62,33 +66,6 @@ class AboutSection extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildAboutTitle(BuildContext context) {
-    final theme = Theme.of(context);
-    return Column(
-      children: [
-        Text(
-          AppStrings.aboutTitle,
-          textAlign: TextAlign.center,
-          style: theme.textTheme.displayMedium?.copyWith(
-            color: theme.colorScheme.primary,
-          ),
-        ),
-        const SizedBox(height: 16),
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 860),
-          child: Text(
-            AppStrings.aboutSubTitle,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.titleMedium?.copyWith(
-              height: 1.6,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.85),
-            ),
-          ),
-        ),
-      ],
     );
   }
 

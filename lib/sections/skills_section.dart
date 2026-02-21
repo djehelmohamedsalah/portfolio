@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
+import '../widgets/section_header.dart';
 import '../widgets/skill_chip.dart';
 import '../constants/app_strings.dart';
 
@@ -12,12 +13,13 @@ class SkillsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       key: sectionKey,
-      title: AppStrings.skillsTitle,
       color: Theme.of(context).colorScheme.surface,
       height: 500,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SectionHeader(title: AppStrings.skillsTitle, centered: false),
+          const SizedBox(height: 40),
           Text(
             AppStrings.techStack,
             style: Theme.of(context).textTheme.headlineSmall,

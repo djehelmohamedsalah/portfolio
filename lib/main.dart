@@ -4,7 +4,7 @@ import 'sections/projects_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/contact_section.dart';
-import 'sections/development _process.dart';
+import 'sections/development_process.dart';
 
 import 'constants/app_strings.dart';
 import 'theme/app_theme.dart';
@@ -73,6 +73,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
   final GlobalKey _aboutKey = GlobalKey();
   final GlobalKey _skillsKey = GlobalKey();
   final GlobalKey _contactKey = GlobalKey();
+  final GlobalKey _developmentProcessKey = GlobalKey();
 
   // Function to scroll to a specific section
   void _scrollToSection(GlobalKey key) {
@@ -94,8 +95,9 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
     return Scaffold(
       appBar: FloatingTopAppBar(
         onHome: () => _scrollToSection(_homeKey),
-        onProjects: () => _scrollToSection(_projectsKey),
         onAbout: () => _scrollToSection(_aboutKey),
+        onProjects: () => _scrollToSection(_projectsKey),
+        onDevelopmentProcess: () => _scrollToSection(_developmentProcessKey),
         onSkills: () => _scrollToSection(_skillsKey),
         onContact: () => _scrollToSection(_contactKey),
         onThemeToggle: widget.onThemeToggle,
@@ -112,7 +114,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
             ),
             AboutSection(sectionKey: _aboutKey),
             ProjectsSection(sectionKey: _projectsKey),
-            const DevelopmentProcess(),
+            DevelopmentProcess(sectionKey: _developmentProcessKey),
             SkillsSection(sectionKey: _skillsKey),
             ContactSection(sectionKey: _contactKey),
             const SizedBox(height: 50), // Footer padding

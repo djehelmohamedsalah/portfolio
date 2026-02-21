@@ -10,6 +10,7 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onThemeToggle;
   final ValueChanged<String>? onLanguageSelected;
   final String currentLanguage;
+  final VoidCallback onDevelopmentProcess;
 
   const FloatingTopAppBar({
     super.key,
@@ -21,6 +22,7 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onThemeToggle,
     this.onLanguageSelected,
     this.currentLanguage = 'EN',
+    required this.onDevelopmentProcess,
   });
 
   @override
@@ -71,6 +73,10 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                             _NavButton(label: 'Home', onTap: onHome),
                             _NavButton(label: 'About', onTap: onAbout),
                             _NavButton(label: 'Projects', onTap: onProjects),
+                            _NavButton(
+                              label: 'Dev Process',
+                              onTap: onDevelopmentProcess,
+                            ),
                             _NavButton(label: 'Skills', onTap: onSkills),
                             _NavButton(label: 'Contact', onTap: onContact),
                           ],
@@ -97,6 +103,10 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                               child: Text('Projects'),
                             ),
                             PopupMenuItem(
+                              value: _NavAction.developmentProcess,
+                              child: Text('Dev Process'),
+                            ),
+                            PopupMenuItem(
                               value: _NavAction.skills,
                               child: Text('Skills'),
                             ),
@@ -115,6 +125,9 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                                 break;
                               case _NavAction.about:
                                 onAbout();
+                                break;
+                              case _NavAction.developmentProcess:
+                                onDevelopmentProcess();
                                 break;
                               case _NavAction.skills:
                                 onSkills();
@@ -374,4 +387,4 @@ class _CompactNavChip extends StatelessWidget {
   }
 }
 
-enum _NavAction { home, projects, about, skills, contact }
+enum _NavAction { home, projects, about, skills, contact, developmentProcess }

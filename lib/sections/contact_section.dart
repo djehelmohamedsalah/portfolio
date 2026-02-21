@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
+import '../widgets/section_header.dart';
 import '../constants/app_strings.dart';
 
 class ContactSection extends StatelessWidget {
@@ -11,13 +12,14 @@ class ContactSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       key: sectionKey,
-      title: AppStrings.contactTitle,
       color: Colors.transparent,
       height: 400,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SectionHeader(title: AppStrings.contactTitle),
+            const SizedBox(height: 40),
             Text(
               AppStrings.interestedInWorking,
               style: TextStyle(
