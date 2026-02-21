@@ -23,8 +23,8 @@ class AppStrings {
   static const String hookText =
       'I build real-world applications with clean architecture, strong logic, and a focus on performance.';
 
-  // Development Process Section
-  static const String developmentProcessTitle = 'Development Process';
+  // DevelopmentProcess Section
+  static const String developmentProcessTitle = 'DevelopmentProcess';
   static const String developmentProcessDescription =
       '**Building apps** that don\'t just work but deliver **exceptional experiences** is at the heart of my work as a **Flutter Developer**. I focus on **clean, scalable code**, transforming **complex designs** into **seamless, high-performance interfaces**. By **optimizing state management and resources**, I create **integrated apps** that run **efficiently across platforms**, ensuring **responsiveness, stability, and measurable technical impact**.';
 

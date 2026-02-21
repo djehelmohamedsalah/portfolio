@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 
-class DevelopmentLineSection extends StatelessWidget {
-  const DevelopmentLineSection({super.key});
+class DevelopmentProcess extends StatelessWidget {
+  const DevelopmentProcess({super.key});
 
   @override
   Widget build(BuildContext context) {
