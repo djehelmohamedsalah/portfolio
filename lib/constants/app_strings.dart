@@ -31,15 +31,57 @@ class AppStrings {
       '**Building apps** that don\'t just work but deliver **exceptional experiences** is at the heart of my work as a **Flutter Developer**. I focus on **clean, scalable code**, transforming **complex designs** into **seamless, high-performance interfaces**. By **optimizing state management and resources**, I create **integrated apps** that run **efficiently across platforms**, ensuring **responsiveness, stability, and measurable technical impact**.';
 
   // Skills Section
-  static const String skillsTitle = 'Skills';
-  static const String techStack = 'Tech Stack';
-  static const String skillFlutter = 'Flutter';
-  static const String skillDart = 'Dart';
-  static const String skillFirebase = 'Firebase';
-  static const String skillRestApi = 'Rest API';
-  static const String skillUiUx = 'UI/UX Design';
-  static const String skillGit = 'Git & GitHub';
-  static const String skillStateManagement = 'State Management';
+  static const String skillsTitle = 'Skillset';
+  static const String skillsSubtitle =
+      'A comprehensive overview of my technical expertise and professional workflow.';
+  // Skills Categories
+  static const String categoryMobileDev = 'MOBILE DEVELOPMENT';
+  static const String categoryStateManagement = 'STATE MANAGEMENT';
+  static const String categoryBackendIntegration = 'BACKEND INTEGRATION';
+  static const String categoryVersionControl = 'VERSION CONTROL & WORKFLOW';
+  static const String categoryUiPerformance = 'UI, STYLING & PERFORMANCE';
+
+  // Skills - Mobile Development
+  static const String skillFlutterDart =
+      'Cross-Platform Development (Flutter/Dart)';
+  static const String skillCleanArchitecture =
+      'Clean Architecture & SOLID Principles';
+  static const String skillModularArchitecture = 'Modular App Architecture';
+  static const String skillResponsiveLayouts = 'Responsive & Adaptive Layouts';
+  static const String skillNativeChannels = 'Native Platform Channels';
+
+  // Skills - State Management
+  static const String skillBlocPattern = 'BLoC Pattern & State Machine';
+  static const String skillGetX = 'GetX Ecosystem & Dependency Injection';
+  static const String skillReactiveProgramming =
+      'Reactive Programming (Streams/RxDart)';
+  static const String skillPersistentState = 'Persistent State Management';
+  static const String skillStateScoping = 'Global & Local State Scoping';
+
+  // Skills - Backend Integration
+  static const String skillSupabase = 'Supabase Backend-as-a-Service';
+  static const String skillRestApiIntegration =
+      'RESTful API & Service Integration';
+  static const String skillAuthLogic = 'Authentication & Authorization Logic';
+  static const String skillRealtimeSync = 'Real-time Database Synchronization';
+  static const String skillSecurePersistence = 'Secure Data Persistence';
+
+  // Skills - Version Control & Workflow
+  static const String skillGitWorkflow = 'Professional Git/GitHub Workflow';
+  static const String skillCodeReview = 'Code Review & Testing Standards';
+  static const String skillFeatureBranching = 'Feature Branching & Versioning';
+  static const String skillCicdIntegration = 'CI/CD Pipeline Integration';
+  static const String skillAgileWorkflow = 'Agile Development Workflow';
+
+  // Skills - UI, Styling & Performance
+  static const String skillPixelPerfect = 'Pixel-Perfect UI Implementation';
+  static const String skillAnimations =
+      'Custom Animations & Micro-interactions';
+  static const String skillPerformanceProfiling =
+      'Performance Profiling & Optimization';
+  static const String skillAssetOptimization =
+      'Asset Management & Optimization';
+  static const String skillWidgetLifecycle = 'Widget Lifecycle Management';
 
   // About Section
   static const String aboutTitle = 'About Me';
