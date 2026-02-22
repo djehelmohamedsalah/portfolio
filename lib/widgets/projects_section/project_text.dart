@@ -17,16 +17,16 @@ class ProjectText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Overview',
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            color: Colors.white.withValues(alpha: 0.7),
-            fontSize: 12,
-            letterSpacing: 2,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 24),
+        // Text(
+        //   'Overview',
+        //   style: Theme.of(context).textTheme.labelSmall?.copyWith(
+        //     color: Colors.white.withValues(alpha: 0.7),
+        //     fontSize: 12,
+        //     letterSpacing: 2,
+        //     fontWeight: FontWeight.w500,
+        //   ),
+        // ),
+        // const SizedBox(height: 24),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 600),
           child: Text(
@@ -38,6 +38,13 @@ class ProjectText extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
+        ),
+        const SizedBox(height: 6),
+        const Divider(
+          color: Colors.white,
+          thickness: 1,
+          indent: 0,
+          endIndent: 200,
         ),
         const SizedBox(height: 24),
         ConstrainedBox(
