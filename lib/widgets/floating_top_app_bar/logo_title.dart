@@ -32,14 +32,14 @@ class LogoTitle extends StatelessWidget {
             Text(
               AppStrings.schortname,
               style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.bold,
                 letterSpacing: 0.3,
               ),
             ),
             Text(
               AppStrings.schortname2,
               style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.bold,
                 letterSpacing: 0.3,
                 color: theme.colorScheme.secondary,
               ),

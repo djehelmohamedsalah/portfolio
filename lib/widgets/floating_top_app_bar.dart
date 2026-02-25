@@ -62,7 +62,6 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: LayoutBuilder(
             builder: (context, constraints) {
               final isCompact = constraints.maxWidth < 760;
-
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
