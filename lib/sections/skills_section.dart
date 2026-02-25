@@ -21,7 +21,7 @@ class SkillsSection extends StatelessWidget {
           const SectionHeader(
             title: AppStrings.skillsTitle,
             subtitle: AppStrings.skillsSubtitle,
-            centered: false,
+            centered: true,
           ),
           const SizedBox(height: 60),
           LayoutBuilder(
