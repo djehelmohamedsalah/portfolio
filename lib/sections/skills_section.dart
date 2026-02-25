@@ -15,13 +15,12 @@ class SkillsSection extends StatelessWidget {
       key: sectionKey,
       color: Theme.of(context).colorScheme.surface,
       height: 700,
+      titleCentered: true,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SectionHeader(
             title: AppStrings.skillsTitle,
             subtitle: AppStrings.skillsSubtitle,
-            centered: true,
           ),
           const SizedBox(height: 60),
           LayoutBuilder(

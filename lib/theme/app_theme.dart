@@ -20,6 +20,7 @@ class AppTheme {
       onSurface: AppColors.textPrimaryLight,
       onError: Colors.white,
     ),
+    
     textTheme: const TextTheme(
       displayLarge: TextStyle(
         fontSize: 48,

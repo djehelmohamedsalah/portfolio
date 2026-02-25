@@ -23,13 +23,7 @@ class SectionHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: alignment,
       children: [
-        Text(
-          title,
-          textAlign: textAlign,
-          style: theme.textTheme.displayMedium?.copyWith(
-            color: theme.colorScheme.primary,
-          ),
-        ),
+        Text(title, textAlign: textAlign, style: theme.textTheme.displayMedium),
         if (subtitle != null) ...[
           const SizedBox(height: 16),
           ConstrainedBox(
