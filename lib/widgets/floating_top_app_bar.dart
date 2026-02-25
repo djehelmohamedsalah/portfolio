@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'floating_top_app_bar/header_actions.dart';
 import 'floating_top_app_bar/logo_title.dart';
 import 'floating_top_app_bar/nav_button.dart';
-import 'floating_top_app_bar/social_button.dart';
 import 'floating_top_app_bar/compact_nav_chip.dart';
 import 'floating_top_app_bar/nav_action.dart';
 
@@ -152,27 +151,6 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onLanguageSelected: onLanguageSelected,
                     currentLanguage: currentLanguage,
                   ),
-                  if (!isCompact) ...[
-                    const SizedBox(width: 10),
-                    Container(
-                      width: 1,
-                      height: 24,
-                      color: colorScheme.outlineVariant.withValues(alpha: 0.6),
-                    ),
-                    const SizedBox(width: 10),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        SocialButton(label: 'Facebook', icon: Icons.facebook),
-                        SocialButton(
-                          label: 'Instagram',
-                          icon: Icons.camera_alt_outlined,
-                        ),
-                        SocialButton(label: 'LinkedIn', icon: Icons.link),
-                        SocialButton(label: 'GitHub', icon: Icons.code),
-                      ],
-                    ),
-                  ],
                 ],
               );
             },
