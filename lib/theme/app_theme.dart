@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 
 class AppTheme {
@@ -6,7 +7,7 @@ class AppTheme {
 
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    fontFamily: 'Roboto', // Or standard
+    fontFamily: GoogleFonts.montserrat().fontFamily,
     primaryColor: AppColors.primaryLight,
     scaffoldBackgroundColor: AppColors.backgroundLight,
     cardColor: AppColors.surfaceLight,
@@ -20,7 +21,7 @@ class AppTheme {
       onSurface: AppColors.textPrimaryLight,
       onError: Colors.white,
     ),
-    
+
     textTheme: const TextTheme(
       displayLarge: TextStyle(
         fontSize: 48,
@@ -39,7 +40,7 @@ class AppTheme {
 
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    fontFamily: 'Roboto',
+    fontFamily: GoogleFonts.montserrat().fontFamily,
     primaryColor: AppColors.primaryDark,
     scaffoldBackgroundColor: AppColors.backgroundDark,
     cardColor: AppColors.surfaceDark,
