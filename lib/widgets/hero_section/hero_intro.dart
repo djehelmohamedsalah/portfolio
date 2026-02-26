@@ -78,7 +78,6 @@ class HeroIntro extends StatelessWidget {
               GradientTitle(
                 text: AppStrings.homeTitleFirstPart,
                 fontSize: titleSize,
-                
               ),
               GradientTitle(
                 text: AppStrings.homeTitleSecondPart,
