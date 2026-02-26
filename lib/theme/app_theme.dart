@@ -35,6 +35,7 @@ class AppTheme {
       ),
       bodyLarge: TextStyle(fontSize: 18, color: AppColors.textSecondaryLight),
       bodyMedium: TextStyle(fontSize: 16, color: AppColors.textSecondaryLight),
+      bodySmall: TextStyle(fontSize: 12, color: AppColors.textSecondaryLight),
     ),
   );
 

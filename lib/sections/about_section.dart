@@ -27,13 +27,15 @@ class AboutSection extends StatelessWidget {
           const SizedBox(height: 48),
           ResponsiveLayout(
             mobile: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   AppStrings.aboutDescription.trim(),
                   style: Theme.of(
                     context,
-                  ).textTheme.bodyLarge?.copyWith(height: 1.8),
+                  ).textTheme.bodyMedium?.copyWith(height: 1.8),
+                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 26),
                 _buildAboutActions(context),
@@ -54,7 +56,7 @@ class AboutSection extends StatelessWidget {
                         AppStrings.aboutDescription.trim(),
                         style: Theme.of(
                           context,
-                        ).textTheme.bodyLarge?.copyWith(height: 1.8),
+                        ).textTheme.bodyMedium?.copyWith(height: 1.8),
                       ),
                       const SizedBox(height: 26),
                       _buildAboutActions(context),
