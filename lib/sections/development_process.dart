@@ -16,6 +16,7 @@ class DevelopmentProcess extends StatelessWidget {
 
     final descriptionStyle = theme.textTheme.bodyLarge?.copyWith(
       height: 1.8,
+      fontWeight: FontWeight.w600,
       fontSize: isMobile ? 16 : 18,
       color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
     );

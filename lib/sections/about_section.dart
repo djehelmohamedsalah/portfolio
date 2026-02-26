@@ -54,9 +54,10 @@ class AboutSection extends StatelessWidget {
                     children: [
                       Text(
                         AppStrings.aboutDescription.trim(),
-                        style: Theme.of(
-                          context,
-                        ).textTheme.bodyMedium?.copyWith(height: 1.8),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          height: 1.8,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       const SizedBox(height: 26),
                       _buildAboutActions(context),

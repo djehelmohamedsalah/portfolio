@@ -45,6 +45,7 @@ class ProjectText extends StatelessWidget {
               color: Colors.white.withValues(alpha: 0.85),
               fontSize: bodySize,
               height: 1.65,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),

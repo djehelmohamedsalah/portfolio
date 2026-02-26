@@ -33,6 +33,7 @@ class SectionHeader extends StatelessWidget {
               textAlign: textAlign,
               style: theme.textTheme.titleMedium?.copyWith(
                 height: 1.6,
+                fontWeight: FontWeight.w500,
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.85),
               ),
             ),

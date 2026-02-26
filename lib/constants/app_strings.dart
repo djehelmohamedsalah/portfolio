@@ -137,9 +137,9 @@ class AppStrings {
   // Raqib app
   static const String projectRaqibTitle = 'Raqib';
   static const String projectRaqibOverview =
-      'Raqib is a mobile application designed to empower users to report trade violations directly to the Ministry of Trade.\n'
-      'The application streamlines the reporting process, allowing users to submit detailed reports, track the progress of each report, and stay informed about official updates.\n'
-      'The main goal is to provide a transparent, efficient, and user-friendly reporting system, making it easier for citizens to participate in regulatory compliance.\n';
+      'Raqib is a mobile application designed to empower users to report trade violations directly to the Ministry of Trade.\n\n'
+      'The application streamlines the reporting process, allowing users to submit detailed reports, track the progress of each report, and stay informed about official updates.\n\n'
+      'The main goal is to provide a transparent, efficient, and user-friendly reporting system, making it easier for citizens to participate in regulatory compliance.';
   static const String projectRaqibCoreFeatures =
       '- User Authentication: Secure sign-in options including email/password, Google, and anonymous access.\n'
       '- Report Submission:\n'
@@ -172,8 +172,8 @@ class AppStrings {
   // QuranLife app
   static const String projectQuranLifeTitle = 'QuranLife';
   static const String projectQuranLifeOverview =
-      'QuranLife is a comprehensive mobile application designed to support Muslims in practicing their religious duties easily and consistently, anywhere and at any time.\n'
-      'The application combines multiple essential Islamic features into a single, well-structured platform, eliminating the need to rely on several separate apps.\n'
+      'QuranLife is a comprehensive mobile application designed to support Muslims in practicing their religious duties easily and consistently, anywhere and at any time.\n\n'
+      'The application combines multiple essential Islamic features into a single, well-structured platform, eliminating the need to rely on several separate apps.\n\n'
       'The focus of the project is practicality, performance, and usability in both online and offline scenarios.';
   static const String projectQuranLifeCoreFeatures =
       '- Holy Quran: Reading and listening with offline support.\n'
