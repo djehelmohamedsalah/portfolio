@@ -20,7 +20,7 @@ class SkillsSection extends StatelessWidget {
         children: [
           const SectionHeader(
             title: AppStrings.skillsTitle,
-            subtitle: null, // Removed subtitle for maximum minimalism
+            subtitle: AppStrings.skillsSubtitle,
           ),
           const SizedBox(height: 100),
           LayoutBuilder(

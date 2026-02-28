@@ -77,8 +77,6 @@ class AboutSection extends StatelessWidget {
     final theme = Theme.of(context);
     final double buttonTextSize = isMobile ? 15 : 16;
     final ButtonStyle ctaButtonStyle = ElevatedButton.styleFrom(
-      backgroundColor: theme.colorScheme.primary,
-      foregroundColor: theme.colorScheme.onPrimary,
       padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
       minimumSize: const Size(180, 56),
       elevation: 0,
@@ -100,7 +98,15 @@ class AboutSection extends StatelessWidget {
           height: 56,
           child: ElevatedButton(
             onPressed: () => _openExternalLink(context, AppStrings.resumeUrl),
-            style: ctaButtonStyle,
+            style: ctaButtonStyle.copyWith(
+              backgroundColor: WidgetStateProperty.all(
+                theme.colorScheme.primary,
+              ),
+              foregroundColor: WidgetStateProperty.all(
+                theme.colorScheme.onPrimary,
+              ),
+            ),
+
             child: const Text(AppStrings.resumeButton),
           ),
         ),
@@ -109,7 +115,15 @@ class AboutSection extends StatelessWidget {
           height: 56,
           child: ElevatedButton(
             onPressed: () => _openExternalLink(context, AppStrings.linkedInUrl),
-            style: ctaButtonStyle,
+            style: ctaButtonStyle.copyWith(
+              backgroundColor: WidgetStateProperty.all(Colors.transparent),
+              foregroundColor: WidgetStateProperty.all(
+                theme.colorScheme.primary,
+              ),
+              side: WidgetStateProperty.all(
+                BorderSide(color: theme.colorScheme.primary),
+              ),
+            ),
             child: const Text(AppStrings.linkedInButton),
           ),
         ),
