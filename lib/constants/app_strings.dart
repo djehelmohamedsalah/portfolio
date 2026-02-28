@@ -38,50 +38,47 @@ class AppStrings {
   static const String categoryMobileDev = 'MOBILE DEVELOPMENT';
   static const String categoryStateManagement = 'STATE MANAGEMENT';
   static const String categoryBackendIntegration = 'BACKEND INTEGRATION';
-  static const String categoryVersionControl = 'VERSION CONTROL & WORKFLOW';
-  static const String categoryUiPerformance = 'UI, STYLING & PERFORMANCE';
+  static const String categoryUiPerformance = 'UI & PERFORMANCE';
 
   // Skills - Mobile Development
-  static const String skillFlutterDart =
-      'Cross-Platform Development (Flutter/Dart)';
-  static const String skillCleanArchitecture =
-      'Clean Architecture & SOLID Principles';
-  static const String skillModularArchitecture = 'Modular App Architecture';
-  static const String skillResponsiveLayouts = 'Responsive & Adaptive Layouts';
-  static const String skillNativeChannels = 'Native Platform Channels';
+  static const List<String> skillsMobileDev = [
+    'Flutter SDK & Dart Ecosystem',
+    'Clean Architecture (SOLID)',
+    'Advanced Git Workflows',
+    'Modular Implementation',
+    'CI/CD & App Distribution',
+    'Production Scaling',
+  ];
 
   // Skills - State Management
-  static const String skillBlocPattern = 'BLoC Pattern & State Machine';
-  static const String skillGetX = 'GetX Ecosystem & Dependency Injection';
-  static const String skillReactiveProgramming =
-      'Reactive Programming (Streams/RxDart)';
-  static const String skillPersistentState = 'Persistent State Management';
-  static const String skillStateScoping = 'Global & Local State Scoping';
+  static const List<String> skillsStateManagement = [
+    'BLoC / Cubit Architecture',
+    'GetX Reactive Management',
+    'Dependency Injection Patterns',
+    'Event-Driven Logic Flow',
+    'Persistent State Handling',
+    'Complex State Machines',
+  ];
 
   // Skills - Backend Integration
-  static const String skillSupabase = 'Supabase Backend-as-a-Service';
-  static const String skillRestApiIntegration =
-      'RESTful API & Service Integration';
-  static const String skillAuthLogic = 'Authentication & Authorization Logic';
-  static const String skillRealtimeSync = 'Real-time Database Synchronization';
-  static const String skillSecurePersistence = 'Secure Data Persistence';
+  static const List<String> skillsBackendIntegration = [
+    'Supabase & PostgreSQL',
+    'RESTful API Engineering',
+    'Multi-factor Auth Systems',
+    'Real-time Data Syncing',
+    'Secure Client Persistence',
+    'Edge Case & Error Logic',
+  ];
 
-  // Skills - Version Control & Workflow
-  static const String skillGitWorkflow = 'Professional Git/GitHub Workflow';
-  static const String skillCodeReview = 'Code Review & Testing Standards';
-  static const String skillFeatureBranching = 'Feature Branching & Versioning';
-  static const String skillCicdIntegration = 'CI/CD Pipeline Integration';
-  static const String skillAgileWorkflow = 'Agile Development Workflow';
-
-  // Skills - UI, Styling & Performance
-  static const String skillPixelPerfect = 'Pixel-Perfect UI Implementation';
-  static const String skillAnimations =
-      'Custom Animations & Micro-interactions';
-  static const String skillPerformanceProfiling =
-      'Performance Profiling & Optimization';
-  static const String skillAssetOptimization =
-      'Asset Management & Optimization';
-  static const String skillWidgetLifecycle = 'Widget Lifecycle Management';
+  // Skills - UI & Performance
+  static const List<String> skillsUiPerformance = [
+    'Performance Benchmarking',
+    'Memory & Resource Profiling',
+    'Custom Animation Engineering',
+    'Responsive Design Systems',
+    'Theming & Visual Standards',
+    'Rendering Optimization',
+  ];
 
   // About Section
   static const String aboutTitle = 'About Me';
