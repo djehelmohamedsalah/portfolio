@@ -5,6 +5,7 @@ import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/contact_section.dart';
 import 'sections/development_process.dart';
+import 'sections/toolbox_section.dart';
 
 import 'constants/app_strings.dart';
 import 'theme/app_theme.dart';
@@ -22,7 +23,7 @@ class MyPortfolioApp extends StatefulWidget {
 }
 
 class _MyPortfolioAppState extends State<MyPortfolioApp> {
-  ThemeMode _themeMode = ThemeMode.system;
+  ThemeMode _themeMode = ThemeMode.light;
 
   void _toggleTheme() {
     setState(() {
@@ -72,6 +73,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
   final GlobalKey _projectsKey = GlobalKey();
   final GlobalKey _aboutKey = GlobalKey();
   final GlobalKey _skillsKey = GlobalKey();
+  final GlobalKey _toolboxKey = GlobalKey();
   final GlobalKey _contactKey = GlobalKey();
   final GlobalKey _developmentProcessKey = GlobalKey();
 
@@ -99,6 +101,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
         onProjects: () => _scrollToSection(_projectsKey),
         onDevelopmentProcess: () => _scrollToSection(_developmentProcessKey),
         onSkills: () => _scrollToSection(_skillsKey),
+        onToolbox: () => _scrollToSection(_toolboxKey),
         onContact: () => _scrollToSection(_contactKey),
         onThemeToggle: widget.onThemeToggle,
       ),
@@ -116,6 +119,7 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
             ProjectsSection(sectionKey: _projectsKey),
             DevelopmentProcess(sectionKey: _developmentProcessKey),
             SkillsSection(sectionKey: _skillsKey),
+            ToolboxSection(sectionKey: _toolboxKey),
             ContactSection(sectionKey: _contactKey),
             const SizedBox(height: 50), // Footer padding
           ],

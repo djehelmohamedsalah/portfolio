@@ -1,59 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../widgets/section_container.dart';
-import '../widgets/section_header.dart';
-
 class ToolboxSection extends StatelessWidget {
   final GlobalKey sectionKey;
 
   const ToolboxSection({super.key, required this.sectionKey});
 
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return SectionContainer(
-      key: sectionKey,
-      color: theme.colorScheme.surface,
-      height: 420,
-      titleCentered: true,
-      child: Column(
-        children: const [
-          SectionHeader(
-            title: 'Toolbox',
-            subtitle:
-                'Practical tools I rely on daily for building, debugging, and delivering polished apps.',
-          ),
-          SizedBox(height: 48),
-          _ToolsGrid(),
-        ],
-      ),
-    );
-  }
-}
-
-class _ToolsGrid extends StatelessWidget {
-  const _ToolsGrid();
-
-  static const double _logoHeight = 48;
-  static const double _spacing = 28;
-
   static const List<_ToolAsset> _tools = [
     _ToolAsset('Flutter', 'lib/assets/photos/tools_icons/flutter.svg'),
     _ToolAsset('Dart', 'lib/assets/photos/tools_icons/dart.svg'),
     _ToolAsset('GitHub', 'lib/assets/photos/tools_icons/github.svg'),
-    _ToolAsset('Git', 'lib/assets/photos/tools_icons/git.svg'),
+    // _ToolAsset('Git', 'lib/assets/photos/tools_icons/git.svg'),
     _ToolAsset('Supabase', 'lib/assets/photos/tools_icons/supabase.svg'),
     _ToolAsset('VS Code', 'lib/assets/photos/tools_icons/vscode.svg'),
     _ToolAsset(
       'Android Studio',
-      'lib/assets/photos/tools_icons/android_studio.png',
-      isSvg: false,
+      'lib/assets/photos/tools_icons/android_studio.svg',
     ),
     _ToolAsset('Figma', 'lib/assets/photos/tools_icons/figma.svg'),
     _ToolAsset('Postman', 'lib/assets/photos/tools_icons/postman.svg'),
-    _ToolAsset('Bloc', 'lib/assets/photos/tools_icons/bloc.svg'),
+    _ToolAsset('Bloc', 'lib/assets/photos/tools_icons/bloc.png', isSvg: false),
     _ToolAsset('GetX', 'lib/assets/photos/tools_icons/getx.png', isSvg: false),
   ];
 
@@ -66,40 +32,70 @@ class _ToolsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final crossAxisCount = _crossAxisCount(constraints.maxWidth);
+    final theme = Theme.of(context);
 
-        return GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: _tools.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: crossAxisCount,
-            crossAxisSpacing: _spacing,
-            mainAxisSpacing: _spacing,
-            childAspectRatio: 1.6,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1100),
+          child: KeyedSubtree(
+            key: sectionKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Toolbox',
+                  style: theme.textTheme.displayMedium?.copyWith(
+                    color: theme.colorScheme.primary,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  'Essential tools I use daily to design, build, and ship robust Flutter experiences.',
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.75),
+                    height: 1.6,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 48),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final count = _crossAxisCount(constraints.maxWidth);
+                    final spacing = 28.0;
+                    final itemWidth =
+                        (constraints.maxWidth - spacing * (count - 1)) / count;
+
+                    return Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: spacing,
+                      runSpacing: spacing,
+                      children: _tools
+                          .map(
+                            (tool) => SizedBox(
+                              width: itemWidth,
+                              child: Center(child: _ToolLogo(asset: tool)),
+                            ),
+                          )
+                          .toList(),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
-          itemBuilder: (context, index) {
-            return _ToolLogo(
-              asset: _tools[index],
-              height: _logoHeight,
-            );
-          },
-        );
-      },
+        ),
+      ),
     );
   }
 }
 
 class _ToolLogo extends StatefulWidget {
   final _ToolAsset asset;
-  final double height;
 
-  const _ToolLogo({
-    required this.asset,
-    required this.height,
-  });
+  const _ToolLogo({required this.asset});
 
   @override
   State<_ToolLogo> createState() => _ToolLogoState();
@@ -113,12 +109,14 @@ class _ToolLogoState extends State<_ToolLogo> {
     final child = widget.asset.isSvg
         ? SvgPicture.asset(
             widget.asset.path,
-            height: widget.height,
+            height: 100,
+            width: 100,
             fit: BoxFit.contain,
           )
         : Image.asset(
             widget.asset.path,
-            height: widget.height,
+            height: 100,
+            width: 100,
             fit: BoxFit.contain,
           );
 
@@ -129,7 +127,7 @@ class _ToolLogoState extends State<_ToolLogo> {
         scale: _hovered ? 1.05 : 1.0,
         duration: const Duration(milliseconds: 160),
         curve: Curves.easeOut,
-        child: Center(child: child),
+        child: child,
       ),
     );
   }
