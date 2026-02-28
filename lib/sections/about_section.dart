@@ -81,7 +81,7 @@ class AboutSection extends StatelessWidget {
       minimumSize: const Size(180, 56),
       elevation: 0,
       shadowColor: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       textStyle: TextStyle(
         fontSize: buttonTextSize,
         fontWeight: FontWeight.w700,
