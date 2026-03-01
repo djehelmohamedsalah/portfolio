@@ -10,7 +10,6 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onProjects;
   final VoidCallback onAbout;
   final VoidCallback onSkills;
-  final VoidCallback onToolbox;
   final VoidCallback onContact;
   final VoidCallback onThemeToggle;
   final ValueChanged<String>? onLanguageSelected;
@@ -23,7 +22,6 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onProjects,
     required this.onAbout,
     required this.onSkills,
-    required this.onToolbox,
     required this.onContact,
     required this.onThemeToggle,
     this.onLanguageSelected,
@@ -83,7 +81,6 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                               onTap: onDevelopmentProcess,
                             ),
                             NavButton(label: 'Skills', onTap: onSkills),
-                            NavButton(label: 'Toolbox', onTap: onToolbox),
                             NavButton(label: 'Contact', onTap: onContact),
                           ],
                         ),
@@ -117,10 +114,6 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                               child: Text('Skills'),
                             ),
                             PopupMenuItem(
-                              value: NavAction.toolbox,
-                              child: Text('Toolbox'),
-                            ),
-                            PopupMenuItem(
                               value: NavAction.contact,
                               child: Text('Contact'),
                             ),
@@ -141,9 +134,6 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                               break;
                             case NavAction.skills:
                               onSkills();
-                              break;
-                            case NavAction.toolbox:
-                              onToolbox();
                               break;
                             case NavAction.contact:
                               onContact();

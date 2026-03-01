@@ -1,9 +1,1 @@
-enum NavAction {
-  home,
-  projects,
-  about,
-  skills,
-  toolbox,
-  contact,
-  developmentProcess
-}
+enum NavAction { home, projects, about, skills, contact, developmentProcess }

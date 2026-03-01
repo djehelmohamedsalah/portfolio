@@ -5,9 +5,8 @@ import 'package:mo_salah_dev/widgets/section_container.dart';
 import 'package:mo_salah_dev/widgets/section_header.dart';
 
 class ToolboxSection extends StatelessWidget {
-  final GlobalKey sectionKey;
 
-  const ToolboxSection({super.key, required this.sectionKey});
+  const ToolboxSection({super.key,});
 
   static const List<_ToolAsset> _tools = [
     _ToolAsset(
@@ -47,10 +46,9 @@ class ToolboxSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final theme = Theme.of(context);
 
     return SectionContainer(
-      key: sectionKey,
+      // key: sectionKey,
       color: Theme.of(context).colorScheme.surface,
       height: 500,
       titleCentered: true,
@@ -76,8 +74,11 @@ class ToolboxSection extends StatelessWidget {
                     .map(
                       (tool) => SizedBox(
                         width: itemWidth,
-                        child: Center(
-                          child: _ToolLogo(asset: tool, height: 58),
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 40.0),
+                          child: Center(
+                            child: _ToolLogo(asset: tool, height: 58),
+                          ),
                         ),
                       ),
                     )
@@ -104,14 +105,18 @@ class _ToolLogo extends StatefulWidget {
 class _ToolLogoState extends State<_ToolLogo> {
   bool _hovered = false;
 
+
   @override
   Widget build(BuildContext context) {
     final child = widget.asset.isSvg
         ? SvgPicture.asset(
             widget.asset.path,
-            colorFilter: ColorFilter.mode(Colors.black, BlendMode.dst),
             height: widget.height,
             fit: BoxFit.contain,
+            colorFilter: ColorFilter.mode(
+                  theme.colorScheme.onSurface,
+                  BlendMode.srcIn,
+                ),
           )
         : Image.asset(
             widget.asset.path,
