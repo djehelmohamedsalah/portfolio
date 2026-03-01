@@ -28,6 +28,7 @@ class ToolboxSection extends StatelessWidget {
     ),
     _ToolAsset('Google Cloud', 'lib/assets/photos/tools_icons/googlecloud.svg'),
     _ToolAsset('Google Fonts', 'lib/assets/photos/tools_icons/googlefonts.svg'),
+    _ToolAsset('Gemini', 'lib/assets/photos/tools_icons/googlegemini.svg'),
     _ToolAsset('Maps', 'lib/assets/photos/tools_icons/googlemaps.svg'),
     _ToolAsset('Postman', 'lib/assets/photos/tools_icons/postman.svg'),
     _ToolAsset('Python', 'lib/assets/photos/tools_icons/python.svg'),
