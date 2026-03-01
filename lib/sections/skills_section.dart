@@ -14,7 +14,7 @@ class SkillsSection extends StatelessWidget {
     return SectionContainer(
       key: sectionKey,
       color: Theme.of(context).colorScheme.surface,
-      height: 600,
+      height: 500,
       titleCentered: true,
       child: Column(
         children: [
