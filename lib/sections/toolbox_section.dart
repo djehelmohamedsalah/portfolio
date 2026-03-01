@@ -7,7 +7,6 @@ class ToolboxSection extends StatelessWidget {
   const ToolboxSection({super.key, required this.sectionKey});
 
   static const List<_ToolAsset> _tools = [
-    _ToolAsset('Android', 'lib/assets/photos/tools_icons/android.svg'),
     _ToolAsset(
       'Android Studio',
       'lib/assets/photos/tools_icons/androidstudio.svg',
