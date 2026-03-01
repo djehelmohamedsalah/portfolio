@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:mo_salah_dev/widgets/section_container.dart';
+import 'package:mo_salah_dev/widgets/section_header.dart';
 
 class ToolboxSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -44,63 +47,45 @@ class ToolboxSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    // final theme = Theme.of(context);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1100),
-          child: KeyedSubtree(
-            key: sectionKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Toolbox',
-                  style: theme.textTheme.displayMedium?.copyWith(
-                    color: theme.colorScheme.primary,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  'Essential tools I use daily to design, build, and ship robust Flutter experiences.',
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.75),
-                    height: 1.6,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 48),
-                LayoutBuilder(
-                  builder: (context, constraints) {
-                    final count = _crossAxisCount(constraints.maxWidth);
-                    final spacing = 28.0;
-                    final itemWidth =
-                        (constraints.maxWidth - spacing * (count - 1)) / count;
-
-                    return Wrap(
-                      alignment: WrapAlignment.center,
-                      spacing: spacing,
-                      runSpacing: spacing,
-                      children: _tools
-                          .map(
-                            (tool) => SizedBox(
-                              width: itemWidth,
-                              child: Center(
-                                child: _ToolLogo(asset: tool, height: 58),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    );
-                  },
-                ),
-              ],
-            ),
+    return SectionContainer(
+      key: sectionKey,
+      color: Theme.of(context).colorScheme.surface,
+      height: 500, // Reduced height for minimal look
+      titleCentered: true,
+      child: Column(
+        children: [
+          const SectionHeader(
+            title: AppStrings.toolsTitle,
+            subtitle: AppStrings.toolsSubtitle,
           ),
-        ),
+          const SizedBox(height: 100),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final count = _crossAxisCount(constraints.maxWidth);
+              final spacing = 28.0;
+              final itemWidth =
+                  (constraints.maxWidth - spacing * (count - 1)) / count;
+
+              return Wrap(
+                alignment: WrapAlignment.center,
+                spacing: spacing,
+                runSpacing: spacing,
+                children: _tools
+                    .map(
+                      (tool) => SizedBox(
+                        width: itemWidth,
+                        child: Center(
+                          child: _ToolLogo(asset: tool, height: 58),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

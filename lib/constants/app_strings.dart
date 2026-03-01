@@ -34,6 +34,10 @@ class AppStrings {
   static const String skillsTitle = 'Skillset';
   static const String skillsSubtitle =
       'A comprehensive overview of my technical expertise and professional workflow.';
+    // Tools Section
+  static const String toolsTitle = 'Toolbox';
+  static const String toolsSubtitle =
+      'Essential tools I use daily to design, build, and ship robust Flutter experiences.';
   // Skills Categories
   static const String categoryMobileDev = 'MOBILE DEVELOPMENT';
   static const String categoryStateManagement = 'STATE MANAGEMENT';
