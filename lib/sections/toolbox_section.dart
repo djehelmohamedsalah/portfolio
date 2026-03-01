@@ -7,20 +7,32 @@ class ToolboxSection extends StatelessWidget {
   const ToolboxSection({super.key, required this.sectionKey});
 
   static const List<_ToolAsset> _tools = [
-    _ToolAsset('Flutter', 'lib/assets/photos/tools_icons/flutter.svg'),
-    _ToolAsset('Dart', 'lib/assets/photos/tools_icons/dart.svg'),
-    _ToolAsset('GitHub', 'lib/assets/photos/tools_icons/github.svg'),
-    // _ToolAsset('Git', 'lib/assets/photos/tools_icons/git.svg'),
-    _ToolAsset('Supabase', 'lib/assets/photos/tools_icons/supabase.svg'),
-    _ToolAsset('VS Code', 'lib/assets/photos/tools_icons/vscode.svg'),
+    _ToolAsset('Android', 'lib/assets/photos/tools_icons/android.svg'),
     _ToolAsset(
       'Android Studio',
-      'lib/assets/photos/tools_icons/android_studio.svg',
+      'lib/assets/photos/tools_icons/androidstudio.svg',
     ),
+    _ToolAsset('Api', 'lib/assets/photos/tools_icons/api.svg'),
+    _ToolAsset('Supabase', 'lib/assets/photos/tools_icons/supabase.svg'),
+    _ToolAsset('Dart', 'lib/assets/photos/tools_icons/dart.svg'),
+    _ToolAsset('DotENV', 'lib/assets/photos/tools_icons/dotenv.svg'),
     _ToolAsset('Figma', 'lib/assets/photos/tools_icons/figma.svg'),
+    _ToolAsset('Firebase', 'lib/assets/photos/tools_icons/firebase.svg'),
+    _ToolAsset('Flutter', 'lib/assets/photos/tools_icons/flutter.svg'),
+    _ToolAsset('GetX', 'lib/assets/photos/tools_icons/getx.svg'),
+    _ToolAsset('Git', 'lib/assets/photos/tools_icons/git.svg'),
+    _ToolAsset('GitHub', 'lib/assets/photos/tools_icons/github.svg'),
+    _ToolAsset(
+      'GitHub Copilot',
+      'lib/assets/photos/tools_icons/githubcopilot.svg',
+    ),
+    _ToolAsset('Google Cloud', 'lib/assets/photos/tools_icons/googlecloud.svg'),
+    _ToolAsset('Google Fonts', 'lib/assets/photos/tools_icons/googlefonts.svg'),
+    _ToolAsset('Maps', 'lib/assets/photos/tools_icons/googlemaps.svg'),
     _ToolAsset('Postman', 'lib/assets/photos/tools_icons/postman.svg'),
-    _ToolAsset('Bloc', 'lib/assets/photos/tools_icons/bloc.png', isSvg: false),
-    _ToolAsset('GetX', 'lib/assets/photos/tools_icons/getx.png', isSvg: false),
+    _ToolAsset('Python', 'lib/assets/photos/tools_icons/python.svg'),
+    _ToolAsset('Sdk', 'lib/assets/photos/tools_icons/sdk.png', isSvg: false),
+    _ToolAsset('Sqlite', 'lib/assets/photos/tools_icons/sqlite.svg'),
   ];
 
   int _crossAxisCount(double width) {
@@ -76,7 +88,9 @@ class ToolboxSection extends StatelessWidget {
                           .map(
                             (tool) => SizedBox(
                               width: itemWidth,
-                              child: Center(child: _ToolLogo(asset: tool)),
+                              child: Center(
+                                child: _ToolLogo(asset: tool, height: 48),
+                              ),
                             ),
                           )
                           .toList(),
@@ -94,8 +108,9 @@ class ToolboxSection extends StatelessWidget {
 
 class _ToolLogo extends StatefulWidget {
   final _ToolAsset asset;
+  final double height;
 
-  const _ToolLogo({required this.asset});
+  const _ToolLogo({required this.asset, required this.height});
 
   @override
   State<_ToolLogo> createState() => _ToolLogoState();
@@ -109,14 +124,13 @@ class _ToolLogoState extends State<_ToolLogo> {
     final child = widget.asset.isSvg
         ? SvgPicture.asset(
             widget.asset.path,
-            height: 100,
-            width: 100,
+            colorFilter: ColorFilter.mode(Colors.black, BlendMode.dst),
+            height: widget.height,
             fit: BoxFit.contain,
           )
         : Image.asset(
             widget.asset.path,
-            height: 100,
-            width: 100,
+            height: widget.height,
             fit: BoxFit.contain,
           );
 
