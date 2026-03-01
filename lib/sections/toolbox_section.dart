@@ -89,7 +89,7 @@ class ToolboxSection extends StatelessWidget {
                             (tool) => SizedBox(
                               width: itemWidth,
                               child: Center(
-                                child: _ToolLogo(asset: tool, height: 48),
+                                child: _ToolLogo(asset: tool, height: 58),
                               ),
                             ),
                           )
