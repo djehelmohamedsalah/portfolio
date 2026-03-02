@@ -5,8 +5,7 @@ import 'package:mo_salah_dev/widgets/section_container.dart';
 import 'package:mo_salah_dev/widgets/section_header.dart';
 
 class ToolboxSection extends StatelessWidget {
-
-  const ToolboxSection({super.key,});
+  const ToolboxSection({super.key});
 
   static const List<_ToolAsset> _tools = [
     _ToolAsset(
@@ -46,7 +45,6 @@ class ToolboxSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SectionContainer(
       // key: sectionKey,
       color: Theme.of(context).colorScheme.surface,
@@ -105,23 +103,25 @@ class _ToolLogo extends StatefulWidget {
 class _ToolLogoState extends State<_ToolLogo> {
   bool _hovered = false;
 
-
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final child = widget.asset.isSvg
         ? SvgPicture.asset(
             widget.asset.path,
             height: widget.height,
             fit: BoxFit.contain,
             colorFilter: ColorFilter.mode(
-                  theme.colorScheme.onSurface,
-                  BlendMode.srcIn,
-                ),
+              theme.colorScheme.outline,
+              BlendMode.srcIn,
+            ),
           )
         : Image.asset(
             widget.asset.path,
             height: widget.height,
             fit: BoxFit.contain,
+            color: theme.colorScheme.outline,
+            colorBlendMode: BlendMode.srcIn,
           );
 
     return MouseRegion(

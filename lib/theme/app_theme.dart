@@ -20,6 +20,7 @@ class AppTheme {
       onSecondary: Colors.white,
       onSurface: AppColors.textPrimaryLight,
       onError: Colors.white,
+      outline: AppColors.textPrimaryLight,
     ),
 
     textTheme: const TextTheme(
@@ -54,6 +55,7 @@ class AppTheme {
       onSecondary: AppColors.backgroundDark,
       onSurface: AppColors.textPrimaryDark,
       onError: Colors.white,
+      outline: AppColors.textPrimaryDark,
     ),
     textTheme: const TextTheme(
       displayLarge: TextStyle(
