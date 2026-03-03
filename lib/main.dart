@@ -119,7 +119,6 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
             SkillsSection(sectionKey: _skillsKey),
             ToolboxSection(),
             ContactSection(sectionKey: _contactKey),
-            const SizedBox(height: 50), // Footer padding
           ],
         ),
       ),
