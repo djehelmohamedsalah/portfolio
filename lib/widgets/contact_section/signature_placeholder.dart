@@ -6,15 +6,21 @@ class _SignaturePlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const targetWidth = 200.0;
+    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+
     return Align(
       alignment: Alignment.topRight,
-      child: Image.asset(
-        'lib/assets/photos/developper/signature.png',
-        width: 180,
-        fit: BoxFit.contain,
-        semanticLabel: 'Signature',
-        colorBlendMode: BlendMode.dstIn,
-        color: Colors.white,
+      child: ColorFiltered(
+        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+        child: Image.asset(
+          'lib/assets/photos/developper/signature.png',
+          width: targetWidth,
+          fit: BoxFit.contain,
+          filterQuality: FilterQuality.high,
+          cacheWidth: (targetWidth * devicePixelRatio).round(),
+          semanticLabel: 'Signature',
+        ),
       ),
     );
   }
