@@ -8,20 +8,13 @@ class _SignaturePlaceholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topRight,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Text(
-            '-- Signature --',
-            style: theme.textTheme.titleMedium?.copyWith(
-              color: Colors.white70,
-              fontStyle: FontStyle.italic,
-              letterSpacing: 2,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Container(width: 120, height: 2, color: Colors.white24),
-        ],
+      child: Image.asset(
+        'lib/assets/photos/developper/signature.png',
+        width: 180,
+        fit: BoxFit.contain,
+        semanticLabel: 'Signature',
+        colorBlendMode: BlendMode.dstIn,
+        color: Colors.white,
       ),
     );
   }
