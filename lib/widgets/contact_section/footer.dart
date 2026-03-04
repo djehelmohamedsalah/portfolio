@@ -10,7 +10,7 @@ class _Footer extends StatelessWidget {
     return Column(
       children: [
         Text(
-          '[Mohamed Salah Djehel] · Flutter Developer · Mobile Applications',
+          'Mohamed Salah Djehel · Portfolio · Mobile Applications Developer',
           textAlign: TextAlign.center,
           style: theme.textTheme.bodyMedium?.copyWith(
             letterSpacing: 0.4,
