@@ -1,12 +1,12 @@
 part of '../../sections/contact_section.dart';
 
 class _HoverIconButton extends StatefulWidget {
-  final IconData icon;
+  final String assetPath;
   final String label;
   final VoidCallback onTap;
 
   const _HoverIconButton({
-    required this.icon,
+    required this.assetPath,
     required this.label,
     required this.onTap,
   });
@@ -35,11 +35,11 @@ class _HoverIconButtonState extends State<_HoverIconButton> {
             opacity: _hover ? 0.9 : 0.75,
             child: Container(
               padding: const EdgeInsets.all(12),
-              child: Icon(
-                widget.icon,
-                color: Colors.white,
-                size: 28,
-                semanticLabel: widget.label,
+              child: SvgPicture.asset(
+                widget.assetPath,
+                width: 28,
+                height: 28,
+                semanticsLabel: widget.label,
               ),
             ),
           ),

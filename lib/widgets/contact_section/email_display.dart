@@ -2,7 +2,12 @@ part of '../../sections/contact_section.dart';
 
 class _EmailDisplay extends StatelessWidget {
   final ThemeData theme;
-  const _EmailDisplay({required this.theme});
+  final TextAlign textAlign;
+
+  const _EmailDisplay({
+    required this.theme,
+    this.textAlign = TextAlign.center,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ class _EmailDisplay extends StatelessWidget {
           fontWeight: FontWeight.w600,
           letterSpacing: 0.4,
         ),
-        textAlign: TextAlign.center,
+        textAlign: textAlign,
       ),
     );
   }

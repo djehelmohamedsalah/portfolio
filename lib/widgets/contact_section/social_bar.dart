@@ -9,12 +9,12 @@ class _SocialBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       alignment: WrapAlignment.center,
-      spacing: 22,
+      spacing: 32,
       runSpacing: 16,
       children: ContactSection._socials
           .map(
             (link) => _HoverIconButton(
-              icon: link.icon,
+              assetPath: link.assetPath,
               label: link.label,
               onTap: () => _launchUrl(link.url),
             ),

@@ -17,7 +17,7 @@ class _Footer extends StatelessWidget {
             letterSpacing: 0.4,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 16),
         Text(
           '© 2026 · All rights reserved',
           textAlign: TextAlign.center,
