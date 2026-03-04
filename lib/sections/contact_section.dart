@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
-import "package:mo_salah_dev/constants/app_colors.dart";
 import "package:url_launcher/url_launcher.dart";
 
 part '../widgets/contact_section/footer.dart';
@@ -18,6 +17,11 @@ class ContactSection extends StatelessWidget {
 
   static const _maxWidth = 1200.0;
   static const _socials = [
+    _SocialLink(
+      label: 'GitHub',
+      assetPath: 'lib/assets/photos/social_icons/github-icon-1.svg',
+      url: 'https://github.com',
+    ),
     _SocialLink(
       label: 'GitHub',
       assetPath: 'lib/assets/photos/social_icons/github-icon-1.svg',
@@ -60,11 +64,9 @@ class ContactSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   _TopRow(isDesktop: isDesktop),
-                  const SizedBox(height: 64),
+                  const SizedBox(height: 36),
                   _SocialRow(theme: theme, isDesktop: isDesktop),
-                  const SizedBox(height: 64),
-                  const _FooterNav(),
-                  const SizedBox(height: 64),
+                  const SizedBox(height: 36),
                   _Footer(theme: theme),
                 ],
               );
@@ -100,8 +102,9 @@ class _TopRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const [
           _HeadlineBlock(textAlign: TextAlign.left),
-          SizedBox(width: 100),
-          _SignatureBlock(alignment: Alignment.centerRight),
+          SizedBox(width: 200),
+          _SignatureBlock(alignment: Alignment.centerLeft),
+          SizedBox(width: 50),
         ],
       ),
     );
@@ -121,12 +124,13 @@ class _HeadlineBlock extends StatelessWidget {
           ? Alignment.centerLeft
           : Alignment.center,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 520),
+        constraints: const BoxConstraints(maxWidth: 450),
         child: Text(
-          "Let's build something great together.\nI'm open to opportunities and collaborations.",
+          "Feel free to hit me up. I’m looking forward to hearing from you.",
           textAlign: textAlign,
           style: theme.textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.bold,
+            fontSize: 26,
             height: 1.2,
           ),
         ),
@@ -174,34 +178,10 @@ class _SocialRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _SocialBar(theme: theme),
-          const SizedBox(width: 120),
+          const SizedBox(width: 100),
           _EmailDisplay(theme: theme, textAlign: TextAlign.right),
         ],
       ),
-    );
-  }
-}
-
-class _FooterNav extends StatelessWidget {
-  const _FooterNav();
-
-  @override
-  Widget build(BuildContext context) {
-    const items = ['About', 'Projects', 'Experience', 'Contact'];
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 24,
-          runSpacing: 16,
-          children: items
-              .map((label) => _NavLink(label: label, targetKey: null))
-              .toList(),
-        ),
-        const SizedBox(height: 24),
-      ],
     );
   }
 }

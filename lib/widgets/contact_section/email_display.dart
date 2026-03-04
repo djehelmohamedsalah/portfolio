@@ -14,7 +14,8 @@ class _EmailDisplay extends StatelessWidget {
       child: SelectableText(
         email,
         style: theme.textTheme.titleMedium?.copyWith(
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
           letterSpacing: 0.4,
         ),
         textAlign: textAlign,

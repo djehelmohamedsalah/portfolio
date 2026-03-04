@@ -12,15 +12,20 @@ class _Footer extends StatelessWidget {
         Text(
           '[Mohamed Salah Djehel] · Flutter Developer · Mobile Applications',
           textAlign: TextAlign.center,
-          style: theme.textTheme.bodySmall?.copyWith(letterSpacing: 0.4),
+          style: theme.textTheme.bodyMedium?.copyWith(
+            letterSpacing: 0.4,
+            color: theme.colorScheme.onSurface,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         const SizedBox(height: 16),
         Text(
           '© 2026 · All rights reserved',
           textAlign: TextAlign.center,
-          style: theme.textTheme.bodySmall?.copyWith(
-            color: Colors.white54,
+          style: theme.textTheme.bodyMedium?.copyWith(
             letterSpacing: 0.4,
+            color: theme.colorScheme.onSurface,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ],
