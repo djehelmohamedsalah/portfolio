@@ -16,7 +16,6 @@ class _NavLinkState extends State<_NavLink> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color = Colors.white.withOpacity(_hover ? 1 : 0.78);
 
     return MouseRegion(
       onEnter: (_) => setState(() => _hover = true),
@@ -32,7 +31,6 @@ class _NavLinkState extends State<_NavLink> {
           child: Text(
             widget.label,
             style: theme.textTheme.labelLarge?.copyWith(
-              color: color,
               fontWeight: FontWeight.w700,
               letterSpacing: 0.8,
             ),

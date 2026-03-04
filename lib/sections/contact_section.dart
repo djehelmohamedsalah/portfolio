@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
+import "package:mo_salah_dev/constants/app_colors.dart";
 import "package:url_launcher/url_launcher.dart";
 
 part '../widgets/contact_section/footer.dart';
@@ -46,7 +47,7 @@ class ContactSection extends StatelessWidget {
     return Container(
       key: sectionKey,
       width: double.infinity,
-      color: Colors.black,
+      color: theme.colorScheme.surface.withValues(alpha: 0.35),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 64),
       child: Center(
         child: ConstrainedBox(
@@ -54,23 +55,16 @@ class ContactSection extends StatelessWidget {
           child: LayoutBuilder(
             builder: (context, constraints) {
               final isDesktop = constraints.maxWidth >= 960;
-              final isTablet = constraints.maxWidth >= 720 && !isDesktop;
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   _TopRow(isDesktop: isDesktop),
-                  SizedBox(
-                    height: isDesktop
-                        ? 64
-                        : isTablet
-                        ? 48
-                        : 48,
-                  ),
+                  const SizedBox(height: 64),
                   _SocialRow(theme: theme, isDesktop: isDesktop),
-                  SizedBox(height: isDesktop ? 48 : 32),
+                  const SizedBox(height: 64),
                   const _FooterNav(),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 64),
                   _Footer(theme: theme),
                 ],
               );
@@ -100,14 +94,16 @@ class _TopRow extends StatelessWidget {
       );
     }
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
-        Expanded(child: _HeadlineBlock(textAlign: TextAlign.left)),
-        SizedBox(width: 48),
-        Expanded(child: _SignatureBlock(alignment: Alignment.centerRight)),
-      ],
+    return Center(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          _HeadlineBlock(textAlign: TextAlign.left),
+          SizedBox(width: 100),
+          _SignatureBlock(alignment: Alignment.centerRight),
+        ],
+      ),
     );
   }
 }
@@ -130,7 +126,6 @@ class _HeadlineBlock extends StatelessWidget {
           "Let's build something great together.\nI'm open to opportunities and collaborations.",
           textAlign: textAlign,
           style: theme.textTheme.headlineMedium?.copyWith(
-            color: Colors.white,
             fontWeight: FontWeight.w700,
             height: 1.2,
           ),
@@ -173,24 +168,16 @@ class _SocialRow extends StatelessWidget {
       );
     }
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Expanded(
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: _SocialBar(theme: theme),
-          ),
-        ),
-        const SizedBox(width: 48),
-        Expanded(
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: _EmailDisplay(theme: theme, textAlign: TextAlign.right),
-          ),
-        ),
-      ],
+    return Center(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _SocialBar(theme: theme),
+          const SizedBox(width: 120),
+          _EmailDisplay(theme: theme, textAlign: TextAlign.right),
+        ],
+      ),
     );
   }
 }

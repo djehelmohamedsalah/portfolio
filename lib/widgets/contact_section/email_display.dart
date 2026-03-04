@@ -4,10 +4,7 @@ class _EmailDisplay extends StatelessWidget {
   final ThemeData theme;
   final TextAlign textAlign;
 
-  const _EmailDisplay({
-    required this.theme,
-    this.textAlign = TextAlign.center,
-  });
+  const _EmailDisplay({required this.theme, this.textAlign = TextAlign.center});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +14,6 @@ class _EmailDisplay extends StatelessWidget {
       child: SelectableText(
         email,
         style: theme.textTheme.titleMedium?.copyWith(
-          color: Colors.white,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.4,
         ),
