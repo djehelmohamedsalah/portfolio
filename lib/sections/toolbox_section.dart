@@ -28,7 +28,7 @@ class ToolboxSection extends StatelessWidget {
             title: AppStrings.toolsTitle,
             subtitle: AppStrings.toolsSubtitle,
           ),
-          const SizedBox(height: 100),
+          const SizedBox(height: 30),
           LayoutBuilder(
             builder: (context, constraints) {
               final count = _crossAxisCount(constraints.maxWidth);
@@ -44,11 +44,8 @@ class ToolboxSection extends StatelessWidget {
                     .map(
                       (tool) => SizedBox(
                         width: itemWidth,
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Center(
-                            child: _ToolLogo(asset: tool, height: 48),
-                          ),
+                        child: Center(
+                          child: _ToolLogo(asset: tool, height: 42),
                         ),
                       ),
                     )
