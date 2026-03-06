@@ -26,7 +26,7 @@ class HeroIntro extends StatelessWidget {
     final double buttonTextSize = isMobile ? 15 : 16;
     final ButtonStyle ctaButtonStyle = ElevatedButton.styleFrom(
       backgroundColor: theme.colorScheme.primary,
-      foregroundColor: theme.colorScheme.onPrimary,
+      foregroundColor: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
       minimumSize: const Size(180, 56),
       elevation: 0,
