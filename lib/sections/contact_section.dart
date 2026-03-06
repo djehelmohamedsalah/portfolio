@@ -20,27 +20,27 @@ class ContactSection extends StatelessWidget {
     _SocialLink(
       label: 'GitHub',
       assetPath: 'lib/assets/photos/social_icons/github-icon-1.svg',
-      url: 'https://github.com',
+      url: 'https://github.com/MosalahDJ',
     ),
     _SocialLink(
-      label: 'GitHub',
+      label: 'Watsapp',
       assetPath: 'lib/assets/photos/social_icons/github-icon-1.svg',
-      url: 'https://github.com',
+      url: 'https://wa.me/213541268231',
     ),
     _SocialLink(
       label: 'LinkedIn',
       assetPath: 'lib/assets/photos/social_icons/linkedin-icon-2.svg',
-      url: 'https://www.linkedin.com',
+      url: 'https://linkedin.com/in/mohamedsalah',
     ),
     _SocialLink(
       label: 'Instagram',
       assetPath: 'lib/assets/photos/social_icons/instagram-2016-5.svg',
-      url: 'https://www.instagram.com',
+      url: 'https://www.instagram.com/moh.medsalah/',
     ),
     _SocialLink(
       label: 'Facebook',
       assetPath: 'lib/assets/photos/social_icons/facebook-3-2.svg',
-      url: 'https://www.facebook.com',
+      url: 'https://facebook.com/mohamedsalah.djehel.9',
     ),
   ];
 
