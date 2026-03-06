@@ -73,22 +73,6 @@ class AboutSection extends StatelessWidget {
   }
 
   Widget _buildAboutActions(BuildContext context) {
-    final bool isMobile = ResponsiveLayout.isMobile(context);
-    final theme = Theme.of(context);
-    final double buttonTextSize = isMobile ? 15 : 16;
-    final ButtonStyle ctaButtonStyle = ElevatedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
-      minimumSize: const Size(180, 56),
-      elevation: 0,
-      shadowColor: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-      textStyle: TextStyle(
-        fontSize: buttonTextSize,
-        fontWeight: FontWeight.w700,
-        letterSpacing: 0.2,
-      ),
-    ).copyWith(elevation: const WidgetStatePropertyAll(2));
-
     return Wrap(
       spacing: 20,
       runSpacing: 12,
@@ -96,35 +80,17 @@ class AboutSection extends StatelessWidget {
         SizedBox(
           width: 180,
           height: 56,
-          child: ElevatedButton(
-            onPressed: () => _openExternalLink(context, AppStrings.resumeUrl),
-            style: ctaButtonStyle.copyWith(
-              backgroundColor: WidgetStateProperty.all(
-                theme.colorScheme.primary,
-              ),
-              foregroundColor: WidgetStateProperty.all(
-                theme.colorScheme.onPrimary,
-              ),
-            ),
-
-            child: const Text(AppStrings.resumeButton),
+          child: _PrimaryHoverOutlineButton(
+            label: AppStrings.resumeButton,
+            onTap: () => _openExternalLink(context, AppStrings.resumeUrl),
           ),
         ),
         SizedBox(
           width: 180,
           height: 56,
-          child: ElevatedButton(
-            onPressed: () => _openExternalLink(context, AppStrings.linkedInUrl),
-            style: ctaButtonStyle.copyWith(
-              backgroundColor: WidgetStateProperty.all(Colors.transparent),
-              foregroundColor: WidgetStateProperty.all(
-                theme.colorScheme.primary,
-              ),
-              side: WidgetStateProperty.all(
-                BorderSide(color: theme.colorScheme.primary),
-              ),
-            ),
-            child: const Text(AppStrings.linkedInButton),
+          child: _PrimaryHoverOutlineButton(
+            label: AppStrings.linkedInButton,
+            onTap: () => _openExternalLink(context, AppStrings.linkedInUrl),
           ),
         ),
       ],
@@ -141,6 +107,57 @@ class AboutSection extends StatelessWidget {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(const SnackBar(content: Text('Unable to open link.')));
+  }
+}
+
+class _PrimaryHoverOutlineButton extends StatefulWidget {
+  final String label;
+  final VoidCallback onTap;
+
+  const _PrimaryHoverOutlineButton({required this.label, required this.onTap});
+
+  @override
+  State<_PrimaryHoverOutlineButton> createState() =>
+      _PrimaryHoverOutlineButtonState();
+}
+
+class _PrimaryHoverOutlineButtonState
+    extends State<_PrimaryHoverOutlineButton> {
+  bool _hovering = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final onTertiary = theme.colorScheme.onTertiary;
+    final onPrimary = theme.colorScheme.onPrimary;
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovering = true),
+      onExit: (_) => setState(() => _hovering = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
+          decoration: BoxDecoration(
+            color: _hovering ? onTertiary : Colors.transparent,
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(color: onTertiary, width: 1.5),
+          ),
+          child: Center(
+            child: Text(
+              widget.label,
+              style: theme.textTheme.labelLarge?.copyWith(
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.2,
+                color: _hovering ? onPrimary : onTertiary,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
