@@ -37,7 +37,7 @@ class SkillsSection extends StatelessWidget {
             title: AppStrings.skillsTitle,
             subtitle: AppStrings.skillsSubtitle,
           ),
-          const SizedBox(height: 100),
+          const SizedBox(height: 30),
           LayoutBuilder(
             builder: (context, constraints) {
               final count = _crossAxisCount(constraints.maxWidth);
