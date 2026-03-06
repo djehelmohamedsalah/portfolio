@@ -16,6 +16,7 @@ class _SocialBar extends StatelessWidget {
             (link) => _HoverIconButton(
               assetPath: link.assetPath,
               label: link.label,
+              tintWithTheme: link.tintWithTheme,
               onTap: () => _launchUrl(link.url),
             ),
           )

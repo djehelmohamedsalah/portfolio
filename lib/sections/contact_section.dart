@@ -21,6 +21,7 @@ class ContactSection extends StatelessWidget {
       label: 'GitHub',
       assetPath: 'lib/assets/photos/social_icons/github.svg',
       url: 'https://github.com/MosalahDJ',
+      tintWithTheme: true,
     ),
     _SocialLink(
       label: 'Watsapp',

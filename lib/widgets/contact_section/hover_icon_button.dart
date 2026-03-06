@@ -4,11 +4,13 @@ class _HoverIconButton extends StatefulWidget {
   final String assetPath;
   final String label;
   final VoidCallback onTap;
+  final bool tintWithTheme;
 
   const _HoverIconButton({
     required this.assetPath,
     required this.label,
     required this.onTap,
+    this.tintWithTheme = false,
   });
 
   @override
@@ -40,6 +42,12 @@ class _HoverIconButtonState extends State<_HoverIconButton> {
                 width: 28,
                 height: 28,
                 semanticsLabel: widget.label,
+                colorFilter: widget.tintWithTheme
+                    ? ColorFilter.mode(
+                        Theme.of(context).colorScheme.onTertiary,
+                        BlendMode.srcIn,
+                      )
+                    : null,
               ),
             ),
           ),
