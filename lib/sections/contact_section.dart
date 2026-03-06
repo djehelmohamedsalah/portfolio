@@ -25,22 +25,22 @@ class ContactSection extends StatelessWidget {
     ),
     _SocialLink(
       label: 'Watsapp',
-      assetPath: 'lib/assets/photos/social_icons/whatsapp-icon.svg',
+      assetPath: 'lib/assets/photos/social_icons/whatsapp.svg',
       url: 'https://wa.me/213541268231',
     ),
     _SocialLink(
       label: 'LinkedIn',
-      assetPath: 'lib/assets/photos/social_icons/linkedin-icon-2.svg',
+      assetPath: 'lib/assets/photos/social_icons/linkedin.svg',
       url: 'https://www.linkedin.com/in/mohamed-salah-djehel-72b740345',
     ),
     _SocialLink(
       label: 'Instagram',
-      assetPath: 'lib/assets/photos/social_icons/instagram-2016-5.svg',
+      assetPath: 'lib/assets/photos/social_icons/instagram.svg',
       url: 'https://www.instagram.com/moh.medsalah/',
     ),
     _SocialLink(
       label: 'Facebook',
-      assetPath: 'lib/assets/photos/social_icons/facebook-3-2.svg',
+      assetPath: 'lib/assets/photos/social_icons/facebook.svg',
       url: 'https://facebook.com/mohamedsalah.djehel.9',
     ),
   ];
