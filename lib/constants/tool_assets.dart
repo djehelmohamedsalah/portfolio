@@ -19,7 +19,7 @@ const List<ToolAsset> toolAssets = [
     url: 'https://developer.android.com/studio',
   ),
   ToolAsset(
-    'Api',
+    'REST API',
     'lib/assets/photos/tools_icons/api.svg',
     url: 'https://restfulapi.net',
   ),

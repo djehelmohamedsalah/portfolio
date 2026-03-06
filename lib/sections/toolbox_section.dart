@@ -10,10 +10,9 @@ class ToolboxSection extends StatelessWidget {
   const ToolboxSection({super.key});
 
   int _crossAxisCount(double width) {
-    if (width >= 1100) return 5;
-    if (width >= 900) return 4;
-    if (width >= 520) return 3;
-    return 2;
+    if (width >= 1100) return 5; // desktop
+    if (width >= 720) return 3; // tablet
+    return 2; // mobile
   }
 
   @override
@@ -28,28 +27,30 @@ class ToolboxSection extends StatelessWidget {
             title: AppStrings.toolsTitle,
             subtitle: AppStrings.toolsSubtitle,
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 100),
           LayoutBuilder(
             builder: (context, constraints) {
               final count = _crossAxisCount(constraints.maxWidth);
-              final spacing = 28.0;
-              final itemWidth =
-                  (constraints.maxWidth - spacing * (count - 1)) / count;
+              final spacing = 18.0;
+              final assetsByName = {
+                for (final tool in toolAssets) tool.name: tool,
+              };
+              final orderedTools = _orderedToolNames
+                  .map((name) => assetsByName[name])
+                  .whereType<ToolAsset>()
+                  .toList();
 
-              return Wrap(
-                alignment: WrapAlignment.center,
-                spacing: spacing,
-                runSpacing: spacing,
-                children: toolAssets
-                    .map(
-                      (tool) => SizedBox(
-                        width: itemWidth,
-                        child: Center(
-                          child: _ToolLogo(asset: tool, height: 42),
-                        ),
-                      ),
-                    )
-                    .toList(),
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: count,
+                  crossAxisSpacing: spacing,
+                  mainAxisSpacing: spacing,
+                ),
+                itemCount: orderedTools.length,
+                itemBuilder: (context, index) =>
+                    Center(child: _ToolItem(asset: orderedTools[index])),
               );
             },
           ),
@@ -57,28 +58,45 @@ class ToolboxSection extends StatelessWidget {
       ),
     );
   }
+
+  static const List<String> _orderedToolNames = [
+    // Development
+    'Flutter',
+    'Dart',
+    'Python',
+    // Backend / APIs
+    'Supabase',
+    'Firebase',
+    'REST API',
+    // Tools
+    'Git',
+    'GitHub',
+    'Postman',
+    // Design
+    'Figma',
+  ];
 }
 
-class _ToolLogo extends StatefulWidget {
+class _ToolItem extends StatefulWidget {
   final ToolAsset asset;
-  final double height;
 
-  const _ToolLogo({required this.asset, required this.height});
+  const _ToolItem({required this.asset});
 
   @override
-  State<_ToolLogo> createState() => _ToolLogoState();
+  State<_ToolItem> createState() => _ToolItemState();
 }
 
-class _ToolLogoState extends State<_ToolLogo> {
+class _ToolItemState extends State<_ToolItem> {
   bool _hovered = false;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final child = widget.asset.isSvg
+    final icon = widget.asset.isSvg
         ? SvgPicture.asset(
             widget.asset.path,
-            height: widget.height,
+            height: 30,
+            width: 30,
             fit: BoxFit.contain,
             colorFilter: ColorFilter.mode(
               theme.colorScheme.outline,
@@ -87,7 +105,8 @@ class _ToolLogoState extends State<_ToolLogo> {
           )
         : Image.asset(
             widget.asset.path,
-            height: widget.height,
+            height: 30,
+            width: 30,
             fit: BoxFit.contain,
             color: theme.colorScheme.outline,
             colorBlendMode: BlendMode.srcIn,
@@ -99,11 +118,57 @@ class _ToolLogoState extends State<_ToolLogo> {
         cursor: SystemMouseCursors.click,
         onEnter: (_) => setState(() => _hovered = true),
         onExit: (_) => setState(() => _hovered = false),
-        child: AnimatedScale(
-          scale: _hovered ? 1.05 : 1.0,
-          duration: const Duration(milliseconds: 160),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
           curve: Curves.easeOut,
-          child: child,
+          width: 100,
+          height: 100,
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: BorderRadius.circular(14),
+            boxShadow: [
+              BoxShadow(
+                color: _hovered
+                    ? theme.colorScheme.primary.withValues(alpha: 0.18)
+                    : Colors.transparent,
+                blurRadius: 12,
+                spreadRadius: 1,
+                offset: const Offset(0, 4),
+              ),
+            ],
+            border: Border.all(
+              color: _hovered
+                  ? theme.colorScheme.primary.withValues(alpha: 0.35)
+                  : theme.colorScheme.outline.withValues(alpha: 0.18),
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedScale(
+                scale: _hovered ? 1.05 : 1.0,
+                duration: const Duration(milliseconds: 150),
+                curve: Curves.easeOut,
+                child: SizedBox(
+                  width: 32,
+                  height: 32,
+                  child: Center(child: icon),
+                ),
+              ),
+              const SizedBox(height: 7),
+              Text(
+                widget.asset.name,
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w600,
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.82),
+                  letterSpacing: 0.1,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
