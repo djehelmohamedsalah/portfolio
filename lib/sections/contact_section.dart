@@ -19,7 +19,7 @@ class ContactSection extends StatelessWidget {
   static const _socials = [
     _SocialLink(
       label: 'GitHub',
-      assetPath: 'lib/assets/photos/social_icons/github-icon-1.svg',
+      assetPath: 'lib/assets/photos/social_icons/github.svg',
       url: 'https://github.com/MosalahDJ',
     ),
     _SocialLink(

@@ -27,12 +27,12 @@ class _HoverIconButtonState extends State<_HoverIconButton> {
       child: GestureDetector(
         onTap: widget.onTap,
         child: AnimatedScale(
-          scale: _hover ? 1.08 : 1.0,
-          duration: const Duration(milliseconds: 140),
+          scale: _hover ? 1.3 : 1.0,
+          duration: const Duration(milliseconds: 150),
           curve: Curves.easeOut,
           child: AnimatedOpacity(
-            duration: const Duration(milliseconds: 140),
-            opacity: _hover ? 0.9 : 0.75,
+            duration: const Duration(milliseconds: 150),
+            opacity: _hover ? 1 : 0.9,
             child: Container(
               padding: const EdgeInsets.all(12),
               child: SvgPicture.asset(
