@@ -359,9 +359,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
             scrollDirection: Axis.horizontal,
             itemCount: widget.project.screenshots.length,
             itemBuilder: (context, index) {
-              final isLandscape =
-                  index == 0 &&
-                  widget.project.title == AppStrings.projectQuranLifeTitle;
+              final isLandscape = index == 0;
               return Container(
                 width: isLandscape ? 500 : 200,
                 margin: const EdgeInsets.only(right: 20),

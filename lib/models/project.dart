@@ -43,6 +43,7 @@ class Project {
       status: AppStrings.projectNewsilyProjectStatus,
       logo: 'lib/assets/photos/newsily/newsily_logo_png.png',
       screenshots: [
+        'lib/assets/photos/newsily/0.png',
         'lib/assets/photos/newsily/1.jpg',
         'lib/assets/photos/newsily/2.jpg',
         'lib/assets/photos/newsily/3.jpg',
@@ -67,6 +68,7 @@ class Project {
       status: AppStrings.projectRaqibProjectStatus,
       logo: 'lib/assets/photos/raqib/newlogo.jpg',
       screenshots: [
+        'lib/assets/photos/raqib/0.png',
         'lib/assets/photos/raqib/1.jpg',
         'lib/assets/photos/raqib/2.jpg',
         'lib/assets/photos/raqib/3.jpg',
