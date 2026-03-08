@@ -181,7 +181,7 @@ class _AboutImage extends StatelessWidget {
       child: ClipRRect(
         borderRadius: borderRadius,
         child: Image.asset(
-          'lib/assets/photos/developper/3D_Avatar.jpg',
+          'lib/assets/photos/developper/3D_Avatar.png',
           fit: BoxFit.cover,
           width: 400,
           height: 400,
