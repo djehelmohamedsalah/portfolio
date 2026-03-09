@@ -97,7 +97,7 @@ class AppStrings {
   static const String resumeButton = 'Resume';
   static const String linkedInButton = 'LinkedIn';
   static const String resumeUrl = 'https://example.com/resume.pdf';
-  static const String linkedInUrl = 'https://www.linkedin.com/in/your-profile/';
+  static const String linkedInUrl = 'https://www.linkedin.com/in/mohamedsalahdjehel/';
   // Projects Section
   static const String projectsTitle = 'Selected Projects';
   static const String projectsSubtitle =

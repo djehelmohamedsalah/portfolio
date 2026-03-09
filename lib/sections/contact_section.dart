@@ -31,7 +31,7 @@ class ContactSection extends StatelessWidget {
     _SocialLink(
       label: 'LinkedIn',
       assetPath: 'lib/assets/photos/social_icons/linkedin.svg',
-      url: 'https://www.linkedin.com/in/mohamed-salah-djehel-72b740345',
+      url: 'https://www.linkedin.com/in/mohamedsalahdjehel/',
     ),
     _SocialLink(
       label: 'Instagram',
