@@ -1,4 +1,4 @@
-part of 'project_details_page.dart';
+part of '../../sections/project_details_page.dart';
 
 class _RoleText extends StatelessWidget {
   final String roleText;

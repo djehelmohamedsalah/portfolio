@@ -1,4 +1,4 @@
-part of 'project_details_page.dart';
+part of '../../sections/project_details_page.dart';
 
 class _HeaderSection extends StatelessWidget {
   final Project project;
