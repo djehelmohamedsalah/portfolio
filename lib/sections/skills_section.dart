@@ -115,7 +115,7 @@ class _SkillCardState extends State<_SkillCard> {
   Widget build(BuildContext context) {
     final colorScheme = widget.theme.colorScheme;
     final primary = colorScheme.primary;
-    final baseSurface = colorScheme.surface.withOpacity(0.82);
+    final baseSurface = colorScheme.surface.withValues(alpha: 0.82);
     final borderRadius = BorderRadius.circular(18);
 
     return MouseRegion(
@@ -130,13 +130,13 @@ class _SkillCardState extends State<_SkillCard> {
           borderRadius: borderRadius,
           border: Border.all(
             color: _hovered
-                ? primary.withOpacity(0.5)
-                : colorScheme.outline.withOpacity(0.2),
+                ? primary.withValues(alpha: 0.5)
+                : colorScheme.outline.withValues(alpha: 0.2),
             width: 1.1,
           ),
           boxShadow: [
             BoxShadow(
-              color: primary.withOpacity(_hovered ? 0.32 : 0.18),
+              color: primary.withValues(alpha: _hovered ? 0.32 : 0.18),
               blurRadius: _hovered ? 32 : 22,
               spreadRadius: _hovered ? 2 : 1,
               offset: const Offset(0, 12),
@@ -147,7 +147,7 @@ class _SkillCardState extends State<_SkillCard> {
           margin: const EdgeInsets.all(1.2),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           decoration: BoxDecoration(
-            color: colorScheme.surface.withOpacity(0.9),
+            color: colorScheme.surface.withValues(alpha: 0.9),
             borderRadius: borderRadius,
           ),
           child: Column(
@@ -172,7 +172,7 @@ class _SkillCardState extends State<_SkillCard> {
               Text(
                 'SKILLS',
                 style: widget.theme.textTheme.labelSmall?.copyWith(
-                  color: colorScheme.onSurface.withOpacity(0.6),
+                  color: colorScheme.onSurface.withValues(alpha: 0.6),
                   letterSpacing: 1.1,
                 ),
               ),
@@ -185,7 +185,7 @@ class _SkillCardState extends State<_SkillCard> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: widget.theme.textTheme.bodyMedium?.copyWith(
-                      color: colorScheme.onSurface.withOpacity(0.85),
+                      color: colorScheme.onSurface.withValues(alpha: 0.85),
                       height: 1.25,
                       fontWeight: FontWeight.w400,
                     ),
@@ -221,7 +221,7 @@ class _IconHalo extends StatelessWidget {
         color: surface,
         boxShadow: [
           BoxShadow(
-            color: primary.withOpacity(0.5),
+            color: primary.withValues(alpha: 0.5),
             blurRadius: 26,
             spreadRadius: 1,
             offset: const Offset(0, 12),
@@ -233,7 +233,9 @@ class _IconHalo extends StatelessWidget {
           icon,
           color: primary,
           size: 28,
-          shadows: [Shadow(color: primary.withOpacity(0.65), blurRadius: 22)],
+          shadows: [
+            Shadow(color: primary.withValues(alpha: 0.65), blurRadius: 22),
+          ],
         ),
       ),
     );

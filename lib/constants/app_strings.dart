@@ -34,15 +34,15 @@ class AppStrings {
   static const String skillsTitle = 'Skillset';
   static const String skillsSubtitle =
       'A comprehensive overview of my technical expertise and professional workflow.';
-    // Tools Section
+  // Tools Section
   static const String toolsTitle = 'Toolbox';
   static const String toolsSubtitle =
       'Essential tools I use daily to design, build, and ship robust Flutter experiences.';
   // Skills Categories
-  static const String categoryMobileDev = 'MOBILE DEVELOPMENT';
-  static const String categoryStateManagement = 'STATE MANAGEMENT';
-  static const String categoryBackendIntegration = 'BACKEND INTEGRATION';
-  static const String categoryUiPerformance = 'UI & PERFORMANCE';
+  static const String categoryMobileDev = 'MOBILE\nDEVELOPMENT';
+  static const String categoryStateManagement = 'STATE\nMANAGEMENT';
+  static const String categoryBackendIntegration = 'BACKEND\nINTEGRATION';
+  static const String categoryUiPerformance = 'UI &\nPERFORMANCE';
 
   // Skills - Mobile Development
   static const List<String> skillsMobileDev = [
@@ -97,7 +97,8 @@ class AppStrings {
   static const String resumeButton = 'Resume';
   static const String linkedInButton = 'LinkedIn';
   static const String resumeUrl = 'https://example.com/resume.pdf';
-  static const String linkedInUrl = 'https://www.linkedin.com/in/mohamedsalahdjehel/';
+  static const String linkedInUrl =
+      'https://www.linkedin.com/in/mohamedsalahdjehel/';
   // Projects Section
   static const String projectsTitle = 'Selected Projects';
   static const String projectsSubtitle =
