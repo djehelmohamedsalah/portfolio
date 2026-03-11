@@ -75,12 +75,12 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                           children: [
                             NavButton(label: 'Home', onTap: onHome),
                             NavButton(label: 'About', onTap: onAbout),
-                            NavButton(label: 'Projects', onTap: onProjects),
                             NavButton(
                               label: 'Dev Process',
                               onTap: onDevelopmentProcess,
                             ),
                             NavButton(label: 'Skills', onTap: onSkills),
+                            NavButton(label: 'Projects', onTap: onProjects),
                             NavButton(label: 'Contact', onTap: onContact),
                           ],
                         ),
@@ -102,16 +102,16 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                               child: Text('About'),
                             ),
                             PopupMenuItem(
-                              value: NavAction.projects,
-                              child: Text('Projects'),
-                            ),
-                            PopupMenuItem(
                               value: NavAction.developmentProcess,
                               child: Text('Dev Process'),
                             ),
                             PopupMenuItem(
                               value: NavAction.skills,
                               child: Text('Skills'),
+                            ),
+                            PopupMenuItem(
+                              value: NavAction.projects,
+                              child: Text('Projects'),
                             ),
                             PopupMenuItem(
                               value: NavAction.contact,

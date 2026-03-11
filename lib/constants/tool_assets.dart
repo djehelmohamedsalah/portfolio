@@ -4,12 +4,7 @@ class ToolAsset {
   final bool isSvg;
   final String url;
 
-  const ToolAsset(
-    this.name,
-    this.path, {
-    required this.url,
-    this.isSvg = true,
-  });
+  const ToolAsset(this.name, this.path, {required this.url, this.isSvg = true});
 }
 
 const List<ToolAsset> toolAssets = [

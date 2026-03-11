@@ -3,6 +3,7 @@ import '../widgets/section_container.dart';
 import '../widgets/section_header.dart';
 import '../constants/app_strings.dart';
 import '../constants/app_layout.dart';
+import 'toolbox_section.dart';
 
 class _SkillCategory {
   final String title;
@@ -64,6 +65,8 @@ class SkillsSection extends StatelessWidget {
                     colorScheme: colorScheme,
                   ),
                 ),
+                const SizedBox(height: AppSpacing.sectionGap),
+                const ToolboxSection(),
               ],
             ),
           ),

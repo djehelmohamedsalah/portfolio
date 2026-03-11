@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'sections/hero_section.dart';
-import 'sections/projects_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/contact_section.dart';
 import 'sections/development_process.dart';
-import 'sections/toolbox_section.dart';
+import 'sections/projects_section.dart';
 
 import 'constants/app_strings.dart';
 import 'constants/app_layout.dart';
@@ -98,9 +97,9 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
       appBar: FloatingTopAppBar(
         onHome: () => _scrollToSection(_homeKey),
         onAbout: () => _scrollToSection(_aboutKey),
-        onProjects: () => _scrollToSection(_projectsKey),
         onDevelopmentProcess: () => _scrollToSection(_developmentProcessKey),
         onSkills: () => _scrollToSection(_skillsKey),
+        onProjects: () => _scrollToSection(_projectsKey),
         onContact: () => _scrollToSection(_contactKey),
         onThemeToggle: widget.onThemeToggle,
       ),
@@ -117,13 +116,11 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
             // const SizedBox(height: AppSpacing.sectionGap),
             AboutSection(sectionKey: _aboutKey),
             // const SizedBox(height: AppSpacing.sectionGap),
-            ProjectsSection(sectionKey: _projectsKey),
-            // const SizedBox(height: AppSpacing.sectionGap),
             DevelopmentProcess(sectionKey: _developmentProcessKey),
             // const SizedBox(height: AppSpacing.sectionGap),
             SkillsSection(sectionKey: _skillsKey),
             // const SizedBox(height: AppSpacing.sectionGap),
-            ToolboxSection(),
+            ProjectsSection(sectionKey: _projectsKey),
             // const SizedBox(height: AppSpacing.sectionGap),
             ContactSection(sectionKey: _contactKey),
           ],
