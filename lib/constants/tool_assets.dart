@@ -109,4 +109,9 @@ const List<ToolAsset> toolAssets = [
     'lib/assets/photos/tools_icons/sqlite.svg',
     url: 'https://www.sqlite.org',
   ),
+  ToolAsset(
+    'VSCode',
+    'lib/assets/photos/tools_icons/vscode.svg',
+    url: 'https://code.visualstudio.com',
+  ),
 ];
