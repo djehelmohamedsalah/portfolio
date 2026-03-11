@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants/app_layout.dart';
 
 class ResponsiveLayout extends StatelessWidget {
   final Widget mobile;
@@ -11,13 +12,13 @@ class ResponsiveLayout extends StatelessWidget {
   });
 
   static bool isMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width < 800;
+      MediaQuery.of(context).size.width < Breakpoints.tablet;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth < 800) {
+        if (constraints.maxWidth < Breakpoints.tablet) {
           return mobile;
         } else {
           return desktop;

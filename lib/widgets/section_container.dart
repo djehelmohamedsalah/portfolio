@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/responsive_layout.dart';
+import '../constants/app_layout.dart';
 
 class SectionContainer extends StatelessWidget {
   final String? title;
@@ -43,7 +44,7 @@ class SectionContainer extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
-          const SizedBox(height: 40),
+          const SizedBox(height: AppSpacing.blockGap),
           child,
           ishero
               ? Center(

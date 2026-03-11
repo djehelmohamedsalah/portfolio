@@ -43,47 +43,45 @@ class AppStrings {
   static const String categoryStateManagement = 'STATE\nMANAGEMENT';
   static const String categoryBackendIntegration = 'BACKEND\nINTEGRATION';
   static const String categoryUiPerformance = 'UI &\nPERFORMANCE';
-
   // Skills - Mobile Development
   static const List<String> skillsMobileDev = [
-    'Flutter SDK & Dart Ecosystem',
-    'Clean Architecture (SOLID)',
-    'Advanced Git Workflows',
-    'Modular Implementation',
-    'CI/CD & App Distribution',
-    'Production Scaling',
+    'Flutter & Dart',
+    'Clean Architecture',
+    'Git Workflows',
+    'Modular Apps',
+    'CI/CD',
+    'App Scaling',
   ];
 
   // Skills - State Management
   static const List<String> skillsStateManagement = [
-    'BLoC / Cubit Architecture',
-    'GetX Reactive Management',
-    'Dependency Injection Patterns',
-    'Event-Driven Logic Flow',
-    'Persistent State Handling',
-    'Complex State Machines',
+    'BLoC / Cubit',
+    'GetX',
+    'Dependency Injection',
+    'Event-Driven Logic',
+    'State Persistence',
+    'State Machines',
   ];
 
   // Skills - Backend Integration
   static const List<String> skillsBackendIntegration = [
     'Supabase & PostgreSQL',
-    'RESTful API Engineering',
-    'Multi-factor Auth Systems',
-    'Real-time Data Syncing',
-    'Secure Client Persistence',
-    'Edge Case & Error Logic',
+    'REST APIs',
+    'Auth Systems',
+    'Realtime Sync',
+    'Secure Storage',
+    'Error Handling',
   ];
 
   // Skills - UI & Performance
   static const List<String> skillsUiPerformance = [
-    'Performance Benchmarking',
-    'Memory & Resource Profiling',
-    'Custom Animation Engineering',
-    'Responsive Design Systems',
-    'Theming & Visual Standards',
-    'Rendering Optimization',
+    'Performance Tuning',
+    'Memory Profiling',
+    'Custom Animations',
+    'Responsive UI',
+    'Design Systems',
+    'Render Optimization',
   ];
-
   // About Section
   static const String aboutTitle = 'About Me';
   static const String aboutSubTitle =

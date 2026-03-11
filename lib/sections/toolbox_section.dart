@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mo_salah_dev/constants/tool_assets.dart';
 import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:mo_salah_dev/constants/app_layout.dart';
 import 'package:mo_salah_dev/widgets/section_container.dart';
 import 'package:mo_salah_dev/widgets/section_header.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -9,52 +10,56 @@ import 'package:url_launcher/url_launcher.dart';
 class ToolboxSection extends StatelessWidget {
   const ToolboxSection({super.key});
 
-  int _crossAxisCount(double width) {
-    if (width >= 1100) return 5; // desktop
-    if (width >= 720) return 3; // tablet
-    return 2; // mobile
-  }
-
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
     return SectionContainer(
       color: Theme.of(context).colorScheme.surface,
-      height: 500,
+      height: 0,
       titleCentered: true,
-      child: Column(
-        children: [
-          const SectionHeader(
-            title: AppStrings.toolsTitle,
-            subtitle: AppStrings.toolsSubtitle,
-          ),
-          const SizedBox(height: 100),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final count = _crossAxisCount(constraints.maxWidth);
-              final spacing = 18.0;
-              final assetsByName = {
-                for (final tool in toolAssets) tool.name: tool,
-              };
-              final orderedTools = _orderedToolNames
-                  .map((name) => assetsByName[name])
-                  .whereType<ToolAsset>()
-                  .toList();
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1200),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // const SectionHeader(
+                //   title: AppStrings.toolsTitle,
+                //   subtitle: AppStrings.toolsSubtitle,
+                // ),
+                // const SizedBox(height: AppSpacing.blockGap),
+                () {
+                  // final count = getGridColumns(screenWidth);
+                  const spacing = 18.0;
+                  final assetsByName = {
+                    for (final tool in toolAssets) tool.name: tool,
+                  };
+                  final orderedTools = _orderedToolNames
+                      .map((name) => assetsByName[name])
+                      .whereType<ToolAsset>()
+                      .toList();
 
-              return GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: count,
-                  crossAxisSpacing: spacing,
-                  mainAxisSpacing: spacing,
-                ),
-                itemCount: orderedTools.length,
-                itemBuilder: (context, index) =>
-                    Center(child: _ToolItem(asset: orderedTools[index])),
-              );
-            },
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 10,
+                      crossAxisSpacing: spacing,
+                      mainAxisSpacing: spacing,
+                    ),
+                    itemCount: orderedTools.length,
+                    itemBuilder: (context, index) =>
+                        Center(child: _ToolItem(asset: orderedTools[index])),
+                  );
+                }(),
+                const SizedBox(height: AppSpacing.blockGap),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }

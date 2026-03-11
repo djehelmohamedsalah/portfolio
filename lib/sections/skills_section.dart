@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
 import '../widgets/section_header.dart';
 import '../constants/app_strings.dart';
-import '../utils/responsive_layout.dart';
+import '../constants/app_layout.dart';
 
 class _SkillCategory {
   final String title;
@@ -23,53 +23,53 @@ class SkillsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final screenWidth = MediaQuery.sizeOf(context).width;
     final categories = _buildCategories();
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
     return SectionContainer(
       key: sectionKey,
       color: Theme.of(context).colorScheme.surface,
-      height: 720,
+      height: 0,
       titleCentered: true,
-      child: Column(
-        children: [
-          const SectionHeader(
-            title: AppStrings.skillsTitle,
-            subtitle: AppStrings.skillsSubtitle,
-          ),
-          const SizedBox(height: 30),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final count = _crossAxisCount(constraints.maxWidth);
-
-              return GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: count,
-                  crossAxisSpacing: 24,
-                  mainAxisSpacing: 24,
-                  childAspectRatio: ResponsiveLayout.isMobile(context)
-                      ? 0.9
-                      : 0.75,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1200),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SectionHeader(
+                  title: AppStrings.skillsTitle,
+                  subtitle: AppStrings.skillsSubtitle,
                 ),
-                itemCount: categories.length,
-                itemBuilder: (context, index) =>
-                    _SkillCard(category: categories[index], theme: theme),
-              );
-            },
+                const SizedBox(height: AppSpacing.blockGap),
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: getGridColumns(screenWidth),
+                    crossAxisSpacing: 48,
+                    mainAxisSpacing: 32,
+                    childAspectRatio: 0.8,
+                  ),
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) => _SkillColumn(
+                    category: categories[index],
+                    theme: theme,
+                    colorScheme: colorScheme,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
-  }
-
-  int _crossAxisCount(double width) {
-    if (width >= 1180) return 4;
-    if (width >= 920) return 3;
-    if (width >= 760) return 2;
-    return 1;
   }
 
   List<_SkillCategory> _buildCategories() {
@@ -98,146 +98,67 @@ class SkillsSection extends StatelessWidget {
   }
 }
 
-class _SkillCard extends StatefulWidget {
+class _SkillColumn extends StatelessWidget {
   final _SkillCategory category;
   final ThemeData theme;
+  final ColorScheme colorScheme;
 
-  const _SkillCard({required this.category, required this.theme});
-
-  @override
-  State<_SkillCard> createState() => _SkillCardState();
-}
-
-class _SkillCardState extends State<_SkillCard> {
-  bool _hovered = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = widget.theme.colorScheme;
-    final primary = colorScheme.primary;
-    final baseSurface = colorScheme.surface.withValues(alpha: 0.82);
-    final borderRadius = BorderRadius.circular(18);
-
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
-        curve: Curves.easeOut,
-        decoration: BoxDecoration(
-          color: baseSurface,
-          borderRadius: borderRadius,
-          border: Border.all(
-            color: _hovered
-                ? primary.withValues(alpha: 0.5)
-                : colorScheme.outline.withValues(alpha: 0.2),
-            width: 1.1,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: primary.withValues(alpha: _hovered ? 0.32 : 0.18),
-              blurRadius: _hovered ? 32 : 22,
-              spreadRadius: _hovered ? 2 : 1,
-              offset: const Offset(0, 12),
-            ),
-          ],
-        ),
-        child: Container(
-          margin: const EdgeInsets.all(1.2),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          decoration: BoxDecoration(
-            color: colorScheme.surface.withValues(alpha: 0.9),
-            borderRadius: borderRadius,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _IconHalo(
-                icon: widget.category.icon,
-                primary: primary,
-                surface: baseSurface,
-              ),
-              const SizedBox(height: 14),
-              Text(
-                widget.category.title,
-                textAlign: TextAlign.center,
-                style: widget.theme.textTheme.displayMedium?.copyWith(
-                  fontSize: 20,
-                  color: colorScheme.onSurface,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'SKILLS',
-                style: widget.theme.textTheme.labelSmall?.copyWith(
-                  color: colorScheme.onSurface.withValues(alpha: 0.6),
-                  letterSpacing: 1.1,
-                ),
-              ),
-              const SizedBox(height: 6),
-              ...widget.category.skills.map(
-                (skill) => Padding(
-                  padding: const EdgeInsets.only(bottom: 2),
-                  child: Text(
-                    skill,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: widget.theme.textTheme.bodyMedium?.copyWith(
-                      color: colorScheme.onSurface.withValues(alpha: 0.85),
-                      height: 1.25,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _IconHalo extends StatelessWidget {
-  final IconData icon;
-  final Color primary;
-  final Color surface;
-
-  const _IconHalo({
-    required this.icon,
-    required this.primary,
-    required this.surface,
+  const _SkillColumn({
+    required this.category,
+    required this.theme,
+    required this.colorScheme,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 60,
-      height: 60,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: surface,
-        boxShadow: [
-          BoxShadow(
-            color: primary.withValues(alpha: 0.5),
-            blurRadius: 26,
-            spreadRadius: 1,
-            offset: const Offset(0, 12),
-          ),
-        ],
-      ),
-      child: Center(
-        child: Icon(
-          icon,
-          color: primary,
-          size: 28,
-          shadows: [
-            Shadow(color: primary.withValues(alpha: 0.65), blurRadius: 22),
+    final primary = colorScheme.primary;
+    final subtleIconBg = primary.withValues(alpha: 0.08);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                color: subtleIconBg,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(category.icon, color: primary, size: 18),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                category.title,
+                style: theme.textTheme.titleLarge?.copyWith(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: colorScheme.onSurface,
+                ),
+              ),
+            ),
           ],
         ),
-      ),
+        const SizedBox(height: AppSpacing.itemGap),
+        ...List.generate(
+          category.skills.length,
+          (i) => Padding(
+            padding: EdgeInsets.only(bottom: AppSpacing.itemGap),
+            child: Text(
+              category.skills[i],
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: colorScheme.onSurface.withValues(alpha: 0.78),
+                height: 1.32,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

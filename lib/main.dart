@@ -8,6 +8,7 @@ import 'sections/development_process.dart';
 import 'sections/toolbox_section.dart';
 
 import 'constants/app_strings.dart';
+import 'constants/app_layout.dart';
 import 'theme/app_theme.dart';
 import 'widgets/floating_top_app_bar.dart';
 
@@ -113,11 +114,17 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
               sectionKey: _homeKey,
               onViewWork: () => _scrollToSection(_projectsKey),
             ),
+            // const SizedBox(height: AppSpacing.sectionGap),
             AboutSection(sectionKey: _aboutKey),
+            // const SizedBox(height: AppSpacing.sectionGap),
             ProjectsSection(sectionKey: _projectsKey),
+            // const SizedBox(height: AppSpacing.sectionGap),
             DevelopmentProcess(sectionKey: _developmentProcessKey),
+            // const SizedBox(height: AppSpacing.sectionGap),
             SkillsSection(sectionKey: _skillsKey),
+            // const SizedBox(height: AppSpacing.sectionGap),
             ToolboxSection(),
+            // const SizedBox(height: AppSpacing.sectionGap),
             ContactSection(sectionKey: _contactKey),
           ],
         ),
