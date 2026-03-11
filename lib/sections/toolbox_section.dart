@@ -62,9 +62,7 @@ class ToolboxSection extends StatelessWidget {
                         Text(
                           tool.name,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
+                          style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(fontWeight: FontWeight.w600),
                         ),
                       ],
