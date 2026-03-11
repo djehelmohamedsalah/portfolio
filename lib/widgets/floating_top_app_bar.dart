@@ -123,22 +123,22 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                               case NavAction.home:
                                 onHome();
                                 break;
-                              case NavAction.projects:
-                                onProjects();
-                                break;
                               case NavAction.about:
                                 onAbout();
                                 break;
                               case NavAction.developmentProcess:
-                              onDevelopmentProcess();
-                              break;
-                            case NavAction.skills:
-                              onSkills();
-                              break;
-                            case NavAction.contact:
-                              onContact();
-                              break;
-                          }
+                                onDevelopmentProcess();
+                                break;
+                              case NavAction.skills:
+                                onSkills();
+                                break;
+                              case NavAction.projects:
+                                onProjects();
+                                break;
+                              case NavAction.contact:
+                                onContact();
+                                break;
+                            }
                           },
                           child: const CompactNavChip(),
                         ),

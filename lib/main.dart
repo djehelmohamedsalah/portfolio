@@ -7,7 +7,6 @@ import 'sections/development_process.dart';
 import 'sections/projects_section.dart';
 
 import 'constants/app_strings.dart';
-import 'constants/app_layout.dart';
 import 'theme/app_theme.dart';
 import 'widgets/floating_top_app_bar.dart';
 
