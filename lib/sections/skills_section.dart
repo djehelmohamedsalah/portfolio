@@ -31,7 +31,7 @@ class SkillsSection extends StatelessWidget {
 
     return SectionContainer(
       key: sectionKey,
-      color: Theme.of(context).colorScheme.surface,
+      color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.35),
       height: 0,
       titleCentered: true,
       child: Center(
@@ -65,7 +65,6 @@ class SkillsSection extends StatelessWidget {
                     colorScheme: colorScheme,
                   ),
                 ),
-                const SizedBox(height: AppSpacing.sectionGap),
                 const ToolboxSection(),
               ],
             ),

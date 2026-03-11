@@ -25,7 +25,7 @@ class ToolboxSection extends StatelessWidget {
                 title: AppStrings.toolsTitle,
                 subtitle: AppStrings.toolsSubtitle,
               ),
-              const SizedBox(height: 48),
+              const SizedBox(height: 28),
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

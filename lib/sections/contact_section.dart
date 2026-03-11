@@ -52,7 +52,7 @@ class ContactSection extends StatelessWidget {
     return Container(
       key: sectionKey,
       width: double.infinity,
-      color: theme.colorScheme.surface.withValues(alpha: 0.35),
+      color: theme.colorScheme.surface,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 64),
       child: Center(
         child: ConstrainedBox(
