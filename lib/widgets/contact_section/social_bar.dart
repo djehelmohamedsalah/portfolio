@@ -13,7 +13,7 @@ class _SocialBar extends StatelessWidget {
       runSpacing: 16,
       children: ContactSection._socials
           .map(
-            (link) => _HoverIconButton(
+            (link) => HoverIconButton(
               assetPath: link.assetPath,
               label: link.label,
               tintWithTheme: link.tintWithTheme,

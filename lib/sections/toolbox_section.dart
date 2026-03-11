@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mo_salah_dev/constants/tool_assets.dart';
 import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:mo_salah_dev/sections/contact_section.dart';
 import 'package:mo_salah_dev/widgets/section_header.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -34,39 +34,29 @@ class ToolboxSection extends StatelessWidget {
                   maxCrossAxisExtent: 140,
                   mainAxisSpacing: 40,
                   crossAxisSpacing: 32,
-                  childAspectRatio: 0.9,
+                  childAspectRatio: 0.7,
                 ),
                 itemBuilder: (context, index) {
                   final tool = tools[index];
-                  final icon = tool.isSvg
-                      ? SvgPicture.asset(
-                          tool.path,
-                          width: 56,
-                          height: 56,
-                          fit: BoxFit.contain,
-                        )
-                      : Image.asset(
-                          tool.path,
-                          width: 56,
-                          height: 56,
-                          fit: BoxFit.contain,
-                        );
-
-                  return GestureDetector(
-                    onTap: () => _openToolUrl(context, tool.url),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        icon,
-                        const SizedBox(height: 12),
-                        Text(
-                          tool.name,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      HoverIconButton(
+                        assetPath: tool.path,
+                        label: tool.name,
+                        isSvg: tool.isSvg,
+                        size: 56,
+                        onTap: () => _openToolUrl(context, tool.url),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        tool.name,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   );
                 },
               ),
