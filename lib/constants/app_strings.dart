@@ -24,9 +24,6 @@ class AppStrings {
   static const String contactLabel = 'Contact';
   static const String navigatetooltip = 'Navigate';
 
-
-
-
   // Home Section
   static const String heroSectionTitle = 'Mobile App Developer';
   static const String schortname = 'MoSalah';
@@ -38,7 +35,8 @@ class AppStrings {
   static const String hireMe = 'Hire Me';
   static const String hookText =
       'I build real-world applications with clean architecture, strong logic, and a focus on performance.';
-  static const String openTowork ='Open to development opportunities and professional growth';
+  static const String openTowork =
+      'Open to development opportunities and professional growth';
   static const String typewriterText1 = 'Mobile Application Developer.';
   static const String typewriterText2 = 'Flutter Developer.';
   static const String typewriterText3 = 'Android Developer.';
@@ -249,8 +247,9 @@ class AppStrings {
   static const String interestedInWorking =
       'Feel free to hit me up. I’m looking forward to hearing from you.';
   static const String emailCopied = 'Email copied to clipboard';
-//footer
-  static const String footerText = 'Mohamed Salah Djehel · Portfolio · Mobile Applications Developer';
+  //footer
+  static const String footerText =
+      'Mohamed Salah Djehel · Portfolio · Mobile Applications Developer';
   static const String rightText = '© 2026 · All rights reserved';
   //about section
   static const String externallinksnackbarmessag = 'Unable to open link.';
@@ -269,14 +268,4 @@ class AppStrings {
   static const String chalengesTitel = 'Challenges & Solutions';
   static const String techStackTitle = 'Tech Stack';
   static const String screenSchotsTitle = 'Screenshots';
-
-
-
-
-
-
-  
-
-
-  
 }
