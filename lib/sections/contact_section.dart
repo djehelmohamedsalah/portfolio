@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:flutter_svg/flutter_svg.dart";
+import "package:mo_salah_dev/constants/app_strings.dart";
 import "package:url_launcher/url_launcher.dart";
 
 part '../widgets/contact_section/footer.dart';
@@ -127,7 +129,7 @@ class _HeadlineBlock extends StatelessWidget {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 450),
         child: Text(
-          "Feel free to hit me up. I’m looking forward to hearing from you.",
+          AppStrings.interestedInWorking,
           textAlign: textAlign,
           style: theme.textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.bold,

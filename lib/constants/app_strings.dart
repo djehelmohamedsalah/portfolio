@@ -224,7 +224,5 @@ class AppStrings {
       'A direct APK download link is provided in the below in "Download & Link" section.';
   // Contact Section
   static const String contactTitle = 'Contact';
-  static const String interestedInWorking = 'Interested in working together?';
-  static const String emailMe = 'Email Me';
-  static const String gitHub = 'GitHub';
+  static const String interestedInWorking = 'Feel free to hit me up. I’m looking forward to hearing from you.';
 }
