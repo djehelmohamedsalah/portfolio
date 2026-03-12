@@ -58,7 +58,7 @@ class HeroIntro extends StatelessWidget {
               OnlineIndicator(color: theme.colorScheme.primary),
               const SizedBox(width: 10),
               Text(
-                'Open to development opportunities and professional growth',
+                AppStrings.openTowork,
                 style: theme.textTheme.labelLarge?.copyWith(
                   color: theme.colorScheme.primary,
                   fontWeight: FontWeight.w600,
@@ -90,10 +90,10 @@ class HeroIntro extends StatelessWidget {
         TypewriterText(
           cursor: "_",
           phrases: const [
-            'Mobile Application Developer.',
-            'Flutter Developer.',
-            'Android Developer.',
-            'Cross-Platform Developer.',
+            AppStrings.typewriterText1,
+            AppStrings.typewriterText2,
+            AppStrings.typewriterText3,
+            AppStrings.typewriterText4,
           ],
           style: TextStyle(
             fontSize: roleTextSize,

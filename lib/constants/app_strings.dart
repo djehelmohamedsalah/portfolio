@@ -29,6 +29,11 @@ class AppStrings {
   static const String hireMe = 'Hire Me';
   static const String hookText =
       'I build real-world applications with clean architecture, strong logic, and a focus on performance.';
+  static const String openTowork ='Open to development opportunities and professional growth';
+  static const String typewriterText1 = 'Mobile Application Developer.';
+  static const String typewriterText2 = 'Flutter Developer.';
+  static const String typewriterText3 = 'Android Developer.';
+  static const String typewriterText4 = 'Cross-Platform Developer.';
 
   // DevelopmentProcess Section
   static const String developmentProcessTitle = 'Development Process';
