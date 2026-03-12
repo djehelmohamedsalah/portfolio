@@ -28,7 +28,7 @@ class ContactSection extends StatelessWidget {
     _SocialLink(
       label: 'Watsapp',
       assetPath: 'lib/assets/photos/social_icons/whatsapp.svg',
-      url: 'https://wa.me/213541268231',
+      url: 'https://wa.me/213655663020',
     ),
     _SocialLink(
       label: 'LinkedIn',

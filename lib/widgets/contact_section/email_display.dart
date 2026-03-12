@@ -41,7 +41,7 @@ class _EmailDisplay extends StatelessWidget {
               final messenger = ScaffoldMessenger.maybeOf(context);
               messenger?.showSnackBar(
                 const SnackBar(
-                  content: Text('Email copied to clipboard'),
+                  content: Text(AppStrings.emailCopied),
                   duration: Duration(seconds: 2),
                 ),
               );

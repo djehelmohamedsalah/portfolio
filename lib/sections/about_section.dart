@@ -104,9 +104,9 @@ class AboutSection extends StatelessWidget {
       return;
     }
     if (!context.mounted) return;
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text('Unable to open link.')));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text(AppStrings.externallinksnackbarmessag)),
+    );
   }
 }
 

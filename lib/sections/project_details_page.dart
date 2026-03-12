@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/constants/app_strings.dart';
 import 'package:mo_salah_dev/sections/image_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -104,13 +105,13 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
       } else {
-        throw 'Could not start download';
+        throw AppStrings.downloadNotStart;
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Could not open $url')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('${AppStrings.urlNotOpen} $url')),
+        );
       }
     }
   }
@@ -121,13 +122,13 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
       } else {
-        throw 'Could not open page';
+        throw AppStrings.pageNotOpen;
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Could not open $url')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('${AppStrings.urlNotOpen} $url')),
+        );
       }
     }
   }

@@ -77,5 +77,5 @@ Future<void> _openToolUrl(BuildContext context, String url) async {
   if (!context.mounted) return;
   ScaffoldMessenger.of(
     context,
-  ).showSnackBar(const SnackBar(content: Text('Unable to open link.')));
+  ).showSnackBar(const SnackBar(content: Text(AppStrings.urlNotOpen)));
 }

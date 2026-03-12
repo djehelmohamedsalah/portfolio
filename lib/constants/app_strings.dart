@@ -224,5 +224,16 @@ class AppStrings {
       'A direct APK download link is provided in the below in "Download & Link" section.';
   // Contact Section
   static const String contactTitle = 'Contact';
-  static const String interestedInWorking = 'Feel free to hit me up. I’m looking forward to hearing from you.';
+  static const String interestedInWorking =
+      'Feel free to hit me up. I’m looking forward to hearing from you.';
+  static const String emailCopied = 'Email copied to clipboard';
+
+  //about section
+  static const String externallinksnackbarmessag = 'Unable to open link.';
+  //project detail page
+  static const String downloadNotStart = 'Could not start download.';
+  static const String urlNotOpen = 'Unable to open link.';
+  static const String pageNotOpen = 'Could not open page.';
+  //
+  
 }
