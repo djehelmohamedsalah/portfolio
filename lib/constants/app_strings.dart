@@ -16,6 +16,15 @@ class AppStrings {
   static const String switchLight = 'Switch to light theme';
   static const String switchDark = 'Switch to dark theme';
   static const String language = 'Language';
+  static const String homeLabel = 'Home';
+  static const String aboutLabel = 'About';
+  static const String devProcesLabel = 'Dev Process';
+  static const String skillsLabel = 'Skills';
+  static const String projectsLabel = 'Project';
+  static const String contactLabel = 'Contact';
+  static const String navigatetooltip = 'Navigate';
+
+
 
 
   // Home Section
@@ -111,6 +120,7 @@ class AppStrings {
       'https://www.linkedin.com/in/mohamedsalahdjehel/';
   // Projects Section
   static const String projectsTitle = 'Selected Projects';
+  static const String moreDetailsLabel = 'more details';
   static const String projectsSubtitle =
       'A collection of real-world Flutter applications focused on clean architecture, performance, and user experience.';
 
@@ -255,6 +265,11 @@ class AppStrings {
   static const String vieOnGithub = 'View on GitHub';
   static const String getOnApptoid = 'Get on Apptoide';
   static const String roleTitle = 'Role';
+  static const String overviewTitle = 'Overview';
+  static const String chalengesTitel = 'Challenges & Solutions';
+  static const String techStackTitle = 'Tech Stack';
+  static const String screenSchotsTitle = 'Screenshots';
+
 
 
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/constants/app_strings.dart';
 import 'floating_top_app_bar/header_actions.dart';
 import 'floating_top_app_bar/logo_title.dart';
 import 'floating_top_app_bar/nav_button.dart';
@@ -73,15 +74,15 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                           spacing: 12,
                           runSpacing: 4,
                           children: [
-                            NavButton(label: 'Home', onTap: onHome),
-                            NavButton(label: 'About', onTap: onAbout),
+                            NavButton(label: AppStrings.homeLabel, onTap: onHome),
+                            NavButton(label: AppStrings.aboutLabel, onTap: onAbout),
                             NavButton(
-                              label: 'Dev Process',
+                              label: AppStrings.devProcesLabel,
                               onTap: onDevelopmentProcess,
                             ),
-                            NavButton(label: 'Skills', onTap: onSkills),
-                            NavButton(label: 'Projects', onTap: onProjects),
-                            NavButton(label: 'Contact', onTap: onContact),
+                            NavButton(label: AppStrings.skillsLabel, onTap: onSkills),
+                            NavButton(label: AppStrings.projectsLabel, onTap: onProjects),
+                            NavButton(label: AppStrings.contactLabel, onTap: onContact),
                           ],
                         ),
                       ),
@@ -91,31 +92,31 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                       child: Align(
                         alignment: Alignment.center,
                         child: PopupMenuButton<NavAction>(
-                          tooltip: 'Navigate',
+                          tooltip: AppStrings.navigatetooltip,
                           itemBuilder: (context) => const [
                             PopupMenuItem(
                               value: NavAction.home,
-                              child: Text('Home'),
+                              child: Text(AppStrings.homeLabel),
                             ),
                             PopupMenuItem(
                               value: NavAction.about,
-                              child: Text('About'),
+                              child: Text(AppStrings.aboutLabel),
                             ),
                             PopupMenuItem(
                               value: NavAction.developmentProcess,
-                              child: Text('Dev Process'),
+                              child: Text(AppStrings.devProcesLabel),
                             ),
                             PopupMenuItem(
                               value: NavAction.skills,
-                              child: Text('Skills'),
+                              child: Text(AppStrings.skillsLabel),
                             ),
                             PopupMenuItem(
                               value: NavAction.projects,
-                              child: Text('Projects'),
+                              child: Text(AppStrings.projectsLabel),
                             ),
                             PopupMenuItem(
                               value: NavAction.contact,
-                              child: Text('Contact'),
+                              child: Text(AppStrings.contactLabel),
                             ),
                           ],
                           onSelected: (value) {

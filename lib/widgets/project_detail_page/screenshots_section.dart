@@ -70,7 +70,7 @@ class _ScreenshotsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _SectionTitle('Screenshots'),
+        const _SectionTitle(AppStrings.screenSchotsTitle),
         const SizedBox(height: 20),
         SizedBox(
           height: 300,

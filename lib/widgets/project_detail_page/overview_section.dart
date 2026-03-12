@@ -10,7 +10,7 @@ class _OverviewSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _SectionTitle('Overview'),
+        const _SectionTitle(AppStrings.overviewTitle),
         const SizedBox(height: 15),
         Text(
           project.overview,
@@ -23,7 +23,7 @@ class _OverviewSection extends StatelessWidget {
               ),
         ),
         const SizedBox(height: 30),
-        const _SectionTitle('Challenges & Solutions'),
+        const _SectionTitle(AppStrings.chalengesTitel),
         const SizedBox(height: 15),
         Text(
           project.challenges,
@@ -36,7 +36,7 @@ class _OverviewSection extends StatelessWidget {
               ),
         ),
         const SizedBox(height: 30),
-        const _SectionTitle('Tech Stack'),
+        const _SectionTitle(AppStrings.techStackTitle),
         const SizedBox(height: 15),
         Text(
           project.techStack,

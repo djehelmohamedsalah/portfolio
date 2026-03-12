@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/constants/app_strings.dart';
 import 'package:mo_salah_dev/widgets/hover_outline_buttton.dart';
 import '../../sections/project_details_page.dart';
 import '../../utils/responsive_layout.dart';
@@ -52,7 +53,7 @@ class ProjectText extends StatelessWidget {
         ),
         const SizedBox(height: 32),
         HoverOutlineButton(
-          label: 'more details',
+          label: AppStrings.moreDetailsLabel,
           onTap: () {
             Navigator.push(
               context,
