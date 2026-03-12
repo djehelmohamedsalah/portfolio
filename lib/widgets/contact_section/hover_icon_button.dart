@@ -9,7 +9,8 @@ class HoverIconButton extends StatefulWidget {
   final bool isSvg;
   final double size;
 
-  const HoverIconButton({super.key, 
+  const HoverIconButton({
+    super.key,
     required this.assetPath,
     required this.label,
     required this.onTap,
@@ -29,8 +30,8 @@ class _HoverIconButtonState extends State<HoverIconButton> {
   @override
   Widget build(BuildContext context) {
     final tint = widget.tintWithTheme
-        ? widget.tintColor ?? Theme.of(context).colorScheme.onTertiary
-        : null;
+        ? Theme.of(context).colorScheme.onTertiary.withValues(alpha: 0.78)
+        : widget.tintColor;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _hover = true),

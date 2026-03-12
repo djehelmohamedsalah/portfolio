@@ -65,7 +65,7 @@ class SkillsSection extends StatelessWidget {
                     colorScheme: colorScheme,
                   ),
                 ),
-                const ToolboxSection(),
+                ToolboxSection(),
               ],
             ),
           ),
