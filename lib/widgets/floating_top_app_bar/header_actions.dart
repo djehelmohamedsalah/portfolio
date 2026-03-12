@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/constants/app_strings.dart';
 import 'action_icon_button.dart';
 
 class HeaderActions extends StatelessWidget {
@@ -21,16 +22,16 @@ class HeaderActions extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         ActionIconButton(
-          tooltip: isDark ? 'Switch to light theme' : 'Switch to dark theme',
+          tooltip: isDark ? AppStrings.switchLight : AppStrings.switchDark,
           icon: isDark ? Icons.light_mode : Icons.dark_mode,
           onTap: onThemeToggle,
         ),
         const SizedBox(width: 10),
         ActionIconButton.menu(
-          tooltip: 'Language',
+          tooltip: AppStrings.language,
           icon: Icons.language,
           menu: PopupMenuButton<String>(
-            tooltip: 'Language',
+            tooltip: AppStrings.language,
             initialValue: currentLanguage,
             onSelected: (value) => onLanguageSelected?.call(value),
             itemBuilder: (context) => const [

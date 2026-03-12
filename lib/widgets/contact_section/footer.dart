@@ -10,7 +10,7 @@ class _Footer extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Mohamed Salah Djehel · Portfolio · Mobile Applications Developer',
+          AppStrings.footerText,
           textAlign: TextAlign.center,
           style: theme.textTheme.bodyMedium?.copyWith(
             letterSpacing: 0.4,
@@ -20,7 +20,7 @@ class _Footer extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         Text(
-          '© 2026 · All rights reserved',
+          AppStrings.rightText,
           textAlign: TextAlign.center,
           style: theme.textTheme.bodyMedium?.copyWith(
             letterSpacing: 0.4,

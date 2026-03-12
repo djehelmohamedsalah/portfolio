@@ -5,11 +5,18 @@ class AppStrings {
   static const String portfolioTitle = 'MoSalahDev';
 
   // Navigation
+  static const String sections = 'Sections';
   static const String navHome = 'Home';
   static const String navProjects = 'Projects';
   static const String navAbout = 'About';
   static const String navSkills = 'Skills';
   static const String navContact = 'Contact';
+
+  //Appbar
+  static const String switchLight = 'Switch to light theme';
+  static const String switchDark = 'Switch to dark theme';
+  static const String language = 'Language';
+
 
   // Home Section
   static const String heroSectionTitle = 'Mobile App Developer';
@@ -227,13 +234,17 @@ class AppStrings {
   static const String interestedInWorking =
       'Feel free to hit me up. I’m looking forward to hearing from you.';
   static const String emailCopied = 'Email copied to clipboard';
-
+//footer
+  static const String footerText = 'Mohamed Salah Djehel · Portfolio · Mobile Applications Developer';
+  static const String rightText = '© 2026 · All rights reserved';
   //about section
   static const String externallinksnackbarmessag = 'Unable to open link.';
   //project detail page
   static const String downloadNotStart = 'Could not start download.';
   static const String urlNotOpen = 'Unable to open link.';
   static const String pageNotOpen = 'Could not open page.';
-  //
+  
+
+
   
 }

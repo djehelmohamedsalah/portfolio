@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/constants/app_strings.dart';
 
 class CompactNavChip extends StatelessWidget {
   const CompactNavChip({super.key});
@@ -18,7 +19,7 @@ class CompactNavChip extends StatelessWidget {
           Icon(Icons.menu, size: 18, color: theme.colorScheme.primary),
           const SizedBox(width: 6),
           Text(
-            'Sections',
+            AppStrings.sections,
             style: theme.textTheme.labelLarge?.copyWith(
               color: theme.colorScheme.primary,
               fontWeight: FontWeight.w600,
