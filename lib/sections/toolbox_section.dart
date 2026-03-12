@@ -47,9 +47,6 @@ class ToolboxSection extends StatelessWidget {
                         isSvg: tool.isSvg,
                         size: 56,
                         tintWithTheme: true,
-                        tintColor: Theme.of(
-                          context,
-                        ).colorScheme.onTertiary.withValues(alpha: 0.78),
                         onTap: () => _openToolUrl(context, tool.url),
                       ),
                       const SizedBox(height: 12),
