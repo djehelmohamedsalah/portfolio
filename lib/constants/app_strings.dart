@@ -248,6 +248,18 @@ class AppStrings {
   static const String downloadNotStart = 'Could not start download.';
   static const String urlNotOpen = 'Unable to open link.';
   static const String pageNotOpen = 'Could not open page.';
+  static const String status = 'Status';
+  static const String corefeaturestitle = 'Core Features';
+  static const String downloadandlinkstitle = 'Download & Links';
+  static const String downloadApkLabel = 'Download APK.';
+  static const String vieOnGithub = 'View on GitHub';
+  static const String getOnApptoid = 'Get on Apptoide';
+  static const String roleTitle = 'Role';
+
+
+
+
+
   
 
 

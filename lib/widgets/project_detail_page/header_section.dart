@@ -45,7 +45,7 @@ class _HeaderSection extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              'Role',
+              AppStrings.role,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.onSurface,
@@ -89,7 +89,7 @@ class _HeaderSection extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Role',
+                      AppStrings.role,
                       style: Theme.of(context)
                           .textTheme
                           .titleMedium

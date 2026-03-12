@@ -29,9 +29,9 @@ class _DetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _DetailItem(label: 'Status', value: project.status),
+          _DetailItem(label: AppStrings.status, value: project.status),
           const Divider(height: 30),
-          const _SectionTitle('Core Features'),
+          const _SectionTitle(AppStrings.corefeaturestitle),
           const SizedBox(height: 10),
           Text(
             project.coreFeatures,
@@ -41,12 +41,12 @@ class _DetailsSection extends StatelessWidget {
               project.githubUrl != null ||
               project.aptoideUrl != null) ...[
             const Divider(height: 30),
-            const _SectionTitle('Download & Links'),
+            const _SectionTitle(AppStrings.downloadandlinkstitle),
             const SizedBox(height: 15),
             if (project.apkDownloadUrl != null)
               _ActionButton(
                 icon: Icons.download,
-                label: 'Download APK',
+                label: AppStrings.downloadApkLabel,
                 color: Theme.of(context).colorScheme.primary,
                 onPressed: () => onDownloadApk(project.apkDownloadUrl!),
               ),
@@ -54,7 +54,7 @@ class _DetailsSection extends StatelessWidget {
             if (project.githubUrl != null)
               _ActionButton(
                 icon: Icons.code,
-                label: 'View on GitHub',
+                label: AppStrings.vieOnGithub,
                 color: Colors.grey.shade800,
                 onPressed: () => onOpenInBrowser(project.githubUrl!),
               ),
@@ -62,7 +62,7 @@ class _DetailsSection extends StatelessWidget {
             if (project.aptoideUrl != null)
               _ActionButton(
                 icon: Icons.store,
-                label: 'Get on Aptoide',
+                label: AppStrings.getOnApptoid,
                 color: Colors.orange,
                 onPressed: () => onOpenInBrowser(project.aptoideUrl!),
               ),
