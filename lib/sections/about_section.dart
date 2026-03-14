@@ -232,58 +232,58 @@ class _AboutImageState extends State<_AboutImage>
                     AnimatedBuilder(
                       animation: _float,
                       builder: (context, child) {
+                        final double shadowYOffset = _float.value * 0.35;
+                        return Align(
+                          alignment: _capsuleAlignment,
+                          child: Transform.translate(
+                            offset: Offset(0, shadowYOffset),
+                            child: Container(
+                              width: shadowWidth,
+                              height: shadowWidth * 0.35,
+                              decoration: BoxDecoration(
+                                color: Colors.black.withValues(alpha: 0.15),
+                                borderRadius: BorderRadius.circular(100),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withValues(alpha: 0.18),
+                                    blurRadius: 12,
+                                    spreadRadius: 1,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    AnimatedBuilder(
+                      animation: _float,
+                      builder: (context, child) {
                         return SizedBox(
                           height: 120,
                           width: 120,
                           child: Align(
                             alignment: _capsuleAlignment,
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Transform.translate(
-                                  offset: Offset(0, _float.value * 0.25 + 8),
-                                  child: Container(
-                                    width: capsuleWidth * 0.75,
-                                    height: capsuleWidth * 0.22,
-                                    decoration: BoxDecoration(
+                            child: Transform.translate(
+                              offset: Offset(0, _float.value),
+                              child: Container(
+                                width: capsuleWidth,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
                                       color: Colors.black.withValues(
-                                        alpha: 0.18,
+                                        alpha: 0.12,
                                       ),
-                                      borderRadius: BorderRadius.circular(100),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withValues(
-                                            alpha: 0.25,
-                                          ),
-                                          blurRadius: 18,
-                                          spreadRadius: 2,
-                                        ),
-                                      ],
+                                      blurRadius: 14,
+                                      offset: const Offset(0, 4),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                                Transform.translate(
-                                  offset: Offset(0, _float.value),
-                                  child: Container(
-                                    width: capsuleWidth,
-                                    decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withValues(
-                                            alpha: 0.12,
-                                          ),
-                                          blurRadius: 14,
-                                          offset: const Offset(0, 4),
-                                        ),
-                                      ],
-                                    ),
-                                    child: Image.asset(
-                                      'lib/assets/photos/developper/cappsulle.png',
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
+                                child: Image.asset(
+                                  'lib/assets/photos/developper/cappsulle.png',
+                                  fit: BoxFit.contain,
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         );
