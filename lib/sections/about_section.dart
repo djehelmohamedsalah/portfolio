@@ -161,30 +161,139 @@ class _PrimaryHoverOutlineButtonState
   }
 }
 
-class _AboutImage extends StatelessWidget {
+class _AboutImage extends StatefulWidget {
   const _AboutImage();
+
+  @override
+  State<_AboutImage> createState() => _AboutImageState();
+}
+
+class _AboutImageState extends State<_AboutImage>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _float;
+
+  static const Alignment _capsuleAlignment = Alignment(-9, -2.5);
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2500),
+    )..repeat(reverse: true);
+    _float = Tween<double>(
+      begin: -20,
+      end: 10,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(20);
 
-    return Container(
-      width: 400,
-      height: 400,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: borderRadius,
-        border: Border.all(
-          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
-        ),
-      ),
-      child: ClipRRect(
-        borderRadius: borderRadius,
-        child: Image.asset(
-          'lib/assets/photos/developper/3D_Avatar.png',
-          fit: BoxFit.cover,
-          width: 400,
-          height: 400,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 420),
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: borderRadius,
+            border: Border.all(
+              color: Theme.of(
+                context,
+              ).colorScheme.primary.withValues(alpha: 0.3),
+            ),
+          ),
+          child: ClipRRect(
+            borderRadius: borderRadius,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final avatarSize = constraints.maxWidth;
+                final capsuleWidth = avatarSize * 0.22;
+                final shadowWidth = capsuleWidth * 0.82;
+
+                return Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Positioned.fill(
+                      child: Image.asset(
+                        'lib/assets/photos/developper/avatar2.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    AnimatedBuilder(
+                      animation: _float,
+                      builder: (context, child) {
+                        return SizedBox(
+                          height: 120,
+                          width: 120,
+                          child: Align(
+                            alignment: _capsuleAlignment,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Transform.translate(
+                                  offset: Offset(0, _float.value * 0.25 + 8),
+                                  child: Container(
+                                    width: capsuleWidth * 0.75,
+                                    height: capsuleWidth * 0.22,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black.withValues(
+                                        alpha: 0.18,
+                                      ),
+                                      borderRadius: BorderRadius.circular(100),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withValues(
+                                            alpha: 0.25,
+                                          ),
+                                          blurRadius: 18,
+                                          spreadRadius: 2,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Transform.translate(
+                                  offset: Offset(0, _float.value),
+                                  child: Container(
+                                    width: capsuleWidth,
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withValues(
+                                            alpha: 0.12,
+                                          ),
+                                          blurRadius: 14,
+                                          offset: const Offset(0, 4),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Image.asset(
+                                      'lib/assets/photos/developper/cappsulle.png',
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
         ),
       ),
     );
