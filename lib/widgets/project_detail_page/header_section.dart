@@ -26,31 +26,27 @@ class _HeaderSection extends StatelessWidget {
           children: [
             Column(
               children: [
-                Image.asset(
-                  project.logo,
-                  height: 80,
-                  fit: BoxFit.contain,
-                ),
+                Image.asset(project.logo, height: 80, fit: BoxFit.contain),
                 const SizedBox(height: 20),
                 Text(
                   project.title,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onSurface,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onSurface,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
             ),
             const SizedBox(height: 20),
             Text(
-              AppStrings.role,
+              AppStrings.roleTitle,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onSurface,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onSurface,
+                overflow: TextOverflow.ellipsis,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
@@ -63,20 +59,15 @@ class _HeaderSection extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Image.asset(
-                    project.logo,
-                    height: 200,
-                    fit: BoxFit.contain,
-                  ),
+                  Image.asset(project.logo, height: 200, fit: BoxFit.contain),
                   const SizedBox(height: 20),
                   Text(
                     project.title,
-                    style:
-                        Theme.of(context).textTheme.headlineMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.onSurface,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSurface,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -89,15 +80,12 @@ class _HeaderSection extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      AppStrings.role,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.onSurface,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                      AppStrings.roleTitle,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onSurface,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                       textAlign: TextAlign.start,
                     ),
                   ),
