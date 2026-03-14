@@ -10,8 +10,12 @@ class PhotoStack extends StatelessWidget {
     final double photoSize = isMobile ? 240 : 360;
     final double squareSize = isMobile ? 70 : 90;
     final BorderRadius borderRadius = BorderRadius.circular(isMobile ? 22 : 28);
-    final Color accent = Theme.of(context).colorScheme.primary.withValues(alpha: 60);
-    final Color accentStrong = Theme.of(context).colorScheme.secondary.withValues(alpha: 90);
+    final Color accent = Theme.of(
+      context,
+    ).colorScheme.primary.withValues(alpha: 60);
+    final Color accentStrong = Theme.of(
+      context,
+    ).colorScheme.secondary.withValues(alpha: 90);
 
     return SizedBox(
       width: photoSize + squareSize,
@@ -73,7 +77,9 @@ class PhotoStack extends StatelessWidget {
                   end: Alignment.bottomRight,
                 ),
                 border: Border.all(
-                  color: Theme.of(context).colorScheme.primary.withValues(alpha: 140),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.primary.withValues(alpha: 140),
                   width: 3,
                 ),
                 boxShadow: [
@@ -83,7 +89,9 @@ class PhotoStack extends StatelessWidget {
                     offset: const Offset(0, 18),
                   ),
                   BoxShadow(
-                    color: Theme.of(context).colorScheme.primary.withValues(alpha: 80),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.primary.withValues(alpha: 80),
                     blurRadius: 32,
                     offset: const Offset(-6, -6),
                   ),
