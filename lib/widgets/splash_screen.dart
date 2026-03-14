@@ -1,0 +1,180 @@
+import 'package:flutter/material.dart';
+
+import '../constants/app_colors.dart';
+import '../constants/app_strings.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _scale;
+  late final Animation<double> _fade;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1400),
+    )..repeat(reverse: true);
+
+    _scale = Tween<double>(
+      begin: 0.95,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _fade = Tween<double>(
+      begin: 0.75,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            theme.colorScheme.primary,
+            theme.colorScheme.secondary.withOpacity(0.9),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final size = constraints.biggest;
+            final logoSize = size.shortestSide * 0.18;
+            final clampedLogoSize = logoSize.clamp(96.0, 148.0);
+
+            return Center(
+              child: FadeTransition(
+                opacity: _fade,
+                child: ScaleTransition(
+                  scale: _scale,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: clampedLogoSize,
+                        height: clampedLogoSize,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.12),
+                          borderRadius: BorderRadius.circular(28),
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.22),
+                            width: 1.5,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.12),
+                              blurRadius: 24,
+                              offset: const Offset(0, 18),
+                            ),
+                          ],
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        child: Image.asset(
+                          'lib/assets/photos/developper/M_logo.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        AppStrings.appTitle,
+                        style: theme.textTheme.headlineSmall?.copyWith(
+                          fontFamily: 'Roboto',
+                          color: AppColors.white,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        'Preparing your experience...',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          fontFamily: 'Roboto',
+                          color: Colors.white.withOpacity(0.76),
+                          letterSpacing: 0.6,
+                        ),
+                      ),
+                      const SizedBox(height: 28),
+                      _AnimatedBar(controller: _controller),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _AnimatedBar extends StatefulWidget {
+  final AnimationController controller;
+
+  const _AnimatedBar({required this.controller});
+
+  @override
+  State<_AnimatedBar> createState() => _AnimatedBarState();
+}
+
+class _AnimatedBarState extends State<_AnimatedBar> {
+  bool _forward = true;
+
+  @override
+  Widget build(BuildContext context) {
+    final maxWidth = MediaQuery.of(context).size.width.clamp(160.0, 360.0);
+    return TweenAnimationBuilder<double>(
+      tween: Tween<double>(
+        begin: _forward ? 0.22 : 0.75,
+        end: _forward ? 0.75 : 0.22,
+      ),
+      duration: const Duration(milliseconds: 900),
+      curve: Curves.easeInOut,
+      onEnd: () => setState(() => _forward = !_forward),
+      builder: (context, value, child) {
+        return Container(
+          width: maxWidth,
+          height: 6,
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.12),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          alignment: Alignment.centerLeft,
+          child: FractionallySizedBox(
+            widthFactor: value,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.white.withOpacity(0.85),
+                    Colors.white.withOpacity(0.55),
+                    Colors.white.withOpacity(0.85),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

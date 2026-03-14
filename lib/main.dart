@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'constants/app_strings.dart';
+import 'app_bootstrapper.dart';
+import 'theme/app_theme.dart';
 import 'sections/hero_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/contact_section.dart';
 import 'sections/development_process.dart';
 import 'sections/projects_section.dart';
-
-import 'constants/app_strings.dart';
-import 'theme/app_theme.dart';
 import 'widgets/floating_top_app_bar.dart';
 
 void main() {
@@ -50,7 +50,9 @@ class _MyPortfolioAppState extends State<MyPortfolioApp> {
       themeMode: _themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: PortfolioMainPage(onThemeToggle: _toggleTheme),
+      home: AppBootstrapper(
+        portfolio: PortfolioMainPage(onThemeToggle: _toggleTheme),
+      ),
     );
   }
 }
