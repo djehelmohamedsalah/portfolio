@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen>
         gradient: LinearGradient(
           colors: [
             theme.colorScheme.primary,
-            theme.colorScheme.secondary.withOpacity(0.9),
+            theme.colorScheme.secondary.withValues(alpha: 0.9),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -73,15 +73,15 @@ class _SplashScreenState extends State<SplashScreen>
                         width: clampedLogoSize,
                         height: clampedLogoSize,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.12),
+                          color: Colors.white.withValues(alpha:0.12),
                           borderRadius: BorderRadius.circular(28),
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.22),
+                            color: Colors.white.withValues(alpha:0.22),
                             width: 1.5,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.12),
+                              color: Colors.black.withValues(alpha:0.12),
                               blurRadius: 24,
                               offset: const Offset(0, 18),
                             ),
@@ -108,7 +108,7 @@ class _SplashScreenState extends State<SplashScreen>
                         'Preparing your experience...',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontFamily: 'Roboto',
-                          color: Colors.white.withOpacity(0.76),
+                          color: Colors.white.withValues(alpha:0.76),
                           letterSpacing: 0.6,
                         ),
                       ),
@@ -154,7 +154,7 @@ class _AnimatedBarState extends State<_AnimatedBar> {
           width: maxWidth,
           height: 6,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.12),
+            color: Colors.white.withValues(alpha:0.12),
             borderRadius: BorderRadius.circular(12),
           ),
           alignment: Alignment.centerLeft,
@@ -165,9 +165,9 @@ class _AnimatedBarState extends State<_AnimatedBar> {
                 borderRadius: BorderRadius.circular(12),
                 gradient: LinearGradient(
                   colors: [
-                    Colors.white.withOpacity(0.85),
-                    Colors.white.withOpacity(0.55),
-                    Colors.white.withOpacity(0.85),
+                    Colors.white.withValues(alpha:0.85),
+                    Colors.white.withValues(alpha:0.55),
+                    Colors.white.withValues(alpha:0.85),
                   ],
                 ),
               ),
