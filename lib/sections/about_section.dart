@@ -225,7 +225,7 @@ class _AboutImageState extends State<_AboutImage>
                   children: [
                     Positioned.fill(
                       child: Image.asset(
-                        'lib/assets/photos/developper/avatar2.png',
+                        'lib/assets/photos/developper/avatar.png',
                         fit: BoxFit.cover,
                       ),
                     ),
