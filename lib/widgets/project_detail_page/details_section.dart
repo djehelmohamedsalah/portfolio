@@ -35,37 +35,52 @@ class _DetailsSection extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             project.coreFeatures,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(height: 1.5),
           ),
           if (project.apkDownloadUrl != null ||
               project.githubUrl != null ||
               project.aptoideUrl != null) ...[
             const Divider(height: 30),
             const _SectionTitle(AppStrings.downloadandlinkstitle),
-            const SizedBox(height: 15),
-            if (project.apkDownloadUrl != null)
-              _ActionButton(
-                icon: Icons.download,
-                label: AppStrings.downloadApkLabel,
-                color: Theme.of(context).colorScheme.primary,
-                onPressed: () => onDownloadApk(project.apkDownloadUrl!),
-              ),
-            if (project.apkDownloadUrl != null) const SizedBox(height: 10),
-            if (project.githubUrl != null)
-              _ActionButton(
-                icon: Icons.code,
-                label: AppStrings.vieOnGithub,
-                color: Colors.grey.shade800,
-                onPressed: () => onOpenInBrowser(project.githubUrl!),
-              ),
-            if (project.githubUrl != null) const SizedBox(height: 10),
-            if (project.aptoideUrl != null)
-              _ActionButton(
-                icon: Icons.store,
-                label: AppStrings.getOnApptoid,
-                color: Colors.orange,
-                onPressed: () => onOpenInBrowser(project.aptoideUrl!),
-              ),
+            const SizedBox(height: 12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (project.apkDownloadUrl != null)
+                  Expanded(
+                    child: _ActionButton(
+                      icon: Icons.download,
+                      label: AppStrings.downloadApkLabel,
+                      color: Theme.of(context).colorScheme.primary,
+                      onPressed: () => onDownloadApk(project.apkDownloadUrl!),
+                    ),
+                  ),
+                if (project.apkDownloadUrl != null && project.githubUrl != null)
+                  const SizedBox(width: 12),
+                if (project.githubUrl != null)
+                  Expanded(
+                    child: _ActionButton(
+                      icon: Icons.code,
+                      label: AppStrings.vieOnGithub,
+                      color: Colors.grey.shade800,
+                      onPressed: () => onOpenInBrowser(project.githubUrl!),
+                    ),
+                  ),
+                if (project.githubUrl != null && project.aptoideUrl != null)
+                  const SizedBox(width: 12),
+                if (project.aptoideUrl != null)
+                  Expanded(
+                    child: _ActionButton(
+                      icon: Icons.store,
+                      label: AppStrings.getOnApptoid,
+                      color: Colors.orange,
+                      onPressed: () => onOpenInBrowser(project.aptoideUrl!),
+                    ),
+                  ),
+              ],
+            ),
           ],
         ],
       ),
@@ -87,8 +102,8 @@ class _DetailItem extends StatelessWidget {
         Text(
           label,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
-              ),
+            color: Theme.of(context).colorScheme.secondary,
+          ),
         ),
         const SizedBox(height: 5),
         Text(value, style: Theme.of(context).textTheme.bodyLarge),
@@ -112,20 +127,52 @@ class _ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final radius = BorderRadius.circular(12);
+
     return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton.icon(
-        onPressed: onPressed,
-        icon: Icon(icon, size: 20),
-        label: Text(label),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+      height: 88,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: radius,
+          onTap: onPressed,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 46,
+                height: 46,
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.12),
+                  borderRadius: radius,
+                  border: Border.all(
+                    color: color.withValues(alpha: 0.4),
+                    width: 1,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.06),
+                      blurRadius: 8,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Icon(icon, size: 22, color: color),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 0.1,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
           ),
-          elevation: 2,
         ),
       ),
     );
