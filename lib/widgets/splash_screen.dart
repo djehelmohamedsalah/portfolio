@@ -73,15 +73,15 @@ class _SplashScreenState extends State<SplashScreen>
                         width: clampedLogoSize,
                         height: clampedLogoSize,
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha:0.12),
+                          color: Colors.white.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(28),
                           border: Border.all(
-                            color: Colors.white.withValues(alpha:0.22),
+                            color: Colors.white.withValues(alpha: 0.22),
                             width: 1.5,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withValues(alpha:0.12),
+                              color: Colors.black.withValues(alpha: 0.12),
                               blurRadius: 24,
                               offset: const Offset(0, 18),
                             ),
@@ -108,12 +108,10 @@ class _SplashScreenState extends State<SplashScreen>
                         'Preparing your experience...',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontFamily: 'Roboto',
-                          color: Colors.white.withValues(alpha:0.76),
+                          color: Colors.white.withValues(alpha: 0.76),
                           letterSpacing: 0.6,
                         ),
                       ),
-                      const SizedBox(height: 28),
-                      _AnimatedBar(controller: _controller),
                     ],
                   ),
                 ),
@@ -122,59 +120,6 @@ class _SplashScreenState extends State<SplashScreen>
           },
         ),
       ),
-    );
-  }
-}
-
-class _AnimatedBar extends StatefulWidget {
-  final AnimationController controller;
-
-  const _AnimatedBar({required this.controller});
-
-  @override
-  State<_AnimatedBar> createState() => _AnimatedBarState();
-}
-
-class _AnimatedBarState extends State<_AnimatedBar> {
-  bool _forward = true;
-
-  @override
-  Widget build(BuildContext context) {
-    final maxWidth = MediaQuery.of(context).size.width.clamp(160.0, 360.0);
-    return TweenAnimationBuilder<double>(
-      tween: Tween<double>(
-        begin: _forward ? 0.22 : 0.75,
-        end: _forward ? 0.75 : 0.22,
-      ),
-      duration: const Duration(milliseconds: 900),
-      curve: Curves.easeInOut,
-      onEnd: () => setState(() => _forward = !_forward),
-      builder: (context, value, child) {
-        return Container(
-          width: maxWidth,
-          height: 6,
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha:0.12),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          alignment: Alignment.centerLeft,
-          child: FractionallySizedBox(
-            widthFactor: value,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white.withValues(alpha:0.85),
-                    Colors.white.withValues(alpha:0.55),
-                    Colors.white.withValues(alpha:0.85),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

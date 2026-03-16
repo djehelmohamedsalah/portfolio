@@ -36,9 +36,10 @@ class PreloadService {
   Future<void> _precacheImages(BuildContext context) async {
     const heroAndBranding = <String>[
       'lib/assets/photos/developper/suit_profile_picture.png',
-      'lib/assets/photos/developper/3D_Avatar.png',
+      'lib/assets/photos/developper/avatar.png',
       'lib/assets/photos/developper/M_logo.png',
       'lib/assets/photos/developper/signature.png',
+      'lib/assets/photos/developper/cappsulle.png',
     ];
 
     const projectCovers = <String>[

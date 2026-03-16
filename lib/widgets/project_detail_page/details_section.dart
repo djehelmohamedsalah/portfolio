@@ -76,7 +76,16 @@ class _DetailsSection extends StatelessWidget {
                       icon: Icons.store,
                       label: AppStrings.getOnApptoid,
                       color: Colors.orange,
-                      onPressed: () => onOpenInBrowser(project.aptoideUrl!),
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'Aptoide build is coming soon. Thanks for your patience!',
+                            ),
+                            behavior: SnackBarBehavior.floating,
+                          ),
+                        );
+                      },
                     ),
                   ),
               ],
