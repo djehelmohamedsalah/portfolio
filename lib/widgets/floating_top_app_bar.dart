@@ -66,7 +66,7 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const LogoTitle(),
+                  LogoTitle(onTap: onHome),
                   if (!isCompact)
                     Expanded(
                       child: Center(
@@ -74,15 +74,26 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                           spacing: 12,
                           runSpacing: 4,
                           children: [
-                            NavButton(label: AppStrings.homeLabel, onTap: onHome),
-                            NavButton(label: AppStrings.aboutLabel, onTap: onAbout),
+                            NavButton(
+                              label: AppStrings.aboutLabel,
+                              onTap: onAbout,
+                            ),
                             NavButton(
                               label: AppStrings.devProcesLabel,
                               onTap: onDevelopmentProcess,
                             ),
-                            NavButton(label: AppStrings.skillsLabel, onTap: onSkills),
-                            NavButton(label: AppStrings.projectsLabel, onTap: onProjects),
-                            NavButton(label: AppStrings.contactLabel, onTap: onContact),
+                            NavButton(
+                              label: AppStrings.skillsLabel,
+                              onTap: onSkills,
+                            ),
+                            NavButton(
+                              label: AppStrings.projectsLabel,
+                              onTap: onProjects,
+                            ),
+                            NavButton(
+                              label: AppStrings.contactLabel,
+                              onTap: onContact,
+                            ),
                           ],
                         ),
                       ),
@@ -94,10 +105,6 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                         child: PopupMenuButton<NavAction>(
                           tooltip: AppStrings.navigatetooltip,
                           itemBuilder: (context) => const [
-                            PopupMenuItem(
-                              value: NavAction.home,
-                              child: Text(AppStrings.homeLabel),
-                            ),
                             PopupMenuItem(
                               value: NavAction.about,
                               child: Text(AppStrings.aboutLabel),
