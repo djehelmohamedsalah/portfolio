@@ -14,8 +14,9 @@ class _RoleText extends StatelessWidget {
         .toList();
 
     return Column(
-      crossAxisAlignment:
-          align == TextAlign.center ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+      crossAxisAlignment: align == TextAlign.center
+          ? CrossAxisAlignment.center
+          : CrossAxisAlignment.start,
       children: lines
           .map(
             (line) => Padding(
@@ -23,9 +24,9 @@ class _RoleText extends StatelessWidget {
               child: Text(
                 line.trim(),
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.secondary,
-                      height: 1.5,
-                    ),
+                  color: Theme.of(context).colorScheme.secondary,
+                  height: 1.5,
+                ),
                 textAlign: align,
               ),
             ),

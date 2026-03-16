@@ -76,6 +76,7 @@ class _HeaderSection extends StatelessWidget {
             const SizedBox(width: 40),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     alignment: Alignment.centerLeft,
