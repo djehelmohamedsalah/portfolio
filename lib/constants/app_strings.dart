@@ -20,7 +20,7 @@ class AppStrings {
   static const String aboutLabel = 'About';
   static const String devProcesLabel = 'Dev Process';
   static const String skillsLabel = 'Skills';
-  static const String projectsLabel = 'Project';
+  static const String projectsLabel = 'Projects';
   static const String contactLabel = 'Contact';
   static const String navigatetooltip = 'Navigate';
 
@@ -104,13 +104,11 @@ class AppStrings {
   // About Section
   static const String aboutTitle = 'About Me';
   static const String aboutSubTitle =
-      'A brief overview of my background, mindset, and approach to building structured, high-quality mobile applications.';
-
+      'Overview of my background and approach to building high-quality mobile apps.';
   static const String aboutDescription =
-      "Mohamed Salah is a Software Developper\n\n"
-      "focused on building clean, reliable, and scalable mobile applications. With over three years of hands-on experience, I work on real-world projects through a disciplined approach that combines learning, problem-solving, and practical execution.\n\n"
-      "I turn ideas into well-structured applications from UI design to deployment, with a strong focus on clean code, efficient workflows, and continuous improvement.\n\n"
-      "I thrive in collaborative and structured environments, value accountability and initiative, and am motivated to grow through mentorship and real responsibility—making me a strong fit for both Ausbildung programs and professional tech teams.\n";
+      "Mohamed Salah is a Mobile Application Developer.\n\n"
+      "Focused on building structured and high-quality mobile applications with Flutter, he develops real-world projects that emphasize clean architecture, performance, and intuitive user experiences. His work centers on transforming ideas into reliable applications through disciplined problem-solving, organized development practices, and continuous technical improvement.\n\n"
+      "He specializes in creating scalable app structures, implementing modern UI solutions, and maintaining clean, maintainable codebases. Passionate about practical learning and product quality, he aims to contribute to professional development teams while growing through real production challenges and collaborative environments.";
   static const String resumeButton = 'Resume';
   static const String linkedInButton = 'LinkedIn';
   static const String resumeUrl = 'https://example.com/resume.pdf';
@@ -120,7 +118,7 @@ class AppStrings {
   static const String projectsTitle = 'Selected Projects';
   static const String moreDetailsLabel = 'more details';
   static const String projectsSubtitle =
-      'A collection of real-world Flutter applications focused on clean architecture, performance, and user experience.';
+      'Real-world Flutter apps built with clean architecture, performance, and strong UX focus.';
 
   // Newsily app
   static const String projectNewsilyTitle = 'Newsily';
