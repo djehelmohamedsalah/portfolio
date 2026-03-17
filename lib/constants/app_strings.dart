@@ -64,42 +64,42 @@ class AppStrings {
   static const String categoryUiPerformance = 'UI &\nPERFORMANCE';
   // Skills - Mobile Development
   static const List<String> skillsMobileDev = [
+    '',
     'Flutter & Dart',
     'Clean Architecture',
     'Git Workflows',
     'Modular Apps',
-    'CI/CD',
     'App Scaling',
   ];
 
   // Skills - State Management
   static const List<String> skillsStateManagement = [
+    '',
     'BLoC / Cubit',
     'GetX',
+    'Provider',
     'Dependency Injection',
-    'Event-Driven Logic',
     'State Persistence',
-    'State Machines',
   ];
 
   // Skills - Backend Integration
   static const List<String> skillsBackendIntegration = [
-    'Supabase & PostgreSQL',
+    '',
+    'Supabase',
     'REST APIs',
     'Auth Systems',
-    'Realtime Sync',
     'Secure Storage',
     'Error Handling',
   ];
 
   // Skills - UI & Performance
   static const List<String> skillsUiPerformance = [
+    '',
     'Performance Tuning',
-    'Memory Profiling',
-    'Custom Animations',
+    'App Optimization',
+    'Fluid UI Animations',
     'Responsive UI',
     'Design Systems',
-    'Render Optimization',
   ];
   // About Section
   static const String aboutTitle = 'About Me';

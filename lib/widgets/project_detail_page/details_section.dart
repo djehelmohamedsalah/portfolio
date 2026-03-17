@@ -53,7 +53,7 @@ class _DetailsSection extends StatelessWidget {
                     child: _ActionButton(
                       icon: Icons.download,
                       label: AppStrings.downloadApkLabel,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: Theme.of(context).colorScheme.secondary,
                       onPressed: () => onDownloadApk(project.apkDownloadUrl!),
                     ),
                   ),
@@ -64,7 +64,7 @@ class _DetailsSection extends StatelessWidget {
                     child: _ActionButton(
                       icon: Icons.code,
                       label: AppStrings.vieOnGithub,
-                      color: Colors.grey.shade800,
+                      color: Theme.of(context).colorScheme.onTertiary,
                       onPressed: () => onOpenInBrowser(project.githubUrl!),
                     ),
                   ),
