@@ -22,9 +22,10 @@ class _AboutImageState extends State<AboutImage>
       vsync: this,
       duration: const Duration(milliseconds: 2500),
     )..repeat(reverse: true);
-    _float = Tween<double>(begin: -20, end: 10).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _float = Tween<double>(
+      begin: -20,
+      end: 10,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -108,8 +109,9 @@ class _AboutImageState extends State<AboutImage>
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.black26,
-                                      blurRadius: 14,
-                                      offset: Offset(0, 4),
+                                      spreadRadius: -3,
+                                      blurRadius: 20,
+                                      offset: Offset(0, 2),
                                     ),
                                   ],
                                 ),
