@@ -54,8 +54,8 @@ class Project {
       ],
       imageOverview: 'lib/assets/photos/newsily/newsily_overview.png',
       apkDownloadUrl:
-          'https://github.com/MosalahDJ/Newsily/releases/download/v1.4.2/app-release.apk',
-      githubUrl: 'https://github.com/MosalahDJ/Newsili',
+          'https://github.com/djehelmohamedsalah/Newsily/releases/download/v1.4.2/app-release.apk',
+      githubUrl: 'https://github.com/djehelmohamedsalah/Newsili',
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
     Project(
@@ -82,8 +82,8 @@ class Project {
       ],
       imageOverview: 'lib/assets/photos/raqib/raqib_overvie.png',
       apkDownloadUrl:
-          'https://github.com/MosalahDJ/Raqib/releases/download/1.0.1/app-release.apk',
-      githubUrl: 'https://github.com/MosalahDJ/raqib',
+          'https://github.com/djehelmohamedsalah/Raqib/releases/download/1.0.1/app-release.apk',
+      githubUrl: 'https://github.com/djehelmohamedsalah/raqib',
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
     Project(
@@ -112,8 +112,8 @@ class Project {
       ],
       imageOverview: 'lib/assets/photos/quranLife/quranlife_overview.png',
       apkDownloadUrl:
-          'https://github.com/MosalahDJ/QuranLife/releases/download/1.0.5/app-release.apk',
-      githubUrl: 'https://github.com/MosalahDJ/QuranLife',
+          'https://github.com/djehelmohamedsalah/QuranLife/releases/download/1.0.5/app-release.apk',
+      githubUrl: 'https://github.com/djehelmohamedsalah/QuranLife',
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
   ];
