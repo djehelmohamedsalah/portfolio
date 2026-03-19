@@ -3,6 +3,7 @@ import '../widgets/section_container.dart';
 import '../utils/responsive_layout.dart';
 import '../widgets/hero_section/hero_intro.dart';
 import '../widgets/hero_section/photo_stack.dart';
+import '../constants/app_strings.dart';
 
 class HeroSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -22,7 +23,8 @@ class HeroSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       builder: (context, layout) {
-        final isMobile = layout.isMobile;
+        final isDesktop = layout.isDesktop;
+        final isCompact = !isDesktop; // tablet + mobile
         return SectionContainer(
           toAbout: toAbout,
           ishero: true,
@@ -31,17 +33,7 @@ class HeroSection extends StatelessWidget {
           height: 620,
           child: Stack(
             children: [
-              if (isMobile)
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    HeroIntro(onViewWork: onViewWork, onHireMe: onHireMe),
-                    const SizedBox(height: 30),
-                    PhotoStack(isMobile: isMobile),
-                  ],
-                )
-              else
+              if (isDesktop)
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -57,8 +49,27 @@ class HeroSection extends StatelessWidget {
                       flex: 2,
                       child: Align(
                         alignment: Alignment.centerRight,
-                        child: PhotoStack(isMobile: isMobile),
+                        child: PhotoStack(isMobile: layout.isMobile),
                       ),
+                    ),
+                  ],
+                )
+              else
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    HeroIntro(
+                      onViewWork: onViewWork,
+                      onHireMe: onHireMe,
+                      showButtons: false,
+                    ),
+                    SizedBox(height: layout.blockSpacing * 0.75),
+                    PhotoStack(isMobile: layout.isMobile),
+                    SizedBox(height: layout.blockSpacing),
+                    _HeroCtas(
+                      onViewWork: onViewWork,
+                      onHireMe: onHireMe,
                     ),
                   ],
                 ),
@@ -66,6 +77,56 @@ class HeroSection extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class _HeroCtas extends StatelessWidget {
+  final VoidCallback onViewWork;
+  final VoidCallback onHireMe;
+
+  const _HeroCtas({
+    required this.onViewWork,
+    required this.onHireMe,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final layout = context.layout;
+    final double buttonTextSize = layout.isMobile ? 15 : 16;
+
+    final ButtonStyle ctaButtonStyle = ElevatedButton.styleFrom(
+      backgroundColor: theme.colorScheme.primary,
+      foregroundColor: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
+      minimumSize: const Size(180, 56),
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      textStyle: TextStyle(
+        fontSize: buttonTextSize,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0.2,
+      ),
+    ).copyWith(elevation: const WidgetStatePropertyAll(2));
+
+    return Wrap(
+      spacing: 20,
+      runSpacing: 12,
+      alignment: WrapAlignment.center,
+      children: [
+        ElevatedButton(
+          onPressed: onViewWork,
+          style: ctaButtonStyle,
+          child: const Text(AppStrings.viewMyWork),
+        ),
+        ElevatedButton(
+          onPressed: onHireMe,
+          style: ctaButtonStyle,
+          child: const Text(AppStrings.hireMe),
+        ),
+      ],
     );
   }
 }

@@ -1,9 +1,57 @@
 import 'package:flutter/material.dart';
+import '../../utils/responsive_layout.dart';
 
 class OnlineIndicator extends StatelessWidget {
   final Color color;
+  final String label;
+  final TextStyle? textStyle;
 
-  const OnlineIndicator({super.key, required this.color});
+  const OnlineIndicator({
+    super.key,
+    required this.color,
+    required this.label,
+    this.textStyle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final layout = context.layout;
+    final theme = Theme.of(context);
+    final effectiveTextStyle =
+        textStyle ??
+        theme.textTheme.labelLarge?.copyWith(
+          color: color,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.4,
+        );
+
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: layout.constrainedContentWidth),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(999),
+          border: Border.all(color: color.withValues(alpha: 0.22)),
+        ),
+        child: Wrap(
+          spacing: 10,
+          runSpacing: 6,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          alignment: WrapAlignment.start,
+          children: [
+            _Dot(color: color),
+            Text(label, style: effectiveTextStyle, softWrap: true),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Dot extends StatelessWidget {
+  final Color color;
+  const _Dot({required this.color});
 
   @override
   Widget build(BuildContext context) {

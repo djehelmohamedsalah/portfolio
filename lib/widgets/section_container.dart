@@ -49,14 +49,14 @@ class SectionContainer extends StatelessWidget {
                   title!,
                   textAlign: titleCentered ? TextAlign.center : TextAlign.start,
                   style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
                 SizedBox(height: layout.blockSpacing),
               ],
               child,
-              if (ishero) ...[
-                SizedBox(height: layout.blockSpacing),
+              if (ishero && layout.isDesktop) ...[
+                SizedBox(height: layout.blockSpacing / 4),
                 Center(
                   child: InkWell(
                     hoverColor: Colors.transparent,

@@ -8,16 +8,20 @@ import 'online_indicator.dart';
 class HeroIntro extends StatelessWidget {
   final VoidCallback onViewWork;
   final VoidCallback onHireMe;
+  final bool showButtons;
 
   const HeroIntro({
     super.key,
     required this.onViewWork,
     required this.onHireMe,
+    this.showButtons = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    final bool isMobile = context.layout.isMobile;
+    final layout = context.layout;
+    final bool isMobile = layout.isMobile;
+    final bool isCentered = layout.isMobile || layout.isTablet;
     final theme = Theme.of(context);
     final double titleSize = isMobile ? 42 : 64;
     final double badgeTextSize = isMobile ? 12 : 14;
@@ -41,47 +45,35 @@ class HeroIntro extends StatelessWidget {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment:
+          isCentered ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.primary.withValues(alpha: 0.08),
-            borderRadius: BorderRadius.circular(999),
-            border: Border.all(
-              color: theme.colorScheme.primary.withValues(alpha: 0.22),
-            ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              OnlineIndicator(color: theme.colorScheme.primary),
-              const SizedBox(width: 10),
-              Text(
-                AppStrings.openTowork,
-                style: theme.textTheme.labelLarge?.copyWith(
-                  color: theme.colorScheme.primary,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.4,
-                  fontSize: badgeTextSize,
-                ),
-              ),
-            ],
+        OnlineIndicator(
+          color: theme.colorScheme.primary,
+          label: AppStrings.openTowork,
+          textStyle: theme.textTheme.labelLarge?.copyWith(
+            color: theme.colorScheme.primary,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.4,
+            fontSize: badgeTextSize,
           ),
         ),
         const SizedBox(height: 18),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 620),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment:
+                isCentered ? CrossAxisAlignment.center : CrossAxisAlignment.start,
             children: [
               GradientTitle(
                 text: AppStrings.homeTitleFirstPart,
                 fontSize: titleSize,
+                textAlign: isCentered ? TextAlign.center : TextAlign.start,
               ),
               GradientTitle(
                 text: AppStrings.homeTitleSecondPart,
                 fontSize: titleSize,
+                textAlign: isCentered ? TextAlign.center : TextAlign.start,
               ),
             ],
           ),
@@ -95,6 +87,8 @@ class HeroIntro extends StatelessWidget {
             AppStrings.typewriterText3,
             AppStrings.typewriterText4,
           ],
+          alignment:
+              isCentered ? MainAxisAlignment.center : MainAxisAlignment.start,
           style: TextStyle(
             fontSize: roleTextSize,
             color: theme.colorScheme.secondary,
@@ -112,6 +106,7 @@ class HeroIntro extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 620),
           child: Text(
             AppStrings.hookText,
+            textAlign: isCentered ? TextAlign.center : TextAlign.start,
             style: theme.textTheme.titleMedium?.copyWith(
               fontSize: hookTextSize,
               height: 1.6,
@@ -121,23 +116,25 @@ class HeroIntro extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 26),
-        Wrap(
-          spacing: 20,
-          runSpacing: 12,
-          children: [
-            ElevatedButton(
-              onPressed: onViewWork,
-              style: ctaButtonStyle,
-              child: const Text(AppStrings.viewMyWork),
-            ),
-            ElevatedButton(
-              onPressed: onHireMe,
-              style: ctaButtonStyle,
-              child: const Text(AppStrings.hireMe),
-            ),
-          ],
-        ),
+        if (showButtons) ...[
+          const SizedBox(height: 26),
+          Wrap(
+            spacing: 20,
+            runSpacing: 12,
+            children: [
+              ElevatedButton(
+                onPressed: onViewWork,
+                style: ctaButtonStyle,
+                child: const Text(AppStrings.viewMyWork),
+              ),
+              ElevatedButton(
+                onPressed: onHireMe,
+                style: ctaButtonStyle,
+                child: const Text(AppStrings.hireMe),
+              ),
+            ],
+          ),
+        ],
       ],
     );
   }

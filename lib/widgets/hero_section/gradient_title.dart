@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 class GradientTitle extends StatelessWidget {
   final String text;
   final double fontSize;
+  final TextAlign textAlign;
 
-  const GradientTitle({super.key, required this.text, required this.fontSize});
+  const GradientTitle({
+    super.key,
+    required this.text,
+    required this.fontSize,
+    this.textAlign = TextAlign.start,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +35,7 @@ class GradientTitle extends StatelessWidget {
           height: 1.17,
           letterSpacing: -1.5,
         ),
+        textAlign: textAlign,
       ),
     );
   }

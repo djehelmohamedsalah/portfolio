@@ -5,6 +5,7 @@ class TypewriterText extends StatefulWidget {
   final String cursor;
   final TextStyle style;
   final Color cursorColor;
+  final MainAxisAlignment alignment;
   final Duration typingSpeed;
   final Duration erasingSpeed;
   final Duration pauseAfterTyping;
@@ -15,6 +16,7 @@ class TypewriterText extends StatefulWidget {
     required this.phrases,
     required this.style,
     required this.cursorColor,
+    this.alignment = MainAxisAlignment.start,
     this.typingSpeed = const Duration(milliseconds: 70),
     this.erasingSpeed = const Duration(milliseconds: 90),
     this.pauseAfterTyping = const Duration(milliseconds: 900),
@@ -83,6 +85,7 @@ class _TypewriterTextState extends State<TypewriterText> {
     final text = current.substring(0, _charIndex);
     return Row(
       mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: widget.alignment,
       children: [
         Flexible(
           child: Text(
