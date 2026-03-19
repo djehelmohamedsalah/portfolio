@@ -16,57 +16,62 @@ class AboutSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final aboutTheme = AboutSectionTheme.of(context);
 
-    return SectionContainer(
-      key: sectionKey,
-      color: aboutTheme.surfaceOverlay,
-      height: 600,
-      titleCentered: true,
-      child: Column(
-        children: [
-          SectionHeader(
-            title: AppStrings.aboutTitle,
-            subtitle: AppStrings.aboutSubTitle,
-          ),
-          const SizedBox(height: 48),
-          ResponsiveLayout(
-            mobile: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  AppStrings.aboutDescription.trim(),
-                  style: aboutTheme.bodyMobile,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 26),
-                const AboutActions(),
-                const SizedBox(height: 40),
-                const Center(child: AboutImage()),
-              ],
-            ),
-            desktop: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const AboutImage(),
-                const SizedBox(width: 40),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.aboutDescription.trim(),
-                        style: aboutTheme.bodyDesktop,
+    return ResponsiveLayout(
+      builder: (context, layout) {
+        final isMobile = layout.isMobile;
+        return SectionContainer(
+          key: sectionKey,
+          color: aboutTheme.surfaceOverlay,
+          height: 600,
+          titleCentered: true,
+          child: Column(
+            children: [
+              const SectionHeader(
+                title: AppStrings.aboutTitle,
+                subtitle: AppStrings.aboutSubTitle,
+              ),
+              const SizedBox(height: 48),
+              if (isMobile)
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      AppStrings.aboutDescription.trim(),
+                      style: aboutTheme.bodyMobile,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 26),
+                    const AboutActions(),
+                    const SizedBox(height: 40),
+                    const Center(child: AboutImage()),
+                  ],
+                )
+              else
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const AboutImage(),
+                    const SizedBox(width: 40),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppStrings.aboutDescription.trim(),
+                            style: aboutTheme.bodyDesktop,
+                          ),
+                          const SizedBox(height: 26),
+                          const AboutActions(),
+                        ],
                       ),
-                      const SizedBox(height: 26),
-                      const AboutActions(),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -7,6 +7,9 @@ class _HeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final layout = context.layout;
+    final isMobile = layout.isMobile;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
@@ -21,83 +24,90 @@ class _HeaderSection extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: ResponsiveLayout(
-        mobile: Column(
-          children: [
-            Column(
+      child: isMobile
+          ? Column(
               children: [
-                Image.asset(project.logo, height: 80, fit: BoxFit.contain),
+                Column(
+                  children: [
+                    Image.asset(project.logo, height: 80, fit: BoxFit.contain),
+                    const SizedBox(height: 20),
+                    Text(
+                      project.title,
+                      style:
+                          Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onSurface,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 20),
                 Text(
-                  project.title,
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onSurface,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Text(
-              AppStrings.roleTitle,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.onSurface,
-                overflow: TextOverflow.ellipsis,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 10),
-            _RoleText(roleText: project.role, align: TextAlign.center),
-          ],
-        ),
-        desktop: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  Image.asset(project.logo, height: 200, fit: BoxFit.contain),
-                  const SizedBox(height: 20),
-                  Text(
-                    project.title,
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onSurface,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 40),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      AppStrings.roleTitle,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  AppStrings.roleTitle,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).colorScheme.onSurface,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      textAlign: TextAlign.start,
-                    ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                _RoleText(roleText: project.role, align: TextAlign.center),
+              ],
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Image.asset(project.logo,
+                          height: 200, fit: BoxFit.contain),
+                      const SizedBox(height: 20),
+                      Text(
+                        project.title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.onSurface,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 10),
-                  _RoleText(roleText: project.role, align: TextAlign.start),
-                ],
-              ),
+                ),
+                const SizedBox(width: 40),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          AppStrings.roleTitle,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onSurface,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      _RoleText(roleText: project.role, align: TextAlign.start),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
     );
   }
 }

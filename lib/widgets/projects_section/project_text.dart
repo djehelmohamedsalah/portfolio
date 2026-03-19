@@ -12,7 +12,7 @@ class ProjectText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = ResponsiveLayout.isMobile(context);
+    final isMobile = context.layout.isMobile;
     final titleSize = isMobile ? 36.0 : 52.0;
     final bodySize = isMobile ? 15.5 : 17.0;
 

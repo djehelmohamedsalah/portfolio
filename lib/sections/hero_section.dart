@@ -20,17 +20,19 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isMobile = ResponsiveLayout.isMobile(context);
-    return SectionContainer(
-      toAbout: toAbout,
-      ishero: true,
-      key: sectionKey,
-      color: Colors.transparent,
-      height: 620,
-      child: Stack(
-        children: [
-          isMobile
-              ? Column(
+    return ResponsiveLayout(
+      builder: (context, layout) {
+        final isMobile = layout.isMobile;
+        return SectionContainer(
+          toAbout: toAbout,
+          ishero: true,
+          key: sectionKey,
+          color: Colors.transparent,
+          height: 620,
+          child: Stack(
+            children: [
+              if (isMobile)
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -39,7 +41,8 @@ class HeroSection extends StatelessWidget {
                     PhotoStack(isMobile: isMobile),
                   ],
                 )
-              : Row(
+              else
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
@@ -59,8 +62,10 @@ class HeroSection extends StatelessWidget {
                     ),
                   ],
                 ),
-        ],
-      ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

@@ -3,6 +3,7 @@ import '../widgets/section_container.dart';
 import '../widgets/section_header.dart';
 import '../constants/app_strings.dart';
 import '../constants/app_layout.dart';
+import '../utils/responsive_layout.dart';
 import 'toolbox_section.dart';
 
 class _SkillCategory {
@@ -24,53 +25,58 @@ class SkillsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.sizeOf(context).width;
     final categories = _buildCategories();
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    return SectionContainer(
-      key: sectionKey,
-      color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.35),
-      height: 0,
-      titleCentered: true,
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1200),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SectionHeader(
-                  title: AppStrings.skillsTitle,
-                  subtitle: AppStrings.skillsSubtitle,
+    return ResponsiveLayout(
+      builder: (context, layout) {
+        return SectionContainer(
+          key: sectionKey,
+          color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.35),
+          height: 0,
+          titleCentered: true,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 1200),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: layout.isDesktop ? 24 : 12,
                 ),
-                const SizedBox(height: AppSpacing.blockGap),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: getGridColumns(screenWidth),
-                    crossAxisSpacing: 48,
-                    mainAxisSpacing: 32,
-                    childAspectRatio: 0.8,
-                  ),
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) => _SkillColumn(
-                    category: categories[index],
-                    theme: theme,
-                    colorScheme: colorScheme,
-                  ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SectionHeader(
+                      title: AppStrings.skillsTitle,
+                      subtitle: AppStrings.skillsSubtitle,
+                    ),
+                    SizedBox(height: layout.blockSpacing),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: layout.gridColumns,
+                        crossAxisSpacing: 48,
+                        mainAxisSpacing: 32,
+                        childAspectRatio: 0.8,
+                      ),
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) => _SkillColumn(
+                        category: categories[index],
+                        theme: theme,
+                        colorScheme: colorScheme,
+                      ),
+                    ),
+                    const ToolboxSection(),
+                  ],
                 ),
-                ToolboxSection(),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

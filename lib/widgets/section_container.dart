@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/widgets/mousse_scroll_indicator.dart';
 import '../utils/responsive_layout.dart';
-import '../constants/app_layout.dart';
 
 class SectionContainer extends StatelessWidget {
   final String? title;
@@ -11,6 +10,7 @@ class SectionContainer extends StatelessWidget {
   final bool titleCentered;
   final bool ishero;
   final VoidCallback? toAbout;
+
   const SectionContainer({
     this.toAbout,
     super.key,
@@ -24,31 +24,40 @@ class SectionContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final layout = context.layout;
+    final horizontalPadding = layout.horizontalPadding;
+    final verticalPadding = layout.sectionSpacing / 2;
+
     return Container(
       width: double.infinity,
-      constraints: BoxConstraints(minHeight: height),
       color: color,
-      padding: ResponsiveLayout.isMobile(context)
-          ? const EdgeInsets.symmetric(vertical: 40, horizontal: 20)
-          : const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
-      child: Column(
-        crossAxisAlignment: titleCentered
-            ? CrossAxisAlignment.center
-            : CrossAxisAlignment.start,
-        children: [
-          title == null
-              ? const SizedBox()
-              : Text(
+      constraints: BoxConstraints(minHeight: height),
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontalPadding,
+        vertical: verticalPadding,
+      ),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: layout.maxContentWidth),
+          child: Column(
+            crossAxisAlignment: titleCentered
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
+            children: [
+              if (title != null) ...[
+                Text(
                   title!,
                   textAlign: titleCentered ? TextAlign.center : TextAlign.start,
                   style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                 ),
-          const SizedBox(height: AppSpacing.blockGap),
-          child,
-          ishero
-              ? Center(
+                SizedBox(height: layout.blockSpacing),
+              ],
+              child,
+              if (ishero) ...[
+                SizedBox(height: layout.blockSpacing),
+                Center(
                   child: InkWell(
                     hoverColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -57,9 +66,11 @@ class SectionContainer extends StatelessWidget {
                     onTap: toAbout,
                     child: const MouseScrollIndicator(),
                   ),
-                )
-              : const SizedBox(),
-        ],
+                ),
+              ],
+            ],
+          ),
+        ),
       ),
     );
   }

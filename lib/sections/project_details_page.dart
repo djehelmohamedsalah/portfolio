@@ -26,64 +26,71 @@ class ProjectDetailsPage extends StatefulWidget {
 class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.of(context).size.width < 800;
-
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: Text(widget.project.title),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: const SizedBox(),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 1200),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _HeaderSection(project: widget.project),
-                const SizedBox(height: 40),
-                if (isMobile) ...[
-                  _OverviewSection(project: widget.project),
-                  const SizedBox(height: 30),
-                  _DetailsSection(
-                    project: widget.project,
-                    onDownloadApk: _downloadApk,
-                    onOpenInBrowser: _openInBrowser,
-                  ),
-                ] else
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: _OverviewSection(project: widget.project),
+    return ResponsiveLayout(
+      builder: (context, layout) {
+        final isMobile = layout.isMobile;
+        return Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          appBar: AppBar(
+            title: Text(widget.project.title),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leading: const SizedBox(),
+            centerTitle: true,
+          ),
+          body: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(
+              horizontal: layout.horizontalPadding,
+              vertical: layout.sectionSpacing / 2,
+            ),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: layout.maxContentWidth),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _HeaderSection(project: widget.project),
+                    const SizedBox(height: 40),
+                    if (isMobile) ...[
+                      _OverviewSection(project: widget.project),
+                      const SizedBox(height: 30),
+                      _DetailsSection(
+                        project: widget.project,
+                        onDownloadApk: _downloadApk,
+                        onOpenInBrowser: _openInBrowser,
                       ),
-                      const SizedBox(width: 40),
-                      Expanded(
-                        flex: 1,
-                        child: _DetailsSection(
-                          project: widget.project,
-                          onDownloadApk: _downloadApk,
-                          onOpenInBrowser: _openInBrowser,
-                        ),
+                    ] else
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: _OverviewSection(project: widget.project),
+                          ),
+                          const SizedBox(width: 40),
+                          Expanded(
+                            flex: 1,
+                            child: _DetailsSection(
+                              project: widget.project,
+                              onDownloadApk: _downloadApk,
+                              onOpenInBrowser: _openInBrowser,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                const SizedBox(height: 50),
-                _ScreenshotsSection(
-                  project: widget.project,
-                  onTapScreenshot: (index) => _showImageViewer(context, index),
+                    const SizedBox(height: 50),
+                    _ScreenshotsSection(
+                      project: widget.project,
+                      onTapScreenshot: (index) =>
+                          _showImageViewer(context, index),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

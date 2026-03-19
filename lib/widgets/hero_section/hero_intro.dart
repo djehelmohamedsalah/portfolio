@@ -17,7 +17,7 @@ class HeroIntro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isMobile = ResponsiveLayout.isMobile(context);
+    final bool isMobile = context.layout.isMobile;
     final theme = Theme.of(context);
     final double titleSize = isMobile ? 42 : 64;
     final double badgeTextSize = isMobile ? 12 : 14;

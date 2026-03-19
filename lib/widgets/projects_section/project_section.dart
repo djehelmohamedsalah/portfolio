@@ -12,46 +12,41 @@ class ProjectSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final isMobile = ResponsiveLayout.isMobile(context);
-    final minHeight = isMobile ? size.height * 0.75 : size.height * 0.92;
-    final verticalPadding = isMobile ? 26.0 : 56.0;
-    final horizontalPadding = _horizontalPadding(size.width);
+    return ResponsiveLayout(
+      builder: (context, layout) {
+        final minHeight = layout.isMobile ? 520.0 : 720.0;
+        final verticalPadding = layout.isMobile ? 26.0 : 56.0;
+        final horizontalPadding =
+            layout.isDesktop ? layout.horizontalPadding + 24 : layout.horizontalPadding;
 
-    return Container(
-      width: double.infinity,
-      constraints: BoxConstraints(minHeight: minHeight),
-      child: Stack(
-        children: [
-          Positioned.fill(child: ProjectBackground(config: config)),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: horizontalPadding,
-              vertical: verticalPadding,
-            ),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth < 900) {
-                  return _MobileCaseStudyLayout(config: config);
-                }
-                return _DesktopCaseStudyLayout(
-                  config: config,
-                  maxWidth: constraints.maxWidth,
-                );
-              },
-            ),
+        return Container(
+          width: double.infinity,
+          constraints: BoxConstraints(minHeight: minHeight),
+          child: Stack(
+            children: [
+              Positioned.fill(child: ProjectBackground(config: config)),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: horizontalPadding,
+                  vertical: verticalPadding,
+                ),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    if (constraints.maxWidth < 900) {
+                      return _MobileCaseStudyLayout(config: config);
+                    }
+                    return _DesktopCaseStudyLayout(
+                      config: config,
+                      maxWidth: constraints.maxWidth,
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
-  }
-
-  double _horizontalPadding(double width) {
-    if (width >= 1440) return 120;
-    if (width >= 1100) return 100;
-    if (width >= 900) return 80;
-    if (width >= 700) return 48;
-    return 24;
   }
 }
 

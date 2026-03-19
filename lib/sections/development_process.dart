@@ -12,64 +12,64 @@ class DevelopmentProcess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isMobile = ResponsiveLayout.isMobile(context);
+    return ResponsiveLayout(
+      builder: (context, layout) {
+        final isMobile = layout.isMobile;
 
-    final descriptionStyle = theme.textTheme.bodyLarge?.copyWith(
-      height: 1.8,
-      fontWeight: FontWeight.w600,
-      fontSize: isMobile ? 16 : 18,
-      color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
-    );
+        final descriptionStyle = theme.textTheme.bodyLarge?.copyWith(
+          height: 1.8,
+          fontWeight: FontWeight.w600,
+          fontSize: isMobile ? 16 : 18,
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
+        );
 
-    final boldStyle = descriptionStyle?.copyWith(
-      fontWeight: FontWeight.w900,
-      color: theme.colorScheme.onSurface,
-    );
+        final boldStyle = descriptionStyle?.copyWith(
+          fontWeight: FontWeight.w900,
+          color: theme.colorScheme.onSurface,
+        );
 
-    return SectionContainer(
-      key: sectionKey,
-      titleCentered: true,
-      color: theme.colorScheme.surface,
-      height: 600,
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1000),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SectionHeader(
-                title: AppStrings.developmentProcessTitle,
-                subtitle: AppStrings.developmentProcessSubtitle,
-              ),
-              const SizedBox(height: 48),
-              // Section Description Text
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  style: descriptionStyle,
-                  children: _buildTextSpans(
-                    AppStrings.developmentProcessDescription,
-                    boldStyle,
+        return SectionContainer(
+          key: sectionKey,
+          titleCentered: true,
+          color: theme.colorScheme.surface,
+          height: 600,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 1000),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SectionHeader(
+                    title: AppStrings.developmentProcessTitle,
+                    subtitle: AppStrings.developmentProcessSubtitle,
                   ),
-                ),
+                  const SizedBox(height: 48),
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      style: descriptionStyle,
+                      children: _buildTextSpans(
+                        AppStrings.developmentProcessDescription,
+                        boldStyle,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 60),
+                  SvgPicture.asset(
+                    'lib/assets/photos/tools_icons/development_line.svg',
+                    fit: BoxFit.contain,
+                    height: isMobile ? 80 : 160,
+                    colorFilter: ColorFilter.mode(
+                      theme.colorScheme.onSurface,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 60),
-              // Image
-              SvgPicture.asset(
-                'lib/assets/photos/tools_icons/development_line.svg',
-                fit: BoxFit.contain,
-                height: isMobile
-                    ? 80
-                    : 160, // Explicit height to fix layout issues
-                colorFilter: ColorFilter.mode(
-                  theme.colorScheme.onSurface,
-                  BlendMode.srcIn,
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
