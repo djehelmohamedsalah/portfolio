@@ -3,8 +3,8 @@ import 'dart:math';
 enum DeviceType { mobile, tablet, desktop }
 
 class Breakpoints {
-  static const double desktop = 1200;
-  static const double tablet = 800;
+  static const double desktop = 900;
+  static const double tablet = 500;
 }
 
 class AppSpacing {

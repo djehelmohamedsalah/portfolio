@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../constants/app_layout.dart';
 import '../../utils/responsive_layout.dart';
 
 class OnlineIndicator extends StatelessWidget {
@@ -34,14 +35,16 @@ class OnlineIndicator extends StatelessWidget {
           borderRadius: BorderRadius.circular(999),
           border: Border.all(color: color.withValues(alpha: 0.22)),
         ),
-        child: Wrap(
-          spacing: 10,
-          runSpacing: 6,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          alignment: WrapAlignment.start,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _Dot(color: color),
-            Text(label, style: effectiveTextStyle, softWrap: true),
+            SizedBox(width: AppSpacing.itemGap),
+            Flexible(
+              child: Text(label, style: effectiveTextStyle, softWrap: true),
+            ),
           ],
         ),
       ),

@@ -24,7 +24,6 @@ class HeroSection extends StatelessWidget {
     return ResponsiveLayout(
       builder: (context, layout) {
         final isDesktop = layout.isDesktop;
-        final isCompact = !isDesktop; // tablet + mobile
         return SectionContainer(
           toAbout: toAbout,
           ishero: true,
