@@ -55,7 +55,7 @@ class Project {
       imageOverview: 'lib/assets/photos/newsily/newsily_overview.png',
       apkDownloadUrl:
           'https://github.com/djehelmohamedsalah/Newsily/releases/download/v1.4.2/app-release.apk',
-      githubUrl: 'https://github.com/djehelmohamedsalah/Newsili',
+      githubUrl: 'https://github.com/djehelmohamedsalah/Newsily',
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
     Project(
