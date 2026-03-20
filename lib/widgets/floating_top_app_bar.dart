@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/constants/app_strings.dart';
+import '../constants/app_layout.dart';
 import 'floating_top_app_bar/header_actions.dart';
 import 'floating_top_app_bar/logo_title.dart';
 import 'floating_top_app_bar/nav_button.dart';
-import 'floating_top_app_bar/compact_nav_chip.dart';
 import 'floating_top_app_bar/nav_action.dart';
 
 class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -62,12 +62,12 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           child: LayoutBuilder(
             builder: (context, constraints) {
-              final isCompact = constraints.maxWidth < 760;
+              final layout = AppLayout.fromWidth(constraints.maxWidth);
+              final isDesktop = layout.isDesktop;
               return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   LogoTitle(onTap: onHome),
-                  if (!isCompact)
+                  if (isDesktop) ...[
                     Expanded(
                       child: Center(
                         child: Wrap(
@@ -97,67 +97,66 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                           ],
                         ),
                       ),
-                    )
-                  else
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: PopupMenuButton<NavAction>(
-                          tooltip: AppStrings.navigatetooltip,
-                          itemBuilder: (context) => const [
-                            PopupMenuItem(
-                              value: NavAction.about,
-                              child: Text(AppStrings.aboutLabel),
-                            ),
-                            PopupMenuItem(
-                              value: NavAction.developmentProcess,
-                              child: Text(AppStrings.devProcesLabel),
-                            ),
-                            PopupMenuItem(
-                              value: NavAction.skills,
-                              child: Text(AppStrings.skillsLabel),
-                            ),
-                            PopupMenuItem(
-                              value: NavAction.projects,
-                              child: Text(AppStrings.projectsLabel),
-                            ),
-                            PopupMenuItem(
-                              value: NavAction.contact,
-                              child: Text(AppStrings.contactLabel),
-                            ),
-                          ],
-                          onSelected: (value) {
-                            switch (value) {
-                              case NavAction.home:
-                                onHome();
-                                break;
-                              case NavAction.about:
-                                onAbout();
-                                break;
-                              case NavAction.developmentProcess:
-                                onDevelopmentProcess();
-                                break;
-                              case NavAction.skills:
-                                onSkills();
-                                break;
-                              case NavAction.projects:
-                                onProjects();
-                                break;
-                              case NavAction.contact:
-                                onContact();
-                                break;
-                            }
-                          },
-                          child: const CompactNavChip(),
-                        ),
-                      ),
                     ),
-                  const SizedBox(width: 8),
-                  HeaderActions(
-                    onThemeToggle: onThemeToggle,
-                    onLanguageSelected: onLanguageSelected,
-                    currentLanguage: currentLanguage,
-                  ),
+                    const SizedBox(width: 8),
+                    HeaderActions(
+                      onThemeToggle: onThemeToggle,
+                      onLanguageSelected: onLanguageSelected,
+                      currentLanguage: currentLanguage,
+                      onSelected: (action) {
+                        switch (action) {
+                          case NavAction.home:
+                            onHome();
+                            break;
+                          case NavAction.about:
+                            onAbout();
+                            break;
+                          case NavAction.developmentProcess:
+                            onDevelopmentProcess();
+                            break;
+                          case NavAction.skills:
+                            onSkills();
+                            break;
+                          case NavAction.projects:
+                            onProjects();
+                            break;
+                          case NavAction.contact:
+                            onContact();
+                            break;
+                        }
+                      },
+                    ),
+                  ] else ...[
+                    const Spacer(),
+                    const SizedBox(width: 10),
+                    HeaderActions(
+                      onThemeToggle: onThemeToggle,
+                      onLanguageSelected: onLanguageSelected,
+                      currentLanguage: currentLanguage,
+                      onSelected: (action) {
+                        switch (action) {
+                          case NavAction.home:
+                            onHome();
+                            break;
+                          case NavAction.about:
+                            onAbout();
+                            break;
+                          case NavAction.developmentProcess:
+                            onDevelopmentProcess();
+                            break;
+                          case NavAction.skills:
+                            onSkills();
+                            break;
+                          case NavAction.projects:
+                            onProjects();
+                            break;
+                          case NavAction.contact:
+                            onContact();
+                            break;
+                        }
+                      },
+                    ),
+                  ],
                 ],
               );
             },
