@@ -5,6 +5,7 @@ import 'floating_top_app_bar/header_actions.dart';
 import 'floating_top_app_bar/logo_title.dart';
 import 'floating_top_app_bar/nav_button.dart';
 import 'floating_top_app_bar/nav_action.dart';
+import 'floating_top_app_bar/action_icon_button.dart';
 
 class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onHome;
@@ -64,37 +65,44 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
             builder: (context, constraints) {
               final layout = AppLayout.fromWidth(constraints.maxWidth);
               final isDesktop = layout.isDesktop;
+              final isMobile = layout.isMobile;
               return Row(
                 children: [
-                  LogoTitle(onTap: onHome),
+                  ResponsiveLogo(onTap: onHome),
                   if (isDesktop) ...[
                     Expanded(
                       child: Center(
-                        child: Wrap(
-                          spacing: 12,
-                          runSpacing: 4,
-                          children: [
-                            NavButton(
-                              label: AppStrings.aboutLabel,
-                              onTap: onAbout,
-                            ),
-                            NavButton(
-                              label: AppStrings.devProcesLabel,
-                              onTap: onDevelopmentProcess,
-                            ),
-                            NavButton(
-                              label: AppStrings.skillsLabel,
-                              onTap: onSkills,
-                            ),
-                            NavButton(
-                              label: AppStrings.projectsLabel,
-                              onTap: onProjects,
-                            ),
-                            NavButton(
-                              label: AppStrings.contactLabel,
-                              onTap: onContact,
-                            ),
-                          ],
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              NavButton(
+                                label: AppStrings.aboutLabel,
+                                onTap: onAbout,
+                              ),
+                              const SizedBox(width: 12),
+                              NavButton(
+                                label: AppStrings.devProcesLabel,
+                                onTap: onDevelopmentProcess,
+                              ),
+                              const SizedBox(width: 12),
+                              NavButton(
+                                label: AppStrings.skillsLabel,
+                                onTap: onSkills,
+                              ),
+                              const SizedBox(width: 12),
+                              NavButton(
+                                label: AppStrings.projectsLabel,
+                                onTap: onProjects,
+                              ),
+                              const SizedBox(width: 12),
+                              NavButton(
+                                label: AppStrings.contactLabel,
+                                onTap: onContact,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -103,36 +111,20 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                       onThemeToggle: onThemeToggle,
                       onLanguageSelected: onLanguageSelected,
                       currentLanguage: currentLanguage,
-                      onSelected: (action) {
-                        switch (action) {
-                          case NavAction.home:
-                            onHome();
-                            break;
-                          case NavAction.about:
-                            onAbout();
-                            break;
-                          case NavAction.developmentProcess:
-                            onDevelopmentProcess();
-                            break;
-                          case NavAction.skills:
-                            onSkills();
-                            break;
-                          case NavAction.projects:
-                            onProjects();
-                            break;
-                          case NavAction.contact:
-                            onContact();
-                            break;
-                        }
-                      },
                     ),
                   ] else ...[
                     const Spacer(),
-                    const SizedBox(width: 10),
+
                     HeaderActions(
                       onThemeToggle: onThemeToggle,
                       onLanguageSelected: onLanguageSelected,
                       currentLanguage: currentLanguage,
+                      iconSizeOverride: isMobile ? 18 : null,
+                      spacingOverride: isMobile ? 6 : null,
+                    ),
+                    SizedBox(width: isMobile ? 6 : 10),
+                    _NavMenuButton(
+                      iconSize: isMobile ? 22 : null,
                       onSelected: (action) {
                         switch (action) {
                           case NavAction.home:
@@ -162,6 +154,46 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _NavMenuButton extends StatelessWidget {
+  final ValueChanged<NavAction> onSelected;
+  final double? iconSize;
+
+  const _NavMenuButton({required this.onSelected, this.iconSize});
+
+  @override
+  Widget build(BuildContext context) {
+    return ActionIconButton.menu(
+      tooltip: AppStrings.navigatetooltip,
+      icon: Icons.menu_rounded,
+      iconSize: iconSize,
+      splashRadius: iconSize != null ? iconSize! + 6 : null,
+      menu: PopupMenuButton<String>(
+        tooltip: AppStrings.navigatetooltip,
+        onSelected: (value) {
+          final action = NavAction.values.firstWhere(
+            (a) => a.name == value,
+            orElse: () => NavAction.home,
+          );
+          onSelected(action);
+        },
+        itemBuilder: (context) => const [
+          PopupMenuItem(value: 'about', child: Text(AppStrings.aboutLabel)),
+          PopupMenuItem(
+            value: 'developmentProcess',
+            child: Text(AppStrings.devProcesLabel),
+          ),
+          PopupMenuItem(value: 'skills', child: Text(AppStrings.skillsLabel)),
+          PopupMenuItem(
+            value: 'projects',
+            child: Text(AppStrings.projectsLabel),
+          ),
+          PopupMenuItem(value: 'contact', child: Text(AppStrings.contactLabel)),
+        ],
       ),
     );
   }

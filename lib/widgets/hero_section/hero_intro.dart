@@ -45,8 +45,9 @@ class HeroIntro extends StatelessWidget {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment:
-          isCentered ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+      crossAxisAlignment: isCentered
+          ? CrossAxisAlignment.center
+          : CrossAxisAlignment.start,
       children: [
         OnlineIndicator(
           color: theme.colorScheme.primary,
@@ -62,8 +63,9 @@ class HeroIntro extends StatelessWidget {
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 620),
           child: Column(
-            crossAxisAlignment:
-                isCentered ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+            crossAxisAlignment: isCentered
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
               GradientTitle(
                 text: AppStrings.homeTitleFirstPart,
@@ -87,8 +89,9 @@ class HeroIntro extends StatelessWidget {
             AppStrings.typewriterText3,
             AppStrings.typewriterText4,
           ],
-          alignment:
-              isCentered ? MainAxisAlignment.center : MainAxisAlignment.start,
+          alignment: isCentered
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.start,
           style: TextStyle(
             fontSize: roleTextSize,
             color: theme.colorScheme.secondary,

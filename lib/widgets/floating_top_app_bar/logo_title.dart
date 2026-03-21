@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import '../../constants/app_strings.dart';
 
-class LogoTitle extends StatelessWidget {
+/// Displays the app logo and (optionally) the brand text based on viewport width.
+class ResponsiveLogo extends StatelessWidget {
   final VoidCallback onTap;
 
-  const LogoTitle({super.key, required this.onTap});
+  const ResponsiveLogo({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // Use the actual viewport width to avoid the unbounded Row constraints on mobile.
+    final viewportWidth = MediaQuery.sizeOf(context).width;
+    final showText = viewportWidth >= 500;
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -30,29 +35,31 @@ class LogoTitle extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
             ),
-            const SizedBox(width: 10),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  AppStrings.schortname,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 0.3,
+            if (showText) ...[
+              const SizedBox(width: 10),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    AppStrings.schortname,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.3,
+                    ),
                   ),
-                ),
-                Text(
-                  AppStrings.schortname2,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 0.3,
-                    color: theme.colorScheme.secondary,
+                  Text(
+                    AppStrings.schortname2,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.3,
+                      color: theme.colorScheme.secondary,
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ],
         ),
       ),
