@@ -26,9 +26,7 @@ class _AboutImageState extends State<AboutImage>
     _float = Tween<double>(
       begin: -20,
       end: 10,
-    ).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -62,14 +60,15 @@ class _AboutImageState extends State<AboutImage>
                 final capsuleWidth = avatarSize * 0.22;
                 final shadowWidth = capsuleWidth * 0.82;
 
+                final baseImage = isDesktop
+                    ? 'lib/assets/photos/developper/avatar.png'
+                    : 'lib/assets/photos/developper/avatar_with_cappsulle.jpg';
+
                 return Stack(
                   alignment: Alignment.center,
                   children: [
                     Positioned.fill(
-                      child: Image.asset(
-                        'lib/assets/photos/developper/avatar.png',
-                        fit: BoxFit.cover,
-                      ),
+                      child: Image.asset(baseImage, fit: BoxFit.cover),
                     ),
                     if (isDesktop) ...[
                       AnimatedBuilder(
