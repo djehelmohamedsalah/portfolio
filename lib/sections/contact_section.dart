@@ -5,6 +5,7 @@ import "package:flutter/services.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:mo_salah_dev/constants/app_strings.dart";
 import "package:url_launcher/url_launcher.dart";
+import "../utils/app_layout.dart";
 
 part '../widgets/contact_section/footer.dart';
 part '../widgets/contact_section/signature_placeholder.dart';
@@ -63,7 +64,8 @@ class ContactSection extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: _maxWidth),
           child: LayoutBuilder(
             builder: (context, constraints) {
-              final isDesktop = constraints.maxWidth >= 960;
+              final layout = AppLayout.fromWidth(constraints.maxWidth);
+              final isDesktop = layout.isDesktop;
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

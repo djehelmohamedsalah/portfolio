@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/constants/app_strings.dart';
-import '../../constants/app_layout.dart';
+import '../../utils/app_layout.dart';
 import 'action_icon_button.dart';
 
 class HeaderActions extends StatelessWidget {
@@ -29,7 +29,6 @@ class HeaderActions extends StatelessWidget {
         final layout = AppLayout.fromWidth(constraints.maxWidth);
         final bool isMobile = layout.isMobile;
         final double? iconSize = iconSizeOverride ?? (isMobile ? 18 : null);
-        final double gap = spacingOverride ?? (isMobile ? 6 : 10);
 
         return Row(
           mainAxisSize: MainAxisSize.min,
@@ -41,7 +40,7 @@ class HeaderActions extends StatelessWidget {
               iconSize: iconSize,
               splashRadius: iconSize != null ? iconSize + 6 : null,
             ),
-            SizedBox(width: gap),
+            SizedBox(width: 0),
             ActionIconButton.menu(
               tooltip: AppStrings.language,
               icon: Icons.language,

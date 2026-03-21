@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/app_layout.dart';
+import 'app_layout.dart';
 
 typedef ResponsiveLayoutBuilder = Widget Function(
   BuildContext context,

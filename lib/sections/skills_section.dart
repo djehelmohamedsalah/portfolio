@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/utils/app_layout.dart';
 import '../widgets/section_container.dart';
 import '../widgets/section_header.dart';
 import '../constants/app_strings.dart';
-import '../constants/app_layout.dart';
 import '../utils/responsive_layout.dart';
 import 'toolbox_section.dart';
 
@@ -122,51 +122,62 @@ class _SkillColumn extends StatelessWidget {
     final primary = colorScheme.primary;
     final subtleIconBg = primary.withValues(alpha: 0.08);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
           children: [
-            Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                color: subtleIconBg,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(category.icon, color: primary, size: 18),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: subtleIconBg,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Icon(category.icon, color: primary, size: 18),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    category.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: colorScheme.onSurface,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: 12),
+            const SizedBox(height: AppSpacing.itemGap),
             Expanded(
-              child: Text(
-                category.title,
-                style: theme.textTheme.titleLarge?.copyWith(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: colorScheme.onSurface,
+              child: ListView.separated(
+                padding: EdgeInsets.zero,
+                physics: const ClampingScrollPhysics(),
+                itemCount: category.skills.length,
+                separatorBuilder: (_, _) =>
+                    const SizedBox(height: AppSpacing.itemGap),
+                itemBuilder: (context, i) => Text(
+                  category.skills[i],
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: colorScheme.onSurface.withValues(alpha: 0.78),
+                    height: 1.32,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),
           ],
-        ),
-        const SizedBox(height: AppSpacing.itemGap),
-        ...List.generate(
-          category.skills.length,
-          (i) => Padding(
-            padding: EdgeInsets.only(bottom: AppSpacing.itemGap),
-            child: Text(
-              category.skills[i],
-              style: theme.textTheme.bodyLarge?.copyWith(
-                color: colorScheme.onSurface.withValues(alpha: 0.78),
-                height: 1.32,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-        ),
-      ],
+        );
+      },
     );
   }
 }

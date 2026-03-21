@@ -2,10 +2,16 @@
 import 'about_section_theme.dart';
 
 class AboutPrimaryButton extends StatefulWidget {
-  const AboutPrimaryButton({super.key, required this.label, required this.onTap});
+  const AboutPrimaryButton({
+    super.key,
+    required this.label,
+    required this.onTap,
+    this.padding,
+  });
 
   final String label;
   final VoidCallback onTap;
+  final EdgeInsetsGeometry? padding;
 
   @override
   State<AboutPrimaryButton> createState() => _AboutPrimaryButtonState();
@@ -17,6 +23,8 @@ class _AboutPrimaryButtonState extends State<AboutPrimaryButton> {
   @override
   Widget build(BuildContext context) {
     final theme = AboutSectionTheme.of(context);
+    final padding =
+        widget.padding ?? const EdgeInsets.symmetric(horizontal: 30, vertical: 16);
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -26,7 +34,7 @@ class _AboutPrimaryButtonState extends State<AboutPrimaryButton> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 180),
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
+          padding: padding,
           decoration: BoxDecoration(
             color: _hovering ? theme.buttonHoverBackground : Colors.transparent,
             borderRadius: BorderRadius.circular(18),

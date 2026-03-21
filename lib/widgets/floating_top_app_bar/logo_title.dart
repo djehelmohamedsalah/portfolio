@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../constants/app_strings.dart';
+import '../../utils/responsive_extensions.dart';
 
 /// Displays the app logo and (optionally) the brand text based on viewport width.
 class ResponsiveLogo extends StatelessWidget {
@@ -10,9 +11,8 @@ class ResponsiveLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    // Use the actual viewport width to avoid the unbounded Row constraints on mobile.
-    final viewportWidth = MediaQuery.sizeOf(context).width;
-    final showText = viewportWidth >= 500;
+    // Centralized breakpoint: hide text on mobile screens.
+    final showText = context.isTablet || context.isDesktop;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,

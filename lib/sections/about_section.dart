@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'dart:math';
+import 'package:flutter/material.dart';
 import '../widgets/section_container.dart';
 import '../widgets/section_header.dart';
 import '../constants/app_strings.dart';
@@ -18,7 +19,13 @@ class AboutSection extends StatelessWidget {
 
     return ResponsiveLayout(
       builder: (context, layout) {
-        final isMobile = layout.isMobile;
+        final bool isMobile = layout.isMobile;
+        final bool isTablet = layout.isTablet;
+        final double mobileImageWidth = min(
+          layout.constrainedContentWidth * 0.85,
+          360,
+        );
+
         return SectionContainer(
           key: sectionKey,
           color: aboutTheme.surfaceOverlay,
@@ -36,15 +43,52 @@ class AboutSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      AppStrings.aboutDescription.trim(),
-                      style: aboutTheme.bodyMobile,
-                      textAlign: TextAlign.center,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: layout.horizontalPadding,
+                      ),
+                      child: Text(
+                        AppStrings.aboutDescription.trim(),
+                        style: aboutTheme.bodyMobile!.copyWith(fontSize: 12),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                    const SizedBox(height: 26),
-                    const AboutActions(),
-                    const SizedBox(height: 40),
-                    const Center(child: AboutImage()),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      width: mobileImageWidth,
+                      child: const AboutImage(),
+                    ),
+                    const SizedBox(height: 28),
+                    SizedBox(
+                      width: layout.constrainedContentWidth,
+                      child: const AboutActions(),
+                    ),
+                  ],
+                )
+              else if (isTablet)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: layout.horizontalPadding,
+                      ),
+                      child: Text(
+                        AppStrings.aboutDescription.trim(),
+                        textAlign: TextAlign.center,
+                        style: aboutTheme.bodyDesktop!.copyWith(fontSize: 15),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      width: min(layout.constrainedContentWidth * 0.7, 420),
+                      child: const AboutImage(),
+                    ),
+                    const SizedBox(height: 28),
+                    SizedBox(
+                      width: layout.constrainedContentWidth,
+                      child: const AboutActions(),
+                    ),
                   ],
                 )
               else
@@ -59,7 +103,9 @@ class AboutSection extends StatelessWidget {
                         children: [
                           Text(
                             AppStrings.aboutDescription.trim(),
-                            style: aboutTheme.bodyDesktop,
+                            style: aboutTheme.bodyDesktop!.copyWith(
+                              fontSize: 15,
+                            ),
                           ),
                           const SizedBox(height: 26),
                           const AboutActions(),

@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import '../../utils/responsive_extensions.dart';
 import 'about_section_theme.dart';
 
 class AboutImage extends StatefulWidget {
@@ -25,7 +26,9 @@ class _AboutImageState extends State<AboutImage>
     _float = Tween<double>(
       begin: -20,
       end: 10,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    ).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
   }
 
   @override
@@ -38,6 +41,8 @@ class _AboutImageState extends State<AboutImage>
   Widget build(BuildContext context) {
     final theme = AboutSectionTheme.of(context);
     final borderRadius = theme.cardRadius;
+
+    final bool isDesktop = context.isDesktop;
 
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 420),
@@ -66,65 +71,67 @@ class _AboutImageState extends State<AboutImage>
                         fit: BoxFit.cover,
                       ),
                     ),
-                    AnimatedBuilder(
-                      animation: _float,
-                      builder: (context, child) {
-                        final double shadowYOffset = _float.value * 0.35;
-                        return Align(
-                          alignment: _capsuleAlignment,
-                          child: Transform.translate(
-                            offset: Offset(0, shadowYOffset),
-                            child: Container(
-                              width: shadowWidth,
-                              height: shadowWidth * 0.35,
-                              decoration: BoxDecoration(
-                                color: theme.capsuleShadowColor,
-                                borderRadius: BorderRadius.circular(100),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: theme.capsuleShadowBlurColor,
-                                    blurRadius: 12,
-                                    spreadRadius: 1,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    AnimatedBuilder(
-                      animation: _float,
-                      builder: (context, child) {
-                        return SizedBox(
-                          height: 120,
-                          width: 120,
-                          child: Align(
+                    if (isDesktop) ...[
+                      AnimatedBuilder(
+                        animation: _float,
+                        builder: (context, child) {
+                          final double shadowYOffset = _float.value * 0.35;
+                          return Align(
                             alignment: _capsuleAlignment,
                             child: Transform.translate(
-                              offset: Offset(0, _float.value),
+                              offset: Offset(0, shadowYOffset),
                               child: Container(
-                                width: capsuleWidth,
-                                decoration: const BoxDecoration(
+                                width: shadowWidth,
+                                height: shadowWidth * 0.35,
+                                decoration: BoxDecoration(
+                                  color: theme.capsuleShadowColor,
+                                  borderRadius: BorderRadius.circular(100),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black26,
-                                      spreadRadius: -3,
-                                      blurRadius: 20,
-                                      offset: Offset(0, 2),
+                                      color: theme.capsuleShadowBlurColor,
+                                      blurRadius: 12,
+                                      spreadRadius: 1,
                                     ),
                                   ],
                                 ),
-                                child: Image.asset(
-                                  'lib/assets/photos/developper/cappsulle.png',
-                                  fit: BoxFit.contain,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      AnimatedBuilder(
+                        animation: _float,
+                        builder: (context, child) {
+                          return SizedBox(
+                            height: 120,
+                            width: 120,
+                            child: Align(
+                              alignment: _capsuleAlignment,
+                              child: Transform.translate(
+                                offset: Offset(0, _float.value),
+                                child: Container(
+                                  width: capsuleWidth,
+                                  decoration: const BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        spreadRadius: -3,
+                                        blurRadius: 20,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Image.asset(
+                                    'lib/assets/photos/developper/cappsulle.png',
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
+                          );
+                        },
+                      ),
+                    ],
                   ],
                 );
               },

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../constants/app_layout.dart';
+import '../../utils/app_layout.dart';
 import '../../utils/responsive_layout.dart';
 
 class OnlineIndicator extends StatelessWidget {

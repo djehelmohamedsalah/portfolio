@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../utils/responsive_layout.dart';
+import '../../utils/app_layout.dart';
 import 'project_background.dart';
 import 'project_config.dart';
 import 'project_text.dart';
@@ -30,16 +31,17 @@ class ProjectSection extends StatelessWidget {
                   horizontal: horizontalPadding,
                   vertical: verticalPadding,
                 ),
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    if (constraints.maxWidth < 900) {
-                      return _MobileCaseStudyLayout(config: config);
-                    }
-                    return _DesktopCaseStudyLayout(
-                      config: config,
-                      maxWidth: constraints.maxWidth,
-                    );
-                  },
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final layout = AppLayout.fromWidth(constraints.maxWidth);
+                  if (!layout.isDesktop) {
+                    return _MobileCaseStudyLayout(config: config);
+                  }
+                  return _DesktopCaseStudyLayout(
+                    config: config,
+                    maxWidth: constraints.maxWidth,
+                  );
+                },
                 ),
               ),
             ],

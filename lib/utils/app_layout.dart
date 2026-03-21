@@ -3,8 +3,11 @@ import 'dart:math';
 enum DeviceType { mobile, tablet, desktop }
 
 class Breakpoints {
+  /// Desktop layouts and full navigation start at this width.
   static const double desktop = 900;
-  static const double tablet = 500;
+
+  /// Tablet layouts start here; below is considered mobile.
+  static const double tablet = 600;
 }
 
 class AppSpacing {

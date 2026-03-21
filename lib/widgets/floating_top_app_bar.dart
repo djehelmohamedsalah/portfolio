@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/constants/app_strings.dart';
-import '../constants/app_layout.dart';
+import '../utils/app_layout.dart';
 import 'floating_top_app_bar/header_actions.dart';
 import 'floating_top_app_bar/logo_title.dart';
 import 'floating_top_app_bar/nav_button.dart';
@@ -66,6 +66,7 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
               final layout = AppLayout.fromWidth(constraints.maxWidth);
               final isDesktop = layout.isDesktop;
               final isMobile = layout.isMobile;
+              final isTablet = layout.isTablet;
               return Row(
                 children: [
                   ResponsiveLogo(onTap: onHome),
@@ -119,12 +120,12 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                       onThemeToggle: onThemeToggle,
                       onLanguageSelected: onLanguageSelected,
                       currentLanguage: currentLanguage,
-                      iconSizeOverride: isMobile ? 18 : null,
-                      spacingOverride: isMobile ? 6 : null,
+                      iconSizeOverride: isMobile ? 18 : (isTablet ? 20 : null),
+                      spacingOverride: isMobile ? 6 : (isTablet ? 8 : null),
                     ),
-                    SizedBox(width: isMobile ? 6 : 10),
+                    SizedBox(width: isMobile ? 0 : (isTablet ? 8 : 10)),
                     _NavMenuButton(
-                      iconSize: isMobile ? 22 : null,
+                      iconSize: isMobile ? 22 : (isTablet ? 24 : null),
                       onSelected: (action) {
                         switch (action) {
                           case NavAction.home:
