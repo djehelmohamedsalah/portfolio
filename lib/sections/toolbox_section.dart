@@ -131,7 +131,7 @@ class _MetroTileState extends State<_MetroTile> {
         color: colorScheme.surface,
         borderRadius: BorderRadius.circular(6),
         border: Border.all(
-          color: theme.dividerColor.withOpacity(0.25),
+          color: theme.dividerColor.withValues(alpha: 0.25),
           width: 1,
         ),
       ),
