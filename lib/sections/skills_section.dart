@@ -41,17 +41,18 @@ class SkillsSection extends StatelessWidget {
                     final horizontalSpacing = layout.isDesktop
                         ? layout.blockSpacing * 0.6
                         : layout.isTablet
-                            ? layout.blockSpacing * 0.5
-                            : layout.blockSpacing * 0.45;
+                        ? layout.blockSpacing * 0.5
+                        : layout.blockSpacing * 0.45;
                     final runSpacing = layout.isDesktop
                         ? layout.blockSpacing * 0.5
                         : layout.isTablet
-                            ? layout.blockSpacing * 0.55
-                            : layout.blockSpacing * 0.6;
+                        ? layout.blockSpacing * 0.55
+                        : layout.blockSpacing * 0.6;
 
                     double cardWidth;
                     if (layout.isDesktop) {
-                      cardWidth = (availableWidth - (horizontalSpacing * 3)) / 4;
+                      cardWidth =
+                          (availableWidth - (horizontalSpacing * 3)) / 4;
                     } else if (layout.isTablet) {
                       cardWidth = (availableWidth - horizontalSpacing) / 2;
                     } else {
@@ -82,6 +83,7 @@ class SkillsSection extends StatelessWidget {
                     );
                   },
                 ),
+                SizedBox(height: layout.blockSpacing),
                 const ToolboxSection(),
               ],
             ),

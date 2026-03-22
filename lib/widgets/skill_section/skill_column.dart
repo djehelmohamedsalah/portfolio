@@ -4,11 +4,7 @@ import 'skill_category.dart';
 import 'skill_section_theme.dart';
 
 class SkillColumn extends StatelessWidget {
-  const SkillColumn({
-    super.key,
-    required this.category,
-    required this.layout,
-  });
+  const SkillColumn({super.key, required this.category, required this.layout});
 
   final SkillCategory category;
   final AppLayout layout;
@@ -24,13 +20,15 @@ class SkillColumn extends StatelessWidget {
       alignment: isDesktop ? Alignment.topLeft : Alignment.topCenter,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment:
-            isDesktop ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+        crossAxisAlignment: isDesktop
+            ? CrossAxisAlignment.start
+            : CrossAxisAlignment.center,
         children: [
           Row(
             mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment:
-                isDesktop ? MainAxisAlignment.start : MainAxisAlignment.center,
+            mainAxisAlignment: isDesktop
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
             children: [
               Container(
                 width: 32,
