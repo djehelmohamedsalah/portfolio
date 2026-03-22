@@ -15,11 +15,16 @@ class DevelopmentProcess extends StatelessWidget {
     return ResponsiveLayout(
       builder: (context, layout) {
         final isMobile = layout.isMobile;
+        final isTablet = layout.isTablet;
 
         final descriptionStyle = theme.textTheme.bodyLarge?.copyWith(
           height: 1.8,
           fontWeight: FontWeight.w600,
-          fontSize: isMobile ? 16 : 18,
+          fontSize: isMobile
+              ? 12
+              : isTablet
+              ? 14
+              : 18,
           color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
         );
 

@@ -91,13 +91,13 @@ class _TypewriterTextState extends State<TypewriterText> {
           child: Text(
             text,
             style: widget.style,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+            overflow: TextOverflow.visible,
           ),
         ),
         Text(
           widget.cursor,
           style: widget.style.copyWith(color: widget.cursorColor),
+          overflow: TextOverflow.visible,
         ),
       ],
     );

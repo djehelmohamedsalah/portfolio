@@ -7,7 +7,7 @@ class Breakpoints {
   static const double desktop = 900;
 
   /// Tablet layouts start here; below is considered mobile.
-  static const double tablet = 600;
+  static const double tablet = 400;
 }
 
 class AppSpacing {
