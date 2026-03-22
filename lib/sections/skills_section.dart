@@ -31,48 +31,62 @@ class SkillsSection extends StatelessWidget {
 
     return ResponsiveLayout(
       builder: (context, layout) {
+        final crossAxisSpacing =
+            layout.itemSpacing *
+            (layout.isDesktop
+                ? 4
+                : layout.isTablet
+                ? 3
+                : 2);
+        final mainAxisSpacing =
+            layout.itemSpacing *
+            (layout.isDesktop
+                ? 3
+                : layout.isTablet
+                ? 2.5
+                : 2);
+        final cardAspectRatio = layout.isDesktop
+            ? 0.95
+            : layout.isTablet
+            ? 1.0
+            : 1.05;
+        final crossAxisCount = layout.gridColumns;
+
         return SectionContainer(
           key: sectionKey,
           color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.35),
           height: 0,
           titleCentered: true,
           child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 1200),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: layout.isDesktop ? 24 : 12,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SectionHeader(
+                  title: AppStrings.skillsTitle,
+                  subtitle: AppStrings.skillsSubtitle,
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SectionHeader(
-                      title: AppStrings.skillsTitle,
-                      subtitle: AppStrings.skillsSubtitle,
-                    ),
-                    SizedBox(height: layout.blockSpacing),
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: layout.gridColumns,
-                        crossAxisSpacing: 48,
-                        mainAxisSpacing: 32,
-                        childAspectRatio: 0.8,
-                      ),
-                      itemCount: categories.length,
-                      itemBuilder: (context, index) => _SkillColumn(
-                        category: categories[index],
-                        theme: theme,
-                        colorScheme: colorScheme,
-                      ),
-                    ),
-                    const ToolboxSection(),
-                  ],
+                SizedBox(height: layout.blockSpacing),
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(vertical: layout.itemSpacing),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    crossAxisSpacing: crossAxisSpacing,
+                    mainAxisSpacing: mainAxisSpacing,
+                    childAspectRatio: cardAspectRatio,
+                  ),
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) => _SkillColumn(
+                    category: categories[index],
+                    theme: theme,
+                    colorScheme: colorScheme,
+                    layout: layout,
+                  ),
                 ),
-              ),
+                const ToolboxSection(),
+              ],
             ),
           ),
         );
@@ -110,74 +124,81 @@ class _SkillColumn extends StatelessWidget {
   final _SkillCategory category;
   final ThemeData theme;
   final ColorScheme colorScheme;
+  final AppLayout layout;
 
   const _SkillColumn({
     required this.category,
     required this.theme,
     required this.colorScheme,
+    required this.layout,
   });
 
   @override
   Widget build(BuildContext context) {
     final primary = colorScheme.primary;
     final subtleIconBg = primary.withValues(alpha: 0.08);
+    final titleStyle = theme.textTheme.titleLarge?.copyWith(
+      fontSize: layout.isMobile
+          ? 18
+          : layout.isTablet
+          ? 19
+          : 20,
+      fontWeight: FontWeight.w600,
+      color: colorScheme.onSurface,
+    );
+    final bodyStyle = theme.textTheme.bodyLarge?.copyWith(
+      fontSize: layout.isMobile
+          ? 14
+          : layout.isTablet
+          ? 15
+          : 16,
+      color: colorScheme.onSurface.withValues(alpha: 0.78),
+      height: 1.32,
+      fontWeight: FontWeight.w400,
+    );
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 32,
-                  height: 32,
-                  decoration: BoxDecoration(
-                    color: subtleIconBg,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Icon(category.icon, color: primary, size: 18),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    category.title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.titleLarge?.copyWith(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: colorScheme.onSurface,
-                    ),
-                  ),
-                ),
-              ],
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                color: subtleIconBg,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(category.icon, color: primary, size: 18),
             ),
-            const SizedBox(height: AppSpacing.itemGap),
+            SizedBox(width: layout.itemSpacing),
             Expanded(
-              child: ListView.separated(
-                padding: EdgeInsets.zero,
-                physics: const ClampingScrollPhysics(),
-                itemCount: category.skills.length,
-                separatorBuilder: (_, _) =>
-                    const SizedBox(height: AppSpacing.itemGap),
-                itemBuilder: (context, i) => Text(
-                  category.skills[i],
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    color: colorScheme.onSurface.withValues(alpha: 0.78),
-                    height: 1.32,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
+              child: Text(
+                category.title,
+                overflow: TextOverflow.ellipsis,
+                style: titleStyle,
               ),
             ),
           ],
-        );
-      },
+        ),
+        SizedBox(height: layout.itemSpacing),
+        Expanded(
+          child: ListView.separated(
+            padding: EdgeInsets.zero,
+            physics: const ClampingScrollPhysics(),
+            itemCount: category.skills.length,
+            separatorBuilder: (_, _) => SizedBox(height: layout.itemSpacing),
+            itemBuilder: (context, i) => Text(
+              category.skills[i],
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: bodyStyle,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
