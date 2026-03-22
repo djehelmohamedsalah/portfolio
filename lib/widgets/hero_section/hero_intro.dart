@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../constants/app_strings.dart';
 import '../../utils/responsive_layout.dart';
-import '../typewriter_text.dart';
+import 'typewriter_text.dart';
 import 'gradient_title.dart';
 import 'online_indicator.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'services/preload_service.dart';
-import 'widgets/splash_screen.dart';
+import 'sections/splash_screen.dart';
 
 /// Root controller that holds the splash until fonts and assets are ready.
 class AppBootstrapper extends StatefulWidget {

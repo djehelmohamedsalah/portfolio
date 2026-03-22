@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/widgets/mousse_scroll_indicator.dart';
+import 'package:mo_salah_dev/widgets/hero_section/mousse_scroll_indicator.dart';
 import '../utils/responsive_layout.dart';
 
 class SectionContainer extends StatelessWidget {
