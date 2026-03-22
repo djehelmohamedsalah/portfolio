@@ -64,7 +64,7 @@ const List<ToolAsset> toolAssets = [
     url: 'https://github.com',
   ),
   ToolAsset(
-    'GitHub Copilot',
+    'Copilot',
     'lib/assets/photos/tools_icons/githubcopilot.svg',
     url: 'https://github.com/features/copilot',
   ),
@@ -73,16 +73,16 @@ const List<ToolAsset> toolAssets = [
     'lib/assets/photos/tools_icons/googlecloud.svg',
     url: 'https://cloud.google.com',
   ),
-  ToolAsset(
-    'Google Fonts',
-    'lib/assets/photos/tools_icons/googlefonts.svg',
-    url: 'https://fonts.google.com',
-  ),
-  ToolAsset(
-    'Gemini',
-    'lib/assets/photos/tools_icons/googlegemini.svg',
-    url: 'https://ai.google.dev/gemini-api',
-  ),
+  // ToolAsset(
+  //   'Google Fonts',
+  //   'lib/assets/photos/tools_icons/googlefonts.svg',
+  //   url: 'https://fonts.google.com',
+  // ),
+  // ToolAsset(
+  //   'Gemini',
+  //   'lib/assets/photos/tools_icons/googlegemini.svg',
+  //   url: 'https://ai.google.dev/gemini-api',
+  // ),
   ToolAsset(
     'Maps',
     'lib/assets/photos/tools_icons/googlemaps.svg',
@@ -98,12 +98,12 @@ const List<ToolAsset> toolAssets = [
     'lib/assets/photos/tools_icons/python.svg',
     url: 'https://www.python.org',
   ),
-  ToolAsset(
-    'Sdk',
-    'lib/assets/photos/tools_icons/sdk.png',
-    url: 'https://developer.android.com/studio#downloads',
-    isSvg: false,
-  ),
+  // ToolAsset(
+  //   'Sdk',
+  //   'lib/assets/photos/tools_icons/sdk.png',
+  //   url: 'https://developer.android.com/studio#downloads',
+  //   isSvg: false,
+  // ),
   ToolAsset(
     'Sqlite',
     'lib/assets/photos/tools_icons/sqlite.svg',
