@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mo_salah_dev/widgets/development_process/animated_sweep_svg.dart';
+import 'package:mo_salah_dev/widgets/development_process/build_text_span.dart';
 import 'package:mo_salah_dev/widgets/section_header.dart';
 import 'package:mo_salah_dev/widgets/section_container.dart';
 import '../constants/app_strings.dart';
@@ -53,21 +54,17 @@ class DevelopmentProcess extends StatelessWidget {
                     textAlign: TextAlign.center,
                     TextSpan(
                       style: descriptionStyle,
-                      children: _buildTextSpans(
+                      children: buildTextSpans(
                         AppStrings.developmentProcessDescription,
                         boldStyle,
                       ),
                     ),
                   ),
                   const SizedBox(height: 60),
-                  SvgPicture.asset(
-                    'lib/assets/photos/tools_icons/development_line.svg',
-                    fit: BoxFit.contain,
+                  AnimatedSweepSvg(
+                    assetPath:
+                        'lib/assets/photos/tools_icons/development_line.svg',
                     height: isMobile ? 80 : 160,
-                    colorFilter: ColorFilter.mode(
-                      theme.colorScheme.onSurface,
-                      BlendMode.srcIn,
-                    ),
                   ),
                 ],
               ),
@@ -76,29 +73,5 @@ class DevelopmentProcess extends StatelessWidget {
         );
       },
     );
-  }
-
-  /// Parses text with **bold** markers into a list of TextSpans
-  List<TextSpan> _buildTextSpans(String text, TextStyle? boldStyle) {
-    final List<TextSpan> spans = [];
-    final RegExp regExp = RegExp(r'\*\*(.*?)\*\*');
-    int lastMatchEnd = 0;
-
-    for (final Match match in regExp.allMatches(text)) {
-      // Add text before the match
-      if (match.start > lastMatchEnd) {
-        spans.add(TextSpan(text: text.substring(lastMatchEnd, match.start)));
-      }
-      // Add the bolded text (match group 1)
-      spans.add(TextSpan(text: match.group(1), style: boldStyle));
-      lastMatchEnd = match.end;
-    }
-
-    // Add remaining text after the last match
-    if (lastMatchEnd < text.length) {
-      spans.add(TextSpan(text: text.substring(lastMatchEnd)));
-    }
-
-    return spans;
   }
 }

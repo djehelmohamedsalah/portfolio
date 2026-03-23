@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/constants/app_strings.dart';
-import '../utils/app_layout.dart';
-import 'floating_top_app_bar/header_actions.dart';
-import 'floating_top_app_bar/logo_title.dart';
-import 'floating_top_app_bar/nav_button.dart';
-import 'floating_top_app_bar/nav_action.dart';
-import 'floating_top_app_bar/action_icon_button.dart';
+import 'package:mo_salah_dev/widgets/top_app_bar/nav_menu_button.dart';
+import '../../utils/app_layout.dart';
+import '../floating_top_app_bar/header_actions.dart';
+import '../floating_top_app_bar/logo_title.dart';
+import '../floating_top_app_bar/nav_button.dart';
+import '../floating_top_app_bar/nav_action.dart';
 
 class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onHome;
@@ -124,7 +124,7 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                       spacingOverride: isMobile ? 6 : (isTablet ? 8 : null),
                     ),
                     SizedBox(width: isMobile ? 0 : (isTablet ? 8 : 10)),
-                    _NavMenuButton(
+                    NavMenuButton(
                       iconSize: isMobile ? 22 : (isTablet ? 24 : null),
                       onSelected: (action) {
                         switch (action) {
@@ -155,46 +155,6 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _NavMenuButton extends StatelessWidget {
-  final ValueChanged<NavAction> onSelected;
-  final double? iconSize;
-
-  const _NavMenuButton({required this.onSelected, this.iconSize});
-
-  @override
-  Widget build(BuildContext context) {
-    return ActionIconButton.menu(
-      tooltip: AppStrings.navigatetooltip,
-      icon: Icons.menu_rounded,
-      iconSize: iconSize,
-      splashRadius: iconSize != null ? iconSize! + 6 : null,
-      menu: PopupMenuButton<String>(
-        tooltip: AppStrings.navigatetooltip,
-        onSelected: (value) {
-          final action = NavAction.values.firstWhere(
-            (a) => a.name == value,
-            orElse: () => NavAction.home,
-          );
-          onSelected(action);
-        },
-        itemBuilder: (context) => const [
-          PopupMenuItem(value: 'about', child: Text(AppStrings.aboutLabel)),
-          PopupMenuItem(
-            value: 'developmentProcess',
-            child: Text(AppStrings.devProcesLabel),
-          ),
-          PopupMenuItem(value: 'skills', child: Text(AppStrings.skillsLabel)),
-          PopupMenuItem(
-            value: 'projects',
-            child: Text(AppStrings.projectsLabel),
-          ),
-          PopupMenuItem(value: 'contact', child: Text(AppStrings.contactLabel)),
-        ],
       ),
     );
   }
