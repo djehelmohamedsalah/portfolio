@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import '../widgets/section_container.dart';
+import '../widgets/general_widgets/section_container.dart';
 import '../widgets/section_header.dart';
 import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';

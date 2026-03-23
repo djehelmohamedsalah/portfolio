@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/constants/app_strings.dart';
 import 'package:mo_salah_dev/sections/project_details_page.dart';
-import 'package:mo_salah_dev/widgets/hover_outline_buttton.dart';
+import 'package:mo_salah_dev/widgets/general_widgets/hover_outline_buttton.dart';
 import '../../utils/responsive_layout.dart';
 import '../../utils/app_layout.dart';
 import 'project_background.dart';

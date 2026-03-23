@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/section_container.dart';
+import '../widgets/general_widgets/section_container.dart';
 import '../utils/responsive_layout.dart';
 import '../widgets/hero_section/hero_intro.dart';
 import '../widgets/hero_section/photo_stack.dart';
