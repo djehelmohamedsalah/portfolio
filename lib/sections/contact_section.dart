@@ -56,24 +56,47 @@ class ContactSection extends StatelessWidget {
       key: sectionKey,
       width: double.infinity,
       color: theme.colorScheme.surface,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 64),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: _maxWidth),
           child: LayoutBuilder(
             builder: (context, constraints) {
               final layout = AppLayout.fromWidth(constraints.maxWidth);
-              final isDesktop = layout.isDesktop;
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _TopRow(isDesktop: isDesktop),
-                  const SizedBox(height: 36),
-                  _SocialRow(theme: theme, isDesktop: isDesktop),
-                  const SizedBox(height: 36),
-                  _Footer(theme: theme),
-                ],
+              // Responsive padding
+              final hPadding = layout.isDesktop
+                  ? 24.0
+                  : layout.isTablet
+                      ? 20.0
+                      : 16.0;
+              final vPadding = layout.isDesktop
+                  ? 64.0
+                  : layout.isTablet
+                      ? 48.0
+                      : 36.0;
+
+              // Responsive spacing between sections
+              final sectionGap = layout.isDesktop
+                  ? 36.0
+                  : layout.isTablet
+                      ? 28.0
+                      : 24.0;
+
+              return Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: hPadding,
+                  vertical: vPadding,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    _TopRow(layout: layout),
+                    SizedBox(height: sectionGap),
+                    _SocialRow(theme: theme, layout: layout),
+                    SizedBox(height: sectionGap),
+                    _Footer(theme: theme, layout: layout),
+                  ],
+                ),
               );
             },
           ),
@@ -84,19 +107,19 @@ class ContactSection extends StatelessWidget {
 }
 
 class _TopRow extends StatelessWidget {
-  final bool isDesktop;
+  final AppLayout layout;
 
-  const _TopRow({required this.isDesktop});
+  const _TopRow({required this.layout});
 
   @override
   Widget build(BuildContext context) {
-    if (!isDesktop) {
+    if (!layout.isDesktop) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          _HeadlineBlock(textAlign: TextAlign.center),
-          SizedBox(height: 32),
-          _SignatureBlock(alignment: Alignment.center),
+        children: [
+          _HeadlineBlock(textAlign: TextAlign.center, layout: layout),
+          SizedBox(height: layout.isMobile ? 20 : 28),
+          _SignatureBlock(alignment: Alignment.center, layout: layout),
         ],
       );
     }
@@ -105,11 +128,11 @@ class _TopRow extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          _HeadlineBlock(textAlign: TextAlign.left),
-          SizedBox(width: 200),
-          _SignatureBlock(alignment: Alignment.centerLeft),
-          SizedBox(width: 50),
+        children: [
+          _HeadlineBlock(textAlign: TextAlign.left, layout: layout),
+          const SizedBox(width: 200),
+          _SignatureBlock(alignment: Alignment.centerLeft, layout: layout),
+          const SizedBox(width: 50),
         ],
       ),
     );
@@ -118,24 +141,35 @@ class _TopRow extends StatelessWidget {
 
 class _HeadlineBlock extends StatelessWidget {
   final TextAlign textAlign;
+  final AppLayout layout;
 
-  const _HeadlineBlock({required this.textAlign});
+  const _HeadlineBlock({required this.textAlign, required this.layout});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    // Responsive font size
+    final fontSize = layout.isDesktop
+        ? 26.0
+        : layout.isTablet
+            ? 22.0
+            : 19.0;
+
     return Align(
       alignment: textAlign == TextAlign.left
           ? Alignment.centerLeft
           : Alignment.center,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 450),
+        constraints: BoxConstraints(
+          maxWidth: layout.isMobile ? double.infinity : 450,
+        ),
         child: Text(
           AppStrings.interestedInWorking,
           textAlign: textAlign,
           style: theme.textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.bold,
-            fontSize: 26,
+            fontSize: fontSize,
             height: 1.2,
           ),
         ),
@@ -146,33 +180,34 @@ class _HeadlineBlock extends StatelessWidget {
 
 class _SignatureBlock extends StatelessWidget {
   final Alignment alignment;
+  final AppLayout layout;
 
-  const _SignatureBlock({required this.alignment});
+  const _SignatureBlock({required this.alignment, required this.layout});
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: alignment,
-      child: _SignaturePlaceholder(theme: Theme.of(context)),
+      child: _SignaturePlaceholder(theme: Theme.of(context), layout: layout),
     );
   }
 }
 
 class _SocialRow extends StatelessWidget {
   final ThemeData theme;
-  final bool isDesktop;
+  final AppLayout layout;
 
-  const _SocialRow({required this.theme, required this.isDesktop});
+  const _SocialRow({required this.theme, required this.layout});
 
   @override
   Widget build(BuildContext context) {
-    if (!isDesktop) {
+    if (!layout.isDesktop) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _SocialBar(theme: theme),
-          const SizedBox(height: 24),
-          _EmailDisplay(theme: theme, textAlign: TextAlign.center),
+          _SocialBar(theme: theme, layout: layout),
+          SizedBox(height: layout.isMobile ? 16 : 20),
+          _EmailDisplay(theme: theme, textAlign: TextAlign.center, layout: layout),
         ],
       );
     }
@@ -182,9 +217,9 @@ class _SocialRow extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _SocialBar(theme: theme),
+          _SocialBar(theme: theme, layout: layout),
           const SizedBox(width: 100),
-          _EmailDisplay(theme: theme, textAlign: TextAlign.right),
+          _EmailDisplay(theme: theme, textAlign: TextAlign.right, layout: layout),
         ],
       ),
     );

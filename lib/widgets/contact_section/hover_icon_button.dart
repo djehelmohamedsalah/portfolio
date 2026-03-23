@@ -8,6 +8,7 @@ class HoverIconButton extends StatefulWidget {
   final Color? tintColor;
   final bool isSvg;
   final double size;
+  final double padding;
 
   const HoverIconButton({
     super.key,
@@ -18,6 +19,7 @@ class HoverIconButton extends StatefulWidget {
     this.tintColor,
     this.isSvg = true,
     this.size = 28,
+    this.padding = 12,
   });
 
   @override
@@ -47,7 +49,7 @@ class _HoverIconButtonState extends State<HoverIconButton> {
             duration: const Duration(milliseconds: 150),
             opacity: _hover ? 1 : 0.9,
             child: Container(
-              padding: const EdgeInsets.all(12),
+              padding: EdgeInsets.all(widget.padding),
               child: tint != null
                   ? ColorFiltered(
                       colorFilter: ColorFilter.mode(tint, BlendMode.srcIn),
