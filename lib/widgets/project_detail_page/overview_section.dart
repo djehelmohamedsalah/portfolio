@@ -16,7 +16,7 @@ class _OverviewSection extends StatelessWidget {
       children: [
         const _SectionTitle(AppStrings.overviewTitle),
         const SizedBox(height: 15),
-        Text(
+        SelectableText(
           project.overview,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 height: lineHeight,
@@ -30,7 +30,7 @@ class _OverviewSection extends StatelessWidget {
         const SizedBox(height: 30),
         const _SectionTitle(AppStrings.chalengesTitel),
         const SizedBox(height: 15),
-        Text(
+        SelectableText(
           project.challenges,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 height: lineHeight,
@@ -44,7 +44,7 @@ class _OverviewSection extends StatelessWidget {
         const SizedBox(height: 30),
         const _SectionTitle(AppStrings.techStackTitle),
         const SizedBox(height: 15),
-        Text(
+        SelectableText(
           project.techStack,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 height: lineHeight,

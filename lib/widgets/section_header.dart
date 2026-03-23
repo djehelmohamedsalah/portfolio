@@ -27,7 +27,7 @@ class SectionHeader extends StatelessWidget {
         return Column(
           crossAxisAlignment: alignment,
           children: [
-            Text(
+            SelectableText(
               title,
               textAlign: textAlign,
               style: isMobile
@@ -38,7 +38,7 @@ class SectionHeader extends StatelessWidget {
               const SizedBox(height: 16),
               ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 860),
-                child: Text(
+                child: SelectableText(
                   subtitle!,
                   textAlign: textAlign,
                   style: isMobile

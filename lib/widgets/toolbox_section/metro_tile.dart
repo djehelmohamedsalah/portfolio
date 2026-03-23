@@ -96,7 +96,7 @@ Future<void> _openToolUrl(BuildContext context, String url) async {
     return;
   }
   if (!context.mounted) return;
-  ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(content: Text(AppStrings.urlNotOpen)),
-  );
+  ScaffoldMessenger.of(
+    context,
+  ).showSnackBar(const SnackBar(content: Text(AppStrings.urlNotOpen)));
 }

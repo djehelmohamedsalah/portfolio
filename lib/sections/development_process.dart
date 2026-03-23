@@ -49,9 +49,9 @@ class DevelopmentProcess extends StatelessWidget {
                     subtitle: AppStrings.developmentProcessSubtitle,
                   ),
                   const SizedBox(height: 48),
-                  RichText(
+                  SelectableText.rich(
                     textAlign: TextAlign.center,
-                    text: TextSpan(
+                    TextSpan(
                       style: descriptionStyle,
                       children: _buildTextSpans(
                         AppStrings.developmentProcessDescription,

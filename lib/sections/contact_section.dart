@@ -67,20 +67,20 @@ class ContactSection extends StatelessWidget {
               final hPadding = layout.isDesktop
                   ? 24.0
                   : layout.isTablet
-                      ? 20.0
-                      : 16.0;
+                  ? 20.0
+                  : 16.0;
               final vPadding = layout.isDesktop
                   ? 64.0
                   : layout.isTablet
-                      ? 48.0
-                      : 36.0;
+                  ? 48.0
+                  : 36.0;
 
               // Responsive spacing between sections
               final sectionGap = layout.isDesktop
                   ? 36.0
                   : layout.isTablet
-                      ? 28.0
-                      : 24.0;
+                  ? 28.0
+                  : 24.0;
 
               return Padding(
                 padding: EdgeInsets.symmetric(
@@ -153,8 +153,8 @@ class _HeadlineBlock extends StatelessWidget {
     final fontSize = layout.isDesktop
         ? 26.0
         : layout.isTablet
-            ? 22.0
-            : 19.0;
+        ? 22.0
+        : 19.0;
 
     return Align(
       alignment: textAlign == TextAlign.left
@@ -164,7 +164,7 @@ class _HeadlineBlock extends StatelessWidget {
         constraints: BoxConstraints(
           maxWidth: layout.isMobile ? double.infinity : 450,
         ),
-        child: Text(
+        child: SelectableText(
           AppStrings.interestedInWorking,
           textAlign: textAlign,
           style: theme.textTheme.headlineMedium?.copyWith(
@@ -207,7 +207,11 @@ class _SocialRow extends StatelessWidget {
         children: [
           _SocialBar(theme: theme, layout: layout),
           SizedBox(height: layout.isMobile ? 16 : 20),
-          _EmailDisplay(theme: theme, textAlign: TextAlign.center, layout: layout),
+          _EmailDisplay(
+            theme: theme,
+            textAlign: TextAlign.center,
+            layout: layout,
+          ),
         ],
       );
     }
@@ -219,7 +223,11 @@ class _SocialRow extends StatelessWidget {
         children: [
           _SocialBar(theme: theme, layout: layout),
           const SizedBox(width: 100),
-          _EmailDisplay(theme: theme, textAlign: TextAlign.right, layout: layout),
+          _EmailDisplay(
+            theme: theme,
+            textAlign: TextAlign.right,
+            layout: layout,
+          ),
         ],
       ),
     );

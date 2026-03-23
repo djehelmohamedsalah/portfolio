@@ -19,7 +19,7 @@ class _Footer extends StatelessWidget {
 
     return Column(
       children: [
-        Text(
+        SelectableText(
           AppStrings.footerText,
           textAlign: TextAlign.center,
           style: theme.textTheme.bodyMedium?.copyWith(
@@ -30,7 +30,7 @@ class _Footer extends StatelessWidget {
           ),
         ),
         SizedBox(height: spacing),
-        Text(
+        SelectableText(
           AppStrings.rightText,
           textAlign: TextAlign.center,
           style: theme.textTheme.bodyMedium?.copyWith(

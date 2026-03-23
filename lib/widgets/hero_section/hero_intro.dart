@@ -107,7 +107,7 @@ class HeroIntro extends StatelessWidget {
         const SizedBox(height: 16),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 620),
-          child: Text(
+          child: SelectableText(
             AppStrings.hookText,
             textAlign: isCentered ? TextAlign.center : TextAlign.start,
             style: theme.textTheme.titleMedium?.copyWith(

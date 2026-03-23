@@ -44,9 +44,7 @@ class OnlineIndicator extends StatelessWidget {
           children: [
             _Dot(color: color),
             SizedBox(width: AppSpacing.itemGap),
-            Flexible(
-              child: Text(label, style: effectiveTextStyle, softWrap: true),
-            ),
+            Flexible(child: SelectableText(label, style: effectiveTextStyle)),
           ],
         ),
       ),

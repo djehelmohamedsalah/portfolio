@@ -38,14 +38,11 @@ class _DetailsSection extends StatelessWidget {
           const Divider(height: 30),
           const _SectionTitle(AppStrings.corefeaturestitle),
           const SizedBox(height: 10),
-          Text(
+          SelectableText(
             project.coreFeatures,
             style: Theme.of(
               context,
-            ).textTheme.bodyMedium?.copyWith(
-                  height: 1.5,
-                  fontSize: bodySize,
-                ),
+            ).textTheme.bodyMedium?.copyWith(height: 1.5, fontSize: bodySize),
           ),
           if (project.apkDownloadUrl != null ||
               project.githubUrl != null ||
@@ -93,7 +90,7 @@ class _DetailsSection extends StatelessWidget {
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text(
+                            content: SelectableText(
                               'Aptoide build is coming soon. Thanks for your patience!',
                             ),
                             behavior: SnackBarBehavior.floating,
@@ -128,7 +125,7 @@ class _DetailItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        SelectableText(
           label,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
             color: Theme.of(context).colorScheme.secondary,
@@ -136,11 +133,11 @@ class _DetailItem extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 5),
-        Text(
+        SelectableText(
           value,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontSize: valueSize,
-              ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge?.copyWith(fontSize: valueSize),
         ),
       ],
     );

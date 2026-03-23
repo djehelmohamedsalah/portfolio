@@ -47,7 +47,7 @@ class AboutSection extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                         horizontal: layout.horizontalPadding,
                       ),
-                      child: Text(
+                      child: SelectableText(
                         AppStrings.aboutDescription.trim(),
                         style: aboutTheme.bodyMobile!.copyWith(fontSize: 12),
                         textAlign: TextAlign.center,
@@ -73,7 +73,7 @@ class AboutSection extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                         horizontal: layout.horizontalPadding,
                       ),
-                      child: Text(
+                      child: SelectableText(
                         AppStrings.aboutDescription.trim(),
                         textAlign: TextAlign.center,
                         style: aboutTheme.bodyDesktop!.copyWith(fontSize: 15),
@@ -101,7 +101,7 @@ class AboutSection extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          SelectableText(
                             AppStrings.aboutDescription.trim(),
                             style: aboutTheme.bodyDesktop!.copyWith(
                               fontSize: 15,

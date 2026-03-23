@@ -42,10 +42,10 @@ class SkillColumn extends StatelessWidget {
               ),
               SizedBox(width: layout.itemSpacing),
               Flexible(
-                child: Text(
+                child: SelectableText(
                   category.title,
                   textAlign: TextAlign.start,
-                  softWrap: true,
+                  // softWrap: true
                   style: isMobile
                       ? theme.titleStyle(layout)!.copyWith(fontSize: 15)
                       : theme.titleStyle(layout),
@@ -57,7 +57,7 @@ class SkillColumn extends StatelessWidget {
           ...category.skills.map(
             (skill) => Padding(
               padding: EdgeInsets.only(bottom: layout.itemSpacing),
-              child: Text(
+              child: SelectableText(
                 skill,
                 textAlign: isDesktop ? TextAlign.start : TextAlign.center,
                 style: isMobile

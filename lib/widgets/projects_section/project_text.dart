@@ -84,7 +84,7 @@ class ProjectText extends StatelessWidget {
             Flexible(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 600),
-                child: Text(
+                child: SelectableText(
                   config.project.title,
                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
                     color: Colors.white,
@@ -109,7 +109,7 @@ class ProjectText extends StatelessWidget {
         const SizedBox(height: 24),
         ConstrainedBox(
           constraints: BoxConstraints(maxWidth: overviewMaxWidth),
-          child: Text(
+          child: SelectableText(
             config.project.overview,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: Colors.white.withValues(alpha: 0.85),
