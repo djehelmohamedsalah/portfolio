@@ -15,6 +15,7 @@ class SkillColumn extends StatelessWidget {
     final primary = theme.colorScheme.primary;
     final subtleIconBg = theme.subtleIconBackground(primary);
     final isDesktop = layout.isDesktop;
+    final isMobile = layout.isMobile;
 
     return Align(
       alignment: isDesktop ? Alignment.topLeft : Alignment.topCenter,
@@ -43,9 +44,11 @@ class SkillColumn extends StatelessWidget {
               Flexible(
                 child: Text(
                   category.title,
-                  textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+                  textAlign: TextAlign.start,
                   softWrap: true,
-                  style: theme.titleStyle(layout),
+                  style: isMobile
+                      ? theme.titleStyle(layout)!.copyWith(fontSize: 15)
+                      : theme.titleStyle(layout),
                 ),
               ),
             ],
@@ -57,7 +60,9 @@ class SkillColumn extends StatelessWidget {
               child: Text(
                 skill,
                 textAlign: isDesktop ? TextAlign.start : TextAlign.center,
-                style: theme.bodyStyle(layout),
+                style: isMobile
+                    ? theme.bodyStyle(layout)!.copyWith(fontSize: 13)
+                    : theme.bodyStyle(layout),
               ),
             ),
           ),

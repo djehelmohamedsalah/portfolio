@@ -111,7 +111,7 @@ class HeroIntro extends StatelessWidget {
             AppStrings.hookText,
             textAlign: isCentered ? TextAlign.center : TextAlign.start,
             style: theme.textTheme.titleMedium?.copyWith(
-              fontSize: hookTextSize,
+              fontSize: isMobile ? 14 : hookTextSize,
               height: 1.6,
               fontWeight: FontWeight.w600,
               letterSpacing: 0.1,

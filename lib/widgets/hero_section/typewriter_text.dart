@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/utils/responsive_layout.dart';
 
 class TypewriterText extends StatefulWidget {
   final List<String> phrases;
@@ -83,23 +84,35 @@ class _TypewriterTextState extends State<TypewriterText> {
   Widget build(BuildContext context) {
     final current = widget.phrases[_phraseIndex];
     final text = current.substring(0, _charIndex);
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: widget.alignment,
-      children: [
-        Flexible(
-          child: Text(
-            text,
-            style: widget.style,
-            overflow: TextOverflow.visible,
-          ),
-        ),
-        Text(
-          widget.cursor,
-          style: widget.style.copyWith(color: widget.cursorColor),
-          overflow: TextOverflow.visible,
-        ),
-      ],
+    return ResponsiveLayout(
+      builder: (context, layout) {
+        final isMobile = layout.isMobile;
+        return Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: widget.alignment,
+          children: [
+            Flexible(
+              child: Text(
+                text,
+                style: isMobile
+                    ? widget.style.copyWith(fontSize: 14)
+                    : widget.style,
+                overflow: TextOverflow.visible,
+              ),
+            ),
+            Text(
+              widget.cursor,
+              style: isMobile
+                  ? widget.style.copyWith(
+                      color: widget.cursorColor,
+                      fontSize: 14,
+                    )
+                  : widget.style.copyWith(color: widget.cursorColor),
+              overflow: TextOverflow.visible,
+            ),
+          ],
+        );
+      },
     );
   }
 }

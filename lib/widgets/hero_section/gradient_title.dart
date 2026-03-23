@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/utils/responsive_layout.dart';
 
 class GradientTitle extends StatelessWidget {
   final String text;
@@ -21,22 +22,26 @@ class GradientTitle extends StatelessWidget {
       end: Alignment.bottomRight,
     );
 
-    return ShaderMask(
-      shaderCallback: (bounds) => gradient.createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: fontSize,
-
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-          height: 1.17,
-          letterSpacing: -1.5,
-        ),
-        textAlign: textAlign,
-      ),
+    return ResponsiveLayout(
+      builder: (context, layout) {
+        final isMobile = layout.isMobile;
+        return ShaderMask(
+          shaderCallback: (bounds) => gradient.createShader(
+            Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: isMobile ? 28 : fontSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              height: 1.17,
+              letterSpacing: -1.5,
+            ),
+            textAlign: textAlign,
+          ),
+        );
+      },
     );
   }
 }

@@ -36,9 +36,11 @@ class OnlineIndicator extends StatelessWidget {
           border: Border.all(color: color.withValues(alpha: 0.22)),
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: layout.isMobile
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.start,
           children: [
             _Dot(color: color),
             SizedBox(width: AppSpacing.itemGap),

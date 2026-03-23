@@ -64,7 +64,6 @@ class AppStrings {
   static const String categoryUiPerformance = 'UI &\nPERFORMANCE';
   // Skills - Mobile Development
   static const List<String> skillsMobileDev = [
-    '',
     'Flutter & Dart',
     'Clean Architecture',
     'Git Workflows',
@@ -74,9 +73,8 @@ class AppStrings {
 
   // Skills - State Management
   static const List<String> skillsStateManagement = [
-    '',
     'BLoC / Cubit',
-    'GetX',
+    'GetX Environment',
     'Provider',
     'Dependency Injection',
     'State Persistence',
@@ -84,7 +82,6 @@ class AppStrings {
 
   // Skills - Backend Integration
   static const List<String> skillsBackendIntegration = [
-    '',
     'Supabase',
     'REST APIs',
     'Auth Systems',
@@ -94,7 +91,6 @@ class AppStrings {
 
   // Skills - UI & Performance
   static const List<String> skillsUiPerformance = [
-    '',
     'Performance Tuning',
     'App Optimization',
     'Fluid UI Animations',
