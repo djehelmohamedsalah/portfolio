@@ -12,6 +12,7 @@ class _RoleText extends StatelessWidget {
         .split('\n')
         .where((line) => line.trim().isNotEmpty)
         .toList();
+    final roleSize = scaleForLayout(context, 15, 18);
 
     return Column(
       crossAxisAlignment: align == TextAlign.center
@@ -26,6 +27,7 @@ class _RoleText extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: Theme.of(context).colorScheme.secondary,
                   height: 1.5,
+                  fontSize: roleSize,
                 ),
                 textAlign: align,
               ),

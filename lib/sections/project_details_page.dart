@@ -14,6 +14,13 @@ part '../widgets/project_detail_page/screenshots_section.dart';
 part '../widgets/project_detail_page/section_title.dart';
 part '../widgets/project_detail_page/role_text.dart';
 
+double scaleForLayout(BuildContext context, double min, double max) {
+  final layout = context.layout;
+  final width = layout.width.clamp(360.0, 1400.0);
+  final t = (width - 360.0) / (1400.0 - 360.0);
+  return min + (max - min) * t;
+}
+
 class ProjectDetailsPage extends StatefulWidget {
   final Project project;
 

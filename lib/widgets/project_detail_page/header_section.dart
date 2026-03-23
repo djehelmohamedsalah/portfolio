@@ -9,6 +9,9 @@ class _HeaderSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final layout = context.layout;
     final isMobile = layout.isMobile;
+    final logoSize = scaleForLayout(context, 90, 220);
+    final titleSize = scaleForLayout(context, 22, 34);
+    final roleTitleSize = scaleForLayout(context, 16, 20);
 
     return Container(
       width: double.infinity,
@@ -29,7 +32,8 @@ class _HeaderSection extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Image.asset(project.logo, height: 80, fit: BoxFit.contain),
+                    Image.asset(project.logo,
+                        height: logoSize, fit: BoxFit.contain),
                     const SizedBox(height: 20),
                     Text(
                       project.title,
@@ -38,6 +42,7 @@ class _HeaderSection extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.onSurface,
                                 overflow: TextOverflow.ellipsis,
+                                fontSize: titleSize,
                               ),
                       textAlign: TextAlign.center,
                     ),
@@ -50,6 +55,7 @@ class _HeaderSection extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).colorScheme.onSurface,
                         overflow: TextOverflow.ellipsis,
+                        fontSize: roleTitleSize,
                       ),
                   textAlign: TextAlign.center,
                 ),
@@ -64,7 +70,7 @@ class _HeaderSection extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.asset(project.logo,
-                          height: 200, fit: BoxFit.contain),
+                          height: logoSize, fit: BoxFit.contain),
                       const SizedBox(height: 20),
                       Text(
                         project.title,
@@ -75,6 +81,7 @@ class _HeaderSection extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.onSurface,
                               overflow: TextOverflow.ellipsis,
+                              fontSize: titleSize,
                             ),
                         textAlign: TextAlign.center,
                       ),
@@ -97,6 +104,7 @@ class _HeaderSection extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.onSurface,
                                 overflow: TextOverflow.ellipsis,
+                                fontSize: roleTitleSize,
                               ),
                           textAlign: TextAlign.start,
                         ),

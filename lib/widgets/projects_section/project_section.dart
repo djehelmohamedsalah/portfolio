@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:mo_salah_dev/sections/project_details_page.dart';
+import 'package:mo_salah_dev/widgets/hover_outline_buttton.dart';
 import '../../utils/responsive_layout.dart';
 import '../../utils/app_layout.dart';
 import 'project_background.dart';
@@ -15,10 +18,11 @@ class ProjectSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       builder: (context, layout) {
-        final minHeight = layout.isMobile ? 520.0 : 720.0;
+        final minHeight = layout.isMobile ? 520.0 : 620.0;
         final verticalPadding = layout.isMobile ? 26.0 : 56.0;
-        final horizontalPadding =
-            layout.isDesktop ? layout.horizontalPadding + 24 : layout.horizontalPadding;
+        final horizontalPadding = layout.isDesktop
+            ? layout.horizontalPadding + 24
+            : layout.horizontalPadding;
 
         return Container(
           width: double.infinity,
@@ -31,17 +35,17 @@ class ProjectSection extends StatelessWidget {
                   horizontal: horizontalPadding,
                   vertical: verticalPadding,
                 ),
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  final layout = AppLayout.fromWidth(constraints.maxWidth);
-                  if (!layout.isDesktop) {
-                    return _MobileCaseStudyLayout(config: config);
-                  }
-                  return _DesktopCaseStudyLayout(
-                    config: config,
-                    maxWidth: constraints.maxWidth,
-                  );
-                },
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final layout = AppLayout.fromWidth(constraints.maxWidth);
+                    if (!layout.isDesktop) {
+                      return _MobileCaseStudyLayout(config: config);
+                    }
+                    return _DesktopCaseStudyLayout(
+                      config: config,
+                      maxWidth: constraints.maxWidth,
+                    );
+                  },
                 ),
               ),
             ],
@@ -96,9 +100,22 @@ class _MobileCaseStudyLayout extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        ProjectText(config: config),
-        const SizedBox(height: 48),
-        // Center(child: ProjectVisual(project: config.project)),
+        ProjectText(config: config, showButton: false),
+        const SizedBox(height: 32),
+        Center(child: ProjectVisual(project: config.project)),
+        const SizedBox(height: 32),
+        HoverOutlineButton(
+          label: AppStrings.moreDetailsLabel,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    ProjectDetailsPage(project: config.project),
+              ),
+            );
+          },
+        ),
       ],
     );
   }

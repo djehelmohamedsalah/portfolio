@@ -13,6 +13,11 @@ class _DetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bodySize = scaleForLayout(context, 15, 17);
+    final labelSize = scaleForLayout(context, 13, 15);
+    final actionIconSize = scaleForLayout(context, 20, 24);
+    final actionHeight = scaleForLayout(context, 78, 92);
+
     return Container(
       padding: const EdgeInsets.all(25),
       decoration: BoxDecoration(
@@ -37,7 +42,10 @@ class _DetailsSection extends StatelessWidget {
             project.coreFeatures,
             style: Theme.of(
               context,
-            ).textTheme.bodyMedium?.copyWith(height: 1.5),
+            ).textTheme.bodyMedium?.copyWith(
+                  height: 1.5,
+                  fontSize: bodySize,
+                ),
           ),
           if (project.apkDownloadUrl != null ||
               project.githubUrl != null ||
@@ -55,6 +63,9 @@ class _DetailsSection extends StatelessWidget {
                       label: AppStrings.downloadApkLabel,
                       color: Theme.of(context).colorScheme.secondary,
                       onPressed: () => onDownloadApk(project.apkDownloadUrl!),
+                      height: actionHeight,
+                      iconSize: actionIconSize,
+                      textSize: labelSize,
                     ),
                   ),
                 if (project.apkDownloadUrl != null && project.githubUrl != null)
@@ -66,6 +77,9 @@ class _DetailsSection extends StatelessWidget {
                       label: AppStrings.vieOnGithub,
                       color: Theme.of(context).colorScheme.onTertiary,
                       onPressed: () => onOpenInBrowser(project.githubUrl!),
+                      height: actionHeight,
+                      iconSize: actionIconSize,
+                      textSize: labelSize,
                     ),
                   ),
                 if (project.githubUrl != null && project.aptoideUrl != null)
@@ -86,6 +100,9 @@ class _DetailsSection extends StatelessWidget {
                           ),
                         );
                       },
+                      height: actionHeight,
+                      iconSize: actionIconSize,
+                      textSize: labelSize,
                     ),
                   ),
               ],
@@ -105,6 +122,9 @@ class _DetailItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final valueSize = scaleForLayout(context, 15, 17);
+    final labelSize = scaleForLayout(context, 12.5, 14.5);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -112,10 +132,16 @@ class _DetailItem extends StatelessWidget {
           label,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
             color: Theme.of(context).colorScheme.secondary,
+            fontSize: labelSize,
           ),
         ),
         const SizedBox(height: 5),
-        Text(value, style: Theme.of(context).textTheme.bodyLarge),
+        Text(
+          value,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                fontSize: valueSize,
+              ),
+        ),
       ],
     );
   }
@@ -126,20 +152,26 @@ class _ActionButton extends StatelessWidget {
   final String label;
   final Color color;
   final VoidCallback onPressed;
+  final double height;
+  final double iconSize;
+  final double textSize;
 
   const _ActionButton({
     required this.icon,
     required this.label,
     required this.color,
     required this.onPressed,
+    required this.height,
+    required this.iconSize,
+    required this.textSize,
   });
 
   @override
   Widget build(BuildContext context) {
     final radius = BorderRadius.circular(12);
 
-    return SizedBox(
-      height: 88,
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: height),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
@@ -147,6 +179,7 @@ class _ActionButton extends StatelessWidget {
           onTap: onPressed,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 width: 46,
@@ -176,6 +209,7 @@ class _ActionButton extends StatelessWidget {
                   color: Theme.of(context).colorScheme.onSurface,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 0.1,
+                  fontSize: textSize,
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

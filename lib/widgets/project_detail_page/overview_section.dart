@@ -7,6 +7,10 @@ class _OverviewSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bodySize = scaleForLayout(context, 15, 18);
+    final lineHeight = 1.45 + (0.2 *
+        ((context.layout.width.clamp(360.0, 1400.0) - 360.0) / (1400.0 - 360.0)));
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -15,7 +19,8 @@ class _OverviewSection extends StatelessWidget {
         Text(
           project.overview,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                height: 1.6,
+                height: lineHeight,
+                fontSize: bodySize,
                 color: Theme.of(context)
                     .colorScheme
                     .onSurface
@@ -28,7 +33,8 @@ class _OverviewSection extends StatelessWidget {
         Text(
           project.challenges,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                height: 1.6,
+                height: lineHeight,
+                fontSize: bodySize,
                 color: Theme.of(context)
                     .colorScheme
                     .onSurface
@@ -41,7 +47,8 @@ class _OverviewSection extends StatelessWidget {
         Text(
           project.techStack,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                height: 1.6,
+                height: lineHeight,
+                fontSize: bodySize,
                 color: Theme.of(context)
                     .colorScheme
                     .onSurface

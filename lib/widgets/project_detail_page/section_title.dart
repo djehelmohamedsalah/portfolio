@@ -11,6 +11,7 @@ class _SectionTitle extends StatelessWidget {
       style: Theme.of(context).textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
             color: Theme.of(context).colorScheme.primary,
+            fontSize: scaleForLayout(context, 18, 22),
           ),
     );
   }
