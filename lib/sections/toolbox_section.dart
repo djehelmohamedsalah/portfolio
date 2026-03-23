@@ -1,9 +1,9 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/utils/app_layout.dart';
+import 'package:mo_salah_dev/widgets/floating_top_app_bar/section_header.dart';
 import '../../constants/app_strings.dart';
 import '../../constants/tool_assets.dart';
 import '../../utils/responsive_layout.dart';
-import '../../widgets/section_header.dart';
 import '../../widgets/toolbox_section/metro_tile.dart';
 import '../../widgets/toolbox_section/toolbox_section_theme.dart';
 

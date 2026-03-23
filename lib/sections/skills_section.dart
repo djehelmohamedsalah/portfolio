@@ -1,8 +1,8 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/floating_top_app_bar/section_header.dart';
 import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 import '../widgets/general_widgets/section_container.dart';
-import '../widgets/section_header.dart';
 import '../widgets/skill_section/skill_card.dart';
 import '../widgets/skill_section/skill_category.dart';
 import '../widgets/skill_section/skill_section_theme.dart';
