@@ -10,11 +10,12 @@ class _OverviewSection extends StatelessWidget {
     final bodySize = scaleForLayout(context, 15, 18);
     final lineHeight = 1.45 + (0.2 *
         ((context.layout.width.clamp(360.0, 1400.0) - 360.0) / (1400.0 - 360.0)));
+    final strings = context.watch<StringsProvider>().strings;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _SectionTitle(AppStrings.overviewTitle),
+        _SectionTitle(strings.overviewTitle),
         const SizedBox(height: 15),
         SelectableText(
           project.overview,
@@ -28,7 +29,7 @@ class _OverviewSection extends StatelessWidget {
               ),
         ),
         const SizedBox(height: 30),
-        const _SectionTitle(AppStrings.chalengesTitel),
+        _SectionTitle(strings.chalengesTitel),
         const SizedBox(height: 15),
         SelectableText(
           project.challenges,
@@ -42,7 +43,7 @@ class _OverviewSection extends StatelessWidget {
               ),
         ),
         const SizedBox(height: 30),
-        const _SectionTitle(AppStrings.techStackTitle),
+        _SectionTitle(strings.techStackTitle),
         const SizedBox(height: 15),
         SelectableText(
           project.techStack,

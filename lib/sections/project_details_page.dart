@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/project_detail_page/image_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -115,16 +116,17 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
 
   void _downloadApk(String url) async {
     final uri = Uri.parse(url);
+    final strings = Provider.of<StringsProvider>(context, listen: false).strings;
     try {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
       } else {
-        throw AppStrings.downloadNotStart;
+        throw strings.downloadNotStart;
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('${AppStrings.urlNotOpen} $url')),
+          SnackBar(content: Text('${strings.urlNotOpen} $url')),
         );
       }
     }
@@ -132,16 +134,17 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
 
   void _openInBrowser(String url) async {
     final uri = Uri.parse(url);
+    final strings = Provider.of<StringsProvider>(context, listen: false).strings;
     try {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
       } else {
-        throw AppStrings.pageNotOpen;
+        throw strings.pageNotOpen;
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('${AppStrings.urlNotOpen} $url')),
+          SnackBar(content: Text('${strings.urlNotOpen} $url')),
         );
       }
     }

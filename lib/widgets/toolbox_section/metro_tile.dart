@@ -1,7 +1,8 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/utils/app_layout.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../constants/app_strings.dart';
 import '../../constants/tool_assets.dart';
 import 'tool_icon.dart';
 import 'toolbox_section_theme.dart';
@@ -96,7 +97,8 @@ Future<void> _openToolUrl(BuildContext context, String url) async {
     return;
   }
   if (!context.mounted) return;
+  final strings = Provider.of<StringsProvider>(context, listen: false).strings;
   ScaffoldMessenger.of(
     context,
-  ).showSnackBar(const SnackBar(content: Text(AppStrings.urlNotOpen)));
+  ).showSnackBar(SnackBar(content: Text(strings.urlNotOpen)));
 }

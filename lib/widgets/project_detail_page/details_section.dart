@@ -17,6 +17,7 @@ class _DetailsSection extends StatelessWidget {
     final labelSize = scaleForLayout(context, 13, 15);
     final actionIconSize = scaleForLayout(context, 20, 24);
     final actionHeight = scaleForLayout(context, 78, 92);
+    final strings = context.watch<StringsProvider>().strings;
 
     return Container(
       padding: const EdgeInsets.all(25),
@@ -34,9 +35,9 @@ class _DetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _DetailItem(label: AppStrings.status, value: project.status),
+          _DetailItem(label: strings.status, value: project.status),
           const Divider(height: 30),
-          const _SectionTitle(AppStrings.corefeaturestitle),
+          _SectionTitle(strings.corefeaturestitle),
           const SizedBox(height: 10),
           SelectableText(
             project.coreFeatures,
@@ -48,7 +49,7 @@ class _DetailsSection extends StatelessWidget {
               project.githubUrl != null ||
               project.aptoideUrl != null) ...[
             const Divider(height: 30),
-            const _SectionTitle(AppStrings.downloadandlinkstitle),
+            _SectionTitle(strings.downloadandlinkstitle),
             const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +58,7 @@ class _DetailsSection extends StatelessWidget {
                   Expanded(
                     child: _ActionButton(
                       icon: Icons.download,
-                      label: AppStrings.downloadApkLabel,
+                      label: strings.downloadApkLabel,
                       color: Theme.of(context).colorScheme.secondary,
                       onPressed: () => onDownloadApk(project.apkDownloadUrl!),
                       height: actionHeight,
@@ -71,7 +72,7 @@ class _DetailsSection extends StatelessWidget {
                   Expanded(
                     child: _ActionButton(
                       icon: Icons.code,
-                      label: AppStrings.vieOnGithub,
+                      label: strings.vieOnGithub,
                       color: Theme.of(context).colorScheme.onTertiary,
                       onPressed: () => onOpenInBrowser(project.githubUrl!),
                       height: actionHeight,
@@ -85,13 +86,13 @@ class _DetailsSection extends StatelessWidget {
                   Expanded(
                     child: _ActionButton(
                       icon: Icons.store,
-                      label: AppStrings.getOnApptoid,
+                      label: strings.getOnApptoid,
                       color: Colors.orange,
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: SelectableText(
-                              'Aptoide build is coming soon. Thanks for your patience!',
+                              strings.getOnApptoid, // Or some other dynamic text if available
                             ),
                             behavior: SnackBarBehavior.floating,
                           ),

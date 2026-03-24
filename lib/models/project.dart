@@ -1,4 +1,4 @@
-import '../constants/app_strings.dart';
+import '../l10n/app_strings.dart';
 
 class Project {
   final String title;
@@ -32,15 +32,15 @@ class Project {
     this.aptoideUrl,
   });
 
-  static List<Project> get allProjects => [
+  static List<Project> fromStrings(AppStrings strings) => [
     Project(
-      title: AppStrings.projectNewsilyTitle,
-      overview: AppStrings.projectNewsilyOverview,
-      coreFeatures: AppStrings.projectNewsilyCoreFeatures,
-      techStack: AppStrings.projectNewsilyTechStack,
-      challenges: AppStrings.projectNewsilyChallenges,
-      role: AppStrings.projectNewsilyRole,
-      status: AppStrings.projectNewsilyProjectStatus,
+      title: strings.projectNewsilyTitle,
+      overview: strings.projectNewsilyOverview,
+      coreFeatures: strings.projectNewsilyCoreFeatures,
+      techStack: strings.projectNewsilyTechStack,
+      challenges: strings.projectNewsilyChallenges,
+      role: strings.projectNewsilyRole,
+      status: strings.projectNewsilyProjectStatus,
       logo: 'lib/assets/photos/newsily/newsily_logo_png.png',
       screenshots: [
         'lib/assets/photos/newsily/0.png',
@@ -59,13 +59,13 @@ class Project {
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
     Project(
-      title: AppStrings.projectRaqibTitle,
-      overview: AppStrings.projectRaqibOverview,
-      coreFeatures: AppStrings.projectRaqibCoreFeatures,
-      techStack: AppStrings.projectRaqibTechStack,
-      challenges: AppStrings.projectRaqibChallenges,
-      role: AppStrings.projectRaqibRole,
-      status: AppStrings.projectRaqibProjectStatus,
+      title: strings.projectRaqibTitle,
+      overview: strings.projectRaqibOverview,
+      coreFeatures: strings.projectRaqibCoreFeatures,
+      techStack: strings.projectRaqibTechStack,
+      challenges: strings.projectRaqibChallenges,
+      role: strings.projectRaqibRole,
+      status: strings.projectRaqibProjectStatus,
       logo: 'lib/assets/photos/raqib/newlogo.jpg',
       screenshots: [
         'lib/assets/photos/raqib/0.png',
@@ -87,13 +87,13 @@ class Project {
       aptoideUrl: 'https://yourapp.en.aptoide.com/',
     ),
     Project(
-      title: AppStrings.projectQuranLifeTitle,
-      overview: AppStrings.projectQuranLifeOverview,
-      coreFeatures: AppStrings.projectQuranLifeCoreFeatures,
-      techStack: AppStrings.projectQuranLifeTechStack,
-      challenges: AppStrings.projectQuranLifeChallenges,
-      role: AppStrings.projectQuranLifeRole,
-      status: AppStrings.projectQuranLifeProjectStatus,
+      title: strings.projectQuranLifeTitle,
+      overview: strings.projectQuranLifeOverview,
+      coreFeatures: strings.projectQuranLifeCoreFeatures,
+      techStack: strings.projectQuranLifeTechStack,
+      challenges: strings.projectQuranLifeChallenges,
+      role: strings.projectQuranLifeRole,
+      status: strings.projectQuranLifeProjectStatus,
       logo: 'lib/assets/photos/quranLife/newlogo512.png',
       screenshots: [
         'lib/assets/photos/quranLife/0.png',

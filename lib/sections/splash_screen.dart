@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 
 import '../constants/app_colors.dart';
-import '../constants/app_strings.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -43,6 +44,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final strings = context.watch<StringsProvider>().strings;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -95,7 +97,7 @@ class _SplashScreenState extends State<SplashScreen>
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        AppStrings.appTitle,
+                        strings.appTitle,
                         style: theme.textTheme.headlineSmall?.copyWith(
                           fontFamily: 'Roboto',
                           color: AppColors.white,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../constants/app_strings.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import '../../utils/responsive_extensions.dart';
 
 /// Displays the app logo and (optionally) the brand text based on viewport width.
@@ -11,6 +12,7 @@ class ResponsiveLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final strings = context.watch<StringsProvider>().strings;
     // Centralized breakpoint: hide text on mobile screens.
     final showText = context.isTablet || context.isDesktop;
 
@@ -43,14 +45,14 @@ class ResponsiveLogo extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    AppStrings.schortname,
+                    strings.schortname,
                     style: theme.textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 0.3,
                     ),
                   ),
                   Text(
-                    AppStrings.schortname2,
+                    strings.schortname2,
                     style: theme.textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 0.3,

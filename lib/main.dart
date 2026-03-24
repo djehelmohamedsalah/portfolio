@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants/app_strings.dart';
+import 'package:provider/provider.dart';
 import 'app_bootstrapper.dart';
 import 'theme/app_theme.dart';
 import 'sections/hero_section.dart';
@@ -9,9 +9,15 @@ import 'sections/contact_section.dart';
 import 'sections/development_process.dart';
 import 'sections/projects_section.dart';
 import 'widgets/top_app_bar/floating_top_app_bar.dart';
+import 'l10n/strings_provider.dart';
 
 void main() {
-  runApp(const MyPortfolioApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => StringsProvider(),
+      child: const MyPortfolioApp(),
+    ),
+  );
 }
 
 class MyPortfolioApp extends StatefulWidget {
@@ -45,7 +51,7 @@ class _MyPortfolioAppState extends State<MyPortfolioApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: AppStrings.appTitle,
+      title: context.watch<StringsProvider>().strings.appTitle,
       debugShowCheckedModeBanner: false,
       themeMode: _themeMode,
       theme: AppTheme.lightTheme,

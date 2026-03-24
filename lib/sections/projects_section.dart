@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
-import '../constants/app_strings.dart';
 import '../models/project.dart';
 import '../widgets/projects_section/project_config.dart';
 import '../widgets/projects_section/project_section.dart';
@@ -12,7 +13,8 @@ class ProjectsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final projects = Project.allProjects;
+    final strings = context.watch<StringsProvider>().strings;
+    final projects = Project.fromStrings(strings);
     final caseStudies = projects.take(3).map((project) {
       return ProjectConfig(project: project);
     }).toList();
@@ -26,8 +28,8 @@ class ProjectsSection extends StatelessWidget {
           child: Column(
             children: [
               SectionHeader(
-                title: AppStrings.projectsTitle,
-                subtitle: AppStrings.projectsSubtitle,
+                title: strings.projectsTitle,
+                subtitle: strings.projectsSubtitle,
               ),
             ],
           ),

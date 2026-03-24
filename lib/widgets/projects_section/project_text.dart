@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/hover_outline_buttton.dart';
 import '../../sections/project_details_page.dart';
 import '../../utils/responsive_layout.dart';
@@ -19,6 +20,7 @@ class ProjectText extends StatelessWidget {
     final columnAlignment = isDesktop
         ? CrossAxisAlignment.start
         : CrossAxisAlignment.center;
+    final strings = context.watch<StringsProvider>().strings;
 
     double scaleSize(double min, double max) {
       final width = layout.width.clamp(360, 1400);
@@ -34,7 +36,7 @@ class ProjectText extends StatelessWidget {
         1.5 + (0.2 * ((layout.width.clamp(360, 1400) - 360) / (1400 - 360)));
 
     final detailsButton = HoverOutlineButton(
-      label: AppStrings.moreDetailsLabel,
+      label: strings.moreDetailsLabel,
       onTap: () {
         Navigator.push(
           context,

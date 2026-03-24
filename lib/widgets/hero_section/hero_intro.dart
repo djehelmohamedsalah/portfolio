@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../constants/app_strings.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import '../../utils/responsive_layout.dart';
 import 'typewriter_text.dart';
 import 'gradient_title.dart';
@@ -23,6 +24,7 @@ class HeroIntro extends StatelessWidget {
     final bool isMobile = layout.isMobile;
     final bool isCentered = layout.isMobile || layout.isTablet;
     final theme = Theme.of(context);
+    final strings = context.watch<StringsProvider>().strings;
     final double titleSize = isMobile ? 42 : 64;
     final double badgeTextSize = isMobile ? 12 : 14;
     final double roleTextSize = isMobile ? 22 : 30;
@@ -51,7 +53,7 @@ class HeroIntro extends StatelessWidget {
       children: [
         OnlineIndicator(
           color: theme.colorScheme.primary,
-          label: AppStrings.openTowork,
+          label: strings.openTowork,
           textStyle: theme.textTheme.labelLarge?.copyWith(
             color: theme.colorScheme.primary,
             fontWeight: FontWeight.w600,
@@ -68,12 +70,12 @@ class HeroIntro extends StatelessWidget {
                 : CrossAxisAlignment.start,
             children: [
               GradientTitle(
-                text: AppStrings.homeTitleFirstPart,
+                text: strings.homeTitleFirstPart,
                 fontSize: titleSize,
                 textAlign: isCentered ? TextAlign.center : TextAlign.start,
               ),
               GradientTitle(
-                text: AppStrings.homeTitleSecondPart,
+                text: strings.homeTitleSecondPart,
                 fontSize: titleSize,
                 textAlign: isCentered ? TextAlign.center : TextAlign.start,
               ),
@@ -83,11 +85,11 @@ class HeroIntro extends StatelessWidget {
         const SizedBox(height: 12),
         TypewriterText(
           cursor: "_",
-          phrases: const [
-            AppStrings.typewriterText1,
-            AppStrings.typewriterText2,
-            AppStrings.typewriterText3,
-            AppStrings.typewriterText4,
+          phrases: [
+            strings.typewriterText1,
+            strings.typewriterText2,
+            strings.typewriterText3,
+            strings.typewriterText4,
           ],
           alignment: isCentered
               ? MainAxisAlignment.center
@@ -108,7 +110,7 @@ class HeroIntro extends StatelessWidget {
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 620),
           child: SelectableText(
-            AppStrings.hookText,
+            strings.hookText,
             textAlign: isCentered ? TextAlign.center : TextAlign.start,
             style: theme.textTheme.titleMedium?.copyWith(
               fontSize: isMobile ? 14 : hookTextSize,
@@ -128,12 +130,12 @@ class HeroIntro extends StatelessWidget {
               ElevatedButton(
                 onPressed: onViewWork,
                 style: ctaButtonStyle,
-                child: const Text(AppStrings.viewMyWork),
+                child: Text(strings.viewMyWork),
               ),
               ElevatedButton(
                 onPressed: onHireMe,
                 style: ctaButtonStyle,
-                child: const Text(AppStrings.hireMe),
+                child: Text(strings.hireMe),
               ),
             ],
           ),

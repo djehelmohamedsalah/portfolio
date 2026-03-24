@@ -12,6 +12,7 @@ class _HeaderSection extends StatelessWidget {
     final logoSize = scaleForLayout(context, 90, 220);
     final titleSize = scaleForLayout(context, 22, 34);
     final roleTitleSize = scaleForLayout(context, 16, 20);
+    final strings = context.watch<StringsProvider>().strings;
 
     return Container(
       width: double.infinity,
@@ -53,7 +54,7 @@ class _HeaderSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 SelectableText(
-                  AppStrings.roleTitle,
+                  strings.roleTitle,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.onSurface,
@@ -100,7 +101,7 @@ class _HeaderSection extends StatelessWidget {
                       Container(
                         alignment: Alignment.centerLeft,
                         child: SelectableText(
-                          AppStrings.roleTitle,
+                          strings.roleTitle,
                           style: Theme.of(context).textTheme.titleMedium
                               ?.copyWith(
                                 fontWeight: FontWeight.bold,

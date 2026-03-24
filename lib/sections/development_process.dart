@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/development_process/animated_sweep_svg.dart';
 import 'package:mo_salah_dev/widgets/development_process/build_text_span.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_container.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
-import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 
 class DevelopmentProcess extends StatelessWidget {
@@ -13,6 +14,7 @@ class DevelopmentProcess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final strings = context.watch<StringsProvider>().strings;
     return ResponsiveLayout(
       builder: (context, layout) {
         final isMobile = layout.isMobile;
@@ -45,9 +47,9 @@ class DevelopmentProcess extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SectionHeader(
-                    title: AppStrings.developmentProcessTitle,
-                    subtitle: AppStrings.developmentProcessSubtitle,
+                  SectionHeader(
+                    title: strings.developmentProcessTitle,
+                    subtitle: strings.developmentProcessSubtitle,
                   ),
                   const SizedBox(height: 48),
                   SelectableText.rich(
@@ -55,7 +57,7 @@ class DevelopmentProcess extends StatelessWidget {
                     TextSpan(
                       style: descriptionStyle,
                       children: buildTextSpans(
-                        AppStrings.developmentProcessDescription,
+                        strings.developmentProcessDescription,
                         boldStyle,
                       ),
                     ),

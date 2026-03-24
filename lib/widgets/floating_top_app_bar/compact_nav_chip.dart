@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 
 class CompactNavChip extends StatelessWidget {
   const CompactNavChip({super.key});
@@ -7,6 +8,7 @@ class CompactNavChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final strings = context.watch<StringsProvider>().strings;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
@@ -19,7 +21,7 @@ class CompactNavChip extends StatelessWidget {
           Icon(Icons.menu, size: 18, color: theme.colorScheme.primary),
           const SizedBox(width: 6),
           Text(
-            AppStrings.sections,
+            strings.sections,
             style: theme.textTheme.labelLarge?.copyWith(
               color: theme.colorScheme.primary,
               fontWeight: FontWeight.w600,

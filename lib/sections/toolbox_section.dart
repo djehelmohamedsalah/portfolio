@@ -1,7 +1,8 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/utils/app_layout.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
-import '../../constants/app_strings.dart';
 import '../../constants/tool_assets.dart';
 import '../../utils/responsive_layout.dart';
 import '../../widgets/toolbox_section/metro_tile.dart';
@@ -13,6 +14,7 @@ class ToolboxSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tools = toolAssets;
+    final strings = context.watch<StringsProvider>().strings;
 
     return ResponsiveLayout(
       builder: (context, layout) {
@@ -58,9 +60,9 @@ class ToolboxSection extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const SectionHeader(
-                        title: AppStrings.toolsTitle,
-                        subtitle: AppStrings.toolsSubtitle,
+                      SectionHeader(
+                        title: strings.toolsTitle,
+                        subtitle: strings.toolsSubtitle,
                       ),
                       SizedBox(height: layout.blockSpacing * 0.5),
                       GridView.builder(

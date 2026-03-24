@@ -11,11 +11,12 @@ class _ScreenshotsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = context.watch<StringsProvider>().strings;
     if (project.screenshots.isEmpty) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const _SectionTitle('Screenshots'),
+          _SectionTitle(strings.screenSchotsTitle),
           const SizedBox(height: 20),
           SizedBox(
             height: 300,
@@ -70,7 +71,7 @@ class _ScreenshotsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _SectionTitle(AppStrings.screenSchotsTitle),
+        _SectionTitle(strings.screenSchotsTitle),
         const SizedBox(height: 20),
         SizedBox(
           height: 300,

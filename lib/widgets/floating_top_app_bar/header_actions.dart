@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import '../../utils/app_layout.dart';
 import 'action_icon_button.dart';
 
@@ -23,6 +24,8 @@ class HeaderActions extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+    final strings = context.watch<StringsProvider>().strings;
+    final stringsProvider = context.read<StringsProvider>();
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -34,26 +37,29 @@ class HeaderActions extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ActionIconButton(
-              tooltip: isDark ? AppStrings.switchLight : AppStrings.switchDark,
+              tooltip: isDark ? strings.switchLight : strings.switchDark,
               icon: isDark ? Icons.light_mode : Icons.dark_mode,
               onTap: onThemeToggle,
               iconSize: iconSize,
               splashRadius: iconSize != null ? iconSize + 6 : null,
             ),
-            SizedBox(width: 0),
+            const SizedBox(width: 0),
             ActionIconButton.menu(
-              tooltip: AppStrings.language,
+              tooltip: strings.language,
               icon: Icons.language,
               iconSize: iconSize,
               splashRadius: iconSize != null ? iconSize + 6 : null,
               menu: PopupMenuButton<String>(
-                tooltip: AppStrings.language,
-                initialValue: currentLanguage,
-                onSelected: (value) => onLanguageSelected?.call(value),
-                itemBuilder: (context) => const [
-                  PopupMenuItem(value: 'EN', child: Text('English')),
-                  PopupMenuItem(value: 'AR', child: Text('Arabic')),
-                  PopupMenuItem(value: 'FR', child: Text('French')),
+                tooltip: strings.language,
+                initialValue: stringsProvider.currentLocale.languageCode.toUpperCase(),
+                onSelected: (value) {
+                  final locale = value == 'DE' ? const Locale('de') : const Locale('en');
+                  stringsProvider.setLanguage(locale);
+                  onLanguageSelected?.call(value);
+                },
+                itemBuilder: (context) => [
+                  const PopupMenuItem(value: 'EN', child: Text('English')),
+                  const PopupMenuItem(value: 'DE', child: Text('Deutsch')),
                 ],
               ),
             ),

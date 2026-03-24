@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/sections/project_details_page.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/hover_outline_buttton.dart';
 import '../../utils/responsive_layout.dart';
@@ -97,6 +98,7 @@ class _MobileCaseStudyLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = context.watch<StringsProvider>().strings;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -105,7 +107,7 @@ class _MobileCaseStudyLayout extends StatelessWidget {
         Center(child: ProjectVisual(project: config.project)),
         const SizedBox(height: 32),
         HoverOutlineButton(
-          label: AppStrings.moreDetailsLabel,
+          label: strings.moreDetailsLabel,
           onTap: () {
             Navigator.push(
               context,

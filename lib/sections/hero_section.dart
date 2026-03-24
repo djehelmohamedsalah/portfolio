@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import '../widgets/general_widgets/section_container.dart';
 import '../utils/responsive_layout.dart';
 import '../widgets/hero_section/hero_intro.dart';
 import '../widgets/hero_section/photo_stack.dart';
-import '../constants/app_strings.dart';
 
 class HeroSection extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -93,6 +94,7 @@ class _HeroCtas extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final layout = context.layout;
+    final strings = context.watch<StringsProvider>().strings;
     final double buttonTextSize = layout.isMobile ? 15 : 16;
 
     final ButtonStyle ctaButtonStyle = ElevatedButton.styleFrom(
@@ -118,12 +120,12 @@ class _HeroCtas extends StatelessWidget {
         ElevatedButton(
           onPressed: onViewWork,
           style: ctaButtonStyle,
-          child: const Text(AppStrings.viewMyWork),
+          child: Text(strings.viewMyWork),
         ),
         ElevatedButton(
           onPressed: onHireMe,
           style: ctaButtonStyle,
-          child: const Text(AppStrings.hireMe),
+          child: Text(strings.hireMe),
         ),
       ],
     );

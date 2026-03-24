@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/constants/app_strings.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/top_app_bar/nav_menu_button.dart';
 import '../../utils/app_layout.dart';
 import '../floating_top_app_bar/header_actions.dart';
@@ -38,6 +39,7 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final strings = context.watch<StringsProvider>().strings;
 
     return SafeArea(
       bottom: false,
@@ -79,27 +81,27 @@ class FloatingTopAppBar extends StatelessWidget implements PreferredSizeWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               NavButton(
-                                label: AppStrings.aboutLabel,
+                                label: strings.aboutLabel,
                                 onTap: onAbout,
                               ),
                               const SizedBox(width: 12),
                               NavButton(
-                                label: AppStrings.devProcesLabel,
+                                label: strings.devProcesLabel,
                                 onTap: onDevelopmentProcess,
                               ),
                               const SizedBox(width: 12),
                               NavButton(
-                                label: AppStrings.skillsLabel,
+                                label: strings.skillsLabel,
                                 onTap: onSkills,
                               ),
                               const SizedBox(width: 12),
                               NavButton(
-                                label: AppStrings.projectsLabel,
+                                label: strings.projectsLabel,
                                 onTap: onProjects,
                               ),
                               const SizedBox(width: 12),
                               NavButton(
-                                label: AppStrings.contactLabel,
+                                label: strings.contactLabel,
                                 onTap: onContact,
                               ),
                             ],

@@ -1,6 +1,7 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
-import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 import '../widgets/general_widgets/section_container.dart';
 import '../widgets/skill_section/skill_card.dart';
@@ -15,7 +16,29 @@ class SkillsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categories = _buildCategories();
+    final strings = context.watch<StringsProvider>().strings;
+    final categories = [
+      SkillCategory(
+        title: strings.categoryMobileDev,
+        skills: strings.skillsMobileDev,
+        icon: Icons.phone_android_rounded,
+      ),
+      SkillCategory(
+        title: strings.categoryStateManagement,
+        skills: strings.skillsStateManagement,
+        icon: Icons.hub_rounded,
+      ),
+      SkillCategory(
+        title: strings.categoryBackendIntegration,
+        skills: strings.skillsBackendIntegration,
+        icon: Icons.cloud_sync_rounded,
+      ),
+      SkillCategory(
+        title: strings.categoryUiPerformance,
+        skills: strings.skillsUiPerformance,
+        icon: Icons.speed_rounded,
+      ),
+    ];
     final skillTheme = SkillSectionTheme.of(context);
 
     return ResponsiveLayout(
@@ -30,9 +53,9 @@ class SkillsSection extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SectionHeader(
-                  title: AppStrings.skillsTitle,
-                  subtitle: AppStrings.skillsSubtitle,
+                SectionHeader(
+                  title: strings.skillsTitle,
+                  subtitle: strings.skillsSubtitle,
                 ),
                 SizedBox(height: layout.blockSpacing),
                 LayoutBuilder(
@@ -91,30 +114,5 @@ class SkillsSection extends StatelessWidget {
         );
       },
     );
-  }
-
-  List<SkillCategory> _buildCategories() {
-    return const [
-      SkillCategory(
-        title: AppStrings.categoryMobileDev,
-        skills: AppStrings.skillsMobileDev,
-        icon: Icons.phone_android_rounded,
-      ),
-      SkillCategory(
-        title: AppStrings.categoryStateManagement,
-        skills: AppStrings.skillsStateManagement,
-        icon: Icons.hub_rounded,
-      ),
-      SkillCategory(
-        title: AppStrings.categoryBackendIntegration,
-        skills: AppStrings.skillsBackendIntegration,
-        icon: Icons.cloud_sync_rounded,
-      ),
-      SkillCategory(
-        title: AppStrings.categoryUiPerformance,
-        skills: AppStrings.skillsUiPerformance,
-        icon: Icons.speed_rounded,
-      ),
-    ];
   }
 }

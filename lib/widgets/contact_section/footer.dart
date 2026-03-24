@@ -8,6 +8,7 @@ class _Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = context.watch<StringsProvider>().strings;
     // Responsive footer font size
     final fontSize = layout.isDesktop
         ? 16.0
@@ -20,7 +21,7 @@ class _Footer extends StatelessWidget {
     return Column(
       children: [
         SelectableText(
-          AppStrings.footerText,
+          strings.footerText,
           textAlign: TextAlign.center,
           style: theme.textTheme.bodyMedium?.copyWith(
             letterSpacing: 0.4,
@@ -31,7 +32,7 @@ class _Footer extends StatelessWidget {
         ),
         SizedBox(height: spacing),
         SelectableText(
-          AppStrings.rightText,
+          strings.rightText,
           textAlign: TextAlign.center,
           style: theme.textTheme.bodyMedium?.copyWith(
             letterSpacing: 0.4,

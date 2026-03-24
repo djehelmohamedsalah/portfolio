@@ -92,10 +92,12 @@ class _CopyButton extends StatelessWidget {
       onPressed: () async {
         final messenger = ScaffoldMessenger.maybeOf(context);
         await Clipboard.setData(const ClipboardData(text: email));
+        if (!context.mounted) return;
+        final strings = Provider.of<StringsProvider>(context, listen: false).strings;
         messenger?.showSnackBar(
-          const SnackBar(
-            content: Text(AppStrings.emailCopied),
-            duration: Duration(seconds: 2),
+          SnackBar(
+            content: Text(strings.emailCopied),
+            duration: const Duration(seconds: 2),
           ),
         );
       },

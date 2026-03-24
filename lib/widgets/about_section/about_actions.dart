@@ -1,6 +1,7 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../constants/app_strings.dart';
 import 'about_primary_button.dart';
 
 class AboutActions extends StatelessWidget {
@@ -8,21 +9,22 @@ class AboutActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = context.watch<StringsProvider>().strings;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
+      children: [
         Expanded(
           child: _ActionButton(
-            label: AppStrings.resumeButton,
-            url: AppStrings.resumeUrl,
+            label: strings.resumeButton,
+            url: strings.resumeUrl,
             isMobile: true,
           ),
         ),
         SizedBox(width: 12),
         Expanded(
           child: _ActionButton(
-            label: AppStrings.linkedInButton,
-            url: AppStrings.linkedInUrl,
+            label: strings.linkedInButton,
+            url: strings.linkedInUrl,
             isMobile: true,
           ),
         ),
@@ -65,8 +67,9 @@ class _ActionButton extends StatelessWidget {
       return;
     }
     if (!context.mounted) return;
+    final strings = Provider.of<StringsProvider>(context, listen: false).strings;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text(AppStrings.externallinksnackbarmessag)),
+      SnackBar(content: Text(strings.externallinksnackbarmessag)),
     );
   }
 }

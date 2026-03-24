@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_svg/flutter_svg.dart";
-import "package:mo_salah_dev/constants/app_strings.dart";
+import "package:provider/provider.dart";
+import "package:mo_salah_dev/l10n/strings_provider.dart";
 import "package:url_launcher/url_launcher.dart";
 import "../utils/app_layout.dart";
 
@@ -148,6 +149,7 @@ class _HeadlineBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final strings = context.watch<StringsProvider>().strings;
 
     // Responsive font size
     final fontSize = layout.isDesktop
@@ -165,7 +167,7 @@ class _HeadlineBlock extends StatelessWidget {
           maxWidth: layout.isMobile ? double.infinity : 450,
         ),
         child: SelectableText(
-          AppStrings.interestedInWorking,
+          strings.interestedInWorking,
           textAlign: textAlign,
           style: theme.textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.bold,

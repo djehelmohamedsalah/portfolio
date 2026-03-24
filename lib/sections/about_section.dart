@@ -1,8 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mo_salah_dev/l10n/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
 import '../widgets/general_widgets/section_container.dart';
-import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 import '../widgets/about_section/about_actions.dart';
 import '../widgets/about_section/about_image.dart';
@@ -16,6 +17,7 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final aboutTheme = AboutSectionTheme.of(context);
+    final strings = context.watch<StringsProvider>().strings;
 
     return ResponsiveLayout(
       builder: (context, layout) {
@@ -33,9 +35,9 @@ class AboutSection extends StatelessWidget {
           titleCentered: true,
           child: Column(
             children: [
-              const SectionHeader(
-                title: AppStrings.aboutTitle,
-                subtitle: AppStrings.aboutSubTitle,
+              SectionHeader(
+                title: strings.aboutTitle,
+                subtitle: strings.aboutSubTitle,
               ),
               const SizedBox(height: 48),
               if (isMobile)
@@ -48,7 +50,7 @@ class AboutSection extends StatelessWidget {
                         horizontal: layout.horizontalPadding,
                       ),
                       child: SelectableText(
-                        AppStrings.aboutDescription.trim(),
+                        strings.aboutDescription.trim(),
                         style: aboutTheme.bodyMobile!.copyWith(fontSize: 12),
                         textAlign: TextAlign.center,
                       ),
@@ -74,7 +76,7 @@ class AboutSection extends StatelessWidget {
                         horizontal: layout.horizontalPadding,
                       ),
                       child: SelectableText(
-                        AppStrings.aboutDescription.trim(),
+                        strings.aboutDescription.trim(),
                         textAlign: TextAlign.center,
                         style: aboutTheme.bodyDesktop!.copyWith(fontSize: 15),
                       ),
@@ -102,7 +104,7 @@ class AboutSection extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SelectableText(
-                            AppStrings.aboutDescription.trim(),
+                            strings.aboutDescription.trim(),
                             style: aboutTheme.bodyDesktop!.copyWith(
                               fontSize: 15,
                             ),
