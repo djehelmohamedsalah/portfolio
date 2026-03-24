@@ -63,13 +63,13 @@ class AppStringsDe extends AppStrings {
   String get openTowork =>
       'Offen für neue Herausforderungen und berufliche Weiterentwicklung';
   @override
-  String get typewriterText1 => 'Mobile Application Developer.';
+  String get typewriterText1 => 'Entwickler für mobile Anwendungen.';
   @override
-  String get typewriterText2 => 'Flutter Developer.';
+  String get typewriterText2 => 'Flutter-Entwickler.';
   @override
-  String get typewriterText3 => 'Android Developer.';
+  String get typewriterText3 => 'Android-Entwickler.';
   @override
-  String get typewriterText4 => 'Cross-Platform Developer.';
+  String get typewriterText4 => 'Cross-Plattform-Entwickler.';
 
   @override
   String get developmentProcessTitle => 'Entwicklungsprozess';
