@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -25,7 +24,7 @@ class _AnimatedSweepSvgState extends State<AnimatedSweepSvg>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 7),
+      duration: const Duration(seconds: 4),
     )..repeat();
   }
 
@@ -41,12 +40,11 @@ class _AnimatedSweepSvgState extends State<AnimatedSweepSvg>
     final baseColor = theme.colorScheme.onSurface;
     final sweepColor = theme.colorScheme.secondary;
 
-    // The SVG is built once; only the ShaderMask gradient repaints.
+    // SVG rendered without ColorFilter — ShaderMask handles all tinting.
     final svgChild = SvgPicture.asset(
       widget.assetPath,
       fit: BoxFit.contain,
       height: widget.height,
-      colorFilter: ColorFilter.mode(baseColor, BlendMode.srcIn),
     );
 
     return AnimatedBuilder(
@@ -63,9 +61,9 @@ class _AnimatedSweepSvgState extends State<AnimatedSweepSvg>
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
               colors: [
-                Colors.white, // keep original tint
-                sweepColor, // highlight
-                Colors.white, // keep original tint
+                baseColor, // normal tint
+                sweepColor, // animated highlight
+                baseColor, // normal tint
               ],
               stops: [
                 (center - 0.12).clamp(0.0, 1.0),
@@ -74,7 +72,9 @@ class _AnimatedSweepSvgState extends State<AnimatedSweepSvg>
               ],
             ).createShader(bounds);
           },
-          blendMode: BlendMode.modulate,
+          // srcIn: the gradient colours are painted only where the SVG
+          // has non-transparent pixels — works identically in both themes.
+          blendMode: BlendMode.srcIn,
           child: child,
         );
       },

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/widgets/development_process/animated_sweep_svg.dart';
 import 'package:mo_salah_dev/widgets/development_process/build_text_span.dart';
-import 'package:mo_salah_dev/widgets/floating_top_app_bar/section_header.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_container.dart';
+import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
 import '../constants/app_strings.dart';
 import '../utils/responsive_layout.dart';
 
