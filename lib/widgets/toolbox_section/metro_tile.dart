@@ -43,7 +43,7 @@ class _MetroTileState extends State<MetroTile> {
       transformAlignment: Alignment.center,
       padding: EdgeInsets.all(widget.layout.itemSpacing * 0.9),
       decoration: BoxDecoration(
-        color: widget.theme.tileBackground,
+        color: widget.theme.tileBackground.withValues(alpha: 0.3),
         borderRadius: widget.theme.tileRadius,
         border: Border.all(color: widget.theme.tileBorder, width: 1),
       ),

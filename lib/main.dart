@@ -10,6 +10,7 @@ import 'sections/development_process.dart';
 import 'sections/projects_section.dart';
 import 'widgets/top_app_bar/floating_top_app_bar.dart';
 import 'core/localization/strings_provider.dart';
+import 'widgets/hero_section/interactive_background.dart';
 
 void main() {
   runApp(
@@ -110,27 +111,29 @@ class _PortfolioMainPageState extends State<PortfolioMainPage> {
         onContact: () => _scrollToSection(_contactKey),
         onThemeToggle: widget.onThemeToggle,
       ),
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        child: Column(
-          children: [
-            HeroSection(
-              toAbout: () => _scrollToSection(_aboutKey),
-              onHireMe: () => _scrollToSection(_contactKey),
-              sectionKey: _homeKey,
-              onViewWork: () => _scrollToSection(_projectsKey),
-            ),
-            // const SizedBox(height: AppSpacing.sectionGap),
-            AboutSection(sectionKey: _aboutKey),
-            // const SizedBox(height: AppSpacing.sectionGap),
-            DevelopmentProcess(sectionKey: _developmentProcessKey),
-            // const SizedBox(height: AppSpacing.sectionGap),
-            SkillsSection(sectionKey: _skillsKey),
-            // const SizedBox(height: AppSpacing.sectionGap),
-            ProjectsSection(sectionKey: _projectsKey),
-            // const SizedBox(height: AppSpacing.sectionGap),
-            ContactSection(sectionKey: _contactKey),
-          ],
+      body: InteractiveBackground(
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: Column(
+            children: [
+              HeroSection(
+                toAbout: () => _scrollToSection(_aboutKey),
+                onHireMe: () => _scrollToSection(_contactKey),
+                sectionKey: _homeKey,
+                onViewWork: () => _scrollToSection(_projectsKey),
+              ),
+              // const SizedBox(height: AppSpacing.sectionGap),
+              AboutSection(sectionKey: _aboutKey),
+              // const SizedBox(height: AppSpacing.sectionGap),
+              DevelopmentProcess(sectionKey: _developmentProcessKey),
+              // const SizedBox(height: AppSpacing.sectionGap),
+              SkillsSection(sectionKey: _skillsKey),
+              // const SizedBox(height: AppSpacing.sectionGap),
+              ProjectsSection(sectionKey: _projectsKey),
+              // const SizedBox(height: AppSpacing.sectionGap),
+              ContactSection(sectionKey: _contactKey),
+            ],
+          ),
         ),
       ),
     );

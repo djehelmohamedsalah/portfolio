@@ -56,7 +56,7 @@ class ContactSection extends StatelessWidget {
     return Container(
       key: sectionKey,
       width: double.infinity,
-      color: theme.colorScheme.surface,
+      color: Colors.transparent,
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: _maxWidth),

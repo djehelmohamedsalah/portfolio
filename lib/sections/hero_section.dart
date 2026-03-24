@@ -33,48 +33,45 @@ class HeroSection extends StatelessWidget {
           height: 620,
           child: Stack(
             children: [
-              if (isDesktop)
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: HeroIntro(
+                if (isDesktop)
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: HeroIntro(
+                          onViewWork: onViewWork,
+                          onHireMe: onHireMe,
+                        ),
+                      ),
+                      const SizedBox(width: 40),
+                      Expanded(
+                        flex: 2,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: PhotoStack(isMobile: layout.isMobile),
+                        ),
+                      ),
+                    ],
+                  )
+                else
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      HeroIntro(
                         onViewWork: onViewWork,
                         onHireMe: onHireMe,
+                        showButtons: false,
                       ),
-                    ),
-                    const SizedBox(width: 40),
-                    Expanded(
-                      flex: 2,
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: PhotoStack(isMobile: layout.isMobile),
-                      ),
-                    ),
-                  ],
-                )
-              else
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    HeroIntro(
-                      onViewWork: onViewWork,
-                      onHireMe: onHireMe,
-                      showButtons: false,
-                    ),
-                    SizedBox(height: layout.blockSpacing * 0.75),
-                    PhotoStack(isMobile: layout.isMobile),
-                    SizedBox(height: layout.blockSpacing),
-                    _HeroCtas(
-                      onViewWork: onViewWork,
-                      onHireMe: onHireMe,
-                    ),
-                  ],
-                ),
-            ],
-          ),
+                      SizedBox(height: layout.blockSpacing * 0.75),
+                      PhotoStack(isMobile: layout.isMobile),
+                      SizedBox(height: layout.blockSpacing),
+                      _HeroCtas(onViewWork: onViewWork, onHireMe: onHireMe),
+                    ],
+                  ),
+              ],
+            ),
         );
       },
     );
@@ -85,10 +82,7 @@ class _HeroCtas extends StatelessWidget {
   final VoidCallback onViewWork;
   final VoidCallback onHireMe;
 
-  const _HeroCtas({
-    required this.onViewWork,
-    required this.onHireMe,
-  });
+  const _HeroCtas({required this.onViewWork, required this.onHireMe});
 
   @override
   Widget build(BuildContext context) {

@@ -39,7 +39,7 @@ class DevelopmentProcess extends StatelessWidget {
         return SectionContainer(
           key: sectionKey,
           titleCentered: true,
-          color: theme.colorScheme.surface,
+          color: Colors.transparent,
           height: 600,
           child: Center(
             child: ConstrainedBox(

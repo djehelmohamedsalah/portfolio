@@ -31,8 +31,8 @@ class ProjectBackground extends StatelessWidget {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(0, 0, 0, 0.68),
-                Color.fromRGBO(0, 0, 0, 0.58),
+                Color.fromRGBO(0, 0, 0, 0.1),
+                Color.fromRGBO(0, 0, 0, 0.0),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,

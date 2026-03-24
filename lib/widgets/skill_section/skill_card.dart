@@ -5,11 +5,7 @@ import 'skill_column.dart';
 import 'skill_section_theme.dart';
 
 class SkillCard extends StatefulWidget {
-  const SkillCard({
-    super.key,
-    required this.category,
-    required this.layout,
-  });
+  const SkillCard({super.key, required this.category, required this.layout});
 
   final SkillCategory category;
   final AppLayout layout;
@@ -34,7 +30,7 @@ class _SkillCardState extends State<SkillCard> {
       transformAlignment: Alignment.center,
       padding: EdgeInsets.all(widget.layout.itemSpacing * 1.5),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
+        color: theme.colorScheme.surface.withValues(alpha: 0.3),
         border: Border.all(
           color: theme.dividerColor.withValues(alpha: 0.25),
           width: 1,
