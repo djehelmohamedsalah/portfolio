@@ -22,7 +22,7 @@ class MyPortfolioApp extends StatefulWidget {
 }
 
 class _MyPortfolioAppState extends State<MyPortfolioApp> {
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode _themeMode = ThemeMode.dark;
 
   void _toggleTheme() {
     setState(() {

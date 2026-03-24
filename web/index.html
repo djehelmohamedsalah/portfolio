@@ -43,15 +43,15 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      /* Light-theme gradient by default */
-      background: linear-gradient(to bottom right, #254F22, rgba(160, 58, 19, 0.9));
+      /* Dark-theme gradient by default */
+      background: linear-gradient(to bottom right, #2D4263, rgba(200, 75, 49, 0.9));
       transition: opacity 0.45s ease-out;
     }
 
-    /* Dark-theme gradient when user prefers dark */
+    /* Light-theme gradient when user prefers light */
     @media (prefers-color-scheme: light) {
       #html-splash {
-        background: linear-gradient(to bottom right, #2D4263, rgba(200, 75, 49, 0.9));
+        background: linear-gradient(to bottom right, #254F22, rgba(160, 58, 19, 0.9));
       }
     }
 
