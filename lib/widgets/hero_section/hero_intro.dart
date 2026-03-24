@@ -74,11 +74,11 @@ class HeroIntro extends StatelessWidget {
                 fontSize: titleSize,
                 textAlign: isCentered ? TextAlign.center : TextAlign.start,
               ),
-              GradientTitle(
-                text: strings.homeTitleSecondPart,
-                fontSize: titleSize,
-                textAlign: isCentered ? TextAlign.center : TextAlign.start,
-              ),
+              // GradientTitle(
+              //   text: strings.homeTitleSecondPart,
+              //   fontSize: titleSize,
+              //   textAlign: isCentered ? TextAlign.center : TextAlign.start,
+              // ),
             ],
           ),
         ),

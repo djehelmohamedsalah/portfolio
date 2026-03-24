@@ -27,7 +27,7 @@ abstract class AppStrings {
   String get schortname;
   String get schortname2;
   String get homeTitleFirstPart;
-  String get homeTitleSecondPart;
+  // String get homeTitleSecondPart;
   String get role;
   String get viewMyWork;
   String get hireMe;

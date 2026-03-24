@@ -47,9 +47,9 @@ class AppStringsDe extends AppStrings {
   @override
   String get schortname2 => 'Dev.';
   @override
-  String get homeTitleFirstPart => 'Hallo, ich bin Mohamed';
-  @override
-  String get homeTitleSecondPart => 'Salah Djehel';
+  String get homeTitleFirstPart => 'Hallo, ich bin Mohamed\nSalah Djehel';
+  // @override
+  // String get homeTitleSecondPart => 'Salah Djehel';
   @override
   String get role => 'Entwickler für mobile Anwendungen';
   @override
@@ -81,23 +81,23 @@ class AppStringsDe extends AppStrings {
       '**Apps zu bauen**, die nicht nur funktionieren, sondern **außergewöhnliche Erlebnisse** bieten, ist der Kern meiner Arbeit als **Flutter-Entwickler**. Ich konzentriere mich auf **sauberen, skalierbaren Code** und transformiere **komplexe Designs** in **nahtlose, hochperformante Interfaces**. Durch die **Optimierung von State Management und Ressourcen** erstelle ich **integrierte Apps**, die **effizient auf allen Plattformen** laufen und **Reaktionsschnelligkeit, Stabilität sowie messbare technische Wirkung** garantieren.';
 
   @override
-  String get skillsTitle => 'Skillset';
+  String get skillsTitle => 'Kenntnisse';
   @override
   String get skillsSubtitle =>
       'Ein umfassender Überblick über meine technische Expertise und meinen professionellen Workflow.';
 
   @override
-  String get toolsTitle => 'Toolbox';
+  String get toolsTitle => 'Werkzeuge';
   @override
   String get toolsSubtitle =>
       'Essenzielle Werkzeuge, die ich täglich nutze, um robuste Flutter-Erlebnisse zu entwerfen und zu entwickeln.';
 
   @override
-  String get categoryMobileDev => 'MOBILE\nDEVELOPMENT';
+  String get categoryMobileDev => 'MOBILE\nENTWICKLUNG';
   @override
-  String get categoryStateManagement => 'STATE\nMANAGEMENT';
+  String get categoryStateManagement => 'ZUSTANDS-\nMANAGEMENT';
   @override
-  String get categoryBackendIntegration => 'BACKEND\nINTEGRATION';
+  String get categoryBackendIntegration => 'BACKEND-\nINTEGRATION';
   @override
   String get categoryUiPerformance => 'UI &\nPERFORMANCE';
 
@@ -107,7 +107,7 @@ class AppStringsDe extends AppStrings {
     'Clean Architecture',
     'Git Workflows',
     'Modulare Apps',
-    'App Scaling',
+    'App-Skalierung',
   ];
 
   @override
@@ -122,15 +122,15 @@ class AppStringsDe extends AppStrings {
   @override
   List<String> get skillsBackendIntegration => [
     'Supabase',
-    'REST APIs',
+    'REST-APIs',
     'Authentifizierungssysteme',
-    'Secure Storage',
-    'Error Handling',
+    'Sichere Speicherung',
+    'Fehlerbehandlung',
   ];
 
   @override
   List<String> get skillsUiPerformance => [
-    'Performance Tuning',
+    'Performance-Tuning',
     'App-Optimierung',
     'Flüssige UI-Animationen',
     'Responsive UI',
@@ -268,7 +268,7 @@ class AppStringsDe extends AppStrings {
   @override
   String get chalengesTitel => 'Herausforderungen & Lösungen';
   @override
-  String get techStackTitle => 'Tech Stack';
+  String get techStackTitle => 'Tech-Stack';
   @override
   String get screenSchotsTitle => 'Screenshots';
 }

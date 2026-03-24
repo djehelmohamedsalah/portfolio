@@ -59,10 +59,18 @@ class SkillColumn extends StatelessWidget {
               padding: EdgeInsets.only(bottom: layout.itemSpacing),
               child: SelectableText(
                 skill,
+                maxLines: 1,
                 textAlign: isDesktop ? TextAlign.start : TextAlign.center,
                 style: isMobile
-                    ? theme.bodyStyle(layout)!.copyWith(fontSize: 13)
-                    : theme.bodyStyle(layout),
+                    ? theme
+                          .bodyStyle(layout)!
+                          .copyWith(
+                            fontSize: 13,
+                            overflow: TextOverflow.visible,
+                          )
+                    : theme
+                          .bodyStyle(layout)!
+                          .copyWith(overflow: TextOverflow.visible),
               ),
             ),
           ),

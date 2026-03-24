@@ -47,9 +47,9 @@ class AppStringsEn extends AppStrings {
   @override
   String get schortname2 => 'Dev.';
   @override
-  String get homeTitleFirstPart => "Hi, I'm Mohamed";
-  @override
-  String get homeTitleSecondPart => 'Salah Djehel';
+  String get homeTitleFirstPart => "Hi, I'm Mohamed\nSalah Djehel";
+  // @override
+  // String get homeTitleSecondPart => '';
   @override
   String get role => 'Mobile Application Developer';
   @override
