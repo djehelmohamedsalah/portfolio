@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/localization/strings_provider.dart';
-import '../../utils/app_layout.dart';
+import 'package:mo_salah_dev/core/localization/strings_provider.dart';
+import '../../core/utils/app_layout.dart';
 import 'action_icon_button.dart';
 
 class HeaderActions extends StatelessWidget {

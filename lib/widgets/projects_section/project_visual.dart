@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../models/project.dart';
-import '../../utils/responsive_layout.dart';
+import '../../core/models/project.dart';
+import '../../core/utils/responsive_layout.dart';
 
 class ProjectVisual extends StatelessWidget {
   final Project project;

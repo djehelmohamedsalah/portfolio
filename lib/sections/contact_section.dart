@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:provider/provider.dart";
-import "package:mo_salah_dev/localization/strings_provider.dart";
+import "package:mo_salah_dev/core/localization/strings_provider.dart";
 import "package:url_launcher/url_launcher.dart";
-import "../utils/app_layout.dart";
+import "../core/utils/app_layout.dart";
 
 part '../widgets/contact_section/footer.dart';
 part '../widgets/contact_section/signature_placeholder.dart';

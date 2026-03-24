@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/localization/strings_provider.dart';
+import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 
 class CompactNavChip extends StatelessWidget {
   const CompactNavChip({super.key});

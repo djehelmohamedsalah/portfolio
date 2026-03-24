@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/localization/strings_provider.dart';
+import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/hover_outline_buttton.dart';
 import '../../sections/project_details_page.dart';
-import '../../utils/responsive_layout.dart';
+import '../../core/utils/responsive_layout.dart';
 import 'project_config.dart';
 
 class ProjectText extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/utils/responsive_layout.dart';
+import 'package:mo_salah_dev/core/utils/responsive_layout.dart';
 
 class GradientTitle extends StatelessWidget {
   final String text;

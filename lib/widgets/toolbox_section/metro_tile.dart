@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/localization/strings_provider.dart';
-import 'package:mo_salah_dev/utils/app_layout.dart';
+import 'package:mo_salah_dev/core/localization/strings_provider.dart';
+import 'package:mo_salah_dev/core/utils/app_layout.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../constants/tool_assets.dart';
+import '../../core/constants/tool_assets.dart';
 import 'tool_icon.dart';
 import 'toolbox_section_theme.dart';
 

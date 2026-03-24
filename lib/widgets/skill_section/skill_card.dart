@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../utils/app_layout.dart';
+import '../../core/utils/app_layout.dart';
 import 'skill_category.dart';
 import 'skill_column.dart';
 import 'skill_section_theme.dart';

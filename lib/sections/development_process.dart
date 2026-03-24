@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/localization/strings_provider.dart';
+import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/development_process/animated_sweep_svg.dart';
 import 'package:mo_salah_dev/widgets/development_process/build_text_span.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_container.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
-import '../utils/responsive_layout.dart';
+import '../core/utils/responsive_layout.dart';
 
 class DevelopmentProcess extends StatelessWidget {
   final GlobalKey sectionKey;

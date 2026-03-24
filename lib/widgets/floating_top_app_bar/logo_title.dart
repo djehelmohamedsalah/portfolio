@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/localization/strings_provider.dart';
-import '../../utils/responsive_extensions.dart';
+import 'package:mo_salah_dev/core/localization/strings_provider.dart';
+import '../../core/utils/responsive_extensions.dart';
 
 /// Displays the app logo and (optionally) the brand text based on viewport width.
 class ResponsiveLogo extends StatelessWidget {

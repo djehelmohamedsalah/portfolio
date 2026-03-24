@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'app_bootstrapper.dart';
-import 'theme/app_theme.dart';
+import 'core/theme/app_theme.dart';
 import 'sections/hero_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
@@ -9,7 +9,7 @@ import 'sections/contact_section.dart';
 import 'sections/development_process.dart';
 import 'sections/projects_section.dart';
 import 'widgets/top_app_bar/floating_top_app_bar.dart';
-import 'localization/strings_provider.dart';
+import 'core/localization/strings_provider.dart';
 
 void main() {
   runApp(

@@ -1,6 +1,6 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../constants/tool_assets.dart';
+import '../../core/constants/tool_assets.dart';
 
 class ToolIcon extends StatelessWidget {
   const ToolIcon({super.key, required this.tool, required this.size, required this.color});

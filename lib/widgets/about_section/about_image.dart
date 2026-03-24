@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../utils/responsive_extensions.dart';
+import '../../core/utils/responsive_extensions.dart';
 import 'about_section_theme.dart';
 
 class AboutImage extends StatefulWidget {

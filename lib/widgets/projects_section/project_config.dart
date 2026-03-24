@@ -1,4 +1,4 @@
-import '../../models/project.dart';
+import '../../core/models/project.dart';
 
 class ProjectConfig {
   final Project project;

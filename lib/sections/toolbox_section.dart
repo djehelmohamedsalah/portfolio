@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/localization/strings_provider.dart';
-import 'package:mo_salah_dev/utils/app_layout.dart';
+import 'package:mo_salah_dev/core/localization/strings_provider.dart';
+import 'package:mo_salah_dev/core/utils/app_layout.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
-import '../../constants/tool_assets.dart';
-import '../../utils/responsive_layout.dart';
+import '../core/constants/tool_assets.dart';
+import '../core/utils/responsive_layout.dart';
 import '../../widgets/toolbox_section/metro_tile.dart';
 import '../../widgets/toolbox_section/toolbox_section_theme.dart';
 

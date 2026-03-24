@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/localization/strings_provider.dart';
+import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/project_detail_page/image_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../constants/app_colors.dart';
-import '../models/project.dart';
-import '../utils/responsive_layout.dart';
+import '../core/constants/app_colors.dart';
+import '../core/models/project.dart';
+import '../core/utils/responsive_layout.dart';
 
 part '../widgets/project_detail_page/header_section.dart';
 part '../widgets/project_detail_page/overview_section.dart';

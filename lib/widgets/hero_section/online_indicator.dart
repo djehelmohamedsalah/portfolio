@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../utils/app_layout.dart';
-import '../../utils/responsive_layout.dart';
+import '../../core/utils/app_layout.dart';
+import '../../core/utils/responsive_layout.dart';
 
 class OnlineIndicator extends StatelessWidget {
   final Color color;

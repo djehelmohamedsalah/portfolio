@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/localization/strings_provider.dart';
-import '../../utils/responsive_layout.dart';
+import 'package:mo_salah_dev/core/localization/strings_provider.dart';
+import '../../core/utils/responsive_layout.dart';
 import 'typewriter_text.dart';
 import 'gradient_title.dart';
 import 'online_indicator.dart';
