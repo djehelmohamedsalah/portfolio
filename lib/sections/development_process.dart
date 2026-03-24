@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/l10n/strings_provider.dart';
+import 'package:mo_salah_dev/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/development_process/animated_sweep_svg.dart';
 import 'package:mo_salah_dev/widgets/development_process/build_text_span.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_container.dart';

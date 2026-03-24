@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/l10n/strings_provider.dart';
+import 'package:mo_salah_dev/localization/strings_provider.dart';
 
 import '../constants/app_colors.dart';
 

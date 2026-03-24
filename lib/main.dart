@@ -9,7 +9,7 @@ import 'sections/contact_section.dart';
 import 'sections/development_process.dart';
 import 'sections/projects_section.dart';
 import 'widgets/top_app_bar/floating_top_app_bar.dart';
-import 'l10n/strings_provider.dart';
+import 'localization/strings_provider.dart';
 
 void main() {
   runApp(

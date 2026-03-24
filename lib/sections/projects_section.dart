@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/l10n/strings_provider.dart';
+import 'package:mo_salah_dev/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
 import '../models/project.dart';
 import '../widgets/projects_section/project_config.dart';

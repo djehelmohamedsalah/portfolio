@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/l10n/strings_provider.dart';
+import 'package:mo_salah_dev/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
 import '../widgets/general_widgets/section_container.dart';
 import '../utils/responsive_layout.dart';

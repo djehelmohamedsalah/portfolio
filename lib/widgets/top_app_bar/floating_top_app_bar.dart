@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mo_salah_dev/l10n/strings_provider.dart';
+import 'package:mo_salah_dev/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/top_app_bar/nav_menu_button.dart';
 import '../../utils/app_layout.dart';
 import '../floating_top_app_bar/header_actions.dart';

@@ -1,4 +1,4 @@
-import '../l10n/app_strings.dart';
+import '../localization/app_strings.dart';
 
 class Project {
   final String title;
