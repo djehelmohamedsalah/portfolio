@@ -91,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen>
                         ),
                         clipBehavior: Clip.antiAlias,
                         child: Image.asset(
-                          'lib/assets/photos/developper/M_logo.png',
+                          'lib/core/assets/photos/developper/M_logo.png',
                           fit: BoxFit.cover,
                         ),
                       ),

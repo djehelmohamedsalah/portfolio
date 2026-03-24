@@ -25,7 +25,7 @@ class _SignaturePlaceholder extends StatelessWidget {
         child: ColorFiltered(
           colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
           child: Image.asset(
-            'lib/assets/photos/developper/signature.png',
+            'lib/core/assets/photos/developper/signature.png',
             width: targetWidth,
             fit: BoxFit.contain,
             filterQuality: FilterQuality.high,

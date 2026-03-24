@@ -35,20 +35,22 @@ class PreloadService {
 
   Future<void> _precacheImages(BuildContext context) async {
     const heroAndBranding = <String>[
-      'lib/assets/photos/developper/suit_profile_picture.png',
-      'lib/assets/photos/developper/avatar.png',
-      'lib/assets/photos/developper/M_logo.png',
-      'lib/assets/photos/developper/signature.png',
-      'lib/assets/photos/developper/cappsulle.png',
+      'lib/core/assets/photos/developper/suit_profile_picture.png',
+      'lib/core/assets/photos/developper/avatar.png',
+      'lib/core/assets/photos/developper/M_logo.png',
+      'lib/core/assets/photos/developper/signature.png',
+      'lib/core/assets/photos/developper/cappsulle.png',
     ];
 
     const projectCovers = <String>[
-      'lib/assets/photos/newsily/newsily_overview.png',
-      'lib/assets/photos/raqib/raqib_overvie.png',
-      'lib/assets/photos/quranLife/quranlife_overview.png',
+      'lib/core/assets/photos/newsily/newsily_overview.png',
+      'lib/core/assets/photos/raqib/raqib_overvie.png',
+      'lib/core/assets/photos/quranLife/quranlife_overview.png',
     ];
 
-    const rasterTooling = <String>['lib/assets/photos/tools_icons/sdk.png'];
+    const rasterTooling = <String>[
+      'lib/core/assets/photos/tools_icons/sdk.png',
+    ];
 
     final allRaster = <String>[
       ...heroAndBranding,
@@ -63,11 +65,11 @@ class PreloadService {
 
   Future<void> _precacheSvgs(BuildContext context) async {
     const socialSvgs = <String>[
-      'lib/assets/photos/social_icons/github.svg',
-      'lib/assets/photos/social_icons/whatsapp.svg',
-      'lib/assets/photos/social_icons/linkedin.svg',
-      'lib/assets/photos/social_icons/instagram.svg',
-      'lib/assets/photos/social_icons/facebook.svg',
+      'lib/core/assets/photos/social_icons/github.svg',
+      'lib/core/assets/photos/social_icons/whatsapp.svg',
+      'lib/core/assets/photos/social_icons/linkedin.svg',
+      'lib/core/assets/photos/social_icons/instagram.svg',
+      'lib/core/assets/photos/social_icons/facebook.svg',
     ];
 
     final toolSvgs = toolAssets
@@ -77,7 +79,7 @@ class PreloadService {
     final allSvgAssets = <String>[
       ...socialSvgs,
       ...toolSvgs,
-      'lib/assets/photos/tools_icons/development_line.svg',
+      'lib/core/assets/photos/tools_icons/development_line.svg',
     ];
 
     await Future.wait(

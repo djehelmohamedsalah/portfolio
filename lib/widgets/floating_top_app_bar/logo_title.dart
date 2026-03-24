@@ -33,7 +33,7 @@ class ResponsiveLogo extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Image.asset(
-                "lib/assets/photos/developper/M_logo.png",
+                "lib/core/assets/photos/developper/M_logo.png",
                 fit: BoxFit.contain,
               ),
             ),

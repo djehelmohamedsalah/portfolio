@@ -65,7 +65,7 @@ class DevelopmentProcess extends StatelessWidget {
                   const SizedBox(height: 60),
                   AnimatedSweepSvg(
                     assetPath:
-                        'lib/assets/photos/tools_icons/development_line.svg',
+                        'lib/core/assets/photos/tools_icons/development_line.svg',
                     height: isMobile ? 80 : 160,
                   ),
                 ],

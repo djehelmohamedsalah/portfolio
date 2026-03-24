@@ -61,8 +61,8 @@ class _AboutImageState extends State<AboutImage>
                 final shadowWidth = capsuleWidth * 0.82;
 
                 final baseImage = isDesktop
-                    ? 'lib/assets/photos/developper/avatar.png'
-                    : 'lib/assets/photos/developper/avatar_with_cappsulle.jpg';
+                    ? 'lib/core/assets/photos/developper/avatar.png'
+                    : 'lib/core/assets/photos/developper/avatar_with_cappsulle.jpg';
 
                 return Stack(
                   alignment: Alignment.center,
@@ -121,7 +121,7 @@ class _AboutImageState extends State<AboutImage>
                                     ],
                                   ),
                                   child: Image.asset(
-                                    'lib/assets/photos/developper/cappsulle.png',
+                                    'lib/core/assets/photos/developper/cappsulle.png',
                                     fit: BoxFit.contain,
                                   ),
                                 ),

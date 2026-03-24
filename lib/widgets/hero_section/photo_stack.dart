@@ -100,7 +100,7 @@ class PhotoStack extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: borderRadius,
                 child: Image.asset(
-                  'lib/assets/photos/developper/suit_profile_picture.png',
+                  'lib/core/assets/photos/developper/suit_profile_picture.png',
                   fit: BoxFit.cover,
                 ),
               ),
