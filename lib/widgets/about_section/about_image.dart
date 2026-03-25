@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/widgets/animations%20effects/tilt_3d.dart';
-import 'package:mo_salah_dev/widgets/animations%20effects/float_animation.dart';
+import 'package:mo_salah_dev/widgets/effects/tilt_3d.dart';
+import 'package:mo_salah_dev/widgets/effects/float_animation.dart';
 import '../../core/utils/responsive_extensions.dart';
 import 'about_section_theme.dart';
 

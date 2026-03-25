@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
+import 'package:mo_salah_dev/widgets/effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import '../widgets/general_widgets/section_container.dart';

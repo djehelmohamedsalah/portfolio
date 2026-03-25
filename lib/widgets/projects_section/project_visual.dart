@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/widgets/animations%20effects/tilt_3d.dart';
+import 'package:mo_salah_dev/widgets/effects/tilt_3d.dart';
 import '../../core/models/project.dart';
 import '../../core/utils/responsive_layout.dart';
 

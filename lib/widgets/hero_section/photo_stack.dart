@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/widgets/animations%20effects/tilt_3d.dart';
+import 'package:mo_salah_dev/widgets/effects/tilt_3d.dart';
 
 class PhotoStack extends StatelessWidget {
   final bool isMobile;

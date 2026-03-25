@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
-import 'package:mo_salah_dev/widgets/animations%20effects/tilt_3d.dart';
+import 'package:mo_salah_dev/widgets/effects/reveal_on_scroll.dart';
+import 'package:mo_salah_dev/widgets/effects/tilt_3d.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
-import 'package:mo_salah_dev/widgets/animations%20effects/animated_sweep_svg.dart';
+import 'package:mo_salah_dev/widgets/effects/animated_sweep_svg.dart';
 import 'package:mo_salah_dev/widgets/development_process/build_text_span.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_container.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';

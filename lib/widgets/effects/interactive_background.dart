@@ -181,18 +181,18 @@ class _MeshPainter extends CustomPainter {
     final blendMode = isDark ? BlendMode.screen : BlendMode.overlay;
 
     // Theming fallbacks. Use primary/secondary with strong opacity reduction.
-    final color1 = colorScheme.primary.withOpacity(
-      (0.15 * animationOpacity).clamp(0.0, 1.0),
+    final color1 = colorScheme.primary.withValues(
+      alpha: (0.15 * animationOpacity).clamp(0.0, 1.0),
     );
-    final color2 = colorScheme.secondary.withOpacity(
-      (0.15 * animationOpacity).clamp(0.0, 1.0),
+    final color2 = colorScheme.secondary.withValues(
+      alpha: (0.15 * animationOpacity).clamp(0.0, 1.0),
     );
     // Use tertiary if dynamically supported by Theme structure, otherwise fallback gracefully.
     final color3 =
         (colorScheme.tertiary != colorScheme.primary
                 ? colorScheme.tertiary
                 : colorScheme.primaryContainer)
-            .withOpacity((0.12 * animationOpacity).clamp(0.0, 1.0));
+            .withValues(alpha: (0.12 * animationOpacity).clamp(0.0, 1.0));
 
     // Three intersecting dynamic ambient blobs driven by mathematical phases
     _drawBlob(
@@ -248,7 +248,7 @@ class _MeshPainter extends CustomPainter {
   }) {
     final paint = Paint()
       ..shader = RadialGradient(
-        colors: [color, color.withOpacity(0.0)],
+        colors: [color, color.withValues(alpha: 0.0)],
         stops: const [0.1, 1.0],
       ).createShader(Rect.fromCircle(center: center, radius: radius))
       ..blendMode = blendMode;
@@ -285,8 +285,10 @@ class _SpotlightPainter extends CustomPainter {
     final paint = Paint()
       ..shader = RadialGradient(
         colors: [
-          Colors.white.withOpacity(opacity), // Very subtle premium glow layer
-          Colors.white.withOpacity(0.0),
+          Colors.white.withValues(
+            alpha: opacity,
+          ), // Very subtle premium glow layer
+          Colors.white.withValues(alpha: 0.0),
         ],
         stops: const [0.0, 1.0],
       ).createShader(Rect.fromCircle(center: mousePosition.value!, radius: 225))

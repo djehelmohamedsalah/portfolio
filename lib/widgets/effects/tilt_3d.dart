@@ -28,17 +28,23 @@ class _Tilt3DState extends State<Tilt3D> with SingleTickerProviderStateMixin {
   late Animation<Offset> _resetAnimation;
 
   // Uses ValueNotifier to prevent full widget tree rebuilds during rapid mouse events
-  final ValueNotifier<Offset> _tiltPosition = ValueNotifier<Offset>(Offset.zero);
+  final ValueNotifier<Offset> _tiltPosition = ValueNotifier<Offset>(
+    Offset.zero,
+  );
   final ValueNotifier<bool> _isHovered = ValueNotifier<bool>(false);
 
   @override
   void initState() {
     super.initState();
-    _resetController = AnimationController(vsync: this, duration: widget.duration);
-    _resetAnimation = Tween<Offset>(begin: Offset.zero, end: Offset.zero).animate(
-      CurvedAnimation(parent: _resetController, curve: Curves.easeOut),
+    _resetController = AnimationController(
+      vsync: this,
+      duration: widget.duration,
     );
-    
+    _resetAnimation = Tween<Offset>(
+      begin: Offset.zero,
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _resetController, curve: Curves.easeOut));
+
     // Animate smoothly back to zero when mouse leaves
     _resetController.addListener(() {
       _tiltPosition.value = _resetAnimation.value;
@@ -94,10 +100,7 @@ class _Tilt3DState extends State<Tilt3D> with SingleTickerProviderStateMixin {
     final double dx = (localPosition.dx / size.width) * 2 - 1;
     final double dy = (localPosition.dy / size.height) * 2 - 1;
 
-    _tiltPosition.value = Offset(
-      dx.clamp(-1.0, 1.0),
-      dy.clamp(-1.0, 1.0),
-    );
+    _tiltPosition.value = Offset(dx.clamp(-1.0, 1.0), dy.clamp(-1.0, 1.0));
   }
 
   @override
@@ -119,8 +122,10 @@ class _Tilt3DState extends State<Tilt3D> with SingleTickerProviderStateMixin {
               valueListenable: _isHovered,
               builder: (context, isHovered, _) {
                 // Calculate rotation based on cursor offset
-                final double tiltX = -offset.dy * (widget.maxTilt * math.pi / 180);
-                final double tiltY = offset.dx * (widget.maxTilt * math.pi / 180);
+                final double tiltX =
+                    -offset.dy * (widget.maxTilt * math.pi / 180);
+                final double tiltY =
+                    offset.dx * (widget.maxTilt * math.pi / 180);
 
                 final Matrix4 transform = Matrix4.identity()
                   ..setEntry(3, 2, 0.001) // Adds depth perspective
@@ -151,8 +156,12 @@ class _Tilt3DState extends State<Tilt3D> with SingleTickerProviderStateMixin {
                                   decoration: BoxDecoration(
                                     gradient: RadialGradient(
                                       colors: [
-                                        const Color(0xFFFFFFFF).withOpacity(0.15),
-                                        const Color(0xFFFFFFFF).withOpacity(0.0),
+                                        const Color(
+                                          0xFFFFFFFF,
+                                        ).withValues(alpha: 0.15),
+                                        const Color(
+                                          0xFFFFFFFF,
+                                        ).withValues(alpha: 0.0),
                                       ],
                                       center: Alignment(-offset.dx, -offset.dy),
                                       radius: 1.5,

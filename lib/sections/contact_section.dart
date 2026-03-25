@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_svg/flutter_svg.dart";
-import "package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart";
-import "package:mo_salah_dev/widgets/animations%20effects/tilt_3d.dart";
+import "package:mo_salah_dev/widgets/effects/reveal_on_scroll.dart";
+import "package:mo_salah_dev/widgets/effects/tilt_3d.dart";
 import "package:provider/provider.dart";
 import "package:mo_salah_dev/core/localization/strings_provider.dart";
 import "package:url_launcher/url_launcher.dart";
