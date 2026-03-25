@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/effects/tilt_3d.dart';
 import '../../core/utils/responsive_extensions.dart';
 import 'about_section_theme.dart';
 
@@ -42,98 +43,104 @@ class _AboutImageState extends State<AboutImage>
 
     final bool isDesktop = context.isDesktop;
 
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 420),
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Container(
-          decoration: BoxDecoration(
-            color: theme.theme.colorScheme.surface,
-            borderRadius: borderRadius,
-            border: Border.all(color: theme.avatarBorderColor),
-          ),
-          child: ClipRRect(
-            borderRadius: borderRadius,
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final avatarSize = constraints.maxWidth;
-                final capsuleWidth = avatarSize * 0.22;
-                final shadowWidth = capsuleWidth * 0.82;
+    return Tilt3D(
+      maxTilt: 10,
+      scale: 1.03,
+      duration: const Duration(milliseconds: 250),
+      enableGlare: false,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 420),
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            decoration: BoxDecoration(
+              color: theme.theme.colorScheme.surface,
+              borderRadius: borderRadius,
+              border: Border.all(color: theme.avatarBorderColor),
+            ),
+            child: ClipRRect(
+              borderRadius: borderRadius,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final avatarSize = constraints.maxWidth;
+                  final capsuleWidth = avatarSize * 0.22;
+                  final shadowWidth = capsuleWidth * 0.82;
 
-                final baseImage = isDesktop
-                    ? 'lib/core/assets/photos/developper/avatar.png'
-                    : 'lib/core/assets/photos/developper/avatar_with_cappsulle.jpg';
+                  final baseImage = isDesktop
+                      ? 'lib/core/assets/photos/developper/avatar.png'
+                      : 'lib/core/assets/photos/developper/avatar_with_cappsulle.jpg';
 
-                return Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Positioned.fill(
-                      child: Image.asset(baseImage, fit: BoxFit.cover),
-                    ),
-                    if (isDesktop) ...[
-                      AnimatedBuilder(
-                        animation: _float,
-                        builder: (context, child) {
-                          final double shadowYOffset = _float.value * 0.35;
-                          return Align(
-                            alignment: _capsuleAlignment,
-                            child: Transform.translate(
-                              offset: Offset(0, shadowYOffset),
-                              child: Container(
-                                width: shadowWidth,
-                                height: shadowWidth * 0.35,
-                                decoration: BoxDecoration(
-                                  color: theme.capsuleShadowColor,
-                                  borderRadius: BorderRadius.circular(100),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: theme.capsuleShadowBlurColor,
-                                      blurRadius: 12,
-                                      spreadRadius: 1,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        },
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned.fill(
+                        child: Image.asset(baseImage, fit: BoxFit.cover),
                       ),
-                      AnimatedBuilder(
-                        animation: _float,
-                        builder: (context, child) {
-                          return SizedBox(
-                            height: 120,
-                            width: 120,
-                            child: Align(
+                      if (isDesktop) ...[
+                        AnimatedBuilder(
+                          animation: _float,
+                          builder: (context, child) {
+                            final double shadowYOffset = _float.value * 0.35;
+                            return Align(
                               alignment: _capsuleAlignment,
                               child: Transform.translate(
-                                offset: Offset(0, _float.value),
+                                offset: Offset(0, shadowYOffset),
                                 child: Container(
-                                  width: capsuleWidth,
-                                  decoration: const BoxDecoration(
+                                  width: shadowWidth,
+                                  height: shadowWidth * 0.35,
+                                  decoration: BoxDecoration(
+                                    color: theme.capsuleShadowColor,
+                                    borderRadius: BorderRadius.circular(100),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.black26,
-                                        spreadRadius: -3,
-                                        blurRadius: 20,
-                                        offset: Offset(0, 2),
+                                        color: theme.capsuleShadowBlurColor,
+                                        blurRadius: 12,
+                                        spreadRadius: 1,
                                       ),
                                     ],
                                   ),
-                                  child: Image.asset(
-                                    'lib/core/assets/photos/developper/cappsulle.png',
-                                    fit: BoxFit.contain,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        AnimatedBuilder(
+                          animation: _float,
+                          builder: (context, child) {
+                            return SizedBox(
+                              height: 120,
+                              width: 120,
+                              child: Align(
+                                alignment: _capsuleAlignment,
+                                child: Transform.translate(
+                                  offset: Offset(0, _float.value),
+                                  child: Container(
+                                    width: capsuleWidth,
+                                    decoration: const BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black26,
+                                          spreadRadius: -3,
+                                          blurRadius: 20,
+                                          offset: Offset(0, 2),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Image.asset(
+                                      'lib/core/assets/photos/developper/cappsulle.png',
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                      ),
+                            );
+                          },
+                        ),
+                      ],
                     ],
-                  ],
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ),

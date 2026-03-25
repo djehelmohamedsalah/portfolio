@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/effects/tilt_3d.dart';
 import '../../core/models/project.dart';
 import '../../core/utils/responsive_layout.dart';
 
@@ -47,23 +48,29 @@ class _MockupImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.35),
-            blurRadius: 28,
-            offset: const Offset(0, 18),
+    return Tilt3D(
+      maxTilt: 10,
+      scale: 1.03,
+      duration: const Duration(milliseconds: 250),
+      enableGlare: false,
+      child: Container(
+        width: width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.35),
+              blurRadius: 28,
+              offset: const Offset(0, 18),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(18),
+          child: AspectRatio(
+            aspectRatio: aspectRatio,
+            child: Image.asset(imagePath, fit: BoxFit.cover),
           ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(18),
-        child: AspectRatio(
-          aspectRatio: aspectRatio,
-          child: Image.asset(imagePath, fit: BoxFit.cover),
         ),
       ),
     );
