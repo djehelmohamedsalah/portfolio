@@ -26,7 +26,7 @@ class _SkillCardState extends State<SkillCard> {
     final card = AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       curve: Curves.easeOut,
-      transform: Matrix4.identity()..scale(scale),
+      transform: Matrix4.diagonal3Values(scale, scale, 1.0),
       transformAlignment: Alignment.center,
       padding: EdgeInsets.all(widget.layout.itemSpacing * 1.5),
       decoration: BoxDecoration(
