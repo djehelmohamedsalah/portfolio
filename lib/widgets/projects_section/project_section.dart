@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/sections/project_details_page.dart';
-import 'package:mo_salah_dev/widgets/general_widgets/hover_outline_buttton.dart';
+import 'package:mo_salah_dev/widgets/projects_section/hover_outline_buttton.dart';
 import '../../core/utils/responsive_layout.dart';
 import '../../core/utils/app_layout.dart';
 import 'project_background.dart';
@@ -108,6 +108,7 @@ class _MobileCaseStudyLayout extends StatelessWidget {
         const SizedBox(height: 32),
         HoverOutlineButton(
           label: strings.moreDetailsLabel,
+
           onTap: () {
             Navigator.push(
               context,

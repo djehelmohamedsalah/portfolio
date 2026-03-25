@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/projects_section/hover_outline_buttton.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
-import 'package:mo_salah_dev/widgets/general_widgets/hover_outline_buttton.dart';
 import '../../sections/project_details_page.dart';
 import '../../core/utils/responsive_layout.dart';
 import 'project_config.dart';
@@ -21,6 +21,7 @@ class ProjectText extends StatelessWidget {
         ? CrossAxisAlignment.start
         : CrossAxisAlignment.center;
     final strings = context.watch<StringsProvider>().strings;
+    final theme = Theme.of(context);
 
     double scaleSize(double min, double max) {
       final width = layout.width.clamp(360, 1400);
@@ -63,7 +64,7 @@ class ProjectText extends StatelessWidget {
                 color: Colors.white.withValues(alpha: 0.07),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.18),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                   width: 1,
                 ),
                 boxShadow: const [
@@ -88,8 +89,8 @@ class ProjectText extends StatelessWidget {
                 constraints: const BoxConstraints(maxWidth: 600),
                 child: SelectableText(
                   config.project.title,
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                    color: Colors.white,
+                  style: theme.textTheme.displaySmall?.copyWith(
+                    color: theme.colorScheme.onSurface,
                     fontSize: titleSize,
                     height: 1.18,
                     fontWeight: FontWeight.w700,
@@ -102,8 +103,8 @@ class ProjectText extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         if (isDesktop)
-          const Divider(
-            color: Colors.white,
+          Divider(
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
             thickness: 1,
             indent: 0,
             endIndent: 200,
@@ -114,7 +115,7 @@ class ProjectText extends StatelessWidget {
           child: SelectableText(
             config.project.overview,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.white.withValues(alpha: 0.85),
+              color: theme.colorScheme.onSurface,
               fontSize: bodySize,
               height: overviewLineHeight,
               fontWeight: FontWeight.w600,
