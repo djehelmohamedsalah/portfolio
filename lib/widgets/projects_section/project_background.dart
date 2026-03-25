@@ -15,7 +15,7 @@ class ProjectBackground extends StatelessWidget {
       children: [
         Center(
           child: Opacity(
-            opacity: 0.28,
+            opacity: 0.05,
             child: FractionallySizedBox(
               widthFactor: 0.42,
               heightFactor: 0.42,
