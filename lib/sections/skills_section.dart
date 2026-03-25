@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
@@ -53,9 +54,11 @@ class SkillsSection extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SectionHeader(
-                  title: strings.skillsTitle,
-                  subtitle: strings.skillsSubtitle,
+                RevealOnScroll(
+                  child: SectionHeader(
+                    title: strings.skillsTitle,
+                    subtitle: strings.skillsSubtitle,
+                  ),
                 ),
                 SizedBox(height: layout.blockSpacing),
                 LayoutBuilder(
@@ -96,9 +99,11 @@ class SkillsSection extends StatelessWidget {
                                 minWidth: cardWidth,
                                 maxWidth: cardWidth,
                               ),
-                              child: SkillCard(
-                                category: category,
-                                layout: layout,
+                              child: RevealOnScroll(
+                                child: SkillCard(
+                                  category: category,
+                                  layout: layout,
+                                ),
                               ),
                             ),
                           )

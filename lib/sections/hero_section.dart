@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import '../widgets/general_widgets/section_container.dart';
@@ -33,45 +34,54 @@ class HeroSection extends StatelessWidget {
           height: 620,
           child: Stack(
             children: [
-                if (isDesktop)
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: HeroIntro(
-                          onViewWork: onViewWork,
-                          onHireMe: onHireMe,
-                        ),
+              if (isDesktop)
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: HeroIntro(
+                        onViewWork: onViewWork,
+                        onHireMe: onHireMe,
                       ),
-                      const SizedBox(width: 40),
-                      Expanded(
-                        flex: 2,
-                        child: Align(
-                          alignment: Alignment.centerRight,
+                    ),
+                    const SizedBox(width: 40),
+                    Expanded(
+                      flex: 2,
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: RevealOnScroll(
                           child: PhotoStack(isMobile: layout.isMobile),
                         ),
                       ),
-                    ],
-                  )
-                else
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      HeroIntro(
+                    ),
+                  ],
+                )
+              else
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    HeroIntro(
+                      onViewWork: onViewWork,
+                      onHireMe: onHireMe,
+                      showButtons: false,
+                    ),
+                    SizedBox(height: layout.blockSpacing * 0.75),
+                    RevealOnScroll(
+                      child: PhotoStack(isMobile: layout.isMobile),
+                    ),
+                    SizedBox(height: layout.blockSpacing),
+                    RevealOnScroll(
+                      child: _HeroCtas(
                         onViewWork: onViewWork,
                         onHireMe: onHireMe,
-                        showButtons: false,
                       ),
-                      SizedBox(height: layout.blockSpacing * 0.75),
-                      PhotoStack(isMobile: layout.isMobile),
-                      SizedBox(height: layout.blockSpacing),
-                      _HeroCtas(onViewWork: onViewWork, onHireMe: onHireMe),
-                    ],
-                  ),
-              ],
-            ),
+                    ),
+                  ],
+                ),
+            ],
+          ),
         );
       },
     );

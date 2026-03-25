@@ -33,27 +33,31 @@ class _HeaderSection extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Image.asset(
-                      project.logo,
-                      height: logoSize,
-                      fit: BoxFit.contain,
+                    RevealOnScroll(
+                      child: Image.asset(
+                        project.logo,
+                        height: logoSize,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                     const SizedBox(height: 20),
-                    SelectableText(
-                      project.title,
-                      style: Theme.of(context).textTheme.headlineMedium
-                          ?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.onSurface,
+                    RevealOnScroll(
+                      child: SelectableText(
+                        project.title,
+                        style: Theme.of(context).textTheme.headlineMedium
+                            ?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.onSurface,
                             overflow: TextOverflow.ellipsis,
                             fontSize: titleSize,
                           ),
                       textAlign: TextAlign.center,
                     ),
-                  ],
+                )],
                 ),
                 const SizedBox(height: 20),
-                SelectableText(
+                RevealOnScroll(
+                  child: SelectableText(
                   strings.roleTitle,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
@@ -62,9 +66,11 @@ class _HeaderSection extends StatelessWidget {
                     fontSize: roleTitleSize,
                   ),
                   textAlign: TextAlign.center,
-                ),
+                ),),
                 const SizedBox(height: 10),
-                _RoleText(roleText: project.role, align: TextAlign.center),
+                RevealOnScroll(
+                  child: _RoleText(roleText: project.role, align: TextAlign.center),
+                ),
               ],
             )
           : Row(
@@ -73,13 +79,16 @@ class _HeaderSection extends StatelessWidget {
                 Expanded(
                   child: Column(
                     children: [
-                      Image.asset(
-                        project.logo,
-                        height: logoSize,
-                        fit: BoxFit.contain,
+                      RevealOnScroll(
+                        child: Image.asset(
+                          project.logo,
+                          height: logoSize,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                       const SizedBox(height: 20),
-                      SelectableText(
+                      RevealOnScroll(
+                        child: SelectableText(
                         project.title,
                         style: Theme.of(context).textTheme.headlineMedium
                             ?.copyWith(
@@ -90,7 +99,7 @@ class _HeaderSection extends StatelessWidget {
                             ),
                         textAlign: TextAlign.center,
                       ),
-                    ],
+                  )],
                   ),
                 ),
                 const SizedBox(width: 40),
@@ -100,7 +109,8 @@ class _HeaderSection extends StatelessWidget {
                     children: [
                       Container(
                         alignment: Alignment.centerLeft,
-                        child: SelectableText(
+                        child: RevealOnScroll(
+                          child: SelectableText(
                           strings.roleTitle,
                           style: Theme.of(context).textTheme.titleMedium
                               ?.copyWith(
@@ -111,9 +121,11 @@ class _HeaderSection extends StatelessWidget {
                               ),
                           textAlign: TextAlign.start,
                         ),
-                      ),
+                      ),),
                       const SizedBox(height: 10),
-                      _RoleText(roleText: project.role, align: TextAlign.start),
+                      RevealOnScroll(
+                        child: _RoleText(roleText: project.role, align: TextAlign.start),
+                      ),
                     ],
                   ),
                 ),

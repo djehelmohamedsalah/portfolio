@@ -22,14 +22,16 @@ class _RoleText extends StatelessWidget {
           .map(
             (line) => Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: SelectableText(
-                line.trim(),
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
-                  height: 1.5,
-                  fontSize: roleSize,
+              child: RevealOnScroll(
+                child: SelectableText(
+                  line.trim(),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.secondary,
+                    height: 1.5,
+                    fontSize: roleSize,
+                  ),
+                  textAlign: align,
                 ),
-                textAlign: align,
               ),
             ),
           )

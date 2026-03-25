@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/sections/project_details_page.dart';
@@ -73,7 +74,7 @@ class _DesktopCaseStudyLayout extends StatelessWidget {
       children: [
         SizedBox(
           width: leftWidth,
-          child: ProjectText(config: config),
+          child: RevealOnScroll(child: ProjectText(config: config)),
         ),
         Row(
           children: [
@@ -81,7 +82,9 @@ class _DesktopCaseStudyLayout extends StatelessWidget {
               width: rightWidth,
               child: Align(
                 alignment: Alignment.centerRight,
-                child: ProjectVisual(project: config.project),
+                child: RevealOnScroll(
+                  child: ProjectVisual(project: config.project),
+                ),
               ),
             ),
           ],
@@ -102,22 +105,26 @@ class _MobileCaseStudyLayout extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        ProjectText(config: config, showButton: false),
+        RevealOnScroll(child: ProjectText(config: config, showButton: false)),
         const SizedBox(height: 32),
-        Center(child: ProjectVisual(project: config.project)),
+        RevealOnScroll(
+          child: Center(child: ProjectVisual(project: config.project)),
+        ),
         const SizedBox(height: 32),
-        HoverOutlineButton(
-          label: strings.moreDetailsLabel,
+        RevealOnScroll(
+          child: HoverOutlineButton(
+            label: strings.moreDetailsLabel,
 
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    ProjectDetailsPage(project: config.project),
-              ),
-            );
-          },
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ProjectDetailsPage(project: config.project),
+                ),
+              );
+            },
+          ),
         ),
       ],
     );

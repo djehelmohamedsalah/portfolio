@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
-import 'package:mo_salah_dev/widgets/effects/animated_sweep_svg.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/animated_sweep_svg.dart';
 import 'package:mo_salah_dev/widgets/development_process/build_text_span.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_container.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
@@ -47,26 +48,32 @@ class DevelopmentProcess extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SectionHeader(
-                    title: strings.developmentProcessTitle,
-                    subtitle: strings.developmentProcessSubtitle,
+                  RevealOnScroll(
+                    child: SectionHeader(
+                      title: strings.developmentProcessTitle,
+                      subtitle: strings.developmentProcessSubtitle,
+                    ),
                   ),
                   const SizedBox(height: 48),
-                  SelectableText.rich(
-                    textAlign: TextAlign.center,
-                    TextSpan(
-                      style: descriptionStyle,
-                      children: buildTextSpans(
-                        strings.developmentProcessDescription,
-                        boldStyle,
+                  RevealOnScroll(
+                    child: SelectableText.rich(
+                      textAlign: TextAlign.center,
+                      TextSpan(
+                        style: descriptionStyle,
+                        children: buildTextSpans(
+                          strings.developmentProcessDescription,
+                          boldStyle,
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 60),
-                  AnimatedSweepSvg(
-                    assetPath:
-                        'lib/core/assets/photos/tools_icons/development_line.svg',
-                    height: isMobile ? 80 : 160,
+                  RevealOnScroll(
+                    child: AnimatedSweepSvg(
+                      assetPath:
+                          'lib/core/assets/photos/tools_icons/development_line.svg',
+                      height: isMobile ? 80 : 160,
+                    ),
                   ),
                 ],
               ),

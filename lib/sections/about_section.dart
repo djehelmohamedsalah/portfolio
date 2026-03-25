@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
@@ -35,9 +36,11 @@ class AboutSection extends StatelessWidget {
           titleCentered: true,
           child: Column(
             children: [
-              SectionHeader(
-                title: strings.aboutTitle,
-                subtitle: strings.aboutSubTitle,
+              RevealOnScroll(
+                child: SectionHeader(
+                  title: strings.aboutTitle,
+                  subtitle: strings.aboutSubTitle,
+                ),
               ),
               const SizedBox(height: 48),
               if (isMobile)
@@ -49,21 +52,27 @@ class AboutSection extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                         horizontal: layout.horizontalPadding,
                       ),
-                      child: SelectableText(
-                        strings.aboutDescription.trim(),
-                        style: aboutTheme.bodyMobile!.copyWith(fontSize: 12),
-                        textAlign: TextAlign.center,
+                      child: RevealOnScroll(
+                        child: SelectableText(
+                          strings.aboutDescription.trim(),
+                          style: aboutTheme.bodyMobile!.copyWith(fontSize: 12),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 24),
-                    SizedBox(
-                      width: mobileImageWidth,
-                      child: const AboutImage(),
+                    RevealOnScroll(
+                      child: SizedBox(
+                        width: mobileImageWidth,
+                        child: const AboutImage(),
+                      ),
                     ),
                     const SizedBox(height: 28),
-                    SizedBox(
-                      width: layout.constrainedContentWidth,
-                      child: const AboutActions(),
+                    RevealOnScroll(
+                      child: SizedBox(
+                        width: layout.constrainedContentWidth,
+                        child: const AboutActions(),
+                      ),
                     ),
                   ],
                 )
@@ -75,21 +84,27 @@ class AboutSection extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                         horizontal: layout.horizontalPadding,
                       ),
-                      child: SelectableText(
-                        strings.aboutDescription.trim(),
-                        textAlign: TextAlign.center,
-                        style: aboutTheme.bodyDesktop!.copyWith(fontSize: 15),
+                      child: RevealOnScroll(
+                        child: SelectableText(
+                          strings.aboutDescription.trim(),
+                          textAlign: TextAlign.center,
+                          style: aboutTheme.bodyDesktop!.copyWith(fontSize: 15),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 24),
-                    SizedBox(
-                      width: min(layout.constrainedContentWidth * 0.7, 420),
-                      child: const AboutImage(),
+                    RevealOnScroll(
+                      child: SizedBox(
+                        width: min(layout.constrainedContentWidth * 0.7, 420),
+                        child: const AboutImage(),
+                      ),
                     ),
                     const SizedBox(height: 28),
-                    SizedBox(
-                      width: layout.constrainedContentWidth,
-                      child: const AboutActions(),
+                    RevealOnScroll(
+                      child: SizedBox(
+                        width: layout.constrainedContentWidth,
+                        child: const AboutActions(),
+                      ),
                     ),
                   ],
                 )
@@ -97,20 +112,22 @@ class AboutSection extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const AboutImage(),
+                    RevealOnScroll(child: const AboutImage()),
                     const SizedBox(width: 40),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SelectableText(
-                            strings.aboutDescription.trim(),
-                            style: aboutTheme.bodyDesktop!.copyWith(
-                              fontSize: 15,
+                          RevealOnScroll(
+                            child: SelectableText(
+                              strings.aboutDescription.trim(),
+                              style: aboutTheme.bodyDesktop!.copyWith(
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 26),
-                          const AboutActions(),
+                          RevealOnScroll(child: const AboutActions()),
                         ],
                       ),
                     ),

@@ -29,14 +29,14 @@ class _ScreenshotsSection extends StatelessWidget {
                   width: isLandscape ? 500 : 200,
                   margin: const EdgeInsets.only(right: 20),
                   decoration: BoxDecoration(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .surfaceContainerHighest,
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
-                      color: Theme.of(context)
-                          .dividerColor
-                          .withValues(alpha: 0.5),
+                      color: Theme.of(
+                        context,
+                      ).dividerColor.withValues(alpha: 0.5),
                     ),
                   ),
                   child: Center(
@@ -86,8 +86,9 @@ class _ScreenshotsSection extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(
-                    color:
-                        Theme.of(context).dividerColor.withValues(alpha: 0.5),
+                    color: Theme.of(
+                      context,
+                    ).dividerColor.withValues(alpha: 0.5),
                   ),
                 ),
                 clipBehavior: Clip.antiAlias,

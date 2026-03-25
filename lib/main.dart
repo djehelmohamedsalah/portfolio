@@ -10,7 +10,7 @@ import 'sections/development_process.dart';
 import 'sections/projects_section.dart';
 import 'widgets/top_app_bar/floating_top_app_bar.dart';
 import 'core/localization/strings_provider.dart';
-import 'widgets/effects/interactive_background.dart';
+import 'widgets/animations effects/interactive_background.dart';
 
 void main() {
   runApp(

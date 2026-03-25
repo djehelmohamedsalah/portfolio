@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/general_widgets/section_header.dart';
@@ -27,9 +28,11 @@ class ProjectsSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              SectionHeader(
-                title: strings.projectsTitle,
-                subtitle: strings.projectsSubtitle,
+              RevealOnScroll(
+                child: SectionHeader(
+                  title: strings.projectsTitle,
+                  subtitle: strings.projectsSubtitle,
+                ),
               ),
             ],
           ),

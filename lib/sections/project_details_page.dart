@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/project_detail_page/image_viewer.dart';
@@ -57,7 +58,9 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _HeaderSection(project: widget.project),
+                    RevealOnScroll(
+                      child: _HeaderSection(project: widget.project),
+                    ),
                     const SizedBox(height: 40),
                     if (isMobile) ...[
                       _OverviewSection(project: widget.project),
@@ -87,10 +90,12 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                         ],
                       ),
                     const SizedBox(height: 50),
-                    _ScreenshotsSection(
-                      project: widget.project,
-                      onTapScreenshot: (index) =>
-                          _showImageViewer(context, index),
+                    RevealOnScroll(
+                      child: _ScreenshotsSection(
+                        project: widget.project,
+                        onTapScreenshot: (index) =>
+                            _showImageViewer(context, index),
+                      ),
                     ),
                   ],
                 ),
@@ -116,7 +121,10 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
 
   void _downloadApk(String url) async {
     final uri = Uri.parse(url);
-    final strings = Provider.of<StringsProvider>(context, listen: false).strings;
+    final strings = Provider.of<StringsProvider>(
+      context,
+      listen: false,
+    ).strings;
     try {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
@@ -125,16 +133,19 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('${strings.urlNotOpen} $url')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('${strings.urlNotOpen} $url')));
       }
     }
   }
 
   void _openInBrowser(String url) async {
     final uri = Uri.parse(url);
-    final strings = Provider.of<StringsProvider>(context, listen: false).strings;
+    final strings = Provider.of<StringsProvider>(
+      context,
+      listen: false,
+    ).strings;
     try {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
@@ -143,9 +154,9 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('${strings.urlNotOpen} $url')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('${strings.urlNotOpen} $url')));
       }
     }
   }

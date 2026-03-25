@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_svg/flutter_svg.dart";
-import "package:mo_salah_dev/widgets/effects/tilt_3d.dart";
+import "package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart";
+import "package:mo_salah_dev/widgets/animations%20effects/tilt_3d.dart";
 import "package:provider/provider.dart";
 import "package:mo_salah_dev/core/localization/strings_provider.dart";
 import "package:url_launcher/url_launcher.dart";
@@ -167,13 +168,15 @@ class _HeadlineBlock extends StatelessWidget {
         constraints: BoxConstraints(
           maxWidth: layout.isMobile ? double.infinity : 450,
         ),
-        child: SelectableText(
-          strings.interestedInWorking,
-          textAlign: textAlign,
-          style: theme.textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            fontSize: fontSize,
-            height: 1.2,
+        child: RevealOnScroll(
+          child: SelectableText(
+            strings.interestedInWorking,
+            textAlign: textAlign,
+            style: theme.textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              fontSize: fontSize,
+              height: 1.2,
+            ),
           ),
         ),
       ),
@@ -191,7 +194,7 @@ class _SignatureBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: alignment,
-      child: _SignaturePlaceholder(theme: Theme.of(context), layout: layout),
+      child: RevealOnScroll(child: _SignaturePlaceholder(theme: Theme.of(context), layout: layout)),
     );
   }
 }
@@ -208,12 +211,14 @@ class _SocialRow extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _SocialBar(theme: theme, layout: layout),
+          RevealOnScroll(child: _SocialBar(theme: theme, layout: layout)),
           SizedBox(height: layout.isMobile ? 16 : 20),
-          _EmailDisplay(
-            theme: theme,
-            textAlign: TextAlign.center,
-            layout: layout,
+          RevealOnScroll(
+            child: _EmailDisplay(
+              theme: theme,
+              textAlign: TextAlign.center,
+              layout: layout,
+            ),
           ),
         ],
       );
@@ -224,12 +229,14 @@ class _SocialRow extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _SocialBar(theme: theme, layout: layout),
+          RevealOnScroll(child: _SocialBar(theme: theme, layout: layout)),
           const SizedBox(width: 100),
-          _EmailDisplay(
-            theme: theme,
-            textAlign: TextAlign.right,
-            layout: layout,
+          RevealOnScroll(
+            child: _EmailDisplay(
+              theme: theme,
+              textAlign: TextAlign.right,
+              layout: layout,
+            ),
           ),
         ],
       ),

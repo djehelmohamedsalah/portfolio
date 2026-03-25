@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import '../../core/utils/responsive_layout.dart';
@@ -51,14 +52,16 @@ class HeroIntro extends StatelessWidget {
           ? CrossAxisAlignment.center
           : CrossAxisAlignment.start,
       children: [
-        OnlineIndicator(
-          color: theme.colorScheme.primary,
-          label: strings.openTowork,
-          textStyle: theme.textTheme.labelLarge?.copyWith(
+        RevealOnScroll(
+          child: OnlineIndicator(
             color: theme.colorScheme.primary,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.4,
-            fontSize: badgeTextSize,
+            label: strings.openTowork,
+            textStyle: theme.textTheme.labelLarge?.copyWith(
+              color: theme.colorScheme.primary,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.4,
+              fontSize: badgeTextSize,
+            ),
           ),
         ),
         const SizedBox(height: 18),
@@ -69,75 +72,78 @@ class HeroIntro extends StatelessWidget {
                 ? CrossAxisAlignment.center
                 : CrossAxisAlignment.start,
             children: [
-              GradientTitle(
-                text: strings.homeTitleFirstPart,
-                fontSize: titleSize,
-                textAlign: isCentered ? TextAlign.center : TextAlign.start,
+              RevealOnScroll(
+                child: GradientTitle(
+                  text: strings.homeTitleFirstPart,
+                  fontSize: titleSize,
+                  textAlign: isCentered ? TextAlign.center : TextAlign.start,
+                ),
               ),
-              // GradientTitle(
-              //   text: strings.homeTitleSecondPart,
-              //   fontSize: titleSize,
-              //   textAlign: isCentered ? TextAlign.center : TextAlign.start,
-              // ),
             ],
           ),
         ),
         const SizedBox(height: 12),
-        TypewriterText(
-          cursor: "_",
-          phrases: [
-            strings.typewriterText1,
-            strings.typewriterText2,
-            strings.typewriterText3,
-            strings.typewriterText4,
-          ],
-          alignment: isCentered
-              ? MainAxisAlignment.center
-              : MainAxisAlignment.start,
-          style: TextStyle(
-            fontSize: roleTextSize,
-            color: theme.colorScheme.secondary,
-            fontWeight: FontWeight.bold,
-            height: 1.2,
+        RevealOnScroll(
+          child: TypewriterText(
+            cursor: "_",
+            phrases: [
+              strings.typewriterText1,
+              strings.typewriterText2,
+              strings.typewriterText3,
+              strings.typewriterText4,
+            ],
+            alignment: isCentered
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.start,
+            style: TextStyle(
+              fontSize: roleTextSize,
+              color: theme.colorScheme.secondary,
+              fontWeight: FontWeight.bold,
+              height: 1.2,
+            ),
+            cursorColor: theme.colorScheme.secondary,
+            typingSpeed: const Duration(milliseconds: 70),
+            erasingSpeed: const Duration(milliseconds: 90),
+            pauseAfterTyping: const Duration(milliseconds: 900),
+            pauseAfterErasing: const Duration(milliseconds: 400),
           ),
-          cursorColor: theme.colorScheme.secondary,
-          typingSpeed: const Duration(milliseconds: 70),
-          erasingSpeed: const Duration(milliseconds: 90),
-          pauseAfterTyping: const Duration(milliseconds: 900),
-          pauseAfterErasing: const Duration(milliseconds: 400),
         ),
         const SizedBox(height: 16),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 620),
-          child: SelectableText(
-            strings.hookText,
-            textAlign: isCentered ? TextAlign.center : TextAlign.start,
-            style: theme.textTheme.titleMedium?.copyWith(
-              fontSize: isMobile ? 14 : hookTextSize,
-              height: 1.6,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.1,
-              color: theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.85),
+          child: RevealOnScroll(
+            child: SelectableText(
+              strings.hookText,
+              textAlign: isCentered ? TextAlign.center : TextAlign.start,
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontSize: isMobile ? 14 : hookTextSize,
+                height: 1.6,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.1,
+                color: theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.85),
+              ),
             ),
           ),
         ),
         if (showButtons) ...[
           const SizedBox(height: 26),
-          Wrap(
-            spacing: 20,
-            runSpacing: 12,
-            children: [
-              ElevatedButton(
-                onPressed: onViewWork,
-                style: ctaButtonStyle,
-                child: Text(strings.viewMyWork),
-              ),
-              ElevatedButton(
-                onPressed: onHireMe,
-                style: ctaButtonStyle,
-                child: Text(strings.hireMe),
-              ),
-            ],
+          RevealOnScroll(
+            child: Wrap(
+              spacing: 20,
+              runSpacing: 12,
+              children: [
+                ElevatedButton(
+                  onPressed: onViewWork,
+                  style: ctaButtonStyle,
+                  child: Text(strings.viewMyWork),
+                ),
+                ElevatedButton(
+                  onPressed: onHireMe,
+                  style: ctaButtonStyle,
+                  child: Text(strings.hireMe),
+                ),
+              ],
+            ),
           ),
         ],
       ],

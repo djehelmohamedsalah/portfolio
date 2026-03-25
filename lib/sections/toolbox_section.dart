@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/core/utils/app_layout.dart';
@@ -60,9 +61,11 @@ class ToolboxSection extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SectionHeader(
-                        title: strings.toolsTitle,
-                        subtitle: strings.toolsSubtitle,
+                      RevealOnScroll(
+                        child: SectionHeader(
+                          title: strings.toolsTitle,
+                          subtitle: strings.toolsSubtitle,
+                        ),
                       ),
                       SizedBox(height: layout.blockSpacing * 0.5),
                       GridView.builder(
@@ -72,13 +75,15 @@ class ToolboxSection extends StatelessWidget {
                         gridDelegate: gridDelegate,
                         itemBuilder: (context, index) {
                           final tool = tools[index];
-                          return MetroTile(
-                            tool: tool,
-                            layout: layout,
-                            showLabel: !isPhone,
-                            iconSize: iconSize,
-                            enableHover: isDesktop,
-                            theme: theme,
+                          return RevealOnScroll(
+                            child: MetroTile(
+                              tool: tool,
+                              layout: layout,
+                              showLabel: !isPhone,
+                              iconSize: iconSize,
+                              enableHover: isDesktop,
+                              theme: theme,
+                            ),
                           );
                         },
                       ),

@@ -35,15 +35,19 @@ class _DetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _DetailItem(label: strings.status, value: project.status),
+          RevealOnScroll(
+            child: _DetailItem(label: strings.status, value: project.status),
+          ),
           const Divider(height: 30),
           _SectionTitle(strings.corefeaturestitle),
           const SizedBox(height: 10),
-          SelectableText(
-            project.coreFeatures,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(height: 1.5, fontSize: bodySize),
+          RevealOnScroll(
+            child: SelectableText(
+              project.coreFeatures,
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(height: 1.5, fontSize: bodySize),
+            ),
           ),
           if (project.apkDownloadUrl != null ||
               project.githubUrl != null ||
@@ -56,51 +60,58 @@ class _DetailsSection extends StatelessWidget {
               children: [
                 if (project.apkDownloadUrl != null)
                   Expanded(
-                    child: _ActionButton(
-                      icon: Icons.download,
-                      label: strings.downloadApkLabel,
-                      color: Theme.of(context).colorScheme.secondary,
-                      onPressed: () => onDownloadApk(project.apkDownloadUrl!),
-                      height: actionHeight,
-                      iconSize: actionIconSize,
-                      textSize: labelSize,
+                    child: RevealOnScroll(
+                      child: _ActionButton(
+                        icon: Icons.download,
+                        label: strings.downloadApkLabel,
+                        color: Theme.of(context).colorScheme.secondary,
+                        onPressed: () => onDownloadApk(project.apkDownloadUrl!),
+                        height: actionHeight,
+                        iconSize: actionIconSize,
+                        textSize: labelSize,
+                      ),
                     ),
                   ),
                 if (project.apkDownloadUrl != null && project.githubUrl != null)
                   const SizedBox(width: 12),
                 if (project.githubUrl != null)
                   Expanded(
-                    child: _ActionButton(
-                      icon: Icons.code,
-                      label: strings.vieOnGithub,
-                      color: Theme.of(context).colorScheme.onTertiary,
-                      onPressed: () => onOpenInBrowser(project.githubUrl!),
-                      height: actionHeight,
-                      iconSize: actionIconSize,
-                      textSize: labelSize,
+                    child: RevealOnScroll(
+                      child: _ActionButton(
+                        icon: Icons.code,
+                        label: strings.vieOnGithub,
+                        color: Theme.of(context).colorScheme.onTertiary,
+                        onPressed: () => onOpenInBrowser(project.githubUrl!),
+                        height: actionHeight,
+                        iconSize: actionIconSize,
+                        textSize: labelSize,
+                      ),
                     ),
                   ),
                 if (project.githubUrl != null && project.aptoideUrl != null)
                   const SizedBox(width: 12),
                 if (project.aptoideUrl != null)
                   Expanded(
-                    child: _ActionButton(
-                      icon: Icons.store,
-                      label: strings.getOnApptoid,
-                      color: Colors.orange,
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: SelectableText(
-                              strings.getOnApptoid, // Or some other dynamic text if available
+                    child: RevealOnScroll(
+                      child: _ActionButton(
+                        icon: Icons.store,
+                        label: strings.getOnApptoid,
+                        color: Colors.orange,
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: SelectableText(
+                                strings
+                                    .getOnApptoid, // Or some other dynamic text if available
+                              ),
+                              behavior: SnackBarBehavior.floating,
                             ),
-                            behavior: SnackBarBehavior.floating,
-                          ),
-                        );
-                      },
-                      height: actionHeight,
-                      iconSize: actionIconSize,
-                      textSize: labelSize,
+                          );
+                        },
+                        height: actionHeight,
+                        iconSize: actionIconSize,
+                        textSize: labelSize,
+                      ),
                     ),
                   ),
               ],
