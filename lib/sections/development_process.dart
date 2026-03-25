@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/widgets/animations%20effects/reveal_on_scroll.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/tilt_3d.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/animations%20effects/animated_sweep_svg.dart';
@@ -69,10 +70,16 @@ class DevelopmentProcess extends StatelessWidget {
                   ),
                   const SizedBox(height: 60),
                   RevealOnScroll(
-                    child: AnimatedSweepSvg(
-                      assetPath:
-                          'lib/core/assets/photos/tools_icons/development_line.svg',
-                      height: isMobile ? 80 : 160,
+                    child: Tilt3D(
+                      maxTilt: 10,
+                      scale: 1.03,
+                      duration: const Duration(milliseconds: 250),
+                      enableGlare: false,
+                      child: AnimatedSweepSvg(
+                        assetPath:
+                            'lib/core/assets/photos/tools_icons/development_line.svg',
+                        height: isMobile ? 80 : 160,
+                      ),
                     ),
                   ),
                 ],

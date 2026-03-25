@@ -1,40 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mo_salah_dev/widgets/animations%20effects/tilt_3d.dart';
+import 'package:mo_salah_dev/widgets/animations%20effects/float_animation.dart';
 import '../../core/utils/responsive_extensions.dart';
 import 'about_section_theme.dart';
 
-class AboutImage extends StatefulWidget {
+class AboutImage extends StatelessWidget {
   const AboutImage({super.key});
 
-  @override
-  State<AboutImage> createState() => _AboutImageState();
-}
-
-class _AboutImageState extends State<AboutImage>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late final Animation<double> _float;
-
   static const Alignment _capsuleAlignment = Alignment(-9, -2.5);
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 2500),
-    )..repeat(reverse: true);
-    _float = Tween<double>(
-      begin: -20,
-      end: 10,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,64 +50,55 @@ class _AboutImageState extends State<AboutImage>
                         child: Image.asset(baseImage, fit: BoxFit.cover),
                       ),
                       if (isDesktop) ...[
-                        AnimatedBuilder(
-                          animation: _float,
-                          builder: (context, child) {
-                            final double shadowYOffset = _float.value * 0.35;
-                            return Align(
-                              alignment: _capsuleAlignment,
-                              child: Transform.translate(
-                                offset: Offset(0, shadowYOffset),
-                                child: Container(
-                                  width: shadowWidth,
-                                  height: shadowWidth * 0.35,
-                                  decoration: BoxDecoration(
-                                    color: theme.capsuleShadowColor,
-                                    borderRadius: BorderRadius.circular(100),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: theme.capsuleShadowBlurColor,
-                                        blurRadius: 12,
-                                        spreadRadius: 1,
-                                      ),
-                                    ],
+                        Align(
+                          alignment: _capsuleAlignment,
+                          child: FloatAnimation(
+                            beginOffset: -7.0,
+                            endOffset: 3.5,
+                            child: Container(
+                              width: shadowWidth,
+                              height: shadowWidth * 0.35,
+                              decoration: BoxDecoration(
+                                color: theme.capsuleShadowColor,
+                                borderRadius: BorderRadius.circular(100),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: theme.capsuleShadowBlurColor,
+                                    blurRadius: 12,
+                                    spreadRadius: 1,
                                   ),
-                                ),
+                                ],
                               ),
-                            );
-                          },
+                            ),
+                          ),
                         ),
-                        AnimatedBuilder(
-                          animation: _float,
-                          builder: (context, child) {
-                            return SizedBox(
-                              height: 120,
-                              width: 120,
-                              child: Align(
-                                alignment: _capsuleAlignment,
-                                child: Transform.translate(
-                                  offset: Offset(0, _float.value),
-                                  child: Container(
-                                    width: capsuleWidth,
-                                    decoration: const BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black26,
-                                          spreadRadius: -3,
-                                          blurRadius: 20,
-                                          offset: Offset(0, 2),
-                                        ),
-                                      ],
+                        SizedBox(
+                          height: 120,
+                          width: 120,
+                          child: Align(
+                            alignment: _capsuleAlignment,
+                            child: FloatAnimation(
+                              beginOffset: -20.0,
+                              endOffset: 10.0,
+                              child: Container(
+                                width: capsuleWidth,
+                                decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      spreadRadius: -3,
+                                      blurRadius: 20,
+                                      offset: Offset(0, 2),
                                     ),
-                                    child: Image.asset(
-                                      'lib/core/assets/photos/developper/cappsulle.png',
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
+                                  ],
+                                ),
+                                child: Image.asset(
+                                  'lib/core/assets/photos/developper/cappsulle.png',
+                                  fit: BoxFit.contain,
                                 ),
                               ),
-                            );
-                          },
+                            ),
+                          ),
                         ),
                       ],
                     ],
