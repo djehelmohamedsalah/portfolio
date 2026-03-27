@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'about_primary_button.dart';
+import 'resume/resume_action_button.dart';
 
 class AboutActions extends StatelessWidget {
   const AboutActions({super.key});
@@ -12,15 +13,16 @@ class AboutActions extends StatelessWidget {
     final strings = context.watch<StringsProvider>().strings;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: _ActionButton(
+          child: ResumeActionButton(
             label: strings.resumeButton,
-            url: strings.resumeUrl,
+            resumeUrl: strings.resumeUrl,
             isMobile: true,
           ),
         ),
-        SizedBox(width: 12),
+        const SizedBox(width: 12),
         Expanded(
           child: _ActionButton(
             label: strings.linkedInButton,
@@ -67,9 +69,12 @@ class _ActionButton extends StatelessWidget {
       return;
     }
     if (!context.mounted) return;
-    final strings = Provider.of<StringsProvider>(context, listen: false).strings;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(strings.externallinksnackbarmessag)),
-    );
+    final strings = Provider.of<StringsProvider>(
+      context,
+      listen: false,
+    ).strings;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(strings.externallinksnackbarmessag)));
   }
 }

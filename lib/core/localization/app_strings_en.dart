@@ -147,12 +147,13 @@ class AppStringsEn extends AppStrings {
       "Mohamed Salah is a Mobile Application Developer.\n\nFocused on building structured and high-quality mobile applications with Flutter, he develops real-world projects that emphasize clean architecture, performance, and intuitive user experiences. His work centers on transforming ideas into reliable applications through disciplined problem-solving, organized development practices, and continuous technical improvement.\n\nHe specializes in creating scalable app structures, implementing modern UI solutions, and maintaining clean, maintainable codebases. Passionate about practical learning and product quality, he aims to contribute to professional development teams while growing through real production challenges and collaborative environments.";
 
   @override
-  String get resumeButton => 'Resume';
+  String get resumeButton => 'View Resume';
   @override
   String get linkedInButton => 'LinkedIn';
 
   @override
-  String get resumeUrl => 'https://example.com/resume.pdf';
+  String get resumeUrl =>
+      'assets/lib/core/assets/cv/Mohamed_Saleh_Flutter_Developer_CV.pdf';
   @override
   String get linkedInUrl => 'https://www.linkedin.com/in/mohamedsalahdjehel/';
 
