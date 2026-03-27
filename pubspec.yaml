@@ -60,6 +60,7 @@ flutter:
     - lib/core/assets/photos/developper/
     - lib/core/assets/photos/tools_icons/
     - lib/core/assets/photos/social_icons/
+    - lib/core/assets/cv/Mohamed_Saleh_Flutter_Developer_CV.pdf/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
