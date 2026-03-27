@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
+
 set -e
 
-FLUTTER_VERSION=${FLUTTER_VERSION:-3.24.0}
+# use env variable or fallback
+: "${FLUTTER_VERSION:=3.41.6}"
 
-git clone https://github.com/flutter/flutter.git \
-  --depth 1 \
-  --branch $FLUTTER_VERSION \
-  $HOME/flutter
+git clone --depth 1 --branch $FLUTTER_VERSION https://github.com/flutter/flutter.git /opt/flutter
 
-export PATH="$HOME/flutter/bin:$PATH"
+export PATH="/opt/flutter/bin:$PATH"
 
 flutter --version
+flutter config --enable-web
 flutter pub get
 flutter build web --release
