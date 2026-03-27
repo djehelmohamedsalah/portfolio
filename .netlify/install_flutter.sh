@@ -1,23 +1,24 @@
 #!/usr/bin/env bash
-
 set -e
 
 echo "Installing Flutter..."
 
-# use version from netlify.toml
-: "${FLUTTER_VERSION:=3.41.6}"
+FLUTTER_DIR="flutter_sdk"
+FLUTTER_REPO="https://github.com/flutter/flutter.git"
+FLUTTER_BRANCH="${FLUTTER_VERSION:-stable}"
 
-# install inside repo (allowed path)
-git clone --depth 1 --branch $FLUTTER_VERSION https://github.com/flutter/flutter.git flutter_sdk
+# ===== FIX CACHE PROBLEM =====
+if [ -d "$FLUTTER_DIR" ]; then
+  echo "flutter_sdk already exists — removing old cache..."
+  rm -rf "$FLUTTER_DIR"
+fi
 
-export PATH="$PWD/flutter_sdk/bin:$PATH"
+git clone --depth 1 --branch "$FLUTTER_BRANCH" "$FLUTTER_REPO" "$FLUTTER_DIR"
 
-flutter --version
+export PATH="$PATH:`pwd`/$FLUTTER_DIR/bin"
+
+flutter doctor
 
 flutter config --enable-web
-
-echo "Getting dependencies..."
 flutter pub get
-
-echo "Building web..."
 flutter build web --release
