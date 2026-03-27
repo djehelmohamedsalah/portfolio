@@ -31,7 +31,9 @@ class _ScreenshotsSection extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Theme.of(
                       context,
-                    ).colorScheme.surfaceContainerHighest,
+                    ).colorScheme.surfaceContainerHighest.withValues(
+                          alpha: 0.75,
+                        ),
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
                       color: Theme.of(

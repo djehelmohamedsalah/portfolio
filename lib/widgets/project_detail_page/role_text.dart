@@ -26,7 +26,10 @@ class _RoleText extends StatelessWidget {
                 child: SelectableText(
                   line.trim(),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.secondary,
+                    color: Theme.of(context)
+                        .colorScheme
+                        .secondary
+                        .withValues(alpha: 0.9),
                     height: 1.5,
                     fontSize: roleSize,
                   ),

@@ -22,7 +22,9 @@ class _DetailsSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(25),
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: Theme.of(context).colorScheme.surface.withValues(
+          alpha: 0.82,
+        ), // let the background breathe
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(

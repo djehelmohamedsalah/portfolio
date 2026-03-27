@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
 import 'package:mo_salah_dev/widgets/project_detail_page/image_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:mo_salah_dev/widgets/effects/interactive_background/interactive_background.dart';
 
 import '../core/constants/app_colors.dart';
 import '../core/models/project.dart';
@@ -47,57 +48,59 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
             leading: const SizedBox(),
             centerTitle: true,
           ),
-          body: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(
-              horizontal: layout.horizontalPadding,
-              vertical: layout.sectionSpacing / 2,
-            ),
-            child: Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: layout.maxContentWidth),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    RevealOnScroll(
-                      child: _HeaderSection(project: widget.project),
-                    ),
-                    const SizedBox(height: 40),
-                    if (isMobile) ...[
-                      _OverviewSection(project: widget.project),
-                      const SizedBox(height: 30),
-                      _DetailsSection(
-                        project: widget.project,
-                        onDownloadApk: _downloadApk,
-                        onOpenInBrowser: _openInBrowser,
+          body: InteractiveBackground(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(
+                horizontal: layout.horizontalPadding,
+                vertical: layout.sectionSpacing / 2,
+              ),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: layout.maxContentWidth),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RevealOnScroll(
+                        child: _HeaderSection(project: widget.project),
                       ),
-                    ] else
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: _OverviewSection(project: widget.project),
-                          ),
-                          const SizedBox(width: 40),
-                          Expanded(
-                            flex: 1,
-                            child: _DetailsSection(
-                              project: widget.project,
-                              onDownloadApk: _downloadApk,
-                              onOpenInBrowser: _openInBrowser,
+                      const SizedBox(height: 40),
+                      if (isMobile) ...[
+                        _OverviewSection(project: widget.project),
+                        const SizedBox(height: 30),
+                        _DetailsSection(
+                          project: widget.project,
+                          onDownloadApk: _downloadApk,
+                          onOpenInBrowser: _openInBrowser,
+                        ),
+                      ] else
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: _OverviewSection(project: widget.project),
                             ),
-                          ),
-                        ],
+                            const SizedBox(width: 40),
+                            Expanded(
+                              flex: 1,
+                              child: _DetailsSection(
+                                project: widget.project,
+                                onDownloadApk: _downloadApk,
+                                onOpenInBrowser: _openInBrowser,
+                              ),
+                            ),
+                          ],
+                        ),
+                      const SizedBox(height: 50),
+                      RevealOnScroll(
+                        child: _ScreenshotsSection(
+                          project: widget.project,
+                          onTapScreenshot: (index) =>
+                              _showImageViewer(context, index),
+                        ),
                       ),
-                    const SizedBox(height: 50),
-                    RevealOnScroll(
-                      child: _ScreenshotsSection(
-                        project: widget.project,
-                        onTapScreenshot: (index) =>
-                            _showImageViewer(context, index),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
