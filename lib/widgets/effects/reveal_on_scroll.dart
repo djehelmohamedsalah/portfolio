@@ -1,29 +1,38 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 enum RevealDirection { up, down, left, right, fade }
 
 /// A highly optimized reusable widget that triggers a smooth reveal animation
-/// only when it enters the viewport during scrolling. Built for Flutter Web.
+/// only when it enters the viewport and reaches a custom trigger point.
+/// Built for Flutter Web performance.
 class RevealOnScroll extends StatefulWidget {
   final Widget child;
   final Duration delay;
-  final double offsetY;
+  final double slideOffset;
   final Duration duration;
   final RevealDirection direction;
   final double startingScale;
-  final double visibilityThreshold;
+
+  /// Determines when the animation starts relative to the viewport.
+  /// A value of 0.8 means the animation triggers when the widget reaches 80%
+  /// of the screen height. 0.0 is top of screen, 1.0 is bottom of screen.
+  final double revealOffset;
+
+  final Curve curve;
+  final bool repeat;
 
   const RevealOnScroll({
     super.key,
     required this.child,
     this.delay = Duration.zero,
-    this.offsetY = 40.0,
+    this.slideOffset = 40.0,
     this.duration = const Duration(milliseconds: 600),
     this.direction = RevealDirection.up,
     this.startingScale = 0.96,
-    this.visibilityThreshold = 0.2,
+    this.revealOffset = 0.8,
+    this.curve = Curves.easeOutCubic,
+    this.repeat = false,
   });
 
   @override
@@ -37,7 +46,7 @@ class _RevealOnScrollState extends State<RevealOnScroll>
   late Animation<Offset> _slideAnimation;
   late Animation<double> _scaleAnimation;
 
-  ScrollPosition? _scrollPosition;
+  List<ScrollPosition> _scrollPositions = [];
   bool _hasRevealed = false;
   Timer? _delayTimer;
 
@@ -46,15 +55,25 @@ class _RevealOnScrollState extends State<RevealOnScroll>
     super.initState();
     _controller = AnimationController(vsync: this, duration: widget.duration);
 
+    _setupAnimations();
+
+    // Validate visibility on the first frame after layout constraints are established
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _checkAndReveal();
+    });
+  }
+
+  void _setupAnimations() {
     final curvedAnimation = CurvedAnimation(
       parent: _controller,
-      curve: Curves.easeOutCubic,
+      curve: widget.curve,
     );
 
     _opacityAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
     ).animate(curvedAnimation);
+
     _scaleAnimation = Tween<double>(
       begin: widget.startingScale,
       end: 1.0,
@@ -62,19 +81,19 @@ class _RevealOnScrollState extends State<RevealOnScroll>
 
     Offset beginOffset;
     switch (widget.direction) {
-      case RevealDirection.up: // Enters from bottom, moving upwards
-        beginOffset = Offset(0, widget.offsetY);
+      case RevealDirection.up:
+        beginOffset = Offset(0, widget.slideOffset);
         break;
-      case RevealDirection.down: // Enters from top, moving downwards
-        beginOffset = Offset(0, -widget.offsetY);
+      case RevealDirection.down:
+        beginOffset = Offset(0, -widget.slideOffset);
         break;
-      case RevealDirection.left: // Enters from right, moving left
-        beginOffset = Offset(widget.offsetY, 0);
+      case RevealDirection.left:
+        beginOffset = Offset(widget.slideOffset, 0);
         break;
-      case RevealDirection.right: // Enters from left, moving right
-        beginOffset = Offset(-widget.offsetY, 0);
+      case RevealDirection.right:
+        beginOffset = Offset(-widget.slideOffset, 0);
         break;
-      case RevealDirection.fade: // No translation
+      case RevealDirection.fade:
         beginOffset = Offset.zero;
         break;
     }
@@ -83,97 +102,125 @@ class _RevealOnScrollState extends State<RevealOnScroll>
       begin: beginOffset,
       end: Offset.zero,
     ).animate(curvedAnimation);
+  }
 
-    // Validate visibility on the first frame after layout constraints are established
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _checkAndReveal();
+  @override
+  void didUpdateWidget(covariant RevealOnScroll oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.duration != widget.duration) {
+      _controller.duration = widget.duration;
+    }
+    if (oldWidget.curve != widget.curve ||
+        oldWidget.direction != widget.direction ||
+        oldWidget.slideOffset != widget.slideOffset ||
+        oldWidget.startingScale != widget.startingScale) {
+      _setupAnimations();
+    }
+  }
+
+  void _updateScrollListeners() {
+    if (!mounted) return;
+    
+    final List<ScrollPosition> newPositions = [];
+    context.visitAncestorElements((element) {
+      if (element is StatefulElement && element.state is ScrollableState) {
+        newPositions.add((element.state as ScrollableState).position);
+      }
+      return true; // continue checking up the tree
     });
+
+    for (final pos in _scrollPositions) {
+      if (!newPositions.contains(pos)) {
+        pos.removeListener(_checkAndReveal);
+      }
+    }
+
+    for (final pos in newPositions) {
+      if (!_scrollPositions.contains(pos)) {
+        pos.addListener(_checkAndReveal);
+      }
+    }
+
+    _scrollPositions = newPositions;
+  }
+
+  void _removeScrollListeners() {
+    for (final pos in _scrollPositions) {
+      pos.removeListener(_checkAndReveal);
+    }
+    _scrollPositions.clear();
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (!_hasRevealed) {
-      final newScrollPosition = Scrollable.maybeOf(context)?.position;
-      if (_scrollPosition != newScrollPosition) {
-        _scrollPosition?.removeListener(_checkAndReveal);
-        _scrollPosition = newScrollPosition;
-        _scrollPosition?.addListener(_checkAndReveal);
-      }
+    if (!_hasRevealed || widget.repeat) {
+      _updateScrollListeners();
     }
   }
 
   @override
   void dispose() {
     _delayTimer?.cancel();
-    _scrollPosition?.removeListener(_checkAndReveal);
+    _removeScrollListeners();
     _controller.dispose();
     super.dispose();
   }
 
   void _checkAndReveal() {
-    if (_hasRevealed || !mounted) return;
+    if (!mounted) return;
+
+    // Fast exit to prevent layout calculations when already revealed and not repeating
+    if (_hasRevealed && !widget.repeat) {
+      _removeScrollListeners();
+      return;
+    }
 
     final RenderObject? renderObject = context.findRenderObject();
     if (renderObject is! RenderBox || !renderObject.hasSize) return;
 
-    bool isVisible = false;
-    final RenderAbstractViewport? viewport = RenderAbstractViewport.maybeOf(
-      renderObject,
-    );
-
-    if (viewport != null && _scrollPosition != null) {
-      final double scrollOffset = _scrollPosition!.pixels;
-      final double viewportDimension = _scrollPosition!.viewportDimension;
-
-      try {
-        final RevealedOffset offsetToReveal = viewport.getOffsetToReveal(
-          renderObject,
-          0.0,
-        );
-        final double widgetTopOffset = offsetToReveal.offset;
-        final double viewportBottom = scrollOffset + viewportDimension;
-
-        // Support both axis generically
-        final double widgetSize = _scrollPosition!.axis == Axis.vertical
-            ? renderObject.size.height
-            : renderObject.size.width;
-
-        if (viewportBottom >=
-            widgetTopOffset + (widgetSize * widget.visibilityThreshold)) {
-          isVisible = true;
-        }
-      } catch (e) {
-        isVisible = _fallbackVisibilityCheck(renderObject);
-      }
-    } else {
-      isVisible = _fallbackVisibilityCheck(renderObject);
-    }
-
-    if (isVisible) {
-      _triggerReveal();
-    }
-  }
-
-  bool _fallbackVisibilityCheck(RenderBox renderObject) {
-    if (!mounted) return false;
     try {
-      final double screenHeight = MediaQuery.sizeOf(context).height;
+      final double? screenHeight = MediaQuery.maybeSizeOf(context)?.height;
+      if (screenHeight == null) return;
+
+      final double triggerPoint = screenHeight * widget.revealOffset;
+
+      // Extract raw global position (highly optimized vs. abstract parent offset calculations)
       final Offset globalPosition = renderObject.localToGlobal(Offset.zero);
-      return globalPosition.dy +
-              (renderObject.size.height * widget.visibilityThreshold) <=
-          screenHeight;
+      final double widgetTop = globalPosition.dy;
+      final double widgetBottom = widgetTop + renderObject.size.height;
+
+      // Trigger condition:
+      // The widget's top has crossed the trigger point and part of the widget is visible on screen
+      if (widgetTop <= triggerPoint && widgetBottom >= 0) {
+        if (!_hasRevealed &&
+            !(_controller.isAnimating || _controller.isCompleted)) {
+          _triggerReveal();
+        }
+      } else {
+        // Reset condition (Only when repeat is enabled):
+        // When the widget is completely swept off the bottom of the screen
+        if (widget.repeat && widgetTop > screenHeight) {
+          if (_hasRevealed) {
+            _resetReveal();
+          }
+        }
+      }
     } catch (_) {
-      // If layout constraints totally mismatch viewport coordinates, gracefully degrade
-      return true;
+      // Graceful fallback for edge cases during async layout phase
     }
   }
 
   void _triggerReveal() {
     _hasRevealed = true;
-    _scrollPosition?.removeListener(_checkAndReveal);
+
+    // Immediately unbind the scroll listener explicitly if not repeating, boosting performance
+    if (!widget.repeat) {
+      _removeScrollListeners();
+    }
 
     if (widget.delay > Duration.zero) {
+      _delayTimer?.cancel();
       _delayTimer = Timer(widget.delay, () {
         if (mounted) _controller.forward();
       });
@@ -182,8 +229,15 @@ class _RevealOnScrollState extends State<RevealOnScroll>
     }
   }
 
+  void _resetReveal() {
+    _hasRevealed = false;
+    _delayTimer?.cancel();
+    _controller.value = 0.0; // Snap reset to invisible
+  }
+
   @override
   Widget build(BuildContext context) {
+    // We compose the tree incrementally based on provided parameters, skipping unused wrappers.
     Widget tree = widget.child;
 
     if (widget.startingScale != 1.0) {
@@ -195,6 +249,7 @@ class _RevealOnScrollState extends State<RevealOnScroll>
     }
 
     if (widget.direction != RevealDirection.fade) {
+      // Use AnimatedBuilder with Transform.translate for pixel accurate offsets.
       tree = AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
@@ -203,7 +258,8 @@ class _RevealOnScrollState extends State<RevealOnScroll>
             child: child,
           );
         },
-        child: tree,
+        child:
+            tree, // Pass the tree down so it isn't rebuilt inside the builder
       );
     }
 

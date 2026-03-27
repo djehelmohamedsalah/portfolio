@@ -20,16 +20,14 @@ class _OverviewSection extends StatelessWidget {
       children: [
         _SectionTitle(strings.overviewTitle),
         const SizedBox(height: 15),
-        RevealOnScroll(
-          child: SelectableText(
-            project.overview,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              height: lineHeight,
-              fontSize: bodySize,
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurface.withValues(alpha: 0.8),
-            ),
+        SelectableText(
+          project.overview,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            height: lineHeight,
+            fontSize: bodySize,
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.8),
           ),
         ),
         const SizedBox(height: 30),

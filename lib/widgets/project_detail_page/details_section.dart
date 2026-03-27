@@ -35,8 +35,13 @@ class _DetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RevealOnScroll(
-            child: _DetailItem(label: strings.status, value: project.status),
+          _SectionTitle(strings.status),
+          const SizedBox(height: 10),
+          SelectableText(
+            project.status,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(fontSize: bodySize),
           ),
           const Divider(height: 30),
           _SectionTitle(strings.corefeaturestitle),
@@ -119,39 +124,6 @@ class _DetailsSection extends StatelessWidget {
           ],
         ],
       ),
-    );
-  }
-}
-
-class _DetailItem extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const _DetailItem({required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    final valueSize = scaleForLayout(context, 15, 17);
-    final labelSize = scaleForLayout(context, 12.5, 14.5);
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SelectableText(
-          label,
-          style: Theme.of(context).textTheme.labelLarge?.copyWith(
-            color: Theme.of(context).colorScheme.secondary,
-            fontSize: labelSize,
-          ),
-        ),
-        const SizedBox(height: 5),
-        SelectableText(
-          value,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyLarge?.copyWith(fontSize: valueSize),
-        ),
-      ],
     );
   }
 }
