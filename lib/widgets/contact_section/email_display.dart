@@ -31,48 +31,27 @@ class _EmailDisplay extends StatelessWidget {
 
     return Align(
       alignment: alignment,
-      child: layout.isMobile
-          ? // On mobile: stack email and copy button vertically if needed
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                GestureDetector(
-                  onTap: () => launchUrl(Uri(scheme: 'mailto', path: email)),
-                  child: SelectableText(
-                    email,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      fontSize: emailFontSize,
-                      letterSpacing: 0.3,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: GestureDetector(
+              onTap: () => launchUrl(Uri(scheme: 'mailto', path: email)),
+              child: SelectableText(
+                email,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: emailFontSize,
+                  letterSpacing: 0.4,
                 ),
-                _CopyButton(iconSize: iconSize),
-              ],
-            )
-          : // Desktop and Tablet: keep row layout
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Flexible(
-                  child: GestureDetector(
-                    onTap: () => launchUrl(Uri(scheme: 'mailto', path: email)),
-                    child: SelectableText(
-                      email,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: emailFontSize,
-                        letterSpacing: 0.4,
-                      ),
-                      textAlign: textAlign,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                _CopyButton(iconSize: iconSize),
-              ],
+                textAlign: textAlign,
+              ),
             ),
+          ),
+          const SizedBox(width: 8),
+          _CopyButton(iconSize: iconSize),
+        ],
+      ),
     );
   }
 }
@@ -93,7 +72,10 @@ class _CopyButton extends StatelessWidget {
         final messenger = ScaffoldMessenger.maybeOf(context);
         await Clipboard.setData(const ClipboardData(text: email));
         if (!context.mounted) return;
-        final strings = Provider.of<StringsProvider>(context, listen: false).strings;
+        final strings = Provider.of<StringsProvider>(
+          context,
+          listen: false,
+        ).strings;
         messenger?.showSnackBar(
           SnackBar(
             content: Text(strings.emailCopied),
