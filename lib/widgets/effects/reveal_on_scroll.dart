@@ -48,6 +48,7 @@ class _RevealOnScrollState extends State<RevealOnScroll>
 
   List<ScrollPosition> _scrollPositions = [];
   bool _hasRevealed = false;
+  Brightness? _lastBrightness;
   Timer? _delayTimer;
 
   @override
@@ -120,7 +121,7 @@ class _RevealOnScrollState extends State<RevealOnScroll>
 
   void _updateScrollListeners() {
     if (!mounted) return;
-    
+
     final List<ScrollPosition> newPositions = [];
     context.visitAncestorElements((element) {
       if (element is StatefulElement && element.state is ScrollableState) {
@@ -154,9 +155,10 @@ class _RevealOnScrollState extends State<RevealOnScroll>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (!_hasRevealed || widget.repeat) {
-      _updateScrollListeners();
-    }
+    _handleThemeChangeIfNeeded();
+
+    // Ensure scroll listeners are present after dependency changes (e.g., new Scrollable).
+    if (!_hasRevealed || widget.repeat) _updateScrollListeners();
   }
 
   @override
@@ -208,6 +210,20 @@ class _RevealOnScrollState extends State<RevealOnScroll>
       }
     } catch (_) {
       // Graceful fallback for edge cases during async layout phase
+    }
+  }
+
+  void _handleThemeChangeIfNeeded() {
+    final currentBrightness = Theme.of(context).brightness;
+    if (_lastBrightness == currentBrightness) return;
+
+    _lastBrightness = currentBrightness;
+
+    // Re-evaluate visibility on the next frame so layout is up-to-date.
+    if (!_hasRevealed || widget.repeat) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _checkAndReveal();
+      });
     }
   }
 

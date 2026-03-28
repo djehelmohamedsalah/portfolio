@@ -11,23 +11,45 @@ class AboutActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final strings = context.watch<StringsProvider>().strings;
+    final bool isMobile =
+        MediaQuery.maybeSizeOf(context)?.width != null &&
+            MediaQuery.sizeOf(context).width < 640;
+
+    if (isMobile) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          _ActionButton(
+            label: strings.linkedInButton,
+            url: strings.linkedInUrl,
+            isMobile: true,
+          ),
+          const SizedBox(height: 12),
+          ResumeActionButton(
+            label: strings.resumeButton,
+            resumeUrl: strings.resumeUrl,
+            isMobile: true,
+          ),
+        ],
+      );
+    }
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: ResumeActionButton(
-            label: strings.resumeButton,
-            resumeUrl: strings.resumeUrl,
-            isMobile: true,
+          child: _ActionButton(
+            label: strings.linkedInButton,
+            url: strings.linkedInUrl,
           ),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: _ActionButton(
-            label: strings.linkedInButton,
-            url: strings.linkedInUrl,
-            isMobile: true,
+          child: ResumeActionButton(
+            label: strings.resumeButton,
+            resumeUrl: strings.resumeUrl,
           ),
         ),
       ],
