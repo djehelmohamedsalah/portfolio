@@ -35,14 +35,16 @@ class AboutActionButton extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        IntrinsicWidth(
-          child: SizedBox(
-            height: height,
-            child: showDownload
-                ? Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      _SegmentButton(
+        SizedBox(
+          height: height,
+          width: double.infinity,
+          child: showDownload
+              ? Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: _SegmentButton(
                         padding: mainPadding,
                         borderRadius: const BorderRadius.horizontal(
                           left: Radius.circular(18),
@@ -56,12 +58,15 @@ class AboutActionButton extends StatelessWidget {
                           style: theme.buttonLabelStyle(hovering),
                         ),
                       ),
-                      Container(
-                        width: 1,
-                        margin: const EdgeInsets.symmetric(vertical: 6),
-                        color: theme.buttonBorder.withValues(alpha: 0.55),
-                      ),
-                      _SegmentButton(
+                    ),
+                    Container(
+                      width: 1,
+                      margin: const EdgeInsets.symmetric(vertical: 6),
+                      color: theme.buttonBorder.withValues(alpha: 0.55),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: _SegmentButton(
                         padding: iconPadding,
                         borderRadius: const BorderRadius.horizontal(
                           left: Radius.circular(0),
@@ -76,17 +81,17 @@ class AboutActionButton extends StatelessWidget {
                           color: theme.buttonLabel(hovering),
                         ),
                       ),
-                    ],
-                  )
-                : _SegmentButton(
-                    padding: mainPadding,
-                    borderRadius: BorderRadius.circular(18),
-                    theme: theme,
-                    onTap: () => _openPrimary(context),
-                    buildChild: (hovering) =>
-                        Text(label, style: theme.buttonLabelStyle(hovering)),
-                  ),
-          ),
+                    ),
+                  ],
+                )
+              : _SegmentButton(
+                  padding: mainPadding,
+                  borderRadius: BorderRadius.circular(18),
+                  theme: theme,
+                  onTap: () => _openPrimary(context),
+                  buildChild: (hovering) =>
+                      Text(label, style: theme.buttonLabelStyle(hovering)),
+                ),
         ),
         if (showDownload) ...[
           SizedBox(height: isMobile ? 8 : 10),
