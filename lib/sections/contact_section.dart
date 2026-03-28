@@ -225,16 +225,17 @@ class _SocialRow extends StatelessWidget {
     }
 
     return Center(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: 80,
+        runSpacing: 16,
         children: [
           RevealOnScroll(child: _SocialBar(theme: theme, layout: layout)),
-          const SizedBox(width: 100),
           RevealOnScroll(
             child: _EmailDisplay(
               theme: theme,
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.center,
               layout: layout,
             ),
           ),
