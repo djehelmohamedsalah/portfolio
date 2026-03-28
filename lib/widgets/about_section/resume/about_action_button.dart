@@ -7,17 +7,19 @@ import 'package:url_launcher/url_launcher.dart';
 import '../about_section_theme.dart';
 import 'resume_downloader.dart';
 
-class ResumeActionButton extends StatelessWidget {
-  const ResumeActionButton({
+class AboutActionButton extends StatelessWidget {
+  const AboutActionButton({
     super.key,
     required this.label,
-    required this.resumeUrl,
+    required this.primaryUrl,
     this.isMobile = false,
+    this.showDownload = false,
   });
 
   final String label;
-  final String resumeUrl;
+  final String primaryUrl;
   final bool isMobile;
+  final bool showDownload;
 
   @override
   Widget build(BuildContext context) {
@@ -36,62 +38,73 @@ class ResumeActionButton extends StatelessWidget {
         IntrinsicWidth(
           child: SizedBox(
             height: height,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _SegmentButton(
-                  padding: mainPadding,
-                  borderRadius: const BorderRadius.horizontal(
-                    left: Radius.circular(18),
-                    right: Radius.circular(0),
+            child: showDownload
+                ? Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _SegmentButton(
+                        padding: mainPadding,
+                        borderRadius: const BorderRadius.horizontal(
+                          left: Radius.circular(18),
+                          right: Radius.circular(0),
+                        ),
+                        showRightBorder: false,
+                        theme: theme,
+                        onTap: () => _openPrimary(context),
+                        buildChild: (hovering) => Text(
+                          label,
+                          style: theme.buttonLabelStyle(hovering),
+                        ),
+                      ),
+                      Container(
+                        width: 1,
+                        margin: const EdgeInsets.symmetric(vertical: 6),
+                        color: theme.buttonBorder.withValues(alpha: 0.55),
+                      ),
+                      _SegmentButton(
+                        padding: iconPadding,
+                        borderRadius: const BorderRadius.horizontal(
+                          left: Radius.circular(0),
+                          right: Radius.circular(18),
+                        ),
+                        showLeftBorder: false,
+                        theme: theme,
+                        onTap: () => _download(context),
+                        buildChild: (hovering) => Icon(
+                          Icons.download_rounded,
+                          size: isMobile ? 20 : 22,
+                          color: theme.buttonLabel(hovering),
+                        ),
+                      ),
+                    ],
+                  )
+                : _SegmentButton(
+                    padding: mainPadding,
+                    borderRadius: BorderRadius.circular(18),
+                    theme: theme,
+                    onTap: () => _openPrimary(context),
+                    buildChild: (hovering) =>
+                        Text(label, style: theme.buttonLabelStyle(hovering)),
                   ),
-                  showRightBorder: false,
-                  theme: theme,
-                  onTap: () => _openPreview(context),
-                  buildChild: (hovering) => Text(
-                    label,
-                    style: theme.buttonLabelStyle(hovering),
-                  ),
-                ),
-                Container(
-                  width: 1,
-                  margin: const EdgeInsets.symmetric(vertical: 6),
-                  color: theme.buttonBorder.withValues(alpha: 0.55),
-                ),
-                _SegmentButton(
-                  padding: iconPadding,
-                  borderRadius: const BorderRadius.horizontal(
-                    left: Radius.circular(0),
-                    right: Radius.circular(18),
-                  ),
-                  showLeftBorder: false,
-                  theme: theme,
-                  onTap: () => _download(context),
-                  buildChild: (hovering) => Icon(
-                    Icons.download_rounded,
-                    size: isMobile ? 20 : 22,
-                    color: theme.buttonLabel(hovering),
-                  ),
-                ),
-              ],
-            ),
           ),
         ),
-        SizedBox(height: isMobile ? 8 : 10),
-        Text(
-          'Last updated: March 2026',
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-                fontWeight: FontWeight.w600,
-              ),
-        ),
+        if (showDownload) ...[
+          SizedBox(height: isMobile ? 8 : 10),
+          Text(
+            'Last updated: March 2026',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
       ],
     );
   }
 
-  Future<void> _openPreview(BuildContext context) async {
-    final uri = _resolveUrl(resumeUrl);
+  Future<void> _openPrimary(BuildContext context) async {
+    final uri = _resolveUrl(primaryUrl);
     final success = await launchUrl(
       uri,
       mode: LaunchMode.externalApplication,
@@ -104,17 +117,20 @@ class ResumeActionButton extends StatelessWidget {
   }
 
   Future<void> _download(BuildContext context) async {
-    final success = await downloadResume(_resolveUrl(resumeUrl).toString());
+    final success = await downloadResume(_resolveUrl(primaryUrl).toString());
     if (!success && context.mounted) {
       _showFailure(context);
     }
   }
 
   void _showFailure(BuildContext context) {
-    final strings = Provider.of<StringsProvider>(context, listen: false).strings;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(strings.externallinksnackbarmessag)),
-    );
+    final strings = Provider.of<StringsProvider>(
+      context,
+      listen: false,
+    ).strings;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(strings.externallinksnackbarmessag)));
   }
 
   /// Ensures assets resolve correctly on web (absolute URL) and other platforms.
@@ -155,7 +171,10 @@ class _SegmentButtonState extends State<_SegmentButton> {
 
   @override
   Widget build(BuildContext context) {
-    final BorderSide side = BorderSide(color: widget.theme.buttonBorder, width: 1.5);
+    final BorderSide side = BorderSide(
+      color: widget.theme.buttonBorder,
+      width: 1.5,
+    );
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -167,8 +186,9 @@ class _SegmentButtonState extends State<_SegmentButton> {
           duration: const Duration(milliseconds: 180),
           padding: widget.padding,
           decoration: BoxDecoration(
-            color:
-                _hovering ? widget.theme.buttonHoverBackground : Colors.transparent,
+            color: _hovering
+                ? widget.theme.buttonHoverBackground
+                : Colors.transparent,
             borderRadius: widget.borderRadius,
             border: Border(
               top: side,

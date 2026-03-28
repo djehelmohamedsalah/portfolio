@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:mo_salah_dev/core/localization/strings_provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'about_primary_button.dart';
-import 'resume/resume_action_button.dart';
+import 'resume/about_action_button.dart';
 
 class AboutActions extends StatelessWidget {
   const AboutActions({super.key});
@@ -11,6 +9,10 @@ class AboutActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final strings = context.watch<StringsProvider>().strings;
+    const double mobileWidth = 240;
+    const double desktopWidth = 280;
+    const double mobileHeight = 48;
+    const double desktopHeight = 56;
     final bool isMobile =
         MediaQuery.maybeSizeOf(context)?.width != null &&
             MediaQuery.sizeOf(context).width < 640;
@@ -18,18 +20,26 @@ class AboutActions extends StatelessWidget {
     if (isMobile) {
       return Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _ActionButton(
-            label: strings.linkedInButton,
-            url: strings.linkedInUrl,
-            isMobile: true,
+          SizedBox(
+            width: mobileWidth,
+            height: mobileHeight,
+            child: AboutActionButton(
+              label: strings.linkedInButton,
+              primaryUrl: strings.linkedInUrl,
+              isMobile: true,
+            ),
           ),
           const SizedBox(height: 12),
-          ResumeActionButton(
-            label: strings.resumeButton,
-            resumeUrl: strings.resumeUrl,
-            isMobile: true,
+          SizedBox(
+            width: mobileWidth,
+            child: AboutActionButton(
+              label: strings.resumeButton,
+              primaryUrl: strings.resumeUrl,
+              isMobile: true,
+              showDownload: true,
+            ),
           ),
         ],
       );
@@ -40,63 +50,27 @@ class AboutActions extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: _ActionButton(
-            label: strings.linkedInButton,
-            url: strings.linkedInUrl,
+          child: SizedBox(
+            width: desktopWidth,
+            height: desktopHeight,
+            child: AboutActionButton(
+              label: strings.linkedInButton,
+              primaryUrl: strings.linkedInUrl,
+            ),
           ),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: ResumeActionButton(
-            label: strings.resumeButton,
-            resumeUrl: strings.resumeUrl,
+          child: SizedBox(
+            width: desktopWidth,
+            child: AboutActionButton(
+              label: strings.resumeButton,
+              primaryUrl: strings.resumeUrl,
+              showDownload: true,
+            ),
           ),
         ),
       ],
     );
-  }
-}
-
-class _ActionButton extends StatelessWidget {
-  const _ActionButton({
-    required this.label,
-    required this.url,
-    this.isMobile = false,
-  });
-
-  final String label;
-  final String url;
-  final bool isMobile;
-
-  @override
-  Widget build(BuildContext context) {
-    final EdgeInsetsGeometry? padding = isMobile
-        ? const EdgeInsets.symmetric(horizontal: 18, vertical: 12)
-        : null;
-
-    return SizedBox(
-      height: isMobile ? 48 : 56,
-      child: AboutPrimaryButton(
-        label: label,
-        padding: padding,
-        onTap: () => _openExternalLink(context, url),
-      ),
-    );
-  }
-
-  Future<void> _openExternalLink(BuildContext context, String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-      return;
-    }
-    if (!context.mounted) return;
-    final strings = Provider.of<StringsProvider>(
-      context,
-      listen: false,
-    ).strings;
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(strings.externallinksnackbarmessag)));
   }
 }
