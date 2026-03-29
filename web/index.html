@@ -163,7 +163,31 @@
     });
   </script>
 
-  <script src="flutter_bootstrap.js" async></script>
+  <!-- Flutter loader must execute after HTML parse but before load event is missed -->
+  <script src="flutter.js" defer></script>
+  <script src="flutter_bootstrap.js" defer></script>
+  <!-- Fallback: if document already loaded before bootstrap listener attached, start manually -->
+  <script>
+    (function () {
+      if (document.readyState === 'complete' && window._flutter?.loader) {
+        window._flutter.loader
+          .loadEntrypoint({
+            serviceWorker: {
+              serviceWorkerVersion: self.flutterServiceWorkerVersion,
+            },
+          })
+          .then(function (engineInitializer) {
+            return engineInitializer.initializeEngine();
+          })
+          .then(function (appRunner) {
+            return appRunner.runApp();
+          })
+          .catch(function (err) {
+            console.error('Flutter bootstrap fallback failed', err);
+          });
+      }
+    })();
+  </script>
 </body>
 
 </html>

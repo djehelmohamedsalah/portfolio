@@ -194,7 +194,9 @@ class _SignatureBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: alignment,
-      child: RevealOnScroll(child: _SignaturePlaceholder(theme: Theme.of(context), layout: layout)),
+      child: RevealOnScroll(
+        child: _SignaturePlaceholder(theme: Theme.of(context), layout: layout),
+      ),
     );
   }
 }
@@ -211,7 +213,9 @@ class _SocialRow extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          RevealOnScroll(child: _SocialBar(theme: theme, layout: layout)),
+          RevealOnScroll(
+            child: _SocialBar(theme: theme, layout: layout),
+          ),
           SizedBox(height: layout.isMobile ? 16 : 20),
           RevealOnScroll(
             child: _EmailDisplay(
@@ -231,7 +235,9 @@ class _SocialRow extends StatelessWidget {
         spacing: 80,
         runSpacing: 16,
         children: [
-          RevealOnScroll(child: _SocialBar(theme: theme, layout: layout)),
+          RevealOnScroll(
+            child: _SocialBar(theme: theme, layout: layout),
+          ),
           RevealOnScroll(
             child: _EmailDisplay(
               theme: theme,
