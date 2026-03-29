@@ -1,8 +1,9 @@
-import 'dart:html' as html;
+import 'package:web/web.dart' as web;
 
 Future<bool> downloadResume(String url) async {
   final sanitizedName = _extractFileName(url);
-  final anchor = html.AnchorElement(href: url)
+  final anchor = web.HTMLAnchorElement()
+    ..href = url
     ..download = sanitizedName
     ..target = '_blank';
   anchor.click();
