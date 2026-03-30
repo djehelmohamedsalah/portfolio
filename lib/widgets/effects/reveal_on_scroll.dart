@@ -30,7 +30,7 @@ class RevealOnScroll extends StatefulWidget {
     this.duration = const Duration(milliseconds: 600),
     this.direction = RevealDirection.up,
     this.startingScale = 0.96,
-    this.revealOffset = 0.8,
+    this.revealOffset = 0.9,
     this.curve = Curves.easeOutCubic,
     this.repeat = false,
   });
