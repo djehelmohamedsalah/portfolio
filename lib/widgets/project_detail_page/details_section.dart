@@ -102,7 +102,7 @@ class _DetailsSection extends StatelessWidget {
                     child: RevealOnScroll(
                       child: _ActionButton(
                         icon: Icons.store,
-                        label: strings.getOnApptoid,
+                        label: strings.getOnApptoidtitle,
                         color: Colors.orange,
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(

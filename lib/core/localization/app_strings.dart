@@ -132,6 +132,7 @@ abstract class AppStrings {
   String get downloadandlinkstitle;
   String get downloadApkLabel;
   String get vieOnGithub;
+  String get getOnApptoidtitle;
   String get getOnApptoid;
   String get roleTitle;
   String get overviewTitle;

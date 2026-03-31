@@ -261,6 +261,8 @@ class AppStringsDe extends AppStrings {
   @override
   String get vieOnGithub => 'Auf GitHub ansehen';
   @override
+  String get getOnApptoidtitle => "Auf Apptoid gehen";
+  @override
   String get getOnApptoid =>
       'Demnächst verfügbar: Diese App wird derzeit für die Veröffentlichung vorbereitet.';
   @override
