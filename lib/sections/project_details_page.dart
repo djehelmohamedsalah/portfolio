@@ -16,6 +16,7 @@ part '../widgets/project_detail_page/details_section.dart';
 part '../widgets/project_detail_page/screenshots_section.dart';
 part '../widgets/project_detail_page/section_title.dart';
 part '../widgets/project_detail_page/role_text.dart';
+part '../widgets/project_detail_page/project_screenshot_image.dart';
 
 double scaleForLayout(BuildContext context, double min, double max) {
   final layout = context.layout;

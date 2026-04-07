@@ -98,18 +98,10 @@ class _ScreenshotsSection extends StatelessWidget {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () => onTapScreenshot(index),
-                    child: Image.asset(
-                      project.screenshots[index],
+                    child: ProjectScreenshotImage(
+                      assetPath: project.screenshots[index],
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Center(
-                          child: Icon(
-                            Icons.broken_image,
-                            size: 50,
-                            color: Theme.of(context).disabledColor,
-                          ),
-                        );
-                      },
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
                 ),
